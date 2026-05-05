@@ -26,18 +26,30 @@ const PREF_COLORS: Record<string, string> = {
 /* ─── Apply Form ─────────────────────────────────────────────────────── */
 function ApplyForm({ jobTitle }: { jobTitle: string }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '', fileName: '' });
+  const [fileData, setFileData] = useState<{ base64: string; name: string; mime: string } | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) setForm((f) => ({ ...f, fileName: file.name }));
+    if (!file) return;
+    setForm((f) => ({ ...f, fileName: file.name }));
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      // result is "data:application/pdf;base64,XXXX" — strip the prefix
+      const base64 = result.split(',')[1];
+      setFileData({ base64, name: file.name, mime: file.type });
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitting(true);
     await submitForm({
       formType: 'Careers',
       name: form.name,
@@ -46,7 +58,13 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
       role: jobTitle,
       coverNote: form.message,
       extra: form.fileName || 'No resume attached',
+      ...(fileData && {
+        resumeBase64: fileData.base64,
+        resumeFileName: fileData.name,
+        resumeMimeType: fileData.mime,
+      }),
     });
+    setSubmitting(false);
     setSubmitted(true);
   };
 
@@ -135,10 +153,11 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
       </div>
       <button
         type="submit"
+        disabled={submitting}
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-          background: BLUE, color: '#fff', fontSize: 14, fontWeight: 700,
-          borderRadius: 12, padding: '14px 24px', border: 'none', cursor: 'pointer',
+          background: submitting ? 'var(--fg-3)' : BLUE, color: '#fff', fontSize: 14, fontWeight: 700,
+          borderRadius: 12, padding: '14px 24px', border: 'none', cursor: submitting ? 'not-allowed' : 'pointer',
           fontFamily: 'inherit', boxShadow: `0 6px 24px ${BLUE}40`,
           transition: 'filter 0.2s, transform 0.2s',
           marginTop: 4,
@@ -149,7 +168,7 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
         Apply Now <Send size={14} strokeWidth={2} />
       </button>
       <p style={{ fontSize: 11, color: 'var(--fg-3)', textAlign: 'center', lineHeight: 1.6 }}>
-        This will open your email client. We'll respond within 5 business days.
+        We&apos;ll respond within 5 business days.
       </p>
     </form>
   );
