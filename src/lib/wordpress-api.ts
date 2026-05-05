@@ -1,7 +1,15 @@
 // WordPress API configuration and utilities
-const WP_API_BASE = (process.env.NEXT_PUBLIC_WP_API_URL ?? 'https://dev.moreyeahs.com') + '/wp-json/wp/v2';
+// Server-side: call WP directly. Client-side: go through our proxy to avoid CORS.
+const WP_DIRECT = (process.env.NEXT_PUBLIC_WP_API_URL ?? 'https://dev.moreyeahs.com') + '/wp-json/wp/v2';
+const WP_PROXY  = '/api/wp';
 
-// Shared fetch options — revalidate every 10 minutes, no force-cache
+function wpUrl(path: string): string {
+  const isServer = typeof window === 'undefined';
+  const base = isServer ? WP_DIRECT : WP_PROXY;
+  return `${base}/${path}`;
+}
+
+// Shared fetch options — revalidate every 10 minutes
 const CACHE_OPTS: RequestInit = { next: { revalidate: 600 } };
 
 export interface FeaturedMedia {
@@ -188,7 +196,7 @@ export async function fetchPosts(params?: {
       searchParams.append('categories', params.categories.join(','));
     }
 
-    const url = `${WP_API_BASE}/posts?${searchParams.toString()}`;
+    const url = `${wpUrl('posts')}?${searchParams.toString()}`;
     const response = await fetch(url, { next: { revalidate: 600 } });
 
     if (!response.ok) {
@@ -242,7 +250,7 @@ export async function fetchAllPosts(params?: {
 export async function fetchPostBySlug(slug: string): Promise<WordPressPost | null> {
   try {
     const response = await fetch(
-      `${WP_API_BASE}/posts?slug=${slug}&_embed=true`,
+      `${wpUrl('posts')}?slug=${slug}&_embed=true`,
       { next: { revalidate: 600 } }
     );
 
@@ -274,7 +282,7 @@ export async function fetchPages(params?: {
       searchParams.append('search', params.search);
     }
 
-    const url = `${WP_API_BASE}/pages?${searchParams.toString()}`;
+    const url = `${wpUrl('pages')}?${searchParams.toString()}`;
     const response = await fetch(url, { next: { revalidate: 600 } });
 
     if (!response.ok) {
@@ -292,7 +300,7 @@ export async function fetchPages(params?: {
 export async function fetchCategories(): Promise<WordPressCategory[]> {
   try {
     const response = await fetch(
-      `${WP_API_BASE}/categories?per_page=100`,
+      `${wpUrl('categories')}?per_page=100`,
       { next: { revalidate: 600 } }
     );
 
@@ -324,7 +332,7 @@ export async function fetchCaseStudies(params?: {
       searchParams.append('search', params.search);
     }
 
-    const url = `${WP_API_BASE}/case_study?${searchParams.toString()}`;
+    const url = `${wpUrl('case_study')}?${searchParams.toString()}`;
     const response = await fetch(url, { next: { revalidate: 600 } });
 
     if (!response.ok) {
@@ -378,7 +386,7 @@ export async function fetchCaseStudyBySlug(slug: string): Promise<CaseStudy | nu
   try {
     // Primary: lookup by slug query, which is more reliable for custom post types.
     const r1 = await fetch(
-      `${WP_API_BASE}/case_study?slug=${encodeURIComponent(slug)}&_embed=true`,
+      `${wpUrl('case_study')}?slug=${encodeURIComponent(slug)}&_embed=true`,
       CACHE_OPTS
     );
     if (r1.ok) {
@@ -386,9 +394,8 @@ export async function fetchCaseStudyBySlug(slug: string): Promise<CaseStudy | nu
       if (Array.isArray(data) && data.length > 0) return data[0];
     }
 
-    // Fallback: direct object endpoint by slug if available.
     const r2 = await fetch(
-      `${WP_API_BASE}/case_study/${encodeURIComponent(slug)}?_embed=true`,
+      `${wpUrl('case_study')}/${encodeURIComponent(slug)}?_embed=true`,
       CACHE_OPTS
     );
     if (r2.ok) {
