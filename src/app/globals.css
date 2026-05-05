@@ -1,0 +1,476 @@
+@import "tailwindcss";
+
+/* ─── Dark-mode variant ─────────────────────────────────────────── */
+@variant dark (&:where(.dark, .dark *));
+
+/* ─── Design tokens ─────────────────────────────────────────────── */
+:root {
+  /* Blue scale */
+  --blue-900: #0A1F4F;
+  --blue-800: #0E2E75;
+  --blue-700: #0E2E75;
+  --blue-600: #123CA8;
+  --blue-500: #1649C2;
+  --blue-primary: #1A56DB;
+  --blue-400: #4D86F5;
+  --blue-300: #80A9FF;
+  --blue-200: #B3C9FF;
+  --blue-100: #D9E4FF;
+
+  /* Neutral */
+  --neutral-1000: #0F0F0F;
+  --neutral-900:  #1A1A1A;
+  --neutral-800:  #262626;
+  --neutral-700:  #323232;
+  --neutral-600:  #3D3D3D;
+  --neutral-500:  #484848;
+  --neutral-400:  #7A7A7A;
+  --neutral-300:  #A3A3A3;
+  --neutral-200:  #C2C2C2;
+  --neutral-100:  #E0E0E0;
+
+  /* Semantic — LIGHT */
+  --bg:       #F5F7FF;
+  --bg-2:     #ECEEF8;
+  --surface:  rgba(255,255,255,0.80);
+  --fg:       #0F0F0F;
+  --fg-2:     #3D3D3D;
+  --fg-3:     #7A7A7A;
+  --border:   rgba(0,0,0,0.09);
+  --nav-bg:   rgba(245,247,255,0.90);
+  --nav-border: rgba(0,0,0,0.08);
+  --card-bg:  rgba(255,255,255,0.70);
+  --card-border: rgba(255,255,255,0.90);
+}
+
+.dark {
+  --bg:       #0A0D14;
+  --bg-2:     #111520;
+  --surface:  rgba(255,255,255,0.05);
+  --fg:       #FFFFFF;
+  --fg-2:     #C2C2C2;
+  --fg-3:     #7A7A7A;
+  --border:   rgba(255,255,255,0.08);
+  --nav-bg:   rgba(10,13,20,0.88);
+  --nav-border: rgba(255,255,255,0.07);
+  --card-bg:  rgba(255,255,255,0.04);
+  --card-border: rgba(255,255,255,0.08);
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-manrope), 'Manrope', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--blue-primary); border-radius: 3px; }
+
+/* ─── Layout helpers ─────────────────────────────────────────────── */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+@media(max-width:640px) {
+  .container { padding: 0 20px; }
+  .section { padding: 64px 0; }
+}
+@media(max-width:400px) {
+  .container { padding: 0 16px; }
+  .section { padding: 48px 0; }
+}
+
+/* ─── Mobile nav ─────────────────────────────────────────────────── */
+@media(max-width:768px){
+  .desktop-nav { display: none !important; }
+  .mobile-only { display: flex !important; }
+}
+@media(min-width:769px){
+  .mobile-only { display: none !important; }
+}
+
+/* ─── Gradient text ──────────────────────────────────────────────── */
+.grad {
+  background: linear-gradient(120deg, #4D86F5 0%, #80A9FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glass card ─────────────────────────────────────────────────── */
+.glass {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+}
+
+.glass-tinted {
+  background: rgba(26,86,219,0.08);
+  border: 1px solid rgba(77,134,245,0.20);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+}
+
+/* ─── Noise overlay ──────────────────────────────────────────────── */
+/* soft-light works on both light & dark backgrounds; overlay becomes
+   invisible on near-white surfaces, so we use soft-light globally    */
+.noise {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  opacity: 0.80;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+/* Restore stronger overlay for dark backgrounds where it pops */
+.dark .noise {
+  mix-blend-mode: overlay;
+  opacity: 0.90;
+}
+
+/* ─── Blob helper ────────────────────────────────────────────────── */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+/* ─── Section wrapper ────────────────────────────────────────────── */
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+}
+
+/* ─── Section label / badge ──────────────────────────────────────── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4D86F5;
+  background: rgba(26,86,219,0.10);
+  border: 1px solid rgba(77,134,245,0.22);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+/* ─── Hero — theme responsive ────────────────────────────────────── */
+.hero-section        { background: var(--bg) !important; }
+.hero-fade-left      { background: linear-gradient(to right, var(--bg) 0%, transparent 100%); }
+.hero-fade-right     { background: linear-gradient(to left,  var(--bg) 0%, transparent 100%); }
+.hero-fade-top       { background: linear-gradient(to bottom,var(--bg) 0%, transparent 100%); }
+.hero-fade-bottom    { background: linear-gradient(to top,   var(--bg) 0%, transparent 100%); }
+.hero-ticker-blur-l  { background: linear-gradient(to right, var(--bg) 0%, transparent 100%); }
+.hero-ticker-blur-r  { background: linear-gradient(to left,  var(--bg) 0%, transparent 100%); }
+
+/* ─── Logo theme switching ───────────────────────────────────────── */
+.logo-dark     { display: none; }
+.dark .logo-dark  { display: block; }
+.dark .logo-light { display: none; }
+
+/* nav logos — shared sizing (both same height so they align identically) */
+.nav-logo-light,
+.nav-logo-dark  { height: 32px; width: auto; object-fit: contain; display: block; }
+
+/* nav logo theme switching — dark logo hidden by default, shown in dark mode */
+.nav-logo-dark             { display: none; }
+.dark .nav-logo-dark       { display: block; }
+.dark .nav-logo-light      { display: none; }
+
+/* white logo in dark mode is visually heavier — trim 2px to match alignment */
+.dark .nav-logo-dark { height: 30px; }
+
+/* pill nav — slightly smaller for both */
+.nav-logo-pill { height: 24px !important; }
+.dark .nav-logo-pill { height: 22px !important; }
+
+/* ─── Skeleton loading styles ─────────────────────────────────────── */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(200,200,210,0.25) 0%, rgba(210,210,220,0.35) 50%, rgba(200,200,210,0.25) 100%);
+  background-size: 200% 100%;
+  border-radius: 18px;
+  border: none;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+.skeleton::after {
+  display: none;
+}
+.skeleton-badge { width: 180px; height: 20px; border-radius: 999px; margin: 0 auto; }
+.skeleton-title { width: min(700px, 100%); height: 44px; border-radius: 12px; margin: 0 auto; }
+.skeleton-copy { width: min(540px, 100%); height: 20px; border-radius: 999px; margin: 0 auto; }
+.skeleton-subtitle { width: 52%; height: 18px; border-radius: 999px; }
+.skeleton-headline { width: 100%; height: 28px; border-radius: 12px; }
+.skeleton-text { width: 100%; height: 18px; border-radius: 999px; }
+.skeleton-avatar { width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0; }
+.skeleton-card {
+  min-height: 300px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+.skeleton-card-img {
+  width: 100%;
+  height: 160px;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+.skeleton-card-body {
+  padding: 20px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+.loading-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media(max-width:1024px){ .loading-skeleton-grid { grid-template-columns: repeat(2,1fr) !important; } }
+@media(max-width:640px){ .loading-skeleton-grid { grid-template-columns: 1fr !important; } }
+.loading-skeleton-shell { padding: 100px 20px; background: var(--bg); }
+.loading-skeleton-hero { max-width: 920px; margin: 0 auto 70px; text-align: center; display: grid; gap: 24px; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────── */
+@keyframes pulseDot {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.5; transform:scale(1.4); }
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+@keyframes testimonialTicker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Industries left panel ──────────────────────────────────────── */
+.ind-left-panel {
+  background: linear-gradient(165deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 65%, #1e3a8a 100%);
+}
+.dark .ind-left-panel {
+  background: linear-gradient(165deg, #1d4ed8 0%, #1034a6 28%, #071540 65%, #050810 100%);
+}
+
+/* ─── Industries glass card ──────────────────────────────────────── */
+.ind-glass-card {
+  background: rgba(255,255,255,0.88);
+  border-top: 1px solid rgba(0,0,0,0.10);
+  border-left: 1px solid rgba(0,0,0,0.10);
+  border-bottom: none;
+  border-right: none;
+}
+.dark .ind-glass-card {
+  background: rgba(5,8,16,0.78);
+  border-top: 1px solid rgba(255,255,255,0.09);
+  border-left: 1px solid rgba(255,255,255,0.09);
+  border-bottom: none;
+  border-right: none;
+}
+.ind-glass-icon-bg {
+  background: rgba(26,86,219,0.12);
+  border: 1px solid rgba(26,86,219,0.22);
+}
+.dark .ind-glass-icon-bg {
+  background: rgba(26,86,219,0.30);
+  border: 1px solid rgba(77,134,245,0.35);
+}
+
+/* ─── GridBeam — grid background pattern ─────────────────────────── */
+/* Light mode: faint blue grid lines */
+.gb-grid {
+  background-color: var(--card-bg);
+  background-image:
+    repeating-linear-gradient(
+      rgba(77,134,245,0.10) 0px, rgba(77,134,245,0.10) 1px,
+      transparent 1px, transparent 44px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(77,134,245,0.10) 0px, rgba(77,134,245,0.10) 1px,
+      transparent 1px, transparent 44px
+    );
+  background-size: 44px 44px;
+}
+/* Dark mode: very subtle lines so they don't overpower content */
+.dark .gb-grid {
+  background-image:
+    repeating-linear-gradient(
+      rgba(77,134,245,0.07) 0px, rgba(77,134,245,0.07) 1px,
+      transparent 1px, transparent 44px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(77,134,245,0.07) 0px, rgba(77,134,245,0.07) 1px,
+      transparent 1px, transparent 44px
+    );
+}
+
+/* ─── pulseBar for gradient bars ─────────────────────────────────── */
+@keyframes pulseBar {
+  from { opacity: 0.30; transform: scaleY(0.92); }
+  to   { opacity: 0.55; transform: scaleY(1.00); }
+}
+/* ─── hero grad bar ──────────────────────────────────────────────── */
+.hero-grad-bar {
+  background: linear-gradient(
+    to top,
+    rgba(77,134,245,0.28) 0%,
+    rgba(128,169,255,0.14) 55%,
+    transparent 100%
+  );
+}
+.dark .hero-grad-bar {
+  background: linear-gradient(
+    to top,
+    rgba(26,86,219,0.32) 0%,
+    rgba(77,134,245,0.12) 55%,
+    transparent 100%
+  );
+}
+/* ─── hero text gradient ─────────────────────────────────────────── */
+.hero-grad-text {
+  background: linear-gradient(120deg, #4D86F5 0%, #80A9FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* ─── hero descender fix ─────────────────────────────────────────── */
+.hero-line-wrap {
+  display: block;
+  overflow: hidden;
+  line-height: 1.30;
+  padding-bottom: 0.08em;
+}
+
+/* ─── Gradient hero bars ─────────────────────────────────────────── */
+/* Same intense blue in both themes — var(--bg) supplies white vs dark
+   between the bars, giving the "white gap / dark gap" distinction     */
+.hero-grad-bar {
+  transform-origin: bottom;
+  background: linear-gradient(to top,
+    rgba(26,86,219,0.84),
+    rgba(77,134,245,0.40),
+    rgba(128,169,255,0.10),
+    transparent
+  );
+}
+
+/* Inner div owns scaleY, opacity, brightness — no conflict with outer's fixed scaleY */
+@keyframes pulseBar {
+  from {
+    opacity: 0.38;
+    transform: scaleY(0.80);
+    filter: brightness(0.72) saturate(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1.05);
+    filter: brightness(1.32) saturate(1.18);
+  }
+}
+
+/* ─── Hero heading — per-line clip reveal ────────────────────────── */
+.hero-line-wrap {
+  display: block;
+  overflow: hidden;
+  line-height: 1.30;    /* increased from 1.20 — prevents descenders (g, y, p) being clipped */
+  padding-bottom: 0.08em; /* extra room below baseline for descenders */
+}
+
+/* ─── Hero gradient text — moving shimmer ────────────────────────── */
+.hero-grad-text {
+  background: linear-gradient(
+    120deg,
+    #4D86F5 0%,
+    #80A9FF 26%,
+    #1A56DB 50%,
+    #80A9FF 74%,
+    #4D86F5 100%
+  );
+  background-size: 260% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: heroGradShimmer 5s linear infinite;
+}
+@keyframes heroGradShimmer {
+  from { background-position: 0% center; }
+  to   { background-position: 260% center; }
+}
+
+/* ─── Glass card — subtle hover shine (no lift, keeps glass feel) ── */
+.glass {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.30s ease;
+}
+.glass:hover {
+  box-shadow: 0 8px 36px rgba(77,134,245,0.10);
+}
+/* Very faint streak — enough to catch the eye, won't overpower glass */
+.glass::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -120%;
+  width: 48%;
+  height: 220%;
+  background: linear-gradient(
+    108deg,
+    transparent 25%,
+    rgba(255,255,255,0.06) 50%,
+    transparent 75%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 3;
+}
+.glass:hover::after {
+  animation: glassShine 0.75s ease-in-out forwards;
+}
+@keyframes glassShine {
+  from { left: -120%; }
+  to   { left: 165%; }
+}

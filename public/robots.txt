@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block admin and API routes
+Disallow: /api/
+Disallow: /maintenance
+
+Sitemap: https://www.moreyeahs.com/sitemap.xml
