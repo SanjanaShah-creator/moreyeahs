@@ -1,8 +1,8 @@
 // WordPress API configuration and utilities
-const WP_API_BASE = 'https://dev.moreyeahs.com/wp-json/wp/v2';
+const WP_API_BASE = (process.env.NEXT_PUBLIC_WP_API_URL ?? 'https://dev.moreyeahs.com') + '/wp-json/wp/v2';
 
-// Shared fetch options — aggressive caching for performance
-const CACHE_OPTS: RequestInit = { next: { revalidate: 86400 }, cache: 'force-cache' };
+// Shared fetch options — revalidate every 10 minutes, no force-cache
+const CACHE_OPTS: RequestInit = { next: { revalidate: 600 } };
 
 export interface FeaturedMedia {
   source_url: string;
@@ -189,9 +189,7 @@ export async function fetchPosts(params?: {
     }
 
     const url = `${WP_API_BASE}/posts?${searchParams.toString()}`;
-    const response = await fetch(url, {
-      next: { revalidate: 3600 }, // Cache for 1 hour
-    });
+    const response = await fetch(url, { next: { revalidate: 600 } });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch posts: ${response.status}`);
@@ -245,9 +243,7 @@ export async function fetchPostBySlug(slug: string): Promise<WordPressPost | nul
   try {
     const response = await fetch(
       `${WP_API_BASE}/posts?slug=${slug}&_embed=true`,
-      {
-        next: { revalidate: 3600 },
-      }
+      { next: { revalidate: 600 } }
     );
 
     if (!response.ok) {
@@ -279,9 +275,7 @@ export async function fetchPages(params?: {
     }
 
     const url = `${WP_API_BASE}/pages?${searchParams.toString()}`;
-    const response = await fetch(url, {
-      next: { revalidate: 3600 },
-    });
+    const response = await fetch(url, { next: { revalidate: 600 } });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch pages: ${response.status}`);
@@ -299,9 +293,7 @@ export async function fetchCategories(): Promise<WordPressCategory[]> {
   try {
     const response = await fetch(
       `${WP_API_BASE}/categories?per_page=100`,
-      {
-        next: { revalidate: 3600 },
-      }
+      { next: { revalidate: 600 } }
     );
 
     if (!response.ok) {
@@ -333,9 +325,7 @@ export async function fetchCaseStudies(params?: {
     }
 
     const url = `${WP_API_BASE}/case_study?${searchParams.toString()}`;
-    const response = await fetch(url, {
-      next: { revalidate: 3600 },
-    });
+    const response = await fetch(url, { next: { revalidate: 600 } });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch case studies: ${response.status}`);
