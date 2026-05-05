@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  ArrowRight, ArrowLeft, TrendingUp, Search, X, ChevronDown, ChevronLeft,
+  ArrowRight, TrendingUp, Search, X, ChevronDown, ChevronLeft,
   ChevronRight, Check, SlidersHorizontal,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -297,14 +297,6 @@ export default function CaseStudiesPage() {
         <GradientBars count={16} />
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 3 }}>
-          {/* Breadcrumb — site standard: ← Solutions > Current */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--fg-3)', marginBottom: 32, flexWrap: 'wrap' }}>
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--fg-3)', textDecoration: 'none', fontWeight: 600 }}>
-              <ArrowLeft size={12} strokeWidth={2} /> Home
-            </Link>
-            <ChevronRight size={12} strokeWidth={2} color="var(--fg-3)" />
-            <span style={{ color: PRIMARY_LIGHT, fontWeight: 700 }}>Case Studies</span>
-          </div>
           <motion.div variants={stagger} initial="hidden" animate="visible" style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
             <motion.div variants={FV} transition={FT}>
               <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 20 }}>
