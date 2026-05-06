@@ -360,7 +360,7 @@ export default function LifeAtMoreYeahsPage() {
             </h2>
           </ScrollReveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }} className="perks-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24, maxWidth: 900, margin: '0 auto' }} className="perks-grid">
             {PERKS.map(({ Icon, title, desc }, i) => (
               <motion.div
                 key={title}
@@ -376,7 +376,7 @@ export default function LifeAtMoreYeahsPage() {
                 </div>
                 <div>
                   <h3 style={{ fontSize: 14, fontWeight: 800, color: 'var(--fg)', marginBottom: 6, letterSpacing: '-0.02em' }}>{title}</h3>
-                  <p style={{ fontSize: 12, color: 'var(--fg-3)', lineHeight: 1.7 }}>{desc}</p>
+                  <p style={{ fontSize: 13, color: 'var(--fg-2)', lineHeight: 1.7, fontWeight: 500 }}>{desc}</p>
                 </div>
               </motion.div>
             ))}

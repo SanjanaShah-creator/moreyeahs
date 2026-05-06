@@ -155,15 +155,15 @@ export default function LeadCapturePopup() {
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '3px 9px', borderRadius: 999, background: 'rgba(26,86,219,0.07)', border: '1px solid rgba(77,134,245,0.18)' }}>
                       <Sparkles size={9} color="#4D86F5" />
-                      <span style={{ fontSize: 9.5, fontWeight: 700, color: '#4D86F5', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Free resources</span>
+                      <span style={{ fontSize: 9.5, fontWeight: 700, color: '#4D86F5', letterSpacing: '0.08em', textTransform: 'uppercase' }}>AI Strategy Session</span>
                     </div>
                   </div>
 
                   <h3 style={{ fontSize: 17, fontWeight: 800, color: 'var(--fg)', letterSpacing: '-0.02em', marginBottom: 6, lineHeight: 1.25 }}>
-                    Get AI & Data insights<br />straight to your inbox
+                    Still Exploring AI?<br />Let&apos;s Make It Real.
                   </h3>
                   <p style={{ fontSize: 12.5, color: 'var(--fg-3)', lineHeight: 1.65, marginBottom: 18 }}>
-                    Join 1,000+ business leaders getting practical playbooks, case studies, and industry trends — no spam, ever.
+                    We&apos;ll show you exactly how AI can fit into your business—what to automate, what to build, and where the ROI is. No generic advice. Just a clear plan.
                   </p>
 
                   <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>

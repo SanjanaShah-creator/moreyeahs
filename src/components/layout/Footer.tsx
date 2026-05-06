@@ -36,7 +36,7 @@ const SOLUTIONS_LINKS = [
 const COMPANY_LINKS = [
   { label: 'Home',              href: '/' },
   { label: 'About',             href: '/about' },
-  { label: 'About Us',          href: '/life-at-moreyeahs' },
+  { label: 'Life at MoreYeahs', href: '/life-at-moreyeahs' },
   { label: 'Careers',           href: '/careers' },
   { label: 'Contact Us',        href: '/contact-us' },
   { label: 'Blog',              href: '/blog' },
