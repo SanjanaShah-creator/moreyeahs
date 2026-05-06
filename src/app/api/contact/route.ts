@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxd3PMsdVQzhSvCNDuZtXb4rLwBGhnYFXcOZfDZemdXfyd6apt3Xf_RYp99BjcQXlju/exec';
 
+// GAS has a ~50MB POST limit but in practice large base64 payloads
+// get truncated. We chunk: send text data + a separate resume chunk.
 export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
 
-    // Server-side fetch to GAS — no CORS restrictions
     const res = await fetch(GAS_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
