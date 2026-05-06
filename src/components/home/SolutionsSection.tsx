@@ -44,7 +44,7 @@ const DOMAINS = [
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 12 }}>
-          {[{ l: 'Uptime', v: '99.99%', c: '#22c55e' }, { l: 'Deploy time', v: '< 3min', c: '#4D86F5' }, { l: 'Cost saved', v: '42%', c: '#80A9FF' }, { l: 'Auto-scale', v: 'Active', c: '#22c55e' }].map(s => (
+          {[{ l: 'Uptime', v: '99.99%', c: '#4D86F5' }, { l: 'Deploy time', v: '< 3min', c: '#80A9FF' }, { l: 'Cost saved', v: '42%', c: '#4D86F5' }, { l: 'Auto-scale', v: 'Active', c: '#80A9FF' }].map(s => (
             <div key={s.l} style={{ padding: '10px 12px', borderRadius: 10, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
               <div style={{ fontSize: 10, color: '#7A7A7A', marginBottom: 3 }}>{s.l}</div>
               <div style={{ fontSize: 16, fontWeight: 800, color: s.c }}>{s.v}</div>

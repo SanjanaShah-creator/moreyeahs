@@ -361,58 +361,6 @@ export default function IndustriesSection() {
     </section>
   );
 }
-
-const INDUSTRIES = [
-  {
-    Icon: Heart, slug: 'healthcare', label: 'Healthcare',
-    points: ['Predictive patient analytics', 'Clinical decision support', 'AI diagnostics'],
-    video: '/videos/Healthcare Industry.mp4',
-  },
-  {
-    Icon: ShoppingCart, slug: 'ecommerce', label: 'E-Commerce',
-    points: ['Personalized recommendations', 'Demand forecasting', 'Behaviour analytics'],
-    video: '/videos/E-Commerce Industry.mp4',
-  },
-  {
-    Icon: Building2, slug: 'real-estate', label: 'Real Estate',
-    points: ['Property data intelligence', 'Automated workflows', 'Market trend analysis'],
-    video: '/videos/Real E-State Industry.mp4',
-  },
-  {
-    Icon: Landmark, slug: 'bfsi', label: 'BFSI',
-    points: ['Risk & fraud detection', 'Customer intelligence', 'Process automation'],
-    video: '/videos/BFSI Industry.mp4',
-  },
-  {
-    Icon: Globe2, slug: 'public-sector', label: 'Public Sector',
-    points: ['Digital citizen services', 'ERP modernization', 'Data governance'],
-    video: '/videos/Public Sector Industry.mp4',
-  },
-  {
-    Icon: Users, slug: 'non-profit', label: 'Non-Profit',
-    points: ['Donor management platforms', 'Impact tracking', 'Community engagement'],
-    video: '/videos/Non-Profit Sector Industry.mp4',
-  },
-  {
-    Icon: GraduationCap, slug: 'edtech', label: 'EdTech',
-    points: ['Adaptive learning systems', 'Student performance analytics', 'Secure platforms'],
-    video: '/videos/Ed Tech Industry.mp4',
-  },
-  {
-    Icon: Factory, slug: 'manufacturing', label: 'Manufacturing',
-    points: ['Predictive maintenance', 'Supply chain intelligence', 'Process optimization'],
-    video: '/videos/Manufacturing Industry.mp4',
-  },
-  {
-    Icon: CreditCard, slug: 'fintech', label: 'Fintech',
-    points: ['Smart payment automation', 'Risk & fraud detection', 'Real-time insights'],
-    video: '/videos/Fintech Industry.mp4',
-  },
-];
-
-const n = INDUSTRIES.length;
-
-export default function IndustriesSection() {
   const [active, setActive] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);

@@ -18,9 +18,9 @@ const BLUE_LIGHT = 'rgba(77,134,245,0.08)';
 const EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const PREF_COLORS: Record<string, string> = {
-  Remote: '#22c55e',
-  Hybrid: '#f59e0b',
-  'On-site': '#8b5cf6',
+  Remote: '#4D86F5',
+  Hybrid: '#1A56DB',
+  'On-site': '#80A9FF',
 };
 
 /* ─── Apply Form ─────────────────────────────────────────────────────── */

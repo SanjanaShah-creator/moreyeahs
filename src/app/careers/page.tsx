@@ -262,9 +262,9 @@ function FilterSelect({
 /* ─── JobCard ────────────────────────────────────────────────────────── */
 function JobCard({ job, index }: { job: Job; index: number }) {
   const prefColors: Record<string, string> = {
-    Remote: '#22c55e',
-    Hybrid: '#f59e0b',
-    'On-site': '#8b5cf6',
+    Remote: '#4D86F5',
+    Hybrid: '#1A56DB',
+    'On-site': '#80A9FF',
   };
   return (
     <motion.div

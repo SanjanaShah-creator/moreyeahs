@@ -45,7 +45,7 @@ export default function CTASection() {
               transition={{ duration: 0.7, ease: EXPO, delay: 0.15 }}
             >
               <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 24, background: 'rgba(26,86,219,0.14)', border: '1px solid rgba(77,134,245,0.30)' }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', display: 'inline-block', animation: 'pulseDot 2s ease-in-out infinite' }} />
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4D86F5', display: 'inline-block', animation: 'pulseDot 2s ease-in-out infinite' }} />
                 Free Consultation Available
               </div>
             </motion.div>
