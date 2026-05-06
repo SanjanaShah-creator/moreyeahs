@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight, TrendingUp, Search, X, ChevronDown, ChevronLeft,
@@ -229,7 +230,10 @@ function FilterSidebar({ groups, selected, onToggle, search, onSearch, onClear, 
 }
 
 /* ─── Page ──────────────────────────────────────────────────────── */
-export default function CaseStudiesPage() {
+function CaseStudiesPageInner() {
+  const searchParams = useSearchParams();
+  const filterParam = searchParams.get('filter'); // e.g. "salesforce", "data-science"
+
   const [studies, setStudies]         = useState<CS[]>([]);
   const [allCategories, setAllCats]   = useState<WordPressCategory[]>([]);
   const [loading, setLoading]         = useState(true);
@@ -238,6 +242,7 @@ export default function CaseStudiesPage() {
   const [selected, setSelected]       = useState<Set<number>>(new Set());
   const [page, setPage]               = useState(1);
   const [mobileFilter, setMobile]     = useState(false);
+  const [filterApplied, setFilterApplied] = useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -251,6 +256,20 @@ export default function CaseStudiesPage() {
       .catch(e => { console.error(e); setError('Failed to load case studies'); })
       .finally(() => setLoading(false));
   }, []);
+
+  /* Auto-select terms matching the ?filter= URL param once data is loaded */
+  useEffect(() => {
+    if (loading || filterApplied || !filterParam || allCategories.length === 0) return;
+    const q = filterParam.toLowerCase().replace(/-/g, ' ');
+    // Match categories whose name contains the filter keyword
+    const matches = allCategories.filter(c =>
+      c.name.toLowerCase().includes(q) || q.includes(c.name.toLowerCase())
+    );
+    if (matches.length > 0) {
+      setSelected(new Set(matches.map(c => c.id)));
+    }
+    setFilterApplied(true);
+  }, [loading, filterParam, allCategories, filterApplied]);
 
   useEffect(() => {
     if (page > 1) setTimeout(() => document.querySelector('.cs-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
@@ -536,5 +555,13 @@ export default function CaseStudiesPage() {
         @media(max-width:640px){ .cs-grid{grid-template-columns:1fr!important} }
       `}</style>
     </>
+  );
+}
+
+export default function CaseStudiesPage() {
+  return (
+    <Suspense fallback={null}>
+      <CaseStudiesPageInner />
+    </Suspense>
   );
 }
