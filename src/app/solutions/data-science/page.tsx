@@ -442,6 +442,76 @@ export default function DataSciencePage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
+          OUR SERVICES — sticky stacking
+      ══════════════════════════════════════════════════ */}
+      <section style={{ background: 'var(--bg)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
+        <NoiseOverlay />
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <motion.div
+            variants={FU(0)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            style={{ marginBottom: 48 }}
+          >
+            <div className="section-badge" style={{ marginBottom: 16 }}>What We Offer</div>
+            <h2 style={{ fontSize: 'clamp(32px,4vw,56px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.15, color: 'var(--fg)' }}>
+              Our <span className="grad">Services</span>
+            </h2>
+            <p style={{ fontSize: 16, color: 'var(--fg-3)', lineHeight: 1.7, maxWidth: 600, marginTop: 12 }}>
+              Solutions that simplify operations, unlock insights and drive measurable results at scale.
+            </p>
+          </motion.div>
+
+          <div style={{ display: 'flex', flexDirection: 'column' }} className="ds-svc-stack">
+            {SERVICES.map((svc, i) => (
+              <motion.div
+                key={svc.id}
+                initial={{ opacity: 0, y: 60, filter: 'blur(6px)' }}
+                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.85, ease: EXPO, delay: i * 0.06 }}
+                style={{
+                  position: 'sticky', top: `${80 + i * 20}px`, zIndex: i + 2,
+                  borderRadius: 24, overflow: 'hidden',
+                  backgroundImage: `url('/images/${svc.dark ? 'Services Card Slide 2.png' : 'White Service card New.png'}')`,
+                  backgroundSize: 'cover', backgroundPosition: 'center',
+                  border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid var(--card-border)',
+                  padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
+                }}
+              >
+                <div style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 60, position: 'relative', zIndex: 1 }} className="svc-card-inner">
+                  <div style={{ flex: '0 0 auto', maxWidth: 280 }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 12, marginBottom: 20, background: svc.dark ? 'rgba(77,134,245,0.25)' : 'rgba(26,86,219,0.10)', border: svc.dark ? '1px solid rgba(77,134,245,0.40)' : '1px solid rgba(77,134,245,0.25)', fontSize: 13, fontWeight: 800, color: svc.dark ? '#80A9FF' : '#1A56DB' }}>
+                      {`0${i + 1}`}
+                    </div>
+                    <h3 style={{ fontSize: 'clamp(24px,2.8vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, color: svc.dark ? '#fff' : '#1A56DB', marginBottom: 20 }}>{svc.title}</h3>
+                    <Link href="/contact-us" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
+                      Learn More <ArrowRight size={13} strokeWidth={1.5} />
+                    </Link>
+                  </div>
+                  <div style={{ flex: '0 0 520px' }}>
+                    <p style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: svc.dark ? '#fff' : '#0A1F4F', lineHeight: 1.3, marginBottom: 10 }}>{svc.tagline}</p>
+                    <p style={{ fontSize: 15, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#3D3D3D', lineHeight: 1.75, marginBottom: 28 }}>{svc.desc}</p>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 24px' }}>
+                      {svc.list.map(item => (
+                        <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                          <span style={{ width: 17, height: 17, borderRadius: '50%', background: svc.dark ? 'rgba(77,134,245,0.25)' : 'rgba(26,86,219,0.12)', border: svc.dark ? '1px solid rgba(77,134,245,0.40)' : '1px solid rgba(77,134,245,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 8, color: svc.dark ? '#80A9FF' : '#1A56DB', flexShrink: 0, marginTop: 2 }}>✓</span>
+                          <span style={{ fontSize: 14, color: svc.dark ? 'rgba(255,255,255,0.85)' : '#262626', lineHeight: 1.55 }}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <div style={{ height: 120 }} />
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════
           HOW IT FITS TOGETHER — flow steps
       ══════════════════════════════════════════════════ */}
       <section style={{ background: 'linear-gradient(160deg,#050d1e 0%,#0a1f4f 30%,#0e2e75 65%,#1a56db 100%)', padding: '120px 0', position: 'relative' }}>
