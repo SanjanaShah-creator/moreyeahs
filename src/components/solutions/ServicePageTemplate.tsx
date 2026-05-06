@@ -518,7 +518,7 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
                 transition={{ duration: 2.2, repeat: Infinity }}
                 style={{ width: 7, height: 7, borderRadius: '50%', background: BLUE, display: 'inline-block' }}
               />
-              <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: BLUE }}>
+              <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: BLUE, textShadow: '0 0 20px rgba(77,134,245,0.5)' }}>
                 Step {steps[active]?.number} of {steps.length}
               </span>
             </div>

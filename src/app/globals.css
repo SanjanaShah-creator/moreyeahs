@@ -59,7 +59,10 @@
 
 /* ─── Reset ─────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navbar */
+}
 
 body {
   background: var(--bg);
@@ -67,9 +70,27 @@ body {
   font-family: var(--font-manrope), 'Manrope', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Performance optimizations ──────────────────────────────────── */
+* {
+  will-change: auto;
+}
+
+/* Only apply will-change to elements that are animating */
+.animating {
+  will-change: transform, opacity;
+}
+
+/* Use GPU acceleration for transforms */
+.glass, .card, [class*="motion"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────── */
