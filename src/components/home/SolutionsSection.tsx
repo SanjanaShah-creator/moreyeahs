@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useCallback } from 'react';
-import { motion, useScroll, useTransform, MotionValue, useMotionValue, useSpring } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { Brain, Cloud, Monitor, Zap, Code2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import NoiseOverlay from '@/components/ui/NoiseOverlay';
@@ -122,44 +122,7 @@ const DOMAINS = [
 const n = DOMAINS.length;
 const VH_PER_CARD = 80;
 
-/* ─────────────────────────────────────────────────────────────────────
-   MeshGradient
-   • A 200%×200% background with 4 radial colour stops
-   • Auto-animates via CSS keyframes (slow drift)
-   • Cursor nudges the background-position via spring motion values
-   ───────────────────────────────────────────────────────────────────── */
-function MeshGradient({ idx }: { idx: number }) {
-  /* Cursor position as 0-1 fractions */
-  const rawX = useMotionValue(0.5);
-  const rawY = useMotionValue(0.5);
-
-  /* Gentle spring — feels like the gradient is floating */
-  const springX = useSpring(rawX, { stiffness: 40, damping: 25, mass: 1.5 });
-  const springY = useSpring(rawY, { stiffness: 40, damping: 25, mass: 1.5 });
-
-  /* Map 0-1 → a small nudge range: -8% to +8% around 50% */
-  const bgX = useTransform(springX, [0, 1], ['42%', '58%']);
-  const bgY = useTransform(springY, [0, 1], ['42%', '58%']);
-
-  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    rawX.set((e.clientX - r.left) / r.width);
-    rawY.set((e.clientY - r.top)  / r.height);
-  }, [rawX, rawY]);
-
-  return (
-    <motion.div
-      onMouseMove={onMouseMove}
-      className={`sol-mesh-grad sol-mesh-grad-${idx}`}
-      style={{
-        position: 'absolute', inset: 0, zIndex: 0,
-        backgroundSize: '200% 200%',
-        backgroundPositionX: bgX,
-        backgroundPositionY: bgY,
-      }}
-    />
-  );
-}
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 function DomainCard({
   domain,
@@ -174,20 +137,23 @@ function DomainCard({
   const segStart = i / n;
   const segEnd   = (i + 1) / n;
 
+  /* Smooth entry — card slides up from bottom */
   const yEntry = useTransform(
     scrollYProgress,
     [Math.max(0, segStart - 1 / n), segStart],
     i === 0 ? ['0%', '0%'] : ['100%', '0%'],
   );
+
+  /* Previous card gently scales down and fades — no harsh cut */
   const scale = useTransform(
     scrollYProgress,
     [segEnd, Math.min(1, segEnd + 1 / n)],
-    i < n - 1 ? [1, 0.94] : [1, 1],
+    i < n - 1 ? [1, 0.96] : [1, 1],
   );
   const opacity = useTransform(
     scrollYProgress,
     [segEnd, Math.min(1, segEnd + 1 / n)],
-    i < n - 1 ? [1, 0.85] : [1, 1],
+    i < n - 1 ? [1, 0.92] : [1, 1],
   );
 
   return (
@@ -197,13 +163,13 @@ function DomainCard({
         zIndex: i + 1,
         y: yEntry, scale, opacity,
         transformOrigin: 'top center',
+        /* Each card fills with page bg — no black gaps */
         background: 'var(--bg)',
-        borderRadius: i === 0 ? 0 : 16,
+        borderRadius: i === 0 ? 0 : 20,
         overflow: 'hidden',
       }}
+      transition={{ ease: EASE }}
     >
-      {/* Mesh gradient — auto-animates + cursor-reactive */}
-      <MeshGradient idx={i} />
       <NoiseOverlay />
 
       {/* Content */}
@@ -277,11 +243,14 @@ export default function SolutionsSection() {
   });
 
   return (
+    /* Outer section bg matches card bg — no black gaps ever */
     <section style={{ background: 'var(--bg)', position: 'relative' }}>
       <div ref={scrollRef} style={{ height: `${n * VH_PER_CARD}vh`, position: 'relative' }}>
         <div className="sol-sticky" style={{
           position: 'sticky', top: 88,
           height: 'calc(100vh - 88px)',
+          /* bg matches cards so nothing shows through */
+          background: 'var(--bg)',
           overflow: 'hidden',
         }}>
           {DOMAINS.map((domain, i) => (
@@ -291,110 +260,6 @@ export default function SolutionsSection() {
       </div>
 
       <style>{`
-        /* ── Mesh gradient: 4 radial stops on a 200×200% canvas ──
-           Light theme: soft blue-to-white tones, not too dark
-           Dark theme:  richer blues
-           Auto-drifts via keyframe; cursor nudges via motion value
-        ── */
-
-        .sol-mesh-grad {
-          pointer-events: none;
-          background-image:
-            radial-gradient(ellipse 40% 35% at 20% 20%, #c8d9ff 0%, transparent 100%),
-            radial-gradient(ellipse 35% 40% at 80% 80%, #b3c9ff 0%, transparent 100%),
-            radial-gradient(ellipse 30% 30% at 60% 10%, #dce8ff 0%, transparent 100%),
-            radial-gradient(ellipse 28% 32% at 10% 80%, #e8f0ff 0%, transparent 100%);
-          animation: meshDrift 18s ease-in-out infinite;
-        }
-
-        /* Each card: slightly different colour mix + animation phase */
-        .sol-mesh-grad-0 {
-          background-image:
-            radial-gradient(ellipse 38% 32% at 15% 25%, #b8d0ff 0%, transparent 100%),
-            radial-gradient(ellipse 32% 38% at 85% 75%, #c5daff 0%, transparent 100%),
-            radial-gradient(ellipse 28% 25% at 55% 5%,  #dce8ff 0%, transparent 100%),
-            radial-gradient(ellipse 24% 28% at 5%  85%, #e4eeff 0%, transparent 100%);
-          animation-delay: 0s;
-        }
-        .sol-mesh-grad-1 {
-          background-image:
-            radial-gradient(ellipse 35% 38% at 80% 20%, #c0d5ff 0%, transparent 100%),
-            radial-gradient(ellipse 38% 30% at 10% 80%, #b0c8ff 0%, transparent 100%),
-            radial-gradient(ellipse 28% 32% at 50% 90%, #d8e6ff 0%, transparent 100%),
-            radial-gradient(ellipse 26% 26% at 90% 50%, #e0ebff 0%, transparent 100%);
-          animation-delay: -4s;
-        }
-        .sol-mesh-grad-2 {
-          background-image:
-            radial-gradient(ellipse 32% 35% at 50% 10%, #bdd3ff 0%, transparent 100%),
-            radial-gradient(ellipse 35% 32% at 5%  60%, #cad9ff 0%, transparent 100%),
-            radial-gradient(ellipse 30% 28% at 90% 85%, #b8ccff 0%, transparent 100%),
-            radial-gradient(ellipse 26% 30% at 60% 50%, #e2ecff 0%, transparent 100%);
-          animation-delay: -8s;
-        }
-        .sol-mesh-grad-3 {
-          background-image:
-            radial-gradient(ellipse 38% 30% at 10% 10%, #c2d6ff 0%, transparent 100%),
-            radial-gradient(ellipse 30% 38% at 90% 90%, #b5caff 0%, transparent 100%),
-            radial-gradient(ellipse 32% 28% at 70% 30%, #d5e4ff 0%, transparent 100%),
-            radial-gradient(ellipse 26% 32% at 20% 70%, #e0eaff 0%, transparent 100%);
-          animation-delay: -12s;
-        }
-        .sol-mesh-grad-4 {
-          background-image:
-            radial-gradient(ellipse 35% 32% at 30% 80%, #bfd4ff 0%, transparent 100%),
-            radial-gradient(ellipse 32% 35% at 75% 15%, #c8daff 0%, transparent 100%),
-            radial-gradient(ellipse 28% 30% at 5%  30%, #d0e0ff 0%, transparent 100%),
-            radial-gradient(ellipse 26% 28% at 85% 60%, #e4eeff 0%, transparent 100%);
-          animation-delay: -16s;
-        }
-
-        /* Dark theme — same positions, richer blues */
-        .dark .sol-mesh-grad-0 {
-          background-image:
-            radial-gradient(ellipse 38% 32% at 15% 25%, #1A56DB 0%, transparent 100%),
-            radial-gradient(ellipse 32% 38% at 85% 75%, #0E2E75 0%, transparent 100%),
-            radial-gradient(ellipse 28% 25% at 55% 5%,  #4D86F5 0%, transparent 100%),
-            radial-gradient(ellipse 24% 28% at 5%  85%, #0A1F4F 0%, transparent 100%);
-        }
-        .dark .sol-mesh-grad-1 {
-          background-image:
-            radial-gradient(ellipse 35% 38% at 80% 20%, #4D86F5 0%, transparent 100%),
-            radial-gradient(ellipse 38% 30% at 10% 80%, #1A56DB 0%, transparent 100%),
-            radial-gradient(ellipse 28% 32% at 50% 90%, #0E2E75 0%, transparent 100%),
-            radial-gradient(ellipse 26% 26% at 90% 50%, #80A9FF 0%, transparent 100%);
-        }
-        .dark .sol-mesh-grad-2 {
-          background-image:
-            radial-gradient(ellipse 32% 35% at 50% 10%, #1A56DB 0%, transparent 100%),
-            radial-gradient(ellipse 35% 32% at 5%  60%, #4D86F5 0%, transparent 100%),
-            radial-gradient(ellipse 30% 28% at 90% 85%, #0E2E75 0%, transparent 100%),
-            radial-gradient(ellipse 26% 30% at 60% 50%, #80A9FF 0%, transparent 100%);
-        }
-        .dark .sol-mesh-grad-3 {
-          background-image:
-            radial-gradient(ellipse 38% 30% at 10% 10%, #0E2E75 0%, transparent 100%),
-            radial-gradient(ellipse 30% 38% at 90% 90%, #1A56DB 0%, transparent 100%),
-            radial-gradient(ellipse 32% 28% at 70% 30%, #4D86F5 0%, transparent 100%),
-            radial-gradient(ellipse 26% 32% at 20% 70%, #80A9FF 0%, transparent 100%);
-        }
-        .dark .sol-mesh-grad-4 {
-          background-image:
-            radial-gradient(ellipse 35% 32% at 30% 80%, #4D86F5 0%, transparent 100%),
-            radial-gradient(ellipse 32% 35% at 75% 15%, #1A56DB 0%, transparent 100%),
-            radial-gradient(ellipse 28% 30% at 5%  30%, #0E2E75 0%, transparent 100%),
-            radial-gradient(ellipse 26% 28% at 85% 60%, #80A9FF 0%, transparent 100%);
-        }
-
-        /* Auto-drift: slowly shifts the 200×200% canvas */
-        @keyframes meshDrift {
-          0%   { background-position: 20% 20%, 80% 80%, 55% 5%,  5%  85%; }
-          25%  { background-position: 35% 10%, 65% 90%, 70% 20%, 20% 70%; }
-          50%  { background-position: 60% 40%, 40% 60%, 30% 70%, 75% 30%; }
-          75%  { background-position: 25% 70%, 75% 30%, 80% 40%, 40% 60%; }
-          100% { background-position: 20% 20%, 80% 80%, 55% 5%,  5%  85%; }
-        }
-
         .sol-mockup { background: rgba(255,255,255,0.92); border: 1px solid rgba(0,0,0,0.08) !important; }
         .dark .sol-mockup { background: rgba(17,24,40,0.85); border-color: rgba(77,134,245,0.14) !important; }
         @media(max-width:768px){

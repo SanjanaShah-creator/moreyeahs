@@ -330,7 +330,7 @@ export default function MicrosoftServicesPage() {
                 </Link>
               </div>
               <Link href="/blog/dynamics-365-vs-salesforce-comparison-guide" style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', textDecoration: 'none', minHeight: 0 }}>
-                <div style={{ height: 160, flexShrink: 0, backgroundImage: 'url(https://dev.moreyeahs.com/wp-content/uploads/2025/12/Microsoft-Dynamics-365-vs.-Salesforce-–-Best-Comparison-Guide.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                <div style={{ height: 160, flexShrink: 0, position: 'relative', overflow: 'hidden' }}><img src="https://dev.moreyeahs.com/wp-content/uploads/2025/12/Microsoft-Dynamics-365-vs.-Salesforce-–-Best-Comparison-Guide.jpg" alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={e => { const el = e.currentTarget as HTMLImageElement; el.style.display = 'none'; const p = el.parentElement; if (p) { p.style.background = 'linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)'; } }} /></div>
                 <div style={{ padding: '14px 16px 16px', background: 'var(--card-bg)', display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <span style={{ fontSize: 10, fontWeight: 700, color: '#4D86F5', background: 'rgba(77,134,245,0.10)', border: '1px solid rgba(77,134,245,0.22)', padding: '3px 10px', borderRadius: 100, alignSelf: 'flex-start' }}>Microsoft</span>
                   <p style={{ fontSize: 12, fontWeight: 700, color: 'var(--fg)', lineHeight: 1.4, margin: 0 }}>Dynamics 365 vs Salesforce: Which CRM Fits Your Business?</p>
