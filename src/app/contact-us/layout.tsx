@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Contact Us',
   description: 'Get in touch with MoreYeahs IT Technologies. Book a free 30-minute consultation, reach our Indore (India) or Cedar Park (USA) offices, and map your AI-first roadmap.',
+  keywords: ['contact MoreYeahs', 'IT consulting contact', 'book AI consultation', 'MoreYeahs Indore', 'MoreYeahs USA', 'free IT consultation'],
   openGraph: {
     title: 'Contact Us | MoreYeahs IT Technologies',
     description: 'Book a free consultation or reach MoreYeahs offices in India and the USA.',
