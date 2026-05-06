@@ -24,28 +24,18 @@ const SPECIALIZATIONS = [
 
 const SERVICES = [
   {
-    id: 'sales', title: 'Sales Cloud', dark: false,
-    tagline: 'Close more deals. Forecast with confidence.',
-    desc: 'Implement and configure Sales Cloud to give your revenue team a clear, automated pipeline that reduces admin, surfaces the right opportunities, and consistently beats quota.',
-    list: ['Opportunity and pipeline management', 'Lead scoring and routing automation', 'Quote-to-cash workflow design', 'Forecast accuracy and reporting'],
+    id: 'implementation', title: 'Salesforce Implementation', dark: false,
+    tagline: 'Get Salesforce right from day one.',
+    desc: 'End-to-end Salesforce implementation across Sales Cloud, Service Cloud, and Marketing Cloud — designed around your actual processes, not a generic template.',
+    list: ['Full-lifecycle CRM implementation', 'Custom object and workflow design', 'Data migration and validation', 'Role-based training and adoption'],
+    href: '/solutions/salesforce-services/implementation',
   },
   {
-    id: 'service', title: 'Service Cloud', dark: true,
-    tagline: 'Resolve faster. Retain more customers.',
-    desc: 'Deploy Service Cloud to unify customer support across every channel, automate case routing, and give agents a 360-degree view of every customer interaction.',
-    list: ['Omnichannel case management', 'AI-powered case deflection', 'Knowledge base and self-service portals', 'SLA tracking and escalation rules'],
-  },
-  {
-    id: 'marketing', title: 'Marketing Cloud', dark: false,
-    tagline: 'Reach the right person at the right moment.',
-    desc: 'Build multi-channel customer journeys in Marketing Cloud that nurture leads, re-engage churning customers, and deliver personalised experiences at enterprise scale.',
-    list: ['Customer journey builder design', 'Email, SMS and push automation', 'Audience segmentation and targeting', 'Campaign analytics and attribution'],
-  },
-  {
-    id: 'analytics', title: 'Salesforce Analytics & Revenue Intelligence', dark: true,
-    tagline: 'Data that drives revenue decisions.',
-    desc: 'Surface the insights buried in your Salesforce org with Tableau, Revenue Intelligence, and custom dashboards that give leadership real-time visibility into pipeline, churn, and growth.',
-    list: ['Revenue Intelligence implementation', 'Tableau and CRM Analytics dashboards', 'Pipeline health and win-rate reporting', 'Custom KPI frameworks and alerts'],
+    id: 'managed-services', title: 'Salesforce Managed Services', dark: true,
+    tagline: 'Keep your Salesforce org healthy and growing.',
+    desc: 'Ongoing support, optimisation, and development for your Salesforce org — so your team always has a trusted partner to call when things need to change.',
+    list: ['Org health monitoring and audits', 'Feature development and enhancements', 'User support and troubleshooting', 'Release management and upgrades'],
+    href: '/solutions/salesforce-services/managed-services',
   },
 ];
 
@@ -408,7 +398,7 @@ export default function SalesforceServicesPage() {
                       {`0${i + 1}`}
                     </div>
                     <h3 style={{ fontSize: 'clamp(24px,2.8vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, color: svc.dark ? '#fff' : '#1A56DB', marginBottom: 20 }}>{svc.title}</h3>
-                    <Link href="/contact-us" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
+                    <Link href={svc.href ?? '/contact-us'} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
                       Learn More <ArrowRight size={13} strokeWidth={1.5} />
                     </Link>
                   </div>

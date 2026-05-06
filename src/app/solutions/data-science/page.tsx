@@ -71,25 +71,29 @@ const SPECIALIZATIONS = [
 
 const SERVICES = [
   {
-    id: 'aiml', title: 'AI/ML & Intelligence', dark: false,
+    id: 'aiml',
+    href: '/solutions/data-science/ai-ml', title: 'AI/ML & Intelligence', dark: false,
     tagline: 'Smarter systems. Better decisions.',
     desc: 'Turn data into intelligence that actually drives action.',
     list: ['Predictions replace assumptions', 'Models improve with every interaction', 'Decisions become data-driven', 'Intelligence scales across the business'],
   },
   {
-    id: 'cv', title: 'Computer Vision', dark: true,
+    id: 'cv',
+    href: '/solutions/data-science/computer-vision', title: 'Computer Vision', dark: true,
     tagline: 'Machines that can see and understand.',
     desc: 'Transform images and video into usable insights.',
     list: ['Visual data becomes searchable', 'Detection happens in real time', 'Accuracy improves over manual review', 'New automation opportunities emerge'],
   },
   {
-    id: 'de', title: 'Data Engineering', dark: false,
+    id: 'de',
+    href: '/solutions/data-science/data-infrastructure', title: 'Data Engineering', dark: false,
     tagline: 'Data, structured for impact.',
     desc: 'Build pipelines that make data reliable and ready.',
     list: ['Clean, trusted data at every step', 'Faster access to critical insights', 'Systems scale without breaking', 'Silos turn into unified pipelines'],
   },
   {
-    id: 'iot', title: 'IOT', dark: true,
+    id: 'iot',
+    href: '/solutions/data-science/iot-connected-systems', title: 'IOT', dark: true,
     tagline: 'Connected devices. Connected intelligence.',
     desc: 'Bridge the physical and digital worlds seamlessly.',
     list: ['Real-time monitoring of assets', 'Predictive maintenance replaces downtime', 'Operations become proactive', 'Data flows from devices to decisions'],
@@ -487,7 +491,7 @@ export default function DataSciencePage() {
                       {`0${i + 1}`}
                     </div>
                     <h3 style={{ fontSize: 'clamp(24px,2.8vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, color: svc.dark ? '#fff' : '#1A56DB', marginBottom: 20 }}>{svc.title}</h3>
-                    <Link href="/contact-us" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
+                    <Link href={svc.href ?? '/contact-us'} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
                       Learn More <ArrowRight size={13} strokeWidth={1.5} />
                     </Link>
                   </div>

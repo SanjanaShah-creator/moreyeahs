@@ -149,15 +149,17 @@ export default function BlogPage() {
               <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 24 }}>Featured Article</div>
               <div className="glass" style={{ padding: 0, position: 'relative', overflow: 'hidden', width: '100%', margin: 0 }}>
                 <div className="blob" style={{ width: 320, height: 320, top: '-50px', right: '-30px', background: 'radial-gradient(circle, rgba(26,86,219,0.11), transparent 65%)' }} />
-                <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: 0, alignItems: 'stretch', minHeight: 260 }} className="featured-grid">
-                  {/* Featured image */}
-                  {featuredPost.coverImage && (
+                <div style={{ display: 'grid', gridTemplateColumns: featuredPost.coverImage ? '360px 1fr' : '1fr', gap: 0, alignItems: 'stretch', minHeight: 260 }} className="featured-grid">
+                  {/* Featured image or gradient */}
+                  {featuredPost.coverImage ? (
                     <div style={{ position: 'relative', overflow: 'hidden', minHeight: 260 }}>
                       <img
                         src={featuredPost.coverImage} alt={featuredPost.title}
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                       />
                     </div>
+                  ) : (
+                    <div style={{ height: 8, background: 'linear-gradient(90deg, #1A56DB, #4D86F5, #80A9FF)', flexShrink: 0, gridColumn: '1 / -1' }} />
                   )}
                   {/* Featured content */}
                   <div style={{ padding: '30px 30px 26px', position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -254,8 +256,8 @@ export default function BlogPage() {
                   className="glass"
                   style={{ padding: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
                 >
-                  {/* Cover image */}
-                  {coverImage && (
+                  {/* Cover image or gradient fallback */}
+                  {coverImage ? (
                     <div style={{ height: 160, overflow: 'hidden', flexShrink: 0 }}>
                       <img
                         src={coverImage} alt={title} loading="lazy"
@@ -263,6 +265,16 @@ export default function BlogPage() {
                         onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)'; }}
                         onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
                       />
+                    </div>
+                  ) : (
+                    <div style={{
+                      height: 160, flexShrink: 0,
+                      background: `linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', background: 'rgba(0,0,0,0.18)', padding: '6px 14px', borderRadius: 999, border: '1px solid rgba(255,255,255,0.25)' }}>
+                        {category}
+                      </span>
                     </div>
                   )}
 
