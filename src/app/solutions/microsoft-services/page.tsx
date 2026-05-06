@@ -215,7 +215,7 @@ export default function MicrosoftServicesPage() {
               style={{ borderRadius: 24, overflow: 'hidden', minHeight: 480, position: 'relative', background: 'var(--bg-2)' }}
             >
               <motion.div style={{ y: videoY, position: 'absolute', inset: 0 }}>
-                <video autoPlay muted loop playsInline aria-label="Microsoft solutions and services overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
+                <video autoPlay muted loop playsInline preload="none" aria-label="Microsoft solutions and services overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
                   <source src="/videos/Microsoft Solution Hero Section.mp4" type="video/mp4" />
                 </video>
               </motion.div>

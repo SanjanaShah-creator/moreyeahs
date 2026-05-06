@@ -215,7 +215,7 @@ export default function CloudInfrastructurePage() {
               style={{ borderRadius: 24, overflow: 'hidden', minHeight: 480, position: 'relative', background: 'var(--bg-2)' }}
             >
               <motion.div style={{ y: videoY, position: 'absolute', inset: 0 }}>
-                <video autoPlay muted loop playsInline aria-label="Cloud and infrastructure solutions overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
+                <video autoPlay muted loop playsInline preload="none" aria-label="Cloud and infrastructure solutions overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
                   <source src="/videos/Cloud and Infrastructure Solution  Hero Section.mp4" type="video/mp4" />
                 </video>
               </motion.div>

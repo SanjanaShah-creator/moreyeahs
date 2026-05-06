@@ -215,7 +215,7 @@ export default function SalesforceServicesPage() {
               style={{ borderRadius: 24, overflow: 'hidden', minHeight: 480, position: 'relative', background: 'var(--bg-2)' }}
             >
               <motion.div style={{ y: videoY, position: 'absolute', inset: 0 }}>
-                <video autoPlay muted loop playsInline aria-label="Salesforce CRM solutions and implementation overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
+                <video autoPlay muted loop playsInline preload="none" aria-label="Salesforce CRM solutions and implementation overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
                   <source src="/videos/Salesforce Solution Hero Section.mp4" type="video/mp4" />
                 </video>
               </motion.div>

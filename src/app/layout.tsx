@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     url: 'https://www.moreyeahs.com',
     images: [
       {
-        url: '/og-image.png',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'MoreYeahs IT Technologies – AI-First Digital Engineering',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     site: '@moreyeahs',
     title: 'MoreYeahs IT Technologies – AI-First Digital Engineering',
     description: 'Building intelligent, scalable, and future-ready digital ecosystems through AI, Data, and Cloud-native engineering.',
-    images: ['/og-image.png'],
+    images: ['/images/og-image.png'],
   },
   robots: {
     index: true,

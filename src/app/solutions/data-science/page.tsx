@@ -262,7 +262,7 @@ export default function DataSciencePage() {
             >
               <motion.div style={{ y: videoY, position: 'absolute', inset: '-20% 0', height: '140%' }}>
                 <video
-                  autoPlay muted loop playsInline
+                  autoPlay muted loop playsInline preload="none"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 >
                   <source src="/videos/Data Science Solution Hero Section.mp4" type="video/mp4" />
