@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "env": {
+    "NEXT_PUBLIC_WP_API_URL": "@next_public_wp_api_url",
+    "NEXT_PUBLIC_CHATBOT_API_URL": "@next_public_chatbot_api_url",
+    "NEXT_PUBLIC_CHATBOT_CHAT_API_URL": "@next_public_chatbot_chat_api_url",
+    "NEXT_PUBLIC_CHATBOT_HISTORY_API_URL": "@next_public_chatbot_history_api_url"
+  }
+}
