@@ -85,10 +85,8 @@ const VALUES = [
 const PERKS = [
   { Icon: Heart,       title: 'Health Insurance',      desc: 'Full coverage for you and your family — medical, dental, and vision.' },
   { Icon: Globe2,      title: 'Remote-First',          desc: 'Work from anywhere with optional access to our Indore and Cedar Park offices.' },
-  { Icon: BookOpen,    title: '₹60K Learning Budget',  desc: 'Annual allowance for courses, certifications, conferences, and books.' },
-  { Icon: MapPin,      title: 'Quarterly Offsites',    desc: 'Team retreats every quarter — think Goa, Coorg, and beyond.' },
   { Icon: Clock,       title: 'Flexible Hours',        desc: 'Async-first culture. Own your schedule, deliver great work.' },
-  { Icon: TrendingUp,  title: 'Bonuses + ESOPs',       desc: 'Performance bonuses twice a year and equity participation for senior team members.' },
+  { Icon: TrendingUp,  title: 'Performance Bonuses',   desc: 'Performance bonuses twice a year recognising outstanding contributions across the team.' },
 ];
 
 export default function LifeAtMoreYeahsPage() {
