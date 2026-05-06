@@ -1,6 +1,6 @@
 // WordPress API configuration and utilities
 // Server-side: call WP directly. Client-side: go through our proxy to avoid CORS.
-const WP_DIRECT = (process.env.NEXT_PUBLIC_WP_API_URL ?? 'https://dev.moreyeahs.com') + '/wp-json/wp/v2';
+const WP_DIRECT = 'https://dev.moreyeahs.com/wp-json/wp/v2';
 const WP_PROXY  = '/api/wp';
 
 function wpUrl(path: string): string {
