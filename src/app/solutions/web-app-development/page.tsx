@@ -24,25 +24,29 @@ const SPECIALIZATIONS = [
 
 const SERVICES = [
   {
-    id: 'web', title: 'Web Application Development', dark: false,
+    id: 'web',
+    href: '/solutions/web-app-development/web-application', title: 'Web Application Development', dark: false,
     tagline: 'Fast, scalable web products built to perform.',
     desc: 'We design and engineer full-stack web applications using modern frameworks that are performant, maintainable, and built to handle real enterprise traffic without breaking a sweat.',
     list: ['Next.js, React and Node.js delivery', 'SEO-optimised server-side rendering', 'Progressive web app capabilities', 'Component library and design system builds'],
   },
   {
-    id: 'mobile', title: 'Mobile App Development', dark: true,
+    id: 'mobile',
+    href: '/solutions/web-app-development/mobile-app', title: 'Mobile App Development', dark: true,
     tagline: 'Native-quality apps for iOS and Android.',
     desc: 'Build cross-platform mobile applications with React Native or native Swift and Kotlin that deliver the performance and UX your users expect without the cost of two separate codebases.',
     list: ['React Native cross-platform development', 'Native iOS and Android engineering', 'Push notifications and offline support', 'App Store and Play Store deployment'],
   },
   {
-    id: 'design', title: 'UI/UX Design', dark: false,
+    id: 'design',
+    href: '/solutions/web-app-development/design-quality', title: 'UI/UX Design', dark: false,
     tagline: 'Design that converts, not just impresses.',
     desc: 'From user research and wireframes to high-fidelity Figma prototypes and production-ready design systems, we create digital experiences that are intuitive, accessible, and beautiful.',
     list: ['User research and journey mapping', 'Wireframes and interactive prototypes', 'Design system and component library', 'WCAG accessibility compliance'],
   },
   {
-    id: 'api', title: 'API & Backend Engineering', dark: true,
+    id: 'api',
+    href: '/solutions/web-app-development/web-application', title: 'API & Backend Engineering', dark: true,
     tagline: 'Robust backends that power everything.',
     desc: 'Architect and build the APIs, microservices, and data layers that connect your frontend experiences to your business systems with the reliability and speed your product demands.',
     list: ['RESTful and GraphQL API design', 'Microservices and serverless architecture', 'Third-party integration and webhooks', 'Database design and query optimisation'],
@@ -413,7 +417,7 @@ export default function WebAppDevelopmentPage() {
                       {`0${i + 1}`}
                     </div>
                     <h3 style={{ fontSize: 'clamp(24px,2.8vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, color: svc.dark ? '#fff' : '#1A56DB', marginBottom: 20 }}>{svc.title}</h3>
-                    <Link href="/contact-us" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
+                    <Link href={svc.href ?? '/contact-us'} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
                       Learn More <ArrowRight size={13} strokeWidth={1.5} />
                     </Link>
                   </div>

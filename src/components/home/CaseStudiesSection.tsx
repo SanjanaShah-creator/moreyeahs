@@ -141,14 +141,22 @@ export default function CaseStudiesSection() {
                     >
                       <Link href={`/case-study/${cs.slug}`} style={{ textDecoration: 'none', display: 'flex', width: '100%' }}>
                         <div className="glass" style={{ padding: 0, width: '100%', cursor: 'pointer', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                          {/* Cover image */}
+                          {/* Cover image or gradient fallback */}
                           {imgSrc ? (
                             <div style={{ height: 160, overflow: 'hidden', flexShrink: 0 }}>
                               <img src={imgSrc} alt={title} loading="lazy"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                             </div>
                           ) : (
-                            <div style={{ height: 8, background: `linear-gradient(90deg, ${color}, ${color}80)`, flexShrink: 0 }} />
+                            <div style={{
+                              height: 160, flexShrink: 0,
+                              background: `linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)`,
+                              display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            }}>
+                              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', background: 'rgba(0,0,0,0.18)', padding: '6px 14px', borderRadius: 999, border: '1px solid rgba(255,255,255,0.25)' }}>
+                                {domain}
+                              </span>
+                            </div>
                           )}
                           <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
                           {/* Domain tag */}

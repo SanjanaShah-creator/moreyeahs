@@ -24,25 +24,29 @@ const SPECIALIZATIONS = [
 
 const SERVICES = [
   {
-    id: 'd365', title: 'Dynamics 365 CRM & ERP', dark: false,
+    id: 'd365',
+    href: '/solutions/microsoft-services/crm-erp', title: 'Dynamics 365 CRM & ERP', dark: false,
     tagline: 'Connected operations, from sales to finance.',
     desc: 'Implement and optimise Dynamics 365 across Sales, Customer Service, Finance, and Operations to unify your business data and eliminate the silos that slow teams down.',
     list: ['Full-lifecycle CRM implementation', 'ERP configuration and data migration', 'Custom entity and workflow design', 'Integration with third-party systems'],
   },
   {
-    id: 'power', title: 'Power Platform & BI', dark: true,
+    id: 'power',
+    href: '/solutions/microsoft-services/automation-analytics', title: 'Power Platform & BI', dark: true,
     tagline: 'Automate workflows. Visualise decisions.',
     desc: 'Build low-code business applications, automated approval workflows, and executive dashboards that surface the insights your leadership team needs without waiting on IT.',
     list: ['Power Apps custom application builds', 'Power Automate flow design', 'Power BI dashboard development', 'Dataverse modelling and governance'],
   },
   {
-    id: 'azure', title: 'Azure Cloud Services', dark: false,
+    id: 'azure',
+    href: '/solutions/microsoft-services/azure', title: 'Azure Cloud Services', dark: false,
     tagline: 'Enterprise cloud, architected for your workloads.',
     desc: 'Design, migrate, and manage Azure environments with the right mix of compute, storage, networking, and AI services for your specific business requirements.',
     list: ['Azure architecture design and review', 'Cloud migration and modernisation', 'Azure Active Directory and security', 'Managed services and cost control'],
   },
   {
-    id: 'm365', title: 'Microsoft 365 & Teams', dark: true,
+    id: 'm365',
+    href: '/solutions/microsoft-services/sharepoint', title: 'Microsoft 365 & Teams', dark: true,
     tagline: 'Collaboration that works the way your teams do.',
     desc: 'Deploy, configure, and customise the full Microsoft 365 suite including Teams, SharePoint, and Exchange to drive adoption, productivity, and secure information management.',
     list: ['M365 tenant setup and governance', 'SharePoint intranet development', 'Teams app and bot integrations', 'Email security and compliance policies'],
@@ -408,7 +412,7 @@ export default function MicrosoftServicesPage() {
                       {`0${i + 1}`}
                     </div>
                     <h3 style={{ fontSize: 'clamp(24px,2.8vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, color: svc.dark ? '#fff' : '#1A56DB', marginBottom: 20 }}>{svc.title}</h3>
-                    <Link href="/contact-us" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
+                    <Link href={svc.href ?? '/contact-us'} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
                       Learn More <ArrowRight size={13} strokeWidth={1.5} />
                     </Link>
                   </div>

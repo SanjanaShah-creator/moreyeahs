@@ -24,25 +24,29 @@ const SPECIALIZATIONS = [
 
 const SERVICES = [
   {
-    id: 'aws', title: 'AWS & Cloud Architecture', dark: false,
+    id: 'aws',
+    href: '/solutions/cloud-infrastructure/cloud-platform-setup', title: 'AWS & Cloud Architecture', dark: false,
     tagline: 'Infrastructure built for enterprise scale.',
     desc: 'Design and deploy cloud-native platforms across AWS, GCP, and Azure that are resilient, cost-optimised, and ready for real-world demand.',
     list: ['High-availability architectures', 'Cost optimisation frameworks', 'Security and compliance by design', 'Multi-region deployment strategies'],
   },
   {
-    id: 'devops', title: 'DevOps & CI/CD Pipelines', dark: true,
+    id: 'devops',
+    href: '/solutions/cloud-infrastructure/devops-automation', title: 'DevOps & CI/CD Pipelines', dark: true,
     tagline: 'Ship faster. Break less. Sleep better.',
     desc: 'Automate your software delivery lifecycle with battle-tested CI/CD pipelines, container orchestration, and zero-downtime deployment workflows.',
     list: ['Pipeline automation end to end', 'Container orchestration with Kubernetes', 'Zero-downtime blue-green deployments', 'Monitoring and alerting integrated'],
   },
   {
-    id: 'migration', title: 'Cloud Migration', dark: false,
+    id: 'migration',
+    href: '/solutions/cloud-infrastructure/cloud-platform-setup', title: 'Cloud Migration', dark: false,
     tagline: 'Move to the cloud without the chaos.',
     desc: 'From lift-and-shift to full re-architecture, we migrate your systems to the cloud with rigorous planning that eliminates risk and minimises downtime.',
     list: ['Workload assessment and planning', 'Data migration with zero loss', 'Legacy system modernisation', 'Post-migration optimisation'],
   },
   {
-    id: 'iac', title: 'Infrastructure as Code & Security', dark: true,
+    id: 'iac',
+    href: '/solutions/cloud-infrastructure/devops-automation', title: 'Infrastructure as Code & Security', dark: true,
     tagline: 'Consistent, auditable, reproducible infrastructure.',
     desc: 'Manage your entire cloud estate through version-controlled code using Terraform, Pulumi, and CloudFormation with built-in security guardrails.',
     list: ['Repeatable environment provisioning', 'Policy-as-code enforcement', 'Secrets management and rotation', 'Compliance reporting automated'],
@@ -408,7 +412,7 @@ export default function CloudInfrastructurePage() {
                       {`0${i + 1}`}
                     </div>
                     <h3 style={{ fontSize: 'clamp(24px,2.8vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, color: svc.dark ? '#fff' : '#1A56DB', marginBottom: 20 }}>{svc.title}</h3>
-                    <Link href="/contact-us" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
+                    <Link href={svc.href ?? '/contact-us'} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 600, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#1A56DB', textDecoration: 'none' }}>
                       Learn More <ArrowRight size={13} strokeWidth={1.5} />
                     </Link>
                   </div>
