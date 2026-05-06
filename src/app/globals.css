@@ -29,6 +29,9 @@
   --neutral-200:  #C2C2C2;
   --neutral-100:  #E0E0E0;
 
+  /* Section dark background — blue gradient in light, near-black in dark */
+  --bg-section-dark: linear-gradient(140deg, #0E2E75 0%, #1A56DB 55%, #0A1F4F 100%);
+
   /* Semantic — LIGHT */
   --bg:       #F5F7FF;
   --bg-2:     #ECEEF8;
@@ -44,6 +47,7 @@
 }
 
 .dark {
+  --bg-section-dark: #07101F;
   --bg:       #0A0D14;
   --bg-2:     #111520;
   --surface:  rgba(255,255,255,0.05);

@@ -2,11 +2,10 @@
 
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Download, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Download, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import NoiseOverlay from '@/components/ui/NoiseOverlay';
-import { submitForm } from '@/lib/webhook';
 import { downloadAsPDF } from '@/lib/pdf-export';
 
 const BLUE = '#4D86F5';
@@ -14,8 +13,8 @@ const BLUE_LIGHT = 'rgba(77,134,245,0.08)';
 
 /* ─── Tag colours ────────────────────────────────────────────────── */
 const TAG_COLORS: Record<string, string> = {
-  Sales: '#4D86F5', Operations: '#10B981', B2B: '#8B5CF6',
-  Automation: '#F59E0B', Library: '#EC4899',
+  Sales: '#4D86F5', Operations: '#1A56DB', B2B: '#80A9FF',
+  Automation: '#0E2E75', Library: '#4D86F5',
 };
 function TagPill({ label }: { label: string }) {
   const c = TAG_COLORS[label] ?? BLUE;
@@ -220,80 +219,32 @@ const PLAYBOOKS: Playbook[] = [
   },
 ];
 
-/* ─── Sidebar form ───────────────────────────────────────────────── */
-function UnlockForm({ title }: { title: string }) {
-  const [email, setEmail] = useState('');
-  const [name, setName]   = useState('');
-  const [sent, setSent]   = useState(false);
-
-  const submit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!email) return;
-    await submitForm({
-      formType: 'Resource Request',
-      name,
-      email,
-      resource: title,
-    });
-    setSent(true);
-  };
-
+/* ─── Sidebar download card ──────────────────────────────────────── */
+function DownloadCard({ onDownload, exporting }: { onDownload: () => void; exporting: boolean }) {
   return (
     <div style={{ background: 'var(--card-bg)', border: `1px solid ${BLUE}20`, borderRadius: 22, overflow: 'hidden', boxShadow: `0 16px 48px ${BLUE}0C` }}>
-      {/* Top bar */}
       <div style={{ background: BLUE_LIGHT, borderBottom: `1px solid ${BLUE}20`, padding: '18px 24px', display: 'flex', alignItems: 'center', gap: 10 }}>
         <img src="/images/MoreYeahs White theme Logo.png" alt="MoreYeahs" className="nav-logo-light nav-logo-pill" />
         <img src="/images/MoreYeahs Dark Theme Logo.png"  alt="MoreYeahs" className="nav-logo-dark  nav-logo-pill" />
       </div>
-
       <div style={{ padding: '28px 24px' }}>
         <div style={{ width: 44, height: 44, borderRadius: 12, background: BLUE_LIGHT, border: `1px solid ${BLUE}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
           <Download size={20} color={BLUE} strokeWidth={1.5} />
         </div>
-
-        {sent ? (
-          <div style={{ textAlign: 'center', padding: '20px 0' }}>
-            <div style={{ fontSize: 22, marginBottom: 8 }}>✅</div>
-            <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--fg)', marginBottom: 6 }}>Request Sent!</p>
-            <p style={{ fontSize: 12, color: 'var(--fg-3)', lineHeight: 1.6 }}>We'll send the full resource to your inbox shortly.</p>
-          </div>
-        ) : (
-          <>
-            <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--fg)', letterSpacing: '-0.02em', marginBottom: 8 }}>Unlock full access</h3>
-            <p style={{ fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.65, marginBottom: 22 }}>
-              Receive the complete PDF template, implementation roadmap, and system diagrams directly in your inbox.
-            </p>
-
-            <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <div>
-                <label style={{ fontSize: 11, fontWeight: 700, color: 'var(--fg-3)', display: 'block', marginBottom: 4 }}>Email *</label>
-                <input
-                  type="email" required value={email} onChange={e => setEmail(e.target.value)}
-                  placeholder="you@company.com"
-                  style={{ width: '100%', padding: '11px 14px', borderRadius: 10, border: '1px solid var(--border)', background: 'var(--surface)', color: 'var(--fg)', fontSize: 13, fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box' }}
-                />
-              </div>
-              <div>
-                <input
-                  type="text" value={name} onChange={e => setName(e.target.value)}
-                  placeholder="Enter name"
-                  style={{ width: '100%', padding: '11px 14px', borderRadius: 10, border: '1px solid var(--border)', background: 'var(--surface)', color: 'var(--fg)', fontSize: 13, fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box' }}
-                />
-              </div>
-              <p style={{ fontSize: 11, color: 'var(--fg-3)', lineHeight: 1.5, marginTop: 2 }}>
-                (Join the system-first movement at MoreYeahs)
-              </p>
-              <button
-                type="submit"
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, background: BLUE, color: '#fff', fontSize: 13, fontWeight: 700, borderRadius: 10, padding: '12px 20px', border: 'none', cursor: 'pointer', fontFamily: 'inherit', boxShadow: `0 6px 20px ${BLUE}38`, transition: 'filter 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
-                onMouseLeave={e => (e.currentTarget.style.filter = 'none')}
-              >
-                Send Resource <ArrowRight size={14} strokeWidth={2} />
-              </button>
-            </form>
-          </>
-        )}
+        <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--fg)', letterSpacing: '-0.02em', marginBottom: 8 }}>Download Playbook</h3>
+        <p style={{ fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.65, marginBottom: 22 }}>
+          Get the complete PDF — including implementation frameworks, diagrams, and action steps.
+        </p>
+        <button
+          onClick={onDownload}
+          disabled={exporting}
+          style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center', gap: 8, background: exporting ? 'rgba(26,86,219,0.5)' : BLUE, color: '#fff', fontSize: 13, fontWeight: 700, borderRadius: 10, padding: '12px 20px', border: 'none', cursor: exporting ? 'not-allowed' : 'pointer', fontFamily: 'inherit', boxShadow: `0 6px 20px ${BLUE}38`, transition: 'filter 0.2s' }}
+          onMouseEnter={e => { if (!exporting) (e.currentTarget as HTMLElement).style.filter = 'brightness(1.1)'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = 'none'; }}
+        >
+          <Download size={14} strokeWidth={2} />
+          {exporting ? 'Generating…' : 'Download PDF'}
+        </button>
       </div>
     </div>
   );
@@ -397,7 +348,7 @@ export default function PlaybookPage() {
             {/* ── Right: sticky sidebar ── */}
             <div style={{ position: 'sticky', top: 100 }}>
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
-                <UnlockForm title={playbook.title} />
+                <DownloadCard onDownload={handlePDF} exporting={exporting} />
 
                 {/* Back to all */}
                 <Link

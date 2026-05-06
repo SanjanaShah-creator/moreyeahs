@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -328,6 +329,7 @@ const NAV_LINK: React.CSSProperties = {
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [pastHero, setPastHero] = useState(false);
   const [screenWide, setScreenWide] = useState(true);
@@ -344,6 +346,8 @@ export default function Navbar() {
   const insTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => { setMounted(true); }, []);
+
+  useEffect(() => { setPastHero(false); }, [pathname]);
 
   useEffect(() => {
     const getHeroThreshold = () => {
@@ -536,7 +540,7 @@ export default function Navbar() {
                 <Dropdown items={INSIGHTS} isOpen={insOpen} openUp onMouseEnter={openIns} onMouseLeave={closeIns} />
               </div>
 
-              {[['Case Studies', '/case-studies'], ['Careers', '/careers']].map(([l, h]) => (
+              {[['Case Studies', '/case-studies'], ['Careers', '/careers'], ['Resources', '/resources']].map(([l, h]) => (
                 <Link key={l} href={h} style={NAV_LINK}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>{l}</Link>

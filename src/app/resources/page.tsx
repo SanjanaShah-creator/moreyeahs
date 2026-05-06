@@ -52,10 +52,10 @@ const ALL_TAGS = ['All', 'Sales', 'Operations', 'B2B', 'Automation'];
 
 const TAG_COLORS: Record<string, string> = {
   Sales: '#4D86F5',
-  Operations: '#10B981',
-  B2B: '#8B5CF6',
-  Automation: '#F59E0B',
-  Library: '#EC4899',
+  Operations: '#1A56DB',
+  B2B: '#80A9FF',
+  Automation: '#0E2E75',
+  Library: '#4D86F5',
 };
 
 function TagPill({ label }: { label: string }) {

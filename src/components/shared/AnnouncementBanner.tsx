@@ -20,8 +20,14 @@ export default function AnnouncementBanner() {
 
   useEffect(() => {
     if (!visible) return;
+    const getHeroThreshold = () => {
+      const heroEl = document.querySelector<HTMLElement>('main > *:first-child');
+      return heroEl
+        ? Math.max(heroEl.offsetTop + heroEl.offsetHeight - 60, 150)
+        : window.innerHeight * 0.88;
+    };
     const update = () => {
-      const past = window.scrollY > window.innerHeight * 0.88 && window.innerWidth > 900;
+      const past = window.scrollY > getHeroThreshold() && window.innerWidth > 900;
       setScrolledPast(past);
       document.documentElement.style.setProperty('--ann-h', past ? '0px' : '44px');
     };

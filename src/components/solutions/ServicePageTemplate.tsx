@@ -794,7 +794,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
       {/* ── PROBLEM ── */}
       <section
         className="svc-section-pad"
-        style={{ background: 'var(--bg-dark, #07101F)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}
+        style={{ background: 'var(--bg-section-dark)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}
       >
         <div
           className="blob"
