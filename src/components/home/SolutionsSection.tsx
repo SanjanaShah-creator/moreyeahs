@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { useRef, useCallback } from 'react';
+import { motion, useScroll, useTransform, MotionValue, useMotionValue, useSpring } from 'framer-motion';
 import { Brain, Cloud, Monitor, Zap, Code2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import NoiseOverlay from '@/components/ui/NoiseOverlay';
@@ -15,6 +15,10 @@ const DOMAINS = [
     desc: 'We help organizations harness AI, machine learning, and data engineering to uncover patterns, predict outcomes, and drive smarter decision-making at scale.',
     services: ['AI & Machine Learning', 'Computer Vision', 'Data Infrastructure', 'IoT & Connected Systems'],
     accent: '#4D86F5',
+    /* blob colors per card — all from design system */
+    blob1: '#1A56DB',
+    blob2: '#4D86F5',
+    blob3: '#0E2E75',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         <div style={{ marginBottom: 16 }}>
@@ -41,6 +45,9 @@ const DOMAINS = [
     desc: 'We engineer cloud-native platforms that form the backbone of modern digital products — fast, secure, and built for real-world demand.',
     services: ['Cloud Platform Setup (AWS/GCP)', 'DevOps & Automation', 'Security & Compliance', 'Infrastructure as Code'],
     accent: '#80A9FF',
+    blob1: '#4D86F5',
+    blob2: '#80A9FF',
+    blob3: '#1A56DB',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 12 }}>
@@ -63,6 +70,9 @@ const DOMAINS = [
     desc: 'We design, implement, and optimize Microsoft-powered business ecosystems — CRM, ERP, analytics, automation, and cloud — all working as one unified environment.',
     services: ['Microsoft CRM & ERP', 'Microsoft Automation & Analytics', 'Microsoft Cloud & Collaboration', 'Power Platform'],
     accent: '#4D86F5',
+    blob1: '#0E2E75',
+    blob2: '#1A56DB',
+    blob3: '#4D86F5',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
@@ -82,6 +92,9 @@ const DOMAINS = [
     desc: 'We design, implement, and optimize Salesforce ecosystems that help businesses manage customer relationships, automate operations, and scale engagement across channels.',
     services: ['Salesforce Implementation', 'Salesforce Support & Managed Services', 'Salesforce CPQ', 'AppExchange Solutions'],
     accent: '#80A9FF',
+    blob1: '#80A9FF',
+    blob2: '#4D86F5',
+    blob3: '#1A56DB',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         {[{ stage: 'Lead', count: 124, color: '#7A7A7A' }, { stage: 'Qualified', count: 87, color: '#4D86F5' }, { stage: 'Proposal', count: 43, color: '#1A56DB' }, { stage: 'Won', count: 31, color: '#22c55e' }].map(s => (
@@ -104,6 +117,9 @@ const DOMAINS = [
     desc: 'From web applications to mobile apps — we build fast, scalable, and beautiful digital products using modern tech stacks tailored to your business needs.',
     services: ['Web Application Development', 'Mobile App Development', 'Design & Quality Assurance', 'API & Backend Engineering'],
     accent: '#4D86F5',
+    blob1: '#1A56DB',
+    blob2: '#80A9FF',
+    blob3: '#4D86F5',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         <div style={{ display: 'flex', gap: 6, marginBottom: 12 }}>
@@ -111,8 +127,8 @@ const DOMAINS = [
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#febc2e' }} />
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#28c840' }} />
         </div>
-        {["const hero = buildHero({", "  ai: true, motion: true,", "  stack: ['Next.js','Tailwind'],", "});"].map((line, i) => (
-          <div key={i} style={{ fontSize: 11, fontFamily: 'monospace', color: i === 0 ? '#4D86F5' : i === 3 ? '#22c55e' : '#80A9FF', lineHeight: 1.8 }}>{line}</div>
+        {["const hero = buildHero({", "  ai: true, motion: true,", "  stack: ['Next.js','Tailwind'],", "});"].map((line, idx) => (
+          <div key={idx} style={{ fontSize: 11, fontFamily: 'monospace', color: idx === 0 ? '#4D86F5' : idx === 3 ? '#22c55e' : '#80A9FF', lineHeight: 1.8 }}>{line}</div>
         ))}
       </div>
     ),
@@ -120,8 +136,58 @@ const DOMAINS = [
 ];
 
 const n = DOMAINS.length;
-/* 80 vh per card → 400 vh total, enough room for smooth scroll-driven reveal */
 const VH_PER_CARD = 80;
+
+/* ── Cursor-tracking mesh gradient layer ── */
+function MeshBg({ blob1, blob2, blob3 }: { blob1: string; blob2: string; blob3: string }) {
+  const rawX = useMotionValue(0.5);
+  const rawY = useMotionValue(0.5);
+
+  /* Three springs with different lag — creates the layered blob feel */
+  const x1 = useSpring(rawX, { stiffness: 28, damping: 18, mass: 2.5 });
+  const y1 = useSpring(rawY, { stiffness: 28, damping: 18, mass: 2.5 });
+  const x2 = useSpring(rawX, { stiffness: 14, damping: 22, mass: 4 });
+  const y2 = useSpring(rawY, { stiffness: 14, damping: 22, mass: 4 });
+  const x3 = useSpring(rawX, { stiffness: 8,  damping: 28, mass: 6 });
+  const y3 = useSpring(rawY, { stiffness: 8,  damping: 28, mass: 6 });
+
+  /* Convert 0-1 → percentage string */
+  const left1 = useTransform(x1, v => `${v * 100}%`);
+  const top1  = useTransform(y1, v => `${v * 100}%`);
+  const left2 = useTransform(x2, v => `${v * 100}%`);
+  const top2  = useTransform(y2, v => `${v * 100}%`);
+  const left3 = useTransform(x3, v => `${v * 100}%`);
+  const top3  = useTransform(y3, v => `${v * 100}%`);
+
+  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    rawX.set((e.clientX - rect.left) / rect.width);
+    rawY.set((e.clientY - rect.top)  / rect.height);
+  }, [rawX, rawY]);
+
+  return (
+    <div
+      onMouseMove={onMouseMove}
+      style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'all', overflow: 'hidden' }}
+    >
+      <motion.div style={{
+        position: 'absolute', width: '70vw', height: '70vw', borderRadius: '50%',
+        background: blob1, filter: 'blur(100px)', opacity: 0.35,
+        left: left1, top: top1, translateX: '-50%', translateY: '-50%', pointerEvents: 'none',
+      }} />
+      <motion.div style={{
+        position: 'absolute', width: '55vw', height: '55vw', borderRadius: '50%',
+        background: blob2, filter: 'blur(120px)', opacity: 0.28,
+        left: left2, top: top2, translateX: '-50%', translateY: '-50%', pointerEvents: 'none',
+      }} />
+      <motion.div style={{
+        position: 'absolute', width: '45vw', height: '45vw', borderRadius: '50%',
+        background: blob3, filter: 'blur(140px)', opacity: 0.22,
+        left: left3, top: top3, translateX: '-50%', translateY: '-50%', pointerEvents: 'none',
+      }} />
+    </div>
+  );
+}
 
 function DomainCard({
   domain,
@@ -134,22 +200,18 @@ function DomainCard({
 }) {
   const isEven = i % 2 === 0;
   const segStart = i / n;
-  const segEnd = (i + 1) / n;
+  const segEnd   = (i + 1) / n;
 
-  /* Card slides up across the ENTIRE previous segment — fully scroll-driven */
   const yEntry = useTransform(
     scrollYProgress,
     [Math.max(0, segStart - 1 / n), segStart],
     i === 0 ? ['0%', '0%'] : ['100%', '0%'],
   );
-
-  /* Previous card scales down across the ENTIRE next segment */
   const scale = useTransform(
     scrollYProgress,
     [segEnd, Math.min(1, segEnd + 1 / n)],
     i < n - 1 ? [1, 0.94] : [1, 1],
   );
-
   const opacity = useTransform(
     scrollYProgress,
     [segEnd, Math.min(1, segEnd + 1 / n)],
@@ -168,13 +230,12 @@ function DomainCard({
         overflow: 'hidden',
       }}
     >
-      {/* Animated mesh gradient background — design system blues */}
-      <div className={`sol-mesh sol-mesh-${i}`} aria-hidden />
+      {/* Cursor-tracking mesh gradient */}
+      <MeshBg blob1={domain.blob1} blob2={domain.blob2} blob3={domain.blob3} />
       <NoiseOverlay />
 
-      {/* Full-height flex layout */}
+      {/* Content */}
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
-        {/* Compact section label — top of every card */}
         <div style={{ position: 'absolute', top: 24, left: 28, display: 'flex', alignItems: 'center', gap: 12 }}>
           <div className="section-badge" style={{ marginBottom: 0 }}>Our Solutions</div>
           <span style={{ fontSize: 12, color: 'var(--fg-3)', fontWeight: 500 }}>
@@ -183,14 +244,8 @@ function DomainCard({
         </div>
 
         <div className="container">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 64,
-            alignItems: 'center',
-          }} className="sol-row">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }} className="sol-row">
 
-            {/* Text */}
             <div style={{ order: isEven ? 1 : 2 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
                 <div style={{ width: 42, height: 42, borderRadius: 12, background: 'rgba(26,86,219,0.14)', border: '1px solid rgba(77,134,245,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -202,7 +257,6 @@ function DomainCard({
                   background: `rgba(${domain.accent === '#4D86F5' ? '77,134,245' : '128,169,255'},0.12)`,
                   border: `1px solid ${domain.accent}40`,
                   padding: '5px 14px', borderRadius: 999,
-                  boxShadow: `0 0 12px ${domain.accent}22`,
                 }}>
                   {domain.tag}
                 </span>
@@ -238,7 +292,6 @@ function DomainCard({
               </Link>
             </div>
 
-            {/* Mockup */}
             <div style={{ order: isEven ? 2 : 1 }}>
               <div className="sol-mockup" style={{ padding: 28, borderRadius: 20, boxShadow: '0 20px 56px rgba(26,86,219,0.12)', border: '1px solid var(--card-border)' }}>
                 {domain.mockup}
@@ -260,10 +313,6 @@ export default function SolutionsSection() {
 
   return (
     <section style={{ background: 'var(--bg)', position: 'relative' }}>
-      <div className="blob" style={{ width: 560, height: 560, top: '10%', right: '-12%', background: 'radial-gradient(circle, rgba(26,86,219,0.10), transparent 68%)' }} />
-      <div className="blob" style={{ width: 380, height: 380, bottom: '5%', left: '-6%', background: 'radial-gradient(circle, rgba(10,31,79,0.35), transparent 68%)' }} />
-
-      {/* Scroll container — 60 vh per card, starts immediately */}
       <div ref={scrollRef} style={{ height: `${n * VH_PER_CARD}vh`, position: 'relative' }}>
         <div className="sol-sticky" style={{
           position: 'sticky', top: 88,
@@ -277,65 +326,8 @@ export default function SolutionsSection() {
       </div>
 
       <style>{`
-        .sol-mockup { background: rgba(255,255,255,0.95); border: 1px solid rgba(0,0,0,0.08) !important; }
-        .dark .sol-mockup { background: #111828; border-color: rgba(77,134,245,0.14) !important; }
-
-        /* ── Animated mesh gradient — design system blues only ── */
-        .sol-mesh {
-          position: absolute; inset: 0; pointer-events: none; z-index: 0;
-          background: var(--bg);
-        }
-        /* Each card gets a slightly different orb layout / animation phase */
-        .sol-mesh::before,
-        .sol-mesh::after {
-          content: '';
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(80px);
-          opacity: 0;
-          animation: meshPulse 8s ease-in-out infinite;
-        }
-        .dark .sol-mesh::before { opacity: 0.18; }
-        .dark .sol-mesh::after  { opacity: 0.12; }
-        .sol-mesh::before { opacity: 0.10; }
-        .sol-mesh::after  { opacity: 0.07; }
-
-        /* Orb 1 — primary blue */
-        .sol-mesh::before {
-          width: 55vw; height: 55vw;
-          background: radial-gradient(circle, #1A56DB 0%, transparent 70%);
-          top: -15%; left: -10%;
-        }
-        /* Orb 2 — light blue */
-        .sol-mesh::after {
-          width: 45vw; height: 45vw;
-          background: radial-gradient(circle, #4D86F5 0%, transparent 70%);
-          bottom: -10%; right: -8%;
-          animation-delay: -4s;
-        }
-
-        /* Per-card phase offsets so each card feels distinct */
-        .sol-mesh-0::before { animation-delay: 0s;    top: -20%; left: -5%;  }
-        .sol-mesh-0::after  { animation-delay: -3s;   bottom: -5%; right: -12%; }
-        .sol-mesh-1::before { animation-delay: -2s;   top: 10%; right: -8%; left: auto; background: radial-gradient(circle, #0E2E75 0%, transparent 70%); }
-        .sol-mesh-1::after  { animation-delay: -5s;   top: -10%; left: 20%; bottom: auto; background: radial-gradient(circle, #80A9FF 0%, transparent 70%); }
-        .sol-mesh-2::before { animation-delay: -1s;   top: -10%; left: 30%; }
-        .sol-mesh-2::after  { animation-delay: -6s;   bottom: -15%; right: 5%; background: radial-gradient(circle, #0E2E75 0%, transparent 70%); }
-        .sol-mesh-3::before { animation-delay: -3.5s; top: 5%; left: -15%; background: radial-gradient(circle, #4D86F5 0%, transparent 70%); }
-        .sol-mesh-3::after  { animation-delay: -7s;   bottom: -8%; right: -5%; background: radial-gradient(circle, #1A56DB 0%, transparent 70%); }
-        .sol-mesh-4::before { animation-delay: -1.5s; top: -5%; right: -5%; left: auto; background: radial-gradient(circle, #80A9FF 0%, transparent 70%); }
-        .sol-mesh-4::after  { animation-delay: -4.5s; bottom: -12%; left: 10%; background: radial-gradient(circle, #1A56DB 0%, transparent 70%); }
-
-        @keyframes meshPulse {
-          0%   { transform: scale(1)    translate(0px, 0px); }
-          25%  { transform: scale(1.08) translate(20px, -15px); }
-          50%  { transform: scale(0.95) translate(-10px, 20px); }
-          75%  { transform: scale(1.05) translate(15px, 10px); }
-          100% { transform: scale(1)    translate(0px, 0px); }
-        }
-
-        .sol-mockup { background: rgba(255,255,255,0.95); border: 1px solid rgba(0,0,0,0.08) !important; }
-        .dark .sol-mockup { background: #111828; border-color: rgba(77,134,245,0.14) !important; }
+        .sol-mockup { background: rgba(255,255,255,0.92); border: 1px solid rgba(0,0,0,0.08) !important; }
+        .dark .sol-mockup { background: rgba(17,24,40,0.85); border-color: rgba(77,134,245,0.14) !important; }
         @media(max-width:768px){
           .sol-row{grid-template-columns:1fr!important;gap:28px!important}
           .sol-row>div{order:unset!important}
