@@ -3,11 +3,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, Clock, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, Mail, ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import NoiseOverlay from '@/components/ui/NoiseOverlay';
 import { GradientBars } from '@/components/ui/gradient-bar-hero-section';
 import { fetchAllPosts, stripHtmlTags, truncateText, formatDate, getCoverImage, WordPressPost } from '@/lib/wordpress-api';
+import { submitForm } from '@/lib/webhook';
 
 const FV = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 const FT = { duration: 0.6 };
@@ -68,6 +69,16 @@ export default function BlogPage() {
   const [posts, setPosts] = useState<DisplayPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterState, setNewsletterState] = useState<'idle' | 'loading' | 'done'>('idle');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return;
+    setNewsletterState('loading');
+    await submitForm({ formType: 'Newsletter Subscription', email: newsletterEmail });
+    setNewsletterState('done');
+  };
   useEffect(() => {
     fetchAllPosts({ perPage: 100 })
       .then(fetched => setPosts(fetched.map(transformPost)))
@@ -258,18 +269,33 @@ export default function BlogPage() {
                 >
                   {/* Cover image or gradient fallback */}
                   {coverImage ? (
-                    <div style={{ height: 160, overflow: 'hidden', flexShrink: 0 }}>
+                    <div style={{ height: 160, overflow: 'hidden', flexShrink: 0, position: 'relative' }}>
                       <img
                         src={coverImage} alt={title} loading="lazy"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease' }}
                         onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)'; }}
                         onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
+                        onError={e => {
+                          const img = e.currentTarget as HTMLImageElement;
+                          const parent = img.parentElement;
+                          if (parent) {
+                            parent.style.background = 'linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)';
+                            parent.style.display = 'flex';
+                            parent.style.alignItems = 'center';
+                            parent.style.justifyContent = 'center';
+                            img.style.display = 'none';
+                            const label = document.createElement('span');
+                            label.style.cssText = 'font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.85);background:rgba(0,0,0,0.18);padding:6px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.25)';
+                            label.textContent = category;
+                            parent.appendChild(label);
+                          }
+                        }}
                       />
                     </div>
                   ) : (
                     <div style={{
                       height: 160, flexShrink: 0,
-                      background: `linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)`,
+                      background: 'linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', background: 'rgba(0,0,0,0.18)', padding: '6px 14px', borderRadius: 999, border: '1px solid rgba(255,255,255,0.25)' }}>
@@ -432,14 +458,28 @@ export default function BlogPage() {
               Get our latest articles, case studies, and engineering insights delivered to your inbox — no noise, unsubscribe any time.
             </p>
             <div style={{ display: 'flex', gap: 10, maxWidth: 420, margin: '0 auto', position: 'relative', zIndex: 1 }} className="newsletter-form">
-              <input type="email" placeholder="you@company.com"
-                style={{ flex: 1, padding: '13px 16px', borderRadius: 12, fontSize: 14, background: 'var(--card-bg)', border: '1px solid var(--card-border)', color: 'var(--fg)', outline: 'none', fontFamily: 'inherit', backdropFilter: 'blur(12px)' }}
-              />
-              <button style={{ padding: '13px 22px', borderRadius: 12, fontSize: 14, fontWeight: 700, background: '#1A56DB', color: '#fff', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(26,86,219,0.28)', transition: 'background 0.2s, transform 0.2s', fontFamily: 'inherit' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#0E2E75'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#1A56DB'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}>
-                Subscribe
-              </button>
+              {newsletterState === 'done' ? (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', width: '100%', padding: '13px 0', color: '#22c55e', fontWeight: 700, fontSize: 14 }}>
+                  <CheckCircle size={18} strokeWidth={2} /> You&apos;re subscribed — thanks!
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: 10, width: '100%' }}>
+                  <input
+                    type="email" required placeholder="you@company.com"
+                    value={newsletterEmail}
+                    onChange={e => setNewsletterEmail(e.target.value)}
+                    style={{ flex: 1, padding: '13px 16px', borderRadius: 12, fontSize: 14, background: 'var(--card-bg)', border: '1px solid var(--card-border)', color: 'var(--fg)', outline: 'none', fontFamily: 'inherit', backdropFilter: 'blur(12px)' }}
+                  />
+                  <button
+                    type="submit"
+                    disabled={newsletterState === 'loading'}
+                    style={{ padding: '13px 22px', borderRadius: 12, fontSize: 14, fontWeight: 700, background: newsletterState === 'loading' ? 'rgba(26,86,219,0.5)' : '#1A56DB', color: '#fff', border: 'none', cursor: newsletterState === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(26,86,219,0.28)', transition: 'background 0.2s, transform 0.2s', fontFamily: 'inherit' }}
+                    onMouseEnter={e => { if (newsletterState !== 'loading') { (e.currentTarget as HTMLElement).style.background = '#0E2E75'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; } }}
+                    onMouseLeave={e => { if (newsletterState !== 'loading') { (e.currentTarget as HTMLElement).style.background = '#1A56DB'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; } }}>
+                    {newsletterState === 'loading' ? 'Subscribing…' : 'Subscribe'}
+                  </button>
+                </form>
+              )}
             </div>
           </motion.div>
         </div>

@@ -299,92 +299,91 @@ export default function SolutionsSection() {
 
         .sol-mesh-grad {
           pointer-events: none;
-          /* default — overridden per card */
           background-image:
-            radial-gradient(ellipse 80% 70% at 20% 20%, #c8d9ff 0%, transparent 60%),
-            radial-gradient(ellipse 70% 80% at 80% 80%, #b3c9ff 0%, transparent 60%),
-            radial-gradient(ellipse 60% 60% at 60% 10%, #dce8ff 0%, transparent 55%),
-            radial-gradient(ellipse 55% 65% at 10% 80%, #e8f0ff 0%, transparent 55%);
+            radial-gradient(ellipse 40% 35% at 20% 20%, #c8d9ff 0%, transparent 100%),
+            radial-gradient(ellipse 35% 40% at 80% 80%, #b3c9ff 0%, transparent 100%),
+            radial-gradient(ellipse 30% 30% at 60% 10%, #dce8ff 0%, transparent 100%),
+            radial-gradient(ellipse 28% 32% at 10% 80%, #e8f0ff 0%, transparent 100%);
           animation: meshDrift 18s ease-in-out infinite;
         }
 
         /* Each card: slightly different colour mix + animation phase */
         .sol-mesh-grad-0 {
           background-image:
-            radial-gradient(ellipse 80% 70% at 15% 25%, #b8d0ff 0%, transparent 60%),
-            radial-gradient(ellipse 70% 80% at 85% 75%, #c5daff 0%, transparent 60%),
-            radial-gradient(ellipse 65% 55% at 55% 5%,  #dce8ff 0%, transparent 55%),
-            radial-gradient(ellipse 50% 60% at 5%  85%, #e4eeff 0%, transparent 55%);
+            radial-gradient(ellipse 38% 32% at 15% 25%, #b8d0ff 0%, transparent 100%),
+            radial-gradient(ellipse 32% 38% at 85% 75%, #c5daff 0%, transparent 100%),
+            radial-gradient(ellipse 28% 25% at 55% 5%,  #dce8ff 0%, transparent 100%),
+            radial-gradient(ellipse 24% 28% at 5%  85%, #e4eeff 0%, transparent 100%);
           animation-delay: 0s;
         }
         .sol-mesh-grad-1 {
           background-image:
-            radial-gradient(ellipse 75% 80% at 80% 20%, #c0d5ff 0%, transparent 60%),
-            radial-gradient(ellipse 80% 65% at 10% 80%, #b0c8ff 0%, transparent 60%),
-            radial-gradient(ellipse 60% 70% at 50% 90%, #d8e6ff 0%, transparent 55%),
-            radial-gradient(ellipse 55% 55% at 90% 50%, #e0ebff 0%, transparent 55%);
+            radial-gradient(ellipse 35% 38% at 80% 20%, #c0d5ff 0%, transparent 100%),
+            radial-gradient(ellipse 38% 30% at 10% 80%, #b0c8ff 0%, transparent 100%),
+            radial-gradient(ellipse 28% 32% at 50% 90%, #d8e6ff 0%, transparent 100%),
+            radial-gradient(ellipse 26% 26% at 90% 50%, #e0ebff 0%, transparent 100%);
           animation-delay: -4s;
         }
         .sol-mesh-grad-2 {
           background-image:
-            radial-gradient(ellipse 70% 75% at 50% 10%, #bdd3ff 0%, transparent 60%),
-            radial-gradient(ellipse 75% 70% at 5%  60%, #cad9ff 0%, transparent 60%),
-            radial-gradient(ellipse 65% 60% at 90% 85%, #b8ccff 0%, transparent 55%),
-            radial-gradient(ellipse 55% 65% at 60% 50%, #e2ecff 0%, transparent 55%);
+            radial-gradient(ellipse 32% 35% at 50% 10%, #bdd3ff 0%, transparent 100%),
+            radial-gradient(ellipse 35% 32% at 5%  60%, #cad9ff 0%, transparent 100%),
+            radial-gradient(ellipse 30% 28% at 90% 85%, #b8ccff 0%, transparent 100%),
+            radial-gradient(ellipse 26% 30% at 60% 50%, #e2ecff 0%, transparent 100%);
           animation-delay: -8s;
         }
         .sol-mesh-grad-3 {
           background-image:
-            radial-gradient(ellipse 80% 65% at 10% 10%, #c2d6ff 0%, transparent 60%),
-            radial-gradient(ellipse 65% 80% at 90% 90%, #b5caff 0%, transparent 60%),
-            radial-gradient(ellipse 70% 60% at 70% 30%, #d5e4ff 0%, transparent 55%),
-            radial-gradient(ellipse 55% 70% at 20% 70%, #e0eaff 0%, transparent 55%);
+            radial-gradient(ellipse 38% 30% at 10% 10%, #c2d6ff 0%, transparent 100%),
+            radial-gradient(ellipse 30% 38% at 90% 90%, #b5caff 0%, transparent 100%),
+            radial-gradient(ellipse 32% 28% at 70% 30%, #d5e4ff 0%, transparent 100%),
+            radial-gradient(ellipse 26% 32% at 20% 70%, #e0eaff 0%, transparent 100%);
           animation-delay: -12s;
         }
         .sol-mesh-grad-4 {
           background-image:
-            radial-gradient(ellipse 75% 70% at 30% 80%, #bfd4ff 0%, transparent 60%),
-            radial-gradient(ellipse 70% 75% at 75% 15%, #c8daff 0%, transparent 60%),
-            radial-gradient(ellipse 60% 65% at 5%  30%, #d0e0ff 0%, transparent 55%),
-            radial-gradient(ellipse 55% 60% at 85% 60%, #e4eeff 0%, transparent 55%);
+            radial-gradient(ellipse 35% 32% at 30% 80%, #bfd4ff 0%, transparent 100%),
+            radial-gradient(ellipse 32% 35% at 75% 15%, #c8daff 0%, transparent 100%),
+            radial-gradient(ellipse 28% 30% at 5%  30%, #d0e0ff 0%, transparent 100%),
+            radial-gradient(ellipse 26% 28% at 85% 60%, #e4eeff 0%, transparent 100%);
           animation-delay: -16s;
         }
 
         /* Dark theme — same positions, richer blues */
         .dark .sol-mesh-grad-0 {
           background-image:
-            radial-gradient(ellipse 80% 70% at 15% 25%, #1A56DB 0%, transparent 60%),
-            radial-gradient(ellipse 70% 80% at 85% 75%, #0E2E75 0%, transparent 60%),
-            radial-gradient(ellipse 65% 55% at 55% 5%,  #4D86F5 0%, transparent 55%),
-            radial-gradient(ellipse 50% 60% at 5%  85%, #0A1F4F 0%, transparent 55%);
+            radial-gradient(ellipse 38% 32% at 15% 25%, #1A56DB 0%, transparent 100%),
+            radial-gradient(ellipse 32% 38% at 85% 75%, #0E2E75 0%, transparent 100%),
+            radial-gradient(ellipse 28% 25% at 55% 5%,  #4D86F5 0%, transparent 100%),
+            radial-gradient(ellipse 24% 28% at 5%  85%, #0A1F4F 0%, transparent 100%);
         }
         .dark .sol-mesh-grad-1 {
           background-image:
-            radial-gradient(ellipse 75% 80% at 80% 20%, #4D86F5 0%, transparent 60%),
-            radial-gradient(ellipse 80% 65% at 10% 80%, #1A56DB 0%, transparent 60%),
-            radial-gradient(ellipse 60% 70% at 50% 90%, #0E2E75 0%, transparent 55%),
-            radial-gradient(ellipse 55% 55% at 90% 50%, #80A9FF 0%, transparent 55%);
+            radial-gradient(ellipse 35% 38% at 80% 20%, #4D86F5 0%, transparent 100%),
+            radial-gradient(ellipse 38% 30% at 10% 80%, #1A56DB 0%, transparent 100%),
+            radial-gradient(ellipse 28% 32% at 50% 90%, #0E2E75 0%, transparent 100%),
+            radial-gradient(ellipse 26% 26% at 90% 50%, #80A9FF 0%, transparent 100%);
         }
         .dark .sol-mesh-grad-2 {
           background-image:
-            radial-gradient(ellipse 70% 75% at 50% 10%, #1A56DB 0%, transparent 60%),
-            radial-gradient(ellipse 75% 70% at 5%  60%, #4D86F5 0%, transparent 60%),
-            radial-gradient(ellipse 65% 60% at 90% 85%, #0E2E75 0%, transparent 55%),
-            radial-gradient(ellipse 55% 65% at 60% 50%, #80A9FF 0%, transparent 55%);
+            radial-gradient(ellipse 32% 35% at 50% 10%, #1A56DB 0%, transparent 100%),
+            radial-gradient(ellipse 35% 32% at 5%  60%, #4D86F5 0%, transparent 100%),
+            radial-gradient(ellipse 30% 28% at 90% 85%, #0E2E75 0%, transparent 100%),
+            radial-gradient(ellipse 26% 30% at 60% 50%, #80A9FF 0%, transparent 100%);
         }
         .dark .sol-mesh-grad-3 {
           background-image:
-            radial-gradient(ellipse 80% 65% at 10% 10%, #0E2E75 0%, transparent 60%),
-            radial-gradient(ellipse 65% 80% at 90% 90%, #1A56DB 0%, transparent 60%),
-            radial-gradient(ellipse 70% 60% at 70% 30%, #4D86F5 0%, transparent 55%),
-            radial-gradient(ellipse 55% 70% at 20% 70%, #80A9FF 0%, transparent 55%);
+            radial-gradient(ellipse 38% 30% at 10% 10%, #0E2E75 0%, transparent 100%),
+            radial-gradient(ellipse 30% 38% at 90% 90%, #1A56DB 0%, transparent 100%),
+            radial-gradient(ellipse 32% 28% at 70% 30%, #4D86F5 0%, transparent 100%),
+            radial-gradient(ellipse 26% 32% at 20% 70%, #80A9FF 0%, transparent 100%);
         }
         .dark .sol-mesh-grad-4 {
           background-image:
-            radial-gradient(ellipse 75% 70% at 30% 80%, #4D86F5 0%, transparent 60%),
-            radial-gradient(ellipse 70% 75% at 75% 15%, #1A56DB 0%, transparent 60%),
-            radial-gradient(ellipse 60% 65% at 5%  30%, #0E2E75 0%, transparent 55%),
-            radial-gradient(ellipse 55% 60% at 85% 60%, #80A9FF 0%, transparent 55%);
+            radial-gradient(ellipse 35% 32% at 30% 80%, #4D86F5 0%, transparent 100%),
+            radial-gradient(ellipse 32% 35% at 75% 15%, #1A56DB 0%, transparent 100%),
+            radial-gradient(ellipse 28% 30% at 5%  30%, #0E2E75 0%, transparent 100%),
+            radial-gradient(ellipse 26% 28% at 85% 60%, #80A9FF 0%, transparent 100%);
         }
 
         /* Auto-drift: slowly shifts the 200×200% canvas */
