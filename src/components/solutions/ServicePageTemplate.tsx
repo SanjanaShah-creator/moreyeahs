@@ -155,8 +155,8 @@ function ServiceSwitcherSection({ solutionHref, solutionName }: { solutionHref: 
     <section style={{ background: 'var(--bg)', padding: '60px 0', position: 'relative' }}>
       <NoiseOverlay />
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <div style={{ textAlign: 'center', marginBottom: 40 }}>
-          <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 14 }}>Explore More</div>
+        <div style={{ marginBottom: 40 }}>
+          <div className="section-badge" style={{ marginBottom: 14 }}>Explore More</div>
           <h3 style={{ fontSize: 'clamp(22px,2.8vw,34px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.15 }}>
             Other <span className="grad">{solutionName}</span> Services
           </h3>
@@ -496,9 +496,9 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
           <div style={{ padding: 'clamp(28px,3.5vw,48px)' }}>
             {/* Watermark */}
             <div style={{
-              position: 'absolute', right: -12, bottom: -44,
+              position: 'absolute', right: 20, bottom: -16,
               fontSize: 200, fontWeight: 900, lineHeight: 1,
-              color: `${BLUE}05`, pointerEvents: 'none', userSelect: 'none',
+              color: `${BLUE}1A`, pointerEvents: 'none', userSelect: 'none',
               letterSpacing: '-0.07em',
             }}>
               {steps[active]?.number}
@@ -850,9 +850,9 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div
             variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}
-            style={{ textAlign: 'center', marginBottom: 56 }}
+            style={{ marginBottom: 56 }}
           >
-            <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 16 }}>
+            <div className="section-badge" style={{ marginBottom: 16 }}>
               What We Deliver
             </div>
             <h2 style={{ fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.1 }}>
@@ -923,15 +923,15 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div
             variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}
-            style={{ textAlign: 'center', marginBottom: 48 }}
+            style={{ marginBottom: 48 }}
           >
-            <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 16 }}>
+            <div className="section-badge" style={{ marginBottom: 16 }}>
               How We Work
             </div>
             <h2 style={{ fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.1 }}>
               Our Proven Process
             </h2>
-            <p style={{ fontSize: 15, color: 'var(--fg-3)', maxWidth: 480, margin: '14px auto 0', lineHeight: 1.7 }}>
+            <p style={{ fontSize: 15, color: 'var(--fg-3)', maxWidth: 480, margin: '14px 0 0', lineHeight: 1.7 }}>
               A structured approach that delivers reliable results — from first conversation to production.
             </p>
           </motion.div>

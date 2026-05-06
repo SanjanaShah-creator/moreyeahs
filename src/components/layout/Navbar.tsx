@@ -346,7 +346,13 @@ export default function Navbar() {
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
-    const onScroll = () => setPastHero(window.scrollY > window.innerHeight * 0.88);
+    const getHeroThreshold = () => {
+      const heroEl = document.querySelector<HTMLElement>('main > *:first-child');
+      return heroEl
+        ? Math.max(heroEl.offsetTop + heroEl.offsetHeight - 60, 150)
+        : window.innerHeight * 0.88;
+    };
+    const onScroll = () => setPastHero(window.scrollY > getHeroThreshold());
     const onResize = () => setScreenWide(window.innerWidth > 900);
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize, { passive: true });

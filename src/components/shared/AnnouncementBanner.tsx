@@ -8,15 +8,31 @@ const DISMISS_KEY = 'ann_wahinn_v1';
 
 export default function AnnouncementBanner() {
   const [visible, setVisible] = useState(false);
+  const [scrolledPast, setScrolledPast] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem(DISMISS_KEY)) {
       setVisible(true);
-      document.documentElement.style.setProperty('--ann-h', '44px');
     } else {
       document.documentElement.style.setProperty('--ann-h', '0px');
     }
   }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+    const update = () => {
+      const past = window.scrollY > window.innerHeight * 0.88 && window.innerWidth > 900;
+      setScrolledPast(past);
+      document.documentElement.style.setProperty('--ann-h', past ? '0px' : '44px');
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [visible]);
 
   const dismiss = () => {
     document.documentElement.style.setProperty('--ann-h', '0px');
@@ -24,9 +40,11 @@ export default function AnnouncementBanner() {
     setVisible(false);
   };
 
+  const show = visible && !scrolledPast;
+
   return (
     <AnimatePresence>
-      {visible && (
+      {show && (
         <motion.div
           key="ann"
           initial={{ height: 0, opacity: 0 }}
