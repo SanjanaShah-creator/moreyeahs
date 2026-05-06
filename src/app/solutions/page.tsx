@@ -166,7 +166,7 @@ export default function SolutionsPage() {
         <NoiseOverlay />
         <div className="blob" style={{ width: 500, height: 500, top: '-80px', left: '-8%', background: 'radial-gradient(circle, rgba(26,86,219,0.10), transparent 68%)' }} />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 48 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} style={{ marginBottom: 48 }}>
             <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 16 }}>Case Studies</div>
             <h2 style={{ fontSize: 'clamp(26px,3.8vw,44px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.1, textAlign: 'center', marginBottom: 12 }}>
               Proof in <span style={{ background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Real Results</span>
@@ -178,7 +178,7 @@ export default function SolutionsPage() {
 
           {/* Solution filter chips */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
             style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', marginBottom: 48 }}
           >
             {[
@@ -220,7 +220,7 @@ export default function SolutionsPage() {
           </motion.div>
 
           {/* View all CTA */}
-          <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} style={{ textAlign: 'center' }}>
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} style={{ textAlign: 'center' }}>
             <Link href="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#1A56DB', color: '#fff', fontSize: 14, fontWeight: 700, borderRadius: 10, padding: '13px 26px', textDecoration: 'none', boxShadow: '0 6px 22px rgba(26,86,219,0.32)', transition: 'background 0.2s, transform 0.2s' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#0E2E75'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#1A56DB'; (e.currentTarget as HTMLElement).style.transform = 'none'; }}>

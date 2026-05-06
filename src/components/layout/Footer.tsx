@@ -128,8 +128,8 @@ export default function Footer() {
           {/* Col 1 — Brand */}
           <div>
             <div style={{ marginBottom: 16 }}>
-              <img src="/images/MoreYeahs White theme Logo.png" alt="MoreYeahs" className="nav-logo-light" />
-              <img src="/images/MoreYeahs Dark Theme Logo.png"  alt="MoreYeahs" className="nav-logo-dark" />
+              <img src="/images/MoreYeahs White theme Logo.png" alt="MoreYeahs" className="nav-logo-light" width="140" height="32" loading="lazy" />
+              <img src="/images/MoreYeahs Dark Theme Logo.png"  alt="MoreYeahs" className="nav-logo-dark"  width="140" height="30" loading="lazy" />
             </div>
             <p style={{ fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.8, maxWidth: 280, marginBottom: 24 }}>
               We are committed to making meaningful contributions to the environment and society. As a global technology leader, MoreYeahs aims to automate digital literacy and foster sustainable communities.

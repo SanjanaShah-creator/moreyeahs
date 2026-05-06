@@ -423,8 +423,8 @@ export default function Navbar() {
             <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
 
               <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
-                <img src="/images/MoreYeahs White theme Logo.png" alt="MoreYeahs" className="nav-logo-light" />
-                <img src="/images/MoreYeahs Dark Theme Logo.png"  alt="MoreYeahs" className="nav-logo-dark" />
+                <img src="/images/MoreYeahs White theme Logo.png" alt="MoreYeahs" className="nav-logo-light" width="140" height="32" fetchPriority="high" />
+                <img src="/images/MoreYeahs Dark Theme Logo.png"  alt="MoreYeahs" className="nav-logo-dark"  width="140" height="30" fetchPriority="high" />
               </Link>
 
               {/* Desktop pill nav */}
@@ -518,8 +518,8 @@ export default function Navbar() {
               boxShadow: '0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(77,134,245,0.07)',
             }}>
               <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', padding: '2px 12px 2px 4px', marginRight: 2, borderRight: '1px solid var(--border)', flexShrink: 0 }}>
-                <img src="/images/MoreYeahs White theme Logo.png" alt="MoreYeahs" className="nav-logo-light nav-logo-pill" />
-                <img src="/images/MoreYeahs Dark Theme Logo.png"  alt="MoreYeahs" className="nav-logo-dark  nav-logo-pill" />
+                <img src="/images/MoreYeahs White theme Logo.png" alt="MoreYeahs" className="nav-logo-light nav-logo-pill" width="100" height="24" />
+                <img src="/images/MoreYeahs Dark Theme Logo.png"  alt="MoreYeahs" className="nav-logo-dark  nav-logo-pill" width="100" height="22" />
               </Link>
 
               <Link href="/" style={NAV_LINK}

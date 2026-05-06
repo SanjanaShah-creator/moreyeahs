@@ -20,20 +20,20 @@ import CTASection from '@/components/home/CTASection';
 const EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const FU = (delay = 0, distance = 56) => ({
-  hidden: { opacity: 0, y: distance, filter: 'blur(8px)' },
-  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: EXPO, delay } },
+  hidden: { opacity: 0, y: distance },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EXPO, delay } },
 });
 const FL = (delay = 0) => ({
-  hidden: { opacity: 0, x: -80, filter: 'blur(6px)' },
-  visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: EXPO, delay } },
+  hidden: { opacity: 0, x: -80 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.9, ease: EXPO, delay } },
 });
 const FR = (delay = 0) => ({
-  hidden: { opacity: 0, x: 80, filter: 'blur(6px)' },
-  visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: EXPO, delay } },
+  hidden: { opacity: 0, x: 80 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.9, ease: EXPO, delay } },
 });
 const SC = (delay = 0) => ({
-  hidden: { opacity: 0, scale: 0.88, filter: 'blur(4px)' },
-  visible: { opacity: 1, scale: 1, filter: 'blur(0px)', transition: { duration: 0.8, ease: EXPO, delay } },
+  hidden: { opacity: 0, scale: 0.88 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: EXPO, delay } },
 });
 const STAGGER = {
   hidden: {},
@@ -49,8 +49,8 @@ function WordReveal({ text, className, style, delay = 0 }: {
       {text.split(' ').map((word, i) => (
         <motion.span
           key={i}
-          initial={{ opacity: 0, y: 32, filter: 'blur(8px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, ease: EXPO, delay: delay + i * 0.07 }}
           style={{ display: 'inline-block', marginRight: '0.25em' }}
         >
@@ -244,8 +244,8 @@ export default function DataSciencePage() {
               <WordReveal text="Build Smarter. Scale Faster." delay={0.1} /><br />
               <WordReveal text="With" delay={0.45} />{' '}
               <motion.span
-                initial={{ opacity: 0, y: 32, filter: 'blur(8px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.75, ease: EXPO, delay: 0.52 }}
                 style={{ display: 'inline-block', background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
               >
@@ -259,8 +259,8 @@ export default function DataSciencePage() {
 
             {/* LEFT — video with parallax */}
             <motion.div
-              initial={{ opacity: 0, x: -40, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.0, ease: EXPO, delay: 0.3 }}
               style={{ borderRadius: 24, overflow: 'hidden', minHeight: 480, position: 'relative', background: 'var(--bg-2)' }}
             >
@@ -277,8 +277,8 @@ export default function DataSciencePage() {
 
             {/* RIGHT — expertise card slides in */}
             <motion.div
-              initial={{ opacity: 0, x: 60, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.0, ease: EXPO, delay: 0.45 }}
               style={{ borderRadius: 24, background: 'linear-gradient(160deg,#1A56DB 0%,#0E2E75 60%,#0A1F4F 100%)', padding: '36px 32px', display: 'flex', flexDirection: 'column', minHeight: 480, position: 'relative', overflow: 'hidden' }}
             >
@@ -471,8 +471,8 @@ export default function DataSciencePage() {
             {SERVICES.map((svc, i) => (
               <motion.div
                 key={svc.id}
-                initial={{ opacity: 0, y: 60, filter: 'blur(6px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.85, ease: EXPO, delay: i * 0.06 }}
                 style={{
@@ -539,8 +539,8 @@ export default function DataSciencePage() {
             {STEPS.map((s, i) => (
               <motion.div
                 key={s.step}
-                initial={{ opacity: 0, y: 40, filter: 'blur(8px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.7, ease: EXPO, delay: i * 0.12 }}
                 style={{ display: 'flex', alignItems: 'flex-start', flexShrink: 0 }}

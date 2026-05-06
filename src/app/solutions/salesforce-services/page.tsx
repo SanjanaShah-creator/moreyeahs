@@ -144,8 +144,8 @@ function WordReveal({ text, delay = 0, className, style }: { text: string; delay
       {words.map((word, i) => (
         <motion.span
           key={i}
-          initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EXPO, delay: delay + i * 0.07 }}
           style={{ display: 'inline-block', marginRight: '0.28em' }}
         >
@@ -180,8 +180,8 @@ export default function SalesforceServicesPage() {
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div style={{ y: heroTextY, opacity: heroFade, marginBottom: 36 }}>
             <motion.div
-              initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: EXPO }}
             >
               <div className="section-badge" style={{ marginBottom: 20 }}>
@@ -192,15 +192,15 @@ export default function SalesforceServicesPage() {
             <h1 style={{ fontSize: 'clamp(36px,4.5vw,68px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, color: 'var(--fg)' }}>
               <WordReveal text="Strengthen Relationships." delay={0.1} /><br />
               <WordReveal text="Drive Growth." delay={0.3} />{' '}
-              <motion.span initial={{ opacity: 0, y: 32, filter: 'blur(8px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 0.75, ease: EXPO, delay: 0.45 }} style={{ display: 'inline-block', background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>With Salesforce.</motion.span>
+              <motion.span initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, ease: EXPO, delay: 0.45 }} style={{ display: 'inline-block', background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>With Salesforce.</motion.span>
             </h1>
           </motion.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24, alignItems: 'stretch' }} className="ds-hero-split">
             {/* LEFT — video */}
             <motion.div
-              initial={{ opacity: 0, x: -60, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, ease: EXPO, delay: 0.15 }}
               style={{ borderRadius: 24, overflow: 'hidden', minHeight: 480, position: 'relative', background: 'var(--bg-2)' }}
             >
@@ -214,8 +214,8 @@ export default function SalesforceServicesPage() {
 
             {/* RIGHT — expertise card */}
             <motion.div
-              initial={{ opacity: 0, x: 60, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, ease: EXPO, delay: 0.25 }}
               style={{ borderRadius: 24, background: 'linear-gradient(160deg, #1A56DB 0%, #0E2E75 60%, #0A1F4F 100%)', padding: '36px 32px', display: 'flex', flexDirection: 'column', minHeight: 480, position: 'relative', overflow: 'hidden' }}
             >
@@ -441,8 +441,8 @@ export default function SalesforceServicesPage() {
           <div style={{ display: 'flex', alignItems: 'flex-start', overflowX: 'auto', gap: 0, paddingBottom: 8, paddingTop: 4 }}>
             {STEPS.map((s, i) => (
               <motion.div key={s.step}
-                initial={{ opacity: 0, y: 40, filter: 'blur(8px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, ease: EXPO, delay: i * 0.12 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
@@ -605,7 +605,7 @@ export default function SalesforceServicesPage() {
                 <motion.div key={i} variants={FR(0)}>
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    style={{ width: '100%', textAlign: 'left', background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: openFaq === i ? '16px 16px 0 0' : 16, padding: '18px 22px', cursor: 'pointer', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', transition: 'border-radius 0.2s' }}
+                    style={{ width: '100%', textAlign: 'left', background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: openFaq === i ? '16px 16px 0 0' : 16, padding: '18px 22px', cursor: 'pointer', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', transition: 'border-radius 0.2s' }}
                   >
                     <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--fg)', lineHeight: 1.45 }}>{item.q}</span>
                     <div style={{ width: 26, height: 26, borderRadius: '50%', background: openFaq === i ? '#1A56DB' : 'rgba(26,86,219,0.08)', border: `1px solid ${openFaq === i ? '#1A56DB' : 'rgba(77,134,245,0.20)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2, transition: 'background 0.2s, border-color 0.2s' }}>
