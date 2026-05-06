@@ -34,12 +34,12 @@ const SOLUTIONS_LINKS = [
   { label: 'Web & App Development',  href: '/solutions/web-app-development' },
 ];
 const COMPANY_LINKS = [
-  { label: 'Home',              href: '/' },
-  { label: 'About Us',          href: '/life-at-moreyeahs' },
-  { label: 'Careers',           href: '/careers' },
-  { label: 'Contact Us',        href: '/contact-us' },
-  { label: 'Blog',              href: '/blog' },
-  { label: 'Resources',         href: '/resources' },
+  { label: 'Home',       href: '/' },
+  { label: 'About Us',   href: '/life-at-moreyeahs' },
+  { label: 'Careers',    href: '/careers' },
+  { label: 'Contact Us', href: '/contact-us' },
+  { label: 'Blog',       href: '/blog' },
+  { label: 'Resources',  href: '/resources' },
 ];
 const SOCIALS = [
   { Icon: LinkedinIcon,  href: 'https://in.linkedin.com/company/moreyeahs-inc-', label: 'LinkedIn' },
