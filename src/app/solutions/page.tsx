@@ -162,11 +162,11 @@ export default function SolutionsPage() {
       </section>
 
       {/* Related Case Studies */}
-      <section style={{ background: 'var(--bg)', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: 'var(--bg-2)', padding: '80px 0', position: 'relative', overflow: 'hidden', borderTop: '1px solid var(--border)' }}>
         <NoiseOverlay />
         <div className="blob" style={{ width: 500, height: 500, top: '-80px', left: '-8%', background: 'radial-gradient(circle, rgba(26,86,219,0.10), transparent 68%)' }} />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} style={{ marginBottom: 48 }}>
+          <div style={{ marginBottom: 48 }}>
             <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 16 }}>Case Studies</div>
             <h2 style={{ fontSize: 'clamp(26px,3.8vw,44px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.1, textAlign: 'center', marginBottom: 12 }}>
               Proof in <span style={{ background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Real Results</span>
@@ -174,59 +174,55 @@ export default function SolutionsPage() {
             <p style={{ fontSize: 15, color: 'var(--fg-3)', lineHeight: 1.75, textAlign: 'center', maxWidth: 520, margin: '0 auto' }}>
               Browse case studies by solution area — see exactly how we have delivered outcomes for clients like yours.
             </p>
-          </motion.div>
+          </div>
 
           {/* Solution filter chips */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-            style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', marginBottom: 48 }}
-          >
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', marginBottom: 48 }}>
             {[
-              { label: 'All Case Studies',        href: '/case-studies',                                  accent: '#4D86F5' },
-              { label: 'Data Science & AI',        href: '/case-studies?filter=data-science',              accent: '#4D86F5' },
-              { label: 'Cloud & Infrastructure',   href: '/case-studies?filter=cloud',                     accent: '#80A9FF' },
-              { label: 'Microsoft Services',       href: '/case-studies?filter=microsoft',                 accent: '#4D86F5' },
-              { label: 'Salesforce',               href: '/case-studies?filter=salesforce',                accent: '#80A9FF' },
-              { label: 'Web & App Development',    href: '/case-studies?filter=web-application-development', accent: '#4D86F5' },
-            ].map((chip, i) => (
-              <motion.div key={chip.label} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: i * 0.05 }}>
-                <Link
-                  href={chip.href}
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 6,
-                    padding: '9px 18px', borderRadius: 999,
-                    fontSize: 13, fontWeight: 600,
-                    color: chip.accent,
-                    background: `rgba(${chip.accent === '#4D86F5' ? '77,134,245' : '128,169,255'},0.10)`,
-                    border: `1px solid ${chip.accent}35`,
-                    textDecoration: 'none',
-                    transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.background = `rgba(${chip.accent === '#4D86F5' ? '77,134,245' : '128,169,255'},0.20)`;
-                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-                    (e.currentTarget as HTMLElement).style.boxShadow = `0 6px 20px ${chip.accent}22`;
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.background = `rgba(${chip.accent === '#4D86F5' ? '77,134,245' : '128,169,255'},0.10)`;
-                    (e.currentTarget as HTMLElement).style.transform = 'none';
-                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                  }}
-                >
-                  {chip.label} <ArrowRight size={11} strokeWidth={2.5} />
-                </Link>
-              </motion.div>
+              { label: 'All Case Studies',        href: '/case-studies',                                    accent: '#4D86F5' },
+              { label: 'Data Science & AI',        href: '/case-studies?filter=data-science',                accent: '#4D86F5' },
+              { label: 'Cloud & Infrastructure',   href: '/case-studies?filter=cloud',                       accent: '#80A9FF' },
+              { label: 'Microsoft Services',       href: '/case-studies?filter=microsoft',                   accent: '#4D86F5' },
+              { label: 'Salesforce',               href: '/case-studies?filter=salesforce',                  accent: '#80A9FF' },
+              { label: 'Web & App Development',    href: '/case-studies?filter=web-application-development',  accent: '#4D86F5' },
+            ].map((chip) => (
+              <Link
+                key={chip.label}
+                href={chip.href}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  padding: '9px 18px', borderRadius: 999,
+                  fontSize: 13, fontWeight: 600,
+                  color: chip.accent,
+                  background: `rgba(${chip.accent === '#4D86F5' ? '77,134,245' : '128,169,255'},0.10)`,
+                  border: `1px solid ${chip.accent}35`,
+                  textDecoration: 'none',
+                  transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.background = `rgba(${chip.accent === '#4D86F5' ? '77,134,245' : '128,169,255'},0.20)`;
+                  (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = `0 6px 20px ${chip.accent}22`;
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.background = `rgba(${chip.accent === '#4D86F5' ? '77,134,245' : '128,169,255'},0.10)`;
+                  (e.currentTarget as HTMLElement).style.transform = 'none';
+                  (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                }}
+              >
+                {chip.label} <ArrowRight size={11} strokeWidth={2.5} />
+              </Link>
             ))}
-          </motion.div>
+          </div>
 
           {/* View all CTA */}
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center' }}>
             <Link href="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#1A56DB', color: '#fff', fontSize: 14, fontWeight: 700, borderRadius: 10, padding: '13px 26px', textDecoration: 'none', boxShadow: '0 6px 22px rgba(26,86,219,0.32)', transition: 'background 0.2s, transform 0.2s' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#0E2E75'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#1A56DB'; (e.currentTarget as HTMLElement).style.transform = 'none'; }}>
               View All Case Studies <ArrowRight size={14} strokeWidth={2} />
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 
