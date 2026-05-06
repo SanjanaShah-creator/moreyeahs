@@ -43,11 +43,11 @@ const COMPANY_LINKS = [
   { label: 'Resources',         href: '/resources' },
 ];
 const SOCIALS = [
-  { Icon: LinkedinIcon,  href: '#', label: 'LinkedIn' },
-  { Icon: X,             href: '#', label: 'X' },
-  { Icon: FacebookIcon,  href: '#', label: 'Facebook' },
-  { Icon: InstagramIcon, href: '#', label: 'Instagram' },
-  { Icon: YoutubeIcon,   href: '#', label: 'YouTube' },
+  { Icon: LinkedinIcon,  href: 'https://in.linkedin.com/company/moreyeahs-inc-', label: 'LinkedIn' },
+  { Icon: X,             href: 'https://x.com/MoreyeahsInc', label: 'X' },
+  { Icon: FacebookIcon,  href: 'https://www.facebook.com/moreyeahsinc', label: 'Facebook' },
+  { Icon: InstagramIcon, href: 'https://www.instagram.com/moreyeahs/', label: 'Instagram' },
+  { Icon: YoutubeIcon,   href: 'https://www.youtube.com/@moreyeahsinc8086', label: 'YouTube' },
 ];
 
 const linkBase: React.CSSProperties = {
@@ -138,7 +138,7 @@ export default function Footer() {
             {/* Socials */}
             <div style={{ display: 'flex', gap: 8 }}>
               {SOCIALS.map(({ Icon, href, label }) => (
-                <a key={label} href={href} aria-label={label} style={{ width: 34, height: 34, borderRadius: 8, border: '1px solid rgba(26,86,219,0.3)', background: 'rgba(26,86,219,0.08)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--fg-3)', textDecoration: 'none', transition: 'all 0.25s ease', cursor: 'pointer' }}
+                <a key={label} href={href} aria-label={label} target="_blank" rel="noopener noreferrer" style={{ width: 34, height: 34, borderRadius: 8, border: '1px solid rgba(26,86,219,0.3)', background: 'rgba(26,86,219,0.08)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--fg-3)', textDecoration: 'none', transition: 'all 0.25s ease', cursor: 'pointer' }}
                   onMouseEnter={e => { 
                     (e.currentTarget as HTMLElement).style.borderColor = '#4D86F5'; 
                     (e.currentTarget as HTMLElement).style.color = '#1A56DB';

@@ -108,8 +108,11 @@ const organizationSchema = {
     },
   ],
   sameAs: [
-    'https://www.linkedin.com/company/moreyeahs',
-    'https://twitter.com/moreyeahs',
+    'https://in.linkedin.com/company/moreyeahs-inc-',
+    'https://x.com/MoreyeahsInc',
+    'https://www.facebook.com/moreyeahsinc',
+    'https://www.instagram.com/moreyeahs/',
+    'https://www.youtube.com/@moreyeahsinc8086',
   ],
 };
 
