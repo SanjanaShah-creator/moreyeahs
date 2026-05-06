@@ -168,6 +168,8 @@ function DomainCard({
         overflow: 'hidden',
       }}
     >
+      {/* Animated mesh gradient background — design system blues */}
+      <div className={`sol-mesh sol-mesh-${i}`} aria-hidden />
       <NoiseOverlay />
 
       {/* Full-height flex layout */}
@@ -275,6 +277,63 @@ export default function SolutionsSection() {
       </div>
 
       <style>{`
+        .sol-mockup { background: rgba(255,255,255,0.95); border: 1px solid rgba(0,0,0,0.08) !important; }
+        .dark .sol-mockup { background: #111828; border-color: rgba(77,134,245,0.14) !important; }
+
+        /* ── Animated mesh gradient — design system blues only ── */
+        .sol-mesh {
+          position: absolute; inset: 0; pointer-events: none; z-index: 0;
+          background: var(--bg);
+        }
+        /* Each card gets a slightly different orb layout / animation phase */
+        .sol-mesh::before,
+        .sol-mesh::after {
+          content: '';
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(80px);
+          opacity: 0;
+          animation: meshPulse 8s ease-in-out infinite;
+        }
+        .dark .sol-mesh::before { opacity: 0.18; }
+        .dark .sol-mesh::after  { opacity: 0.12; }
+        .sol-mesh::before { opacity: 0.10; }
+        .sol-mesh::after  { opacity: 0.07; }
+
+        /* Orb 1 — primary blue */
+        .sol-mesh::before {
+          width: 55vw; height: 55vw;
+          background: radial-gradient(circle, #1A56DB 0%, transparent 70%);
+          top: -15%; left: -10%;
+        }
+        /* Orb 2 — light blue */
+        .sol-mesh::after {
+          width: 45vw; height: 45vw;
+          background: radial-gradient(circle, #4D86F5 0%, transparent 70%);
+          bottom: -10%; right: -8%;
+          animation-delay: -4s;
+        }
+
+        /* Per-card phase offsets so each card feels distinct */
+        .sol-mesh-0::before { animation-delay: 0s;    top: -20%; left: -5%;  }
+        .sol-mesh-0::after  { animation-delay: -3s;   bottom: -5%; right: -12%; }
+        .sol-mesh-1::before { animation-delay: -2s;   top: 10%; right: -8%; left: auto; background: radial-gradient(circle, #0E2E75 0%, transparent 70%); }
+        .sol-mesh-1::after  { animation-delay: -5s;   top: -10%; left: 20%; bottom: auto; background: radial-gradient(circle, #80A9FF 0%, transparent 70%); }
+        .sol-mesh-2::before { animation-delay: -1s;   top: -10%; left: 30%; }
+        .sol-mesh-2::after  { animation-delay: -6s;   bottom: -15%; right: 5%; background: radial-gradient(circle, #0E2E75 0%, transparent 70%); }
+        .sol-mesh-3::before { animation-delay: -3.5s; top: 5%; left: -15%; background: radial-gradient(circle, #4D86F5 0%, transparent 70%); }
+        .sol-mesh-3::after  { animation-delay: -7s;   bottom: -8%; right: -5%; background: radial-gradient(circle, #1A56DB 0%, transparent 70%); }
+        .sol-mesh-4::before { animation-delay: -1.5s; top: -5%; right: -5%; left: auto; background: radial-gradient(circle, #80A9FF 0%, transparent 70%); }
+        .sol-mesh-4::after  { animation-delay: -4.5s; bottom: -12%; left: 10%; background: radial-gradient(circle, #1A56DB 0%, transparent 70%); }
+
+        @keyframes meshPulse {
+          0%   { transform: scale(1)    translate(0px, 0px); }
+          25%  { transform: scale(1.08) translate(20px, -15px); }
+          50%  { transform: scale(0.95) translate(-10px, 20px); }
+          75%  { transform: scale(1.05) translate(15px, 10px); }
+          100% { transform: scale(1)    translate(0px, 0px); }
+        }
+
         .sol-mockup { background: rgba(255,255,255,0.95); border: 1px solid rgba(0,0,0,0.08) !important; }
         .dark .sol-mockup { background: #111828; border-color: rgba(77,134,245,0.14) !important; }
         @media(max-width:768px){

@@ -46,7 +46,7 @@ const SERVICES = [
   },
   {
     id: 'm365',
-    href: '/solutions/microsoft-services/sharepoint', title: 'Microsoft 365 & Teams', dark: true,
+    href: '/solutions/microsoft-services/sharepoint', title: 'SharePoint & Microsoft 365', dark: true,
     tagline: 'Collaboration that works the way your teams do.',
     desc: 'Deploy, configure, and customise the full Microsoft 365 suite including Teams, SharePoint, and Exchange to drive adoption, productivity, and secure information management.',
     list: ['M365 tenant setup and governance', 'SharePoint intranet development', 'Teams app and bot integrations', 'Email security and compliance policies'],
