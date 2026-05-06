@@ -15,10 +15,6 @@ const DOMAINS = [
     desc: 'We help organizations harness AI, machine learning, and data engineering to uncover patterns, predict outcomes, and drive smarter decision-making at scale.',
     services: ['AI & Machine Learning', 'Computer Vision', 'Data Infrastructure', 'IoT & Connected Systems'],
     accent: '#4D86F5',
-    /* blob colors per card — all from design system */
-    blob1: '#1A56DB',
-    blob2: '#4D86F5',
-    blob3: '#0E2E75',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         <div style={{ marginBottom: 16 }}>
@@ -45,9 +41,6 @@ const DOMAINS = [
     desc: 'We engineer cloud-native platforms that form the backbone of modern digital products — fast, secure, and built for real-world demand.',
     services: ['Cloud Platform Setup (AWS/GCP)', 'DevOps & Automation', 'Security & Compliance', 'Infrastructure as Code'],
     accent: '#80A9FF',
-    blob1: '#4D86F5',
-    blob2: '#80A9FF',
-    blob3: '#1A56DB',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 12 }}>
@@ -70,9 +63,6 @@ const DOMAINS = [
     desc: 'We design, implement, and optimize Microsoft-powered business ecosystems — CRM, ERP, analytics, automation, and cloud — all working as one unified environment.',
     services: ['Microsoft CRM & ERP', 'Microsoft Automation & Analytics', 'Microsoft Cloud & Collaboration', 'Power Platform'],
     accent: '#4D86F5',
-    blob1: '#0E2E75',
-    blob2: '#1A56DB',
-    blob3: '#4D86F5',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
@@ -92,9 +82,6 @@ const DOMAINS = [
     desc: 'We design, implement, and optimize Salesforce ecosystems that help businesses manage customer relationships, automate operations, and scale engagement across channels.',
     services: ['Salesforce Implementation', 'Salesforce Support & Managed Services', 'Salesforce CPQ', 'AppExchange Solutions'],
     accent: '#80A9FF',
-    blob1: '#80A9FF',
-    blob2: '#4D86F5',
-    blob3: '#1A56DB',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         {[{ stage: 'Lead', count: 124, color: '#7A7A7A' }, { stage: 'Qualified', count: 87, color: '#4D86F5' }, { stage: 'Proposal', count: 43, color: '#1A56DB' }, { stage: 'Won', count: 31, color: '#22c55e' }].map(s => (
@@ -117,9 +104,6 @@ const DOMAINS = [
     desc: 'From web applications to mobile apps — we build fast, scalable, and beautiful digital products using modern tech stacks tailored to your business needs.',
     services: ['Web Application Development', 'Mobile App Development', 'Design & Quality Assurance', 'API & Backend Engineering'],
     accent: '#4D86F5',
-    blob1: '#1A56DB',
-    blob2: '#80A9FF',
-    blob3: '#4D86F5',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
         <div style={{ display: 'flex', gap: 6, marginBottom: 12 }}>
@@ -138,54 +122,42 @@ const DOMAINS = [
 const n = DOMAINS.length;
 const VH_PER_CARD = 80;
 
-/* ── Cursor-tracking mesh gradient layer ── */
-function MeshBg({ blob1, blob2, blob3 }: { blob1: string; blob2: string; blob3: string }) {
+/* ─────────────────────────────────────────────────────────────────────
+   MeshGradient
+   • A 200%×200% background with 4 radial colour stops
+   • Auto-animates via CSS keyframes (slow drift)
+   • Cursor nudges the background-position via spring motion values
+   ───────────────────────────────────────────────────────────────────── */
+function MeshGradient({ idx }: { idx: number }) {
+  /* Cursor position as 0-1 fractions */
   const rawX = useMotionValue(0.5);
   const rawY = useMotionValue(0.5);
 
-  /* Three springs with different lag — creates the layered blob feel */
-  const x1 = useSpring(rawX, { stiffness: 28, damping: 18, mass: 2.5 });
-  const y1 = useSpring(rawY, { stiffness: 28, damping: 18, mass: 2.5 });
-  const x2 = useSpring(rawX, { stiffness: 14, damping: 22, mass: 4 });
-  const y2 = useSpring(rawY, { stiffness: 14, damping: 22, mass: 4 });
-  const x3 = useSpring(rawX, { stiffness: 8,  damping: 28, mass: 6 });
-  const y3 = useSpring(rawY, { stiffness: 8,  damping: 28, mass: 6 });
+  /* Gentle spring — feels like the gradient is floating */
+  const springX = useSpring(rawX, { stiffness: 40, damping: 25, mass: 1.5 });
+  const springY = useSpring(rawY, { stiffness: 40, damping: 25, mass: 1.5 });
 
-  /* Convert 0-1 → percentage string */
-  const left1 = useTransform(x1, v => `${v * 100}%`);
-  const top1  = useTransform(y1, v => `${v * 100}%`);
-  const left2 = useTransform(x2, v => `${v * 100}%`);
-  const top2  = useTransform(y2, v => `${v * 100}%`);
-  const left3 = useTransform(x3, v => `${v * 100}%`);
-  const top3  = useTransform(y3, v => `${v * 100}%`);
+  /* Map 0-1 → a small nudge range: -8% to +8% around 50% */
+  const bgX = useTransform(springX, [0, 1], ['42%', '58%']);
+  const bgY = useTransform(springY, [0, 1], ['42%', '58%']);
 
   const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    rawX.set((e.clientX - rect.left) / rect.width);
-    rawY.set((e.clientY - rect.top)  / rect.height);
+    const r = e.currentTarget.getBoundingClientRect();
+    rawX.set((e.clientX - r.left) / r.width);
+    rawY.set((e.clientY - r.top)  / r.height);
   }, [rawX, rawY]);
 
   return (
-    <div
+    <motion.div
       onMouseMove={onMouseMove}
-      style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'all', overflow: 'hidden' }}
-    >
-      <motion.div style={{
-        position: 'absolute', width: '70vw', height: '70vw', borderRadius: '50%',
-        background: blob1, filter: 'blur(100px)', opacity: 0.35,
-        left: left1, top: top1, translateX: '-50%', translateY: '-50%', pointerEvents: 'none',
-      }} />
-      <motion.div style={{
-        position: 'absolute', width: '55vw', height: '55vw', borderRadius: '50%',
-        background: blob2, filter: 'blur(120px)', opacity: 0.28,
-        left: left2, top: top2, translateX: '-50%', translateY: '-50%', pointerEvents: 'none',
-      }} />
-      <motion.div style={{
-        position: 'absolute', width: '45vw', height: '45vw', borderRadius: '50%',
-        background: blob3, filter: 'blur(140px)', opacity: 0.22,
-        left: left3, top: top3, translateX: '-50%', translateY: '-50%', pointerEvents: 'none',
-      }} />
-    </div>
+      className={`sol-mesh-grad sol-mesh-grad-${idx}`}
+      style={{
+        position: 'absolute', inset: 0, zIndex: 0,
+        backgroundSize: '200% 200%',
+        backgroundPositionX: bgX,
+        backgroundPositionY: bgY,
+      }}
+    />
   );
 }
 
@@ -230,8 +202,8 @@ function DomainCard({
         overflow: 'hidden',
       }}
     >
-      {/* Cursor-tracking mesh gradient */}
-      <MeshBg blob1={domain.blob1} blob2={domain.blob2} blob3={domain.blob3} />
+      {/* Mesh gradient — auto-animates + cursor-reactive */}
+      <MeshGradient idx={i} />
       <NoiseOverlay />
 
       {/* Content */}
@@ -245,7 +217,6 @@ function DomainCard({
 
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }} className="sol-row">
-
             <div style={{ order: isEven ? 1 : 2 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
                 <div style={{ width: 42, height: 42, borderRadius: 12, background: 'rgba(26,86,219,0.14)', border: '1px solid rgba(77,134,245,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -261,14 +232,12 @@ function DomainCard({
                   {domain.tag}
                 </span>
               </div>
-
               <h3 style={{ fontSize: 'clamp(24px,3vw,40px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', marginBottom: 12, lineHeight: 1.1 }}>
                 {domain.tagline}
               </h3>
               <p style={{ fontSize: 15, color: 'var(--fg-3)', lineHeight: 1.75, marginBottom: 22, maxWidth: 440 }}>
                 {domain.desc}
               </p>
-
               <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 28 }}>
                 {domain.services.map(s => (
                   <li key={s} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--fg-2)' }}>
@@ -277,13 +246,10 @@ function DomainCard({
                   </li>
                 ))}
               </ul>
-
               <Link href={domain.href} style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: '#1A56DB', color: '#fff',
-                fontSize: 13, fontWeight: 700, borderRadius: 10,
-                padding: '11px 20px', textDecoration: 'none',
-                boxShadow: '0 4px 18px rgba(26,86,219,0.32)',
+                background: '#1A56DB', color: '#fff', fontSize: 13, fontWeight: 700, borderRadius: 10,
+                padding: '11px 20px', textDecoration: 'none', boxShadow: '0 4px 18px rgba(26,86,219,0.32)',
                 transition: 'background 0.2s, transform 0.2s',
               }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#0E2E75'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
@@ -291,7 +257,6 @@ function DomainCard({
                 Learn More <ArrowRight size={13} strokeWidth={2} />
               </Link>
             </div>
-
             <div style={{ order: isEven ? 2 : 1 }}>
               <div className="sol-mockup" style={{ padding: 28, borderRadius: 20, boxShadow: '0 20px 56px rgba(26,86,219,0.12)', border: '1px solid var(--card-border)' }}>
                 {domain.mockup}
@@ -326,6 +291,111 @@ export default function SolutionsSection() {
       </div>
 
       <style>{`
+        /* ── Mesh gradient: 4 radial stops on a 200×200% canvas ──
+           Light theme: soft blue-to-white tones, not too dark
+           Dark theme:  richer blues
+           Auto-drifts via keyframe; cursor nudges via motion value
+        ── */
+
+        .sol-mesh-grad {
+          pointer-events: none;
+          /* default — overridden per card */
+          background-image:
+            radial-gradient(ellipse 80% 70% at 20% 20%, #c8d9ff 0%, transparent 60%),
+            radial-gradient(ellipse 70% 80% at 80% 80%, #b3c9ff 0%, transparent 60%),
+            radial-gradient(ellipse 60% 60% at 60% 10%, #dce8ff 0%, transparent 55%),
+            radial-gradient(ellipse 55% 65% at 10% 80%, #e8f0ff 0%, transparent 55%);
+          animation: meshDrift 18s ease-in-out infinite;
+        }
+
+        /* Each card: slightly different colour mix + animation phase */
+        .sol-mesh-grad-0 {
+          background-image:
+            radial-gradient(ellipse 80% 70% at 15% 25%, #b8d0ff 0%, transparent 60%),
+            radial-gradient(ellipse 70% 80% at 85% 75%, #c5daff 0%, transparent 60%),
+            radial-gradient(ellipse 65% 55% at 55% 5%,  #dce8ff 0%, transparent 55%),
+            radial-gradient(ellipse 50% 60% at 5%  85%, #e4eeff 0%, transparent 55%);
+          animation-delay: 0s;
+        }
+        .sol-mesh-grad-1 {
+          background-image:
+            radial-gradient(ellipse 75% 80% at 80% 20%, #c0d5ff 0%, transparent 60%),
+            radial-gradient(ellipse 80% 65% at 10% 80%, #b0c8ff 0%, transparent 60%),
+            radial-gradient(ellipse 60% 70% at 50% 90%, #d8e6ff 0%, transparent 55%),
+            radial-gradient(ellipse 55% 55% at 90% 50%, #e0ebff 0%, transparent 55%);
+          animation-delay: -4s;
+        }
+        .sol-mesh-grad-2 {
+          background-image:
+            radial-gradient(ellipse 70% 75% at 50% 10%, #bdd3ff 0%, transparent 60%),
+            radial-gradient(ellipse 75% 70% at 5%  60%, #cad9ff 0%, transparent 60%),
+            radial-gradient(ellipse 65% 60% at 90% 85%, #b8ccff 0%, transparent 55%),
+            radial-gradient(ellipse 55% 65% at 60% 50%, #e2ecff 0%, transparent 55%);
+          animation-delay: -8s;
+        }
+        .sol-mesh-grad-3 {
+          background-image:
+            radial-gradient(ellipse 80% 65% at 10% 10%, #c2d6ff 0%, transparent 60%),
+            radial-gradient(ellipse 65% 80% at 90% 90%, #b5caff 0%, transparent 60%),
+            radial-gradient(ellipse 70% 60% at 70% 30%, #d5e4ff 0%, transparent 55%),
+            radial-gradient(ellipse 55% 70% at 20% 70%, #e0eaff 0%, transparent 55%);
+          animation-delay: -12s;
+        }
+        .sol-mesh-grad-4 {
+          background-image:
+            radial-gradient(ellipse 75% 70% at 30% 80%, #bfd4ff 0%, transparent 60%),
+            radial-gradient(ellipse 70% 75% at 75% 15%, #c8daff 0%, transparent 60%),
+            radial-gradient(ellipse 60% 65% at 5%  30%, #d0e0ff 0%, transparent 55%),
+            radial-gradient(ellipse 55% 60% at 85% 60%, #e4eeff 0%, transparent 55%);
+          animation-delay: -16s;
+        }
+
+        /* Dark theme — same positions, richer blues */
+        .dark .sol-mesh-grad-0 {
+          background-image:
+            radial-gradient(ellipse 80% 70% at 15% 25%, #1A56DB 0%, transparent 60%),
+            radial-gradient(ellipse 70% 80% at 85% 75%, #0E2E75 0%, transparent 60%),
+            radial-gradient(ellipse 65% 55% at 55% 5%,  #4D86F5 0%, transparent 55%),
+            radial-gradient(ellipse 50% 60% at 5%  85%, #0A1F4F 0%, transparent 55%);
+        }
+        .dark .sol-mesh-grad-1 {
+          background-image:
+            radial-gradient(ellipse 75% 80% at 80% 20%, #4D86F5 0%, transparent 60%),
+            radial-gradient(ellipse 80% 65% at 10% 80%, #1A56DB 0%, transparent 60%),
+            radial-gradient(ellipse 60% 70% at 50% 90%, #0E2E75 0%, transparent 55%),
+            radial-gradient(ellipse 55% 55% at 90% 50%, #80A9FF 0%, transparent 55%);
+        }
+        .dark .sol-mesh-grad-2 {
+          background-image:
+            radial-gradient(ellipse 70% 75% at 50% 10%, #1A56DB 0%, transparent 60%),
+            radial-gradient(ellipse 75% 70% at 5%  60%, #4D86F5 0%, transparent 60%),
+            radial-gradient(ellipse 65% 60% at 90% 85%, #0E2E75 0%, transparent 55%),
+            radial-gradient(ellipse 55% 65% at 60% 50%, #80A9FF 0%, transparent 55%);
+        }
+        .dark .sol-mesh-grad-3 {
+          background-image:
+            radial-gradient(ellipse 80% 65% at 10% 10%, #0E2E75 0%, transparent 60%),
+            radial-gradient(ellipse 65% 80% at 90% 90%, #1A56DB 0%, transparent 60%),
+            radial-gradient(ellipse 70% 60% at 70% 30%, #4D86F5 0%, transparent 55%),
+            radial-gradient(ellipse 55% 70% at 20% 70%, #80A9FF 0%, transparent 55%);
+        }
+        .dark .sol-mesh-grad-4 {
+          background-image:
+            radial-gradient(ellipse 75% 70% at 30% 80%, #4D86F5 0%, transparent 60%),
+            radial-gradient(ellipse 70% 75% at 75% 15%, #1A56DB 0%, transparent 60%),
+            radial-gradient(ellipse 60% 65% at 5%  30%, #0E2E75 0%, transparent 55%),
+            radial-gradient(ellipse 55% 60% at 85% 60%, #80A9FF 0%, transparent 55%);
+        }
+
+        /* Auto-drift: slowly shifts the 200×200% canvas */
+        @keyframes meshDrift {
+          0%   { background-position: 20% 20%, 80% 80%, 55% 5%,  5%  85%; }
+          25%  { background-position: 35% 10%, 65% 90%, 70% 20%, 20% 70%; }
+          50%  { background-position: 60% 40%, 40% 60%, 30% 70%, 75% 30%; }
+          75%  { background-position: 25% 70%, 75% 30%, 80% 40%, 40% 60%; }
+          100% { background-position: 20% 20%, 80% 80%, 55% 5%,  5%  85%; }
+        }
+
         .sol-mockup { background: rgba(255,255,255,0.92); border: 1px solid rgba(0,0,0,0.08) !important; }
         .dark .sol-mockup { background: rgba(17,24,40,0.85); border-color: rgba(77,134,245,0.14) !important; }
         @media(max-width:768px){
