@@ -186,7 +186,7 @@ export default function BlogPostPage() {
 
         <div className="container" style={{ position: 'relative', zIndex: 3 }}>
           <motion.div variants={stagger} initial="hidden" animate="visible"
-            style={{ maxWidth: 820, margin: '0 auto' }}>
+            style={{ maxWidth: 860, margin: '0 auto' }}>
 
             <motion.div variants={FV} transition={FT}>
               {/* Breadcrumb — left aligned */}

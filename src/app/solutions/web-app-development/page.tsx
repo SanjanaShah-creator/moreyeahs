@@ -278,7 +278,7 @@ export default function WebAppDevelopmentPage() {
             {/* TL */}
             <motion.div
               variants={FL(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
-              className="glass" style={{ padding: '40px', display: 'flex', flexDirection: 'column', minHeight: 360, gridArea: 'tl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)', minWidth: '760px' }}
+              className="glass" style={{ padding: '40px', display: 'flex', flexDirection: 'column', minHeight: 360, gridArea: 'tl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
               <div className="ds-bento-icon" style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(26,86,219,0.10)', border: '1px solid rgba(77,134,245,0.20)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24 }}>
                 <Code2 size={22} color="currentColor" strokeWidth={1.5} />
@@ -326,7 +326,7 @@ export default function WebAppDevelopmentPage() {
               </div>
               <Link href="/blog/react-vs-angular" style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', textDecoration: 'none', minHeight: 0 }}>
                 <div style={{ height: 160, flexShrink: 0, backgroundImage: 'url(https://dev.moreyeahs.com/wp-content/uploads/2025/09/React-vs-Angular-–-Which-Framework-Fits-Your-Project-Best.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
-                <div style={{ padding: '14px 16px 16px', background: 'var(--card-bg)', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <div style={{ padding: '14px 16px 16px', background: 'var(--bg)', display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <span style={{ fontSize: 10, fontWeight: 700, color: '#4D86F5', background: 'rgba(77,134,245,0.10)', border: '1px solid rgba(77,134,245,0.22)', padding: '3px 10px', borderRadius: 100, alignSelf: 'flex-start' }}>Web Dev</span>
                   <p style={{ fontSize: 12, fontWeight: 700, color: 'var(--fg)', lineHeight: 1.4, margin: 0 }}>React vs Angular: Which Framework Fits Your Project?</p>
                   <p style={{ fontSize: 11, color: 'var(--fg-3)', lineHeight: 1.55, margin: 0 }}>Choosing the right framework shapes your entire development experience...</p>
@@ -392,14 +392,20 @@ export default function WebAppDevelopmentPage() {
 
           <div style={{ display: 'flex', flexDirection: 'column' }} className="ds-svc-stack">
             {SERVICES.map((svc, i) => (
-              <div key={svc.id} style={{
-                position: 'sticky', top: `${80 + i * 20}px`, zIndex: i + 2,
-                borderRadius: 24, overflow: 'hidden',
-                backgroundImage: `url('/images/${svc.dark ? 'Services Card Slide 2.png' : 'Services Card Slide 1.png'}')`,
-                backgroundSize: 'cover', backgroundPosition: 'center',
-                border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid var(--card-border)',
-                padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
-              }}>
+              <motion.div
+                key={svc.id}
+                initial={{ opacity: 0, y: 60, filter: 'blur(6px)' }}
+                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.85, ease: EXPO, delay: i * 0.06 }}
+                style={{
+                  position: 'sticky', top: `${80 + i * 20}px`, zIndex: i + 2,
+                  borderRadius: 24, overflow: 'hidden',
+                  backgroundImage: `url('/images/${svc.dark ? 'Services Card Slide 2.png' : 'White Service card New.png'}')`,
+                  backgroundSize: 'cover', backgroundPosition: 'center',
+                  border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid var(--card-border)',
+                  padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
+                }}>
                 <div style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.06)', backdropFilter: 'blur(3px)' }} />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 60, position: 'relative', zIndex: 1 }} className="svc-card-inner">
                   <div style={{ flex: '0 0 auto', maxWidth: 280 }}>
@@ -424,7 +430,7 @@ export default function WebAppDevelopmentPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
           <div style={{ height: 120 }} />

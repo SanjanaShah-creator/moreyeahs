@@ -8,6 +8,7 @@ import FloatingChat from '@/components/shared/FloatingChat';
 import CursorGlow from '@/components/shared/CursorGlow';
 import LeadCapturePopup from '@/components/shared/LeadCapturePopup';
 import AnnouncementBanner from '@/components/shared/AnnouncementBanner';
+import ScrollToTop from '@/components/shared/ScrollToTop';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -132,6 +133,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <CursorGlow />
           <AnnouncementBanner />
+          <ScrollToTop />
           <Navbar />
           <main>{children}</main>
           <Footer />

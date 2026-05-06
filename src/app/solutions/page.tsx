@@ -77,7 +77,7 @@ export default function SolutionsPage() {
               <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 20 }}>Our Solutions</div>
             </motion.div>
             <motion.h1 variants={FV} transition={FT} style={{ fontSize: 'clamp(32px,5vw,58px)', fontWeight: 800, letterSpacing: '-0.04em', color: 'var(--fg)', lineHeight: 1.06, marginBottom: 18 }}>
-              Five Domains.<br /><span style={{ background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>One Trusted Partner.</span>
+              Five Solutions.<br /><span style={{ background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>One Trusted Partner.</span>
             </motion.h1>
             <motion.p variants={FV} transition={FT} style={{ fontSize: 16, color: 'var(--fg-3)', lineHeight: 1.75, marginBottom: 36 }}>
               From data science to cloud infrastructure, from Microsoft ecosystems to custom-built products — MoreYeahs brings end-to-end engineering capability under one roof.

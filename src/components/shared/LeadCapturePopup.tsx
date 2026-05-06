@@ -8,7 +8,7 @@ import { submitForm } from '@/lib/webhook';
 
 const STORAGE_KEY = 'my_lead_popup_ts';
 const SUPPRESS_DAYS = 7;
-const TRIGGER_MS = 35000; // 35 seconds idle / on-page
+const TRIGGER_MS = 30000; // 30 seconds after page load
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -43,29 +43,11 @@ export default function LeadCapturePopup() {
   useEffect(() => {
     if (!shouldShow()) return;
 
-    /* start timer on first activity */
-    const onActivity = () => {
-      if (!activityRef.current) {
-        activityRef.current = true;
-        schedulePopup();
-      }
-    };
-
-    /* also start timer if no activity after 5 seconds (user landed and is reading) */
-    const passiveTimer = setTimeout(() => {
-      if (!activityRef.current) schedulePopup();
-    }, 5000);
-
-    window.addEventListener('scroll', onActivity, { passive: true, once: true });
-    window.addEventListener('mousemove', onActivity, { passive: true, once: true });
-    window.addEventListener('click', onActivity, { passive: true, once: true });
+    /* start timer immediately on page load */
+    schedulePopup();
 
     return () => {
-      clearTimeout(passiveTimer);
       if (timerRef.current) clearTimeout(timerRef.current);
-      window.removeEventListener('scroll', onActivity);
-      window.removeEventListener('mousemove', onActivity);
-      window.removeEventListener('click', onActivity);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);

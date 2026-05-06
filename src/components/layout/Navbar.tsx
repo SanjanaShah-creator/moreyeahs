@@ -356,7 +356,11 @@ export default function Navbar() {
         ? Math.max(heroEl.offsetTop + heroEl.offsetHeight - 60, 150)
         : window.innerHeight * 0.88;
     };
-    const onScroll = () => setPastHero(window.scrollY > getHeroThreshold());
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y < 80) { setPastHero(false); return; }
+      setPastHero(y > getHeroThreshold());
+    };
     const onResize = () => setScreenWide(window.innerWidth > 900);
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize, { passive: true });
@@ -413,7 +417,7 @@ export default function Navbar() {
               backdropFilter: (solOpen || insOpen) ? 'blur(20px)' : 'none',
               WebkitBackdropFilter: (solOpen || insOpen) ? 'blur(20px)' : 'none',
               borderBottom: (solOpen || insOpen) ? '1px solid var(--nav-border)' : '1px solid transparent',
-              transition: 'background 0.25s, backdrop-filter 0.25s, border-color 0.25s',
+              transition: 'background 0.25s, backdrop-filter 0.25s, border-color 0.25s, top 0.35s ease',
             }}
           >
             <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>

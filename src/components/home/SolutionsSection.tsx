@@ -275,7 +275,7 @@ export default function SolutionsSection() {
       </div>
 
       <style>{`
-        .sol-mockup { background: rgba(255,255,255,0.95); }
+        .sol-mockup { background: rgba(255,255,255,0.95); border: 1px solid rgba(0,0,0,0.08) !important; }
         .dark .sol-mockup { background: #111828; border-color: rgba(77,134,245,0.14) !important; }
         @media(max-width:768px){
           .sol-row{grid-template-columns:1fr!important;gap:28px!important}

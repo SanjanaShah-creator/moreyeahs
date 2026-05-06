@@ -271,25 +271,13 @@ export default function PlaybookPage() {
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
 
-          {/* Breadcrumb + PDF button row */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, marginBottom: 32, flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--fg-3)' }}>
-              <Link href="/resources" style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--fg-3)', textDecoration: 'none', fontWeight: 600 }}>
-                <ArrowLeft size={12} strokeWidth={2} /> Resources
-              </Link>
-              <ChevronRight size={12} strokeWidth={2} />
-              <span style={{ color: BLUE, fontWeight: 700 }}>{playbook.title}</span>
-            </div>
-            <button
-              onClick={handlePDF}
-              disabled={exporting}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '8px 16px', borderRadius: 9, background: exporting ? 'rgba(26,86,219,0.5)' : BLUE, color: '#fff', fontSize: 12, fontWeight: 700, border: 'none', cursor: exporting ? 'not-allowed' : 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 14px rgba(26,86,219,0.28)', transition: 'filter .2s' }}
-              onMouseEnter={e => { if (!exporting) (e.currentTarget as HTMLElement).style.filter = 'brightness(1.1)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = 'none'; }}
-            >
-              <Download size={13} strokeWidth={1.8} />
-              {exporting ? 'Generating…' : 'Download PDF'}
-            </button>
+          {/* Breadcrumb row */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--fg-3)', marginBottom: 32 }}>
+            <Link href="/resources" style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--fg-3)', textDecoration: 'none', fontWeight: 600 }}>
+              <ArrowLeft size={12} strokeWidth={2} /> Resources
+            </Link>
+            <ChevronRight size={12} strokeWidth={2} />
+            <span style={{ color: BLUE, fontWeight: 700 }}>{playbook.title}</span>
           </div>
 
           <div className="playbook-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 56, alignItems: 'start' }}>

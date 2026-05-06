@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, Zap } from 'lucide-react';
 
 const DISMISS_KEY = 'ann_wahinn_v1';
 
 export default function AnnouncementBanner() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [scrolledPast, setScrolledPast] = useState(false);
 
@@ -17,6 +19,12 @@ export default function AnnouncementBanner() {
       document.documentElement.style.setProperty('--ann-h', '0px');
     }
   }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+    setScrolledPast(false);
+    document.documentElement.style.setProperty('--ann-h', '44px');
+  }, [pathname, visible]);
 
   useEffect(() => {
     if (!visible) return;
