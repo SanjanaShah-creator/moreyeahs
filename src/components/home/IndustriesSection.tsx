@@ -57,9 +57,8 @@ const INDUSTRIES = [
   },
 ];
 
-const n = INDUSTRIES.length;
+const IND_COUNT = INDUSTRIES.length;
 
-// Preload a video by fetching a small range so the browser caches it
 function preloadVideo(src: string) {
   const video = document.createElement('video');
   video.preload = 'auto';
@@ -76,7 +75,6 @@ export default function IndustriesSection() {
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const preloadedRef = useRef<Set<string>>(new Set());
 
-  // Only activate scroll tracking when section is visible
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
@@ -86,12 +84,11 @@ export default function IndustriesSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Preload next/prev videos when active changes
   useEffect(() => {
     if (!isVisible) return;
     const toPreload = [
-      INDUSTRIES[(active + 1) % n].video,
-      INDUSTRIES[(active - 1 + n) % n].video,
+      INDUSTRIES[(active + 1) % IND_COUNT].video,
+      INDUSTRIES[(active - 1 + IND_COUNT) % IND_COUNT].video,
     ];
     toPreload.forEach(src => {
       if (!preloadedRef.current.has(src)) {
@@ -108,8 +105,8 @@ export default function IndustriesSection() {
     if (scrolled < 0) return;
     const usableHeight = containerRef.current.offsetHeight - window.innerHeight;
     if (usableHeight <= 0) return;
-    const sectionH = usableHeight / n;
-    const idx = Math.min(Math.floor(scrolled / sectionH), n - 1);
+    const sectionH = usableHeight / IND_COUNT;
+    const idx = Math.min(Math.floor(scrolled / sectionH), IND_COUNT - 1);
     if (idx >= 0) setActive(idx);
   }, [isVisible]);
 
@@ -118,13 +115,10 @@ export default function IndustriesSection() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  // Play video without forcing a full reload
   const playVideo = useCallback((ref: React.RefObject<HTMLVideoElement | null>, src: string) => {
     const el = ref.current;
     if (!el) return;
-    if (el.src !== window.location.origin + src && el.getAttribute('src') !== src) {
-      el.src = src;
-    }
+    if (el.getAttribute('src') !== src) el.src = src;
     el.play().catch(() => {});
   }, []);
 
@@ -182,7 +176,7 @@ export default function IndustriesSection() {
     <section style={{ background: 'var(--bg-2)', position: 'relative' }}>
       <NoiseOverlay />
 
-      <div ref={containerRef} style={{ position: 'relative', height: `${n * 30}vh`, zIndex: 2 }}>
+      <div ref={containerRef} style={{ position: 'relative', height: `${IND_COUNT * 30}vh`, zIndex: 2 }}>
 
         {/* ══ DESKTOP ══ */}
         <div className="ind-desktop-sticky" style={{ position: 'sticky', top: 0, height: '100vh', display: 'grid', gridTemplateColumns: '38% 62%', overflow: 'hidden' }}>
@@ -206,7 +200,7 @@ export default function IndustriesSection() {
 
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 0, position: 'relative', zIndex: 1 }}>
               {[-2, -1, 0, 1, 2].map(offset => {
-                const idx = (active + offset + n) % n;
+                const idx = (active + offset + IND_COUNT) % IND_COUNT;
                 const isAct = offset === 0;
                 const dist = Math.abs(offset);
                 return (
@@ -249,7 +243,6 @@ export default function IndustriesSection() {
             </div>
           </div>
 
-          {/* RIGHT: single persistent video element — src swapped, no reload */}
           <div style={{ position: 'relative', overflow: 'hidden' }}>
             <video
               ref={desktopVideoRef}
@@ -286,7 +279,7 @@ export default function IndustriesSection() {
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', width: '100%' }}>
                 {[-2, -1, 0, 1, 2].map(offset => {
-                  const idx = (active + offset + n) % n;
+                  const idx = (active + offset + IND_COUNT) % IND_COUNT;
                   const isAct = offset === 0;
                   const dist = Math.abs(offset);
                   return (

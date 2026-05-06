@@ -4,11 +4,6 @@ import nodemailer from 'nodemailer';
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxd3PMsdVQzhSvCNDuZtXb4rLwBGhnYFXcOZfDZemdXfyd6apt3Xf_RYp99BjcQXlju/exec';
 const HR_EMAIL = 'digitalmoreyeahs@gmail.com';
 
-// Allow large payloads for base64 resume uploads
-export const config = {
-  api: { bodyParser: { sizeLimit: '10mb' } },
-};
-
 export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
