@@ -16,7 +16,12 @@ const SOLUTIONS = [
     tagline: 'From raw data to decisions',
     href: '/solutions/data-science',
     desc: 'We help organizations harness AI, machine learning, and data engineering to uncover patterns, predict outcomes, and drive smarter decision-making at scale.',
-    services: ['AI & Machine Learning', 'Computer Vision', 'Data Infrastructure', 'IoT & Connected Systems'],
+    services: [
+      { label: 'AI & Machine Learning',    href: '/solutions/data-science/ai-ml' },
+      { label: 'Computer Vision',           href: '/solutions/data-science/computer-vision' },
+      { label: 'Data Infrastructure',       href: '/solutions/data-science/data-infrastructure' },
+      { label: 'IoT & Connected Systems',   href: '/solutions/data-science/iot-connected-systems' },
+    ],
     accent: '#4D86F5',
     stat: { value: '94.2%', label: 'Avg. model accuracy' },
   },
@@ -26,7 +31,10 @@ const SOLUTIONS = [
     tagline: 'Scalable, reliable, automated',
     href: '/solutions/cloud-infrastructure',
     desc: 'We engineer cloud-native platforms that form the backbone of modern digital products — fast, secure, and built for real-world demand.',
-    services: ['Cloud Platform Setup (AWS/GCP/Azure)', 'DevOps & Automation'],
+    services: [
+      { label: 'Cloud Platform Setup (AWS/GCP/Azure)', href: '/solutions/cloud-infrastructure/cloud-platform-setup' },
+      { label: 'DevOps & Automation',                  href: '/solutions/cloud-infrastructure/devops-automation' },
+    ],
     accent: '#80A9FF',
     stat: { value: '99.99%', label: 'Uptime SLA delivered' },
   },
@@ -36,7 +44,12 @@ const SOLUTIONS = [
     tagline: 'Connected Microsoft ecosystems',
     href: '/solutions/microsoft-services',
     desc: 'We design, implement, and optimize Microsoft-powered business ecosystems — CRM, ERP, analytics, automation, and cloud — all working as one unified environment.',
-    services: ['Microsoft CRM & ERP', 'Microsoft Automation & Analytics', 'Azure', 'SharePoint'],
+    services: [
+      { label: 'Microsoft CRM & ERP',                href: '/solutions/microsoft-services/crm-erp' },
+      { label: 'Microsoft Automation & Analytics',   href: '/solutions/microsoft-services/automation-analytics' },
+      { label: 'Azure',                              href: '/solutions/microsoft-services/azure' },
+      { label: 'SharePoint',                         href: '/solutions/microsoft-services/sharepoint' },
+    ],
     accent: '#4D86F5',
     stat: { value: '60%', label: 'Faster deployments' },
   },
@@ -46,7 +59,10 @@ const SOLUTIONS = [
     tagline: 'Salesforce built right',
     href: '/solutions/salesforce-services',
     desc: 'We design, implement, and optimize Salesforce ecosystems that help businesses manage customer relationships, automate operations, and scale engagement across channels.',
-    services: ['Salesforce Support & Managed Services', 'Salesforce Implementation'],
+    services: [
+      { label: 'Salesforce Support & Managed Services', href: '/solutions/salesforce-services/managed-services' },
+      { label: 'Salesforce Implementation',             href: '/solutions/salesforce-services/implementation' },
+    ],
     accent: '#80A9FF',
     stat: { value: '3×', label: 'Pipeline increase' },
   },
@@ -56,7 +72,11 @@ const SOLUTIONS = [
     tagline: 'Products built to scale',
     href: '/solutions/web-app-development',
     desc: 'From web applications to mobile apps — we build fast, scalable, and beautiful digital products using modern tech stacks tailored to your business needs.',
-    services: ['Web Application Development', 'Mobile App Development', 'Design & Quality'],
+    services: [
+      { label: 'Web Application Development', href: '/solutions/web-app-development/web-application' },
+      { label: 'Mobile App Development',       href: '/solutions/web-app-development/mobile-app' },
+      { label: 'Design & Quality',             href: '/solutions/web-app-development/design-quality' },
+    ],
     accent: '#4D86F5',
     stat: { value: '20K+', label: 'DAUs powered' },
   },
@@ -121,11 +141,15 @@ export default function SolutionsPage() {
                     <p style={{ fontSize: 15, color: 'var(--fg-3)', lineHeight: 1.78, marginBottom: 24, maxWidth: 460 }}>{sol.desc}</p>
                     <ul style={{ display: 'flex', flexDirection: 'column', gap: 9, marginBottom: 28 }}>
                       {sol.services.map(s => (
-                        <li key={s} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--fg-2)' }}>
-                          <span style={{ width: 20, height: 20, borderRadius: 6, background: 'rgba(26,86,219,0.10)', border: '1px solid rgba(77,134,245,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                            <sol.Icon size={11} color={sol.accent} strokeWidth={2} />
-                          </span>
-                          {s}
+                        <li key={s.label}>
+                          <Link href={s.href} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'var(--fg-2)', textDecoration: 'none', transition: 'color 0.15s' }}
+                            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = sol.accent; }}
+                            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>
+                            <span style={{ width: 20, height: 20, borderRadius: 6, background: 'rgba(26,86,219,0.10)', border: '1px solid rgba(77,134,245,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <sol.Icon size={11} color={sol.accent} strokeWidth={2} />
+                            </span>
+                            {s.label}
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -146,9 +170,9 @@ export default function SolutionsPage() {
                       <div style={{ height: 1, background: 'var(--border)', margin: '24px 0' }} />
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                         {sol.services.slice(0, 3).map(s => (
-                          <div key={s} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--fg-3)' }}>
+                          <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--fg-3)' }}>
                             <CheckCircle size={12} color={sol.accent} strokeWidth={1.5} />
-                            {s}
+                            {s.label}
                           </div>
                         ))}
                       </div>
