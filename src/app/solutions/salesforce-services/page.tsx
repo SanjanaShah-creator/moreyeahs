@@ -32,7 +32,7 @@ const SERVICES = [
     href: '/solutions/salesforce-services/implementation',
   },
   {
-    id: 'managed-services', title: 'Salesforce Managed Services', dark: true,
+    id: 'managed-services', title: 'Salesforce Support & Managed Services', dark: true,
     tagline: 'Keep your Salesforce org healthy and growing.',
     desc: 'Ongoing support, optimisation, and development for your Salesforce org â€” so your team always has a trusted partner to call when things need to change.',
     list: ['Org health monitoring and audits', 'Feature development and enhancements', 'User support and troubleshooting', 'Release management and upgrades'],

@@ -73,7 +73,7 @@ const SPECIALIZATIONS = [
 const SERVICES = [
   {
     id: 'aiml',
-    href: '/solutions/data-science/ai-ml', title: 'AI/ML & Intelligence', dark: false,
+    href: '/solutions/data-science/ai-ml', title: 'AI & Machine Learning', dark: false,
     tagline: 'Smarter systems. Better decisions.',
     desc: 'Turn data into intelligence that actually drives action.',
     list: ['Predictions replace assumptions', 'Models improve with every interaction', 'Decisions become data-driven', 'Intelligence scales across the business'],
@@ -87,14 +87,14 @@ const SERVICES = [
   },
   {
     id: 'de',
-    href: '/solutions/data-science/data-infrastructure', title: 'Data Engineering', dark: false,
+    href: '/solutions/data-science/data-infrastructure', title: 'Data Infrastructure', dark: false,
     tagline: 'Data, structured for impact.',
     desc: 'Build pipelines that make data reliable and ready.',
     list: ['Clean, trusted data at every step', 'Faster access to critical insights', 'Systems scale without breaking', 'Silos turn into unified pipelines'],
   },
   {
     id: 'iot',
-    href: '/solutions/data-science/iot-connected-systems', title: 'IOT', dark: true,
+    href: '/solutions/data-science/iot-connected-systems', title: 'IoT & Connected Systems', dark: true,
     tagline: 'Connected devices. Connected intelligence.',
     desc: 'Bridge the physical and digital worlds seamlessly.',
     list: ['Real-time monitoring of assets', 'Predictive maintenance replaces downtime', 'Operations become proactive', 'Data flows from devices to decisions'],

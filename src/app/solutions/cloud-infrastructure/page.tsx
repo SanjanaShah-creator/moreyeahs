@@ -26,31 +26,17 @@ const SPECIALIZATIONS = [
 const SERVICES = [
   {
     id: 'aws',
-    href: '/solutions/cloud-infrastructure/cloud-platform-setup', title: 'AWS & Cloud Architecture', dark: false,
+    href: '/solutions/cloud-infrastructure/cloud-platform-setup', title: 'Cloud Platform Setup (AWS/GCP/Azure)', dark: false,
     tagline: 'Infrastructure built for enterprise scale.',
     desc: 'Design and deploy cloud-native platforms across AWS, GCP, and Azure that are resilient, cost-optimised, and ready for real-world demand.',
     list: ['High-availability architectures', 'Cost optimisation frameworks', 'Security and compliance by design', 'Multi-region deployment strategies'],
   },
   {
     id: 'devops',
-    href: '/solutions/cloud-infrastructure/devops-automation', title: 'DevOps & CI/CD Pipelines', dark: true,
+    href: '/solutions/cloud-infrastructure/devops-automation', title: 'DevOps & Automation', dark: true,
     tagline: 'Ship faster. Break less. Sleep better.',
     desc: 'Automate your software delivery lifecycle with battle-tested CI/CD pipelines, container orchestration, and zero-downtime deployment workflows.',
     list: ['Pipeline automation end to end', 'Container orchestration with Kubernetes', 'Zero-downtime blue-green deployments', 'Monitoring and alerting integrated'],
-  },
-  {
-    id: 'migration',
-    href: '/solutions/cloud-infrastructure/cloud-platform-setup', title: 'Cloud Migration', dark: false,
-    tagline: 'Move to the cloud without the chaos.',
-    desc: 'From lift-and-shift to full re-architecture, we migrate your systems to the cloud with rigorous planning that eliminates risk and minimises downtime.',
-    list: ['Workload assessment and planning', 'Data migration with zero loss', 'Legacy system modernisation', 'Post-migration optimisation'],
-  },
-  {
-    id: 'iac',
-    href: '/solutions/cloud-infrastructure/devops-automation', title: 'Infrastructure as Code & Security', dark: true,
-    tagline: 'Consistent, auditable, reproducible infrastructure.',
-    desc: 'Manage your entire cloud estate through version-controlled code using Terraform, Pulumi, and CloudFormation with built-in security guardrails.',
-    list: ['Repeatable environment provisioning', 'Policy-as-code enforcement', 'Secrets management and rotation', 'Compliance reporting automated'],
   },
 ];
 
