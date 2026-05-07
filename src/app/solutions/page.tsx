@@ -78,7 +78,7 @@ const SOLUTIONS = [
       { label: 'Design & Quality',             href: '/solutions/web-app-development/design-quality' },
     ],
     accent: '#4D86F5',
-    stat: { value: '20K+', label: 'DAUs powered' },
+    stat: { value: '50K+', label: 'DAUs powered' },
   },
 ];
 

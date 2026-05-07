@@ -39,7 +39,7 @@ const DOMAINS = [
     tagline: 'Scalable, reliable, automated',
     href: '/solutions/cloud-infrastructure',
     desc: 'We engineer cloud-native platforms that form the backbone of modern digital products — fast, secure, and built for real-world demand.',
-    services: ['Cloud Platform Setup (AWS/GCP)', 'DevOps & Automation', 'Security & Compliance', 'Infrastructure as Code'],
+    services: ['Cloud Platform Setup (AWS/GCP/Azure)', 'DevOps & Automation'],
     accent: '#80A9FF',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
@@ -61,7 +61,7 @@ const DOMAINS = [
     tagline: 'Connected Microsoft ecosystems',
     href: '/solutions/microsoft-services',
     desc: 'We design, implement, and optimize Microsoft-powered business ecosystems — CRM, ERP, analytics, automation, and cloud — all working as one unified environment.',
-    services: ['Microsoft CRM & ERP', 'Microsoft Automation & Analytics', 'Microsoft Cloud & Collaboration', 'Power Platform'],
+    services: ['Microsoft CRM & ERP', 'Microsoft Automation & Analytics', 'Azure', 'SharePoint'],
     accent: '#4D86F5',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
@@ -80,7 +80,7 @@ const DOMAINS = [
     tagline: 'Salesforce built right',
     href: '/solutions/salesforce-services',
     desc: 'We design, implement, and optimize Salesforce ecosystems that help businesses manage customer relationships, automate operations, and scale engagement across channels.',
-    services: ['Salesforce Implementation', 'Salesforce Support & Managed Services', 'Salesforce CPQ', 'AppExchange Solutions'],
+    services: ['Salesforce Support & Managed Services', 'Salesforce Implementation'],
     accent: '#80A9FF',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>
@@ -102,7 +102,7 @@ const DOMAINS = [
     tagline: 'Products built to scale',
     href: '/solutions/web-app-development',
     desc: 'From web applications to mobile apps — we build fast, scalable, and beautiful digital products using modern tech stacks tailored to your business needs.',
-    services: ['Web Application Development', 'Mobile App Development', 'Design & Quality Assurance', 'API & Backend Engineering'],
+    services: ['Web Application Development', 'Mobile App Development', 'Design & Quality'],
     accent: '#4D86F5',
     mockup: (
       <div style={{ padding: 24, borderRadius: 16, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.15)' }}>

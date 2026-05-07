@@ -47,8 +47,8 @@ const LOOP = [...TESTIMONIALS, ...TESTIMONIALS];
 
 const STATS = [
   { value: '200+', label: 'Projects Delivered' },
-  { value: '98%',  label: 'Client Satisfaction' },
-  { value: '40+',  label: 'Countries Served' },
+  { value: '94%',  label: 'Client Satisfaction' },
+  { value: '10+',  label: 'Countries Served' },
 ];
 
 export default function TestimonialsSection() {

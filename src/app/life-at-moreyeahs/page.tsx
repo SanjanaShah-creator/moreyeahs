@@ -17,9 +17,9 @@ const stagger = { visible: { transition: { staggerChildren: 0.12 } } };
 
 const PRIDE_STATS = [
   { Icon: Award, value: '12', label: 'Years', sub: 'Total Industrial experience' },
-  { Icon: Globe2, value: '3000+', label: 'Satisfied Clients', sub: 'Relationships built through reliable delivery' },
-  { Icon: Users, value: '1600+', label: 'Successful Projects', sub: 'Ideas shipped into meaningful outcomes' },
-  { Icon: Layers, value: '48+', label: 'Services we offer', sub: 'Solutions across modern digital needs' },
+  { Icon: Globe2, value: '100+', label: 'Satisfied Clients', sub: 'Relationships built through reliable delivery' },
+  { Icon: Users, value: '200+', label: 'Successful Projects', sub: 'Ideas shipped into meaningful outcomes' },
+  { Icon: Layers, value: '15+', label: 'Services we offer', sub: 'Solutions across modern digital needs' },
 ];
 
 const PRIDE_EVENTS = [

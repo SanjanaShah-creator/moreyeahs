@@ -12,7 +12,7 @@ const data: ServicePageData = {
   stats: [
     { value: '4hr', label: 'Average response SLA' },
     { value: '99%', label: 'Client retention rate' },
-    { value: '200+', label: 'Orgs actively managed' },
+    { value: '20+', label: 'Global Clients' },
   ],
   accent: '#F59E0B',
   accentLight: 'rgba(245,158,11,0.08)',
