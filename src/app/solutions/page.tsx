@@ -58,7 +58,7 @@ const SOLUTIONS = [
     desc: 'From web applications to mobile apps — we build fast, scalable, and beautiful digital products using modern tech stacks tailored to your business needs.',
     services: ['Web Application Development', 'Mobile App Development', 'Design & Quality'],
     accent: '#4D86F5',
-    stat: { value: '80K+', label: 'DAUs powered' },
+    stat: { value: '20K+', label: 'DAUs powered' },
   },
 ];
 

@@ -264,13 +264,13 @@ export default function HeroSection() {
                   <img
                     src={p.lightSrc} alt={p.name}
                     className="logo-light"
-                    style={{ height: p.medium ? 72 : 100, maxWidth: 260, width: 'auto', objectFit: 'contain' }}
+                    style={{ height: p.medium ? 80 : 108, maxWidth: 260, width: 'auto', objectFit: 'contain' }}
                   />
                   {/* Dark-theme logo (hidden via CSS class, shown in .dark) */}
                   <img
                     src={p.darkSrc} alt={p.name}
                     className="logo-dark"
-                    style={{ height: p.medium ? 72 : 100, maxWidth: 260, width: 'auto', objectFit: 'contain' }}
+                    style={{ height: p.medium ? 80 : 108, maxWidth: 260, width: 'auto', objectFit: 'contain' }}
                   />
                 </div>
               ))}

@@ -7,7 +7,7 @@ import NoiseOverlay from '@/components/ui/NoiseOverlay';
 import { EXPO, FL, FR, SC, STAGGER } from '@/lib/anim';
 
 const STATS = [
-  { Icon: Globe,  value: '100+', label: 'Global Clients',        sub: 'Empowering industry software experts worldwide' },
+  { Icon: Globe,  value: '20+',  label: 'Global Clients',        sub: 'Empowering industry software experts worldwide' },
   { Icon: Award,  value: '11+',  label: 'Years of Expertise',    sub: 'Driving high-impact solutions since 2014' },
   { Icon: Users,  value: '150+', label: 'In-House Team Members', sub: 'Expert team built to deliver any project' },
   { Icon: Layers, value: '20+',  label: 'Enterprise Projects',   sub: 'Complex builds, delivered on time' },

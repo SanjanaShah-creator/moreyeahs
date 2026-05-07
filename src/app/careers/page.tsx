@@ -218,7 +218,7 @@ const WORK_PREFS = ['All Preferences', 'Remote', 'Hybrid', 'On-site'];
 /* ─── Perks ─────────────────────────────────────────────────────────── */
 const PERKS = [
   { Icon: Globe2,    title: 'Remote-Friendly',  desc: 'Work from anywhere. We hire across time zones with an async-first culture.' },
-  { Icon: TrendingUp,title: 'Growth Path',       desc: 'Clear career ladders, mentorship programmes, and ₹60K annual learning budgets.' },
+  { Icon: TrendingUp,title: 'Growth Path',       desc: 'Clear career ladders, mentorship programmes, and dedicated learning time to grow every year.' },
   { Icon: Heart,     title: 'Meaningful Work',   desc: 'Build AI, cloud, and enterprise systems that impact healthcare, fintech, and education.' },
   { Icon: Coffee,    title: 'Great Culture',      desc: 'Quarterly offsites, hackathons, flexible hours, and a team that ships and celebrates.' },
 ];
