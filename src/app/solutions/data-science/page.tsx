@@ -372,7 +372,7 @@ export default function DataSciencePage() {
                 <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass" width={160} height={160} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h3 style={{ fontSize: 'clamp(18px,1.8vw,26px)', fontWeight: 700, color: 'var(--fg)', lineHeight: 1.2, letterSpacing: '-0.02em' }}>
+                <h3 style={{ fontSize: 'clamp(24px,1.8vw,30px)', fontWeight: 700, color: 'var(--fg)', lineHeight: 1.2, letterSpacing: '-0.02em' }}>
                   Visibility without action<br /><span className="grad">creates noise.</span>
                 </h3>
               </div>
@@ -453,7 +453,7 @@ export default function DataSciencePage() {
       {/* ══════════════════════════════════════════════════
           OUR SERVICES — sticky stacking
       ══════════════════════════════════════════════════ */}
-      <section style={{ background: 'var(--bg)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
+      <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div
@@ -485,11 +485,13 @@ export default function DataSciencePage() {
                   borderRadius: 24, overflow: 'hidden',
                   backgroundImage: `url('/images/${svc.dark ? 'Services Card Slide 2.png' : 'White Service card New.png'}')`,
                   backgroundSize: 'cover', backgroundPosition: 'center',
-                  border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid var(--card-border)',
+                  backgroundColor: svc.dark ? '#0A1F4F' : '#EEF4FF',
+                  border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid rgba(77,134,245,0.18)',
+                  boxShadow: svc.dark ? 'none' : '0 4px 24px rgba(77,134,245,0.10)',
                   padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
                 }}
               >
-                <div className={`svc-overlay ${svc.dark ? 'svc-overlay-dark' : 'svc-overlay-light'}`} style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
+                <div className={`svc-overlay ${svc.dark ? 'svc-overlay-dark' : 'svc-overlay-light'}`} style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.45)' : 'rgba(255,255,255,0.55)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 60, position: 'relative', zIndex: 1 }} className="svc-card-inner">
                   <div style={{ flex: '0 0 auto', maxWidth: 280 }}>
                     <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 12, marginBottom: 20, background: svc.dark ? 'rgba(77,134,245,0.25)' : 'rgba(26,86,219,0.10)', border: svc.dark ? '1px solid rgba(77,134,245,0.40)' : '1px solid rgba(77,134,245,0.25)', fontSize: 13, fontWeight: 800, color: svc.dark ? '#80A9FF' : '#1A56DB' }}>
@@ -845,7 +847,7 @@ export default function DataSciencePage() {
         }
         @media(max-width:768px){
           .ds-hero-video-wrap{min-height:220px!important;max-height:260px!important}
-          .ds-tr-deco{display:none!important}
+          .ds-tr-deco{bottom:10px!important;right:10px!important;width:90px!important;height:90px!important}
           .ds-br-robot-wrap{display:none!important}
           .ds-br-content{max-width:100%!important}
           .pipeline-wrap{flex-direction:column!important;overflow-x:visible!important;align-items:center!important;gap:0!important}
@@ -856,7 +858,7 @@ export default function DataSciencePage() {
           .ds-blog-header-col{flex:none!important;min-width:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;margin-bottom:16px!important;gap:12px!important}
           .ds-blog-card-img{display:none!important}
           .ds-blog-card{flex:none!important}
-          .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .svc-overlay-light{background:rgba(238,244,255,0.96)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .svc-overlay-dark{background:rgba(10,20,60,0.92)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .ds-svc-stack>*{padding:28px!important}
         }

@@ -384,7 +384,7 @@ export default function MicrosoftServicesPage() {
       {/* ══════════════════════════════════════════════════
           OUR SERVICES — sticky stacking
       ══════════════════════════════════════════════════ */}
-      <section style={{ background: 'var(--bg)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
+      <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div
@@ -407,12 +407,13 @@ export default function MicrosoftServicesPage() {
                 borderRadius: 24, overflow: 'hidden',
                 ...(svc.dark
                   ? { background: 'linear-gradient(135deg, #1A56DB 0%, #0E2E75 55%, #0A1F4F 100%)' }
-                  : { backgroundImage: `url('/images/White Service card New.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }
+                  : { backgroundImage: `url('/images/White Service card New.png')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#EEF4FF' }
                 ),
-                border: svc.dark ? '1px solid rgba(77,134,245,0.25)' : '1px solid var(--card-border)',
+                border: svc.dark ? '1px solid rgba(77,134,245,0.25)' : '1px solid rgba(77,134,245,0.18)',
+                boxShadow: svc.dark ? 'none' : '0 4px 24px rgba(77,134,245,0.10)',
                 padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
               }}>
-                {!svc.dark && <div className="svc-overlay-light" style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: '0 8px 40px rgba(0,0,0,0.10)' }} />}
+                {!svc.dark && <div className="svc-overlay-light" style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.55)', backdropFilter: 'blur(4px)', boxShadow: '0 8px 40px rgba(0,0,0,0.10)' }} />}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 60, position: 'relative', zIndex: 1 }} className="svc-card-inner">
                   <div style={{ flex: '0 0 auto', maxWidth: 280 }}>
                     <div style={{ fontSize: 'clamp(64px,8vw,100px)', fontWeight: 900, lineHeight: 1, letterSpacing: '-0.05em', marginBottom: 16, color: svc.dark ? 'rgba(128,169,255,0.40)' : 'rgba(26,86,219,0.13)' }}>
@@ -695,7 +696,7 @@ export default function MicrosoftServicesPage() {
           .ds-blog-header-col{flex:none!important;min-width:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;margin-bottom:16px!important;gap:12px!important}
           .ds-blog-card-img{display:none!important}
           .ds-blog-card{flex:none!important}
-          .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .svc-overlay-light{background:rgba(238,244,255,0.96)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .ds-svc-stack>*{padding:28px!important}
         }
         @media(max-width:640px){

@@ -551,9 +551,9 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
                   color: active === 0 ? 'var(--fg-3)' : BLUE,
                   cursor: active === 0 ? 'not-allowed' : 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  opacity: active === 0 ? 0.35 : 1, transition: 'all 0.2s', fontSize: 16,
+                  opacity: active === 0 ? 0.35 : 1, transition: 'all 0.2s',
                 }}
-              >←</button>
+              ><ArrowLeft size={15} strokeWidth={2.5} /></button>
               <button
                 onClick={() => setActive(a => Math.min(steps.length - 1, a + 1))}
                 disabled={active === steps.length - 1}
@@ -563,9 +563,9 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
                   color: active === steps.length - 1 ? 'var(--fg-3)' : '#fff',
                   cursor: active === steps.length - 1 ? 'not-allowed' : 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  opacity: active === steps.length - 1 ? 0.35 : 1, transition: 'all 0.2s', fontSize: 16,
+                  opacity: active === steps.length - 1 ? 0.35 : 1, transition: 'all 0.2s',
                 }}
-              >→</button>
+              ><ArrowRight size={15} strokeWidth={2.5} /></button>
               <span style={{ fontSize: 12, color: 'var(--fg-3)', marginLeft: 4 }}>
                 {active < steps.length - 1 ? 'Next: ' + steps[active + 1]?.title : 'All steps complete ✓'}
               </span>
