@@ -412,8 +412,8 @@ export default function WebAppDevelopmentPage() {
                   borderRadius: 24, overflow: 'hidden',
                   backgroundImage: `url('/images/${svc.dark ? 'Services Card Slide 2.png' : 'White Service card New.png'}')`,
                   backgroundSize: 'cover', backgroundPosition: 'center',
-                  backgroundColor: svc.dark ? '#0A1F4F' : '#EEF4FF',
-                  border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid rgba(77,134,245,0.18)',
+                  backgroundColor: svc.dark ? '#0A1F4F' : '#FFFFFF',
+                  border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid rgba(77,134,245,0.28)',
                   boxShadow: svc.dark ? 'none' : '0 4px 24px rgba(77,134,245,0.10)',
                   padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
                 }}>
@@ -705,7 +705,7 @@ export default function WebAppDevelopmentPage() {
           .ds-blog-card-img{display:none!important}
           .ds-blog-card{flex:none!important}
           /* Service cards — more opaque overlay so text is always readable */
-          .svc-overlay-light{background:rgba(238,244,255,0.96)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .svc-overlay-dark{background:rgba(10,20,60,0.92)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .ds-svc-stack>*{padding:28px!important;position:static!important;top:auto!important;z-index:auto!important}
         }

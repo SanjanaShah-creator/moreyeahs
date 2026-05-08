@@ -407,9 +407,9 @@ export default function MicrosoftServicesPage() {
                 borderRadius: 24, overflow: 'hidden',
                 ...(svc.dark
                   ? { background: 'linear-gradient(135deg, #1A56DB 0%, #0E2E75 55%, #0A1F4F 100%)' }
-                  : { backgroundImage: `url('/images/White Service card New.png')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#EEF4FF' }
+                  : { backgroundImage: `url('/images/White Service card New.png')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#FFFFFF' }
                 ),
-                border: svc.dark ? '1px solid rgba(77,134,245,0.25)' : '1px solid rgba(77,134,245,0.18)',
+                border: svc.dark ? '1px solid rgba(77,134,245,0.25)' : '1px solid rgba(77,134,245,0.28)',
                 boxShadow: svc.dark ? 'none' : '0 4px 24px rgba(77,134,245,0.10)',
                 padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
               }}>
@@ -696,7 +696,7 @@ export default function MicrosoftServicesPage() {
           .ds-blog-header-col{flex:none!important;min-width:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;margin-bottom:16px!important;gap:12px!important}
           .ds-blog-card-img{display:none!important}
           .ds-blog-card{flex:none!important}
-          .svc-overlay-light{background:rgba(238,244,255,0.96)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .ds-svc-stack>*{padding:28px!important;position:static!important;top:auto!important;z-index:auto!important}
         }
         @media(max-width:640px){

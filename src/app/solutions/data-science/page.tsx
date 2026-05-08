@@ -376,7 +376,7 @@ export default function DataSciencePage() {
               <div className="ds-tr-deco" style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
                 <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass" width={160} height={160} style={{ objectFit: 'contain' }} />
               </div>
-              <p style={{ fontSize: 18, fontWeight: 400, color: 'var(--fg-3)', lineHeight: 1.6, position: 'relative', zIndex: 1 }}>
+              <p className="ds-tr-bottom-p" style={{ fontSize: 18, fontWeight: 400, color: 'var(--fg-3)', lineHeight: 1.6, position: 'relative', zIndex: 1 }}>
                 We design for outcomes,<br />not observation.
               </p>
             </motion.div>
@@ -485,8 +485,8 @@ export default function DataSciencePage() {
                   borderRadius: 24, overflow: 'hidden',
                   backgroundImage: `url('/images/${svc.dark ? 'Services Card Slide 2.png' : 'White Service card New.png'}')`,
                   backgroundSize: 'cover', backgroundPosition: 'center',
-                  backgroundColor: svc.dark ? '#0A1F4F' : '#EEF4FF',
-                  border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid rgba(77,134,245,0.18)',
+                  backgroundColor: svc.dark ? '#0A1F4F' : '#FFFFFF',
+                  border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid rgba(77,134,245,0.28)',
                   boxShadow: svc.dark ? 'none' : '0 4px 24px rgba(77,134,245,0.10)',
                   padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
                 }}
@@ -848,7 +848,8 @@ export default function DataSciencePage() {
         @media(max-width:768px){
           .ds-hero-video-wrap{min-height:220px!important;max-height:260px!important}
           .ds-tr-card{min-height:260px!important}
-          .ds-tr-deco{position:relative!important;bottom:auto!important;right:auto!important;width:96px!important;height:96px!important;margin:10px auto!important;align-self:center!important}
+          .ds-tr-deco{bottom:10px!important;right:10px!important;width:90px!important;height:90px!important}
+          .ds-tr-bottom-p{padding-bottom:100px!important}
           .ds-br-robot-wrap{display:none!important}
           .ds-br-content{max-width:100%!important}
           .pipeline-wrap{flex-direction:column!important;overflow-x:visible!important;align-items:center!important;gap:0!important}
@@ -859,7 +860,7 @@ export default function DataSciencePage() {
           .ds-blog-header-col{flex:none!important;min-width:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;margin-bottom:16px!important;gap:12px!important}
           .ds-blog-card-img{display:none!important}
           .ds-blog-card{flex:none!important}
-          .svc-overlay-light{background:rgba(238,244,255,0.96)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .svc-overlay-dark{background:rgba(10,20,60,0.92)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .ds-svc-stack>*{padding:28px!important;position:static!important;top:auto!important;z-index:auto!important}
         }
