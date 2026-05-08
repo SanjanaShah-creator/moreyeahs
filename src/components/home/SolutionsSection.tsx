@@ -277,7 +277,7 @@ export default function SolutionsSection() {
     <section style={{ background: 'var(--bg)', position: 'relative' }}>
 
       {/* Static header — sits above the sticky scroll */}
-      <div style={{ paddingTop: 88, paddingBottom: 56, textAlign: 'center', position: 'relative', zIndex: 10 }}>
+      <div className="sol-header" style={{ paddingTop: 88, paddingBottom: 56, textAlign: 'center', position: 'relative', zIndex: 10 }}>
         <div className="container">
           <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 16 }}>Our Solutions</div>
           <h2 style={{ fontSize: 'clamp(32px,4vw,56px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.15, color: 'var(--fg)', marginBottom: 14 }}>
@@ -312,7 +312,16 @@ export default function SolutionsSection() {
         @media(max-width:768px){
           .sol-row{grid-template-columns:1fr!important;gap:28px!important}
           .sol-row>div{order:unset!important}
-          .sol-sticky{top:76px!important;height:calc(100vh - 76px)!important}
+          .sol-sticky{
+            top:calc(76px + var(--ann-h,0px))!important;
+            height:calc(100vh - 76px - var(--ann-h,0px))!important;
+          }
+          .sol-header{
+            padding-top:calc(76px + var(--ann-h,0px) + 24px)!important;
+            padding-bottom:32px!important;
+          }
+          .sol-header h2{font-size:clamp(24px,6vw,36px)!important}
+          .sol-header p{font-size:14px!important}
         }
         @media(max-width:480px){
           .sol-row{gap:20px!important}

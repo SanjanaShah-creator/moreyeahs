@@ -407,6 +407,7 @@ export default function Navbar() {
         {showTopNav && (
           <motion.nav
             key="top-nav"
+            data-topnav
             initial={{ y: -80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -60, opacity: 0, scale: 0.96 }}
@@ -743,6 +744,14 @@ export default function Navbar() {
 
       <style>{`
         @media(max-width:900px){ .desktop-nav{display:none!important} .mobile-only{display:flex!important} }
+        @media(max-width:900px){
+          nav[data-topnav] {
+            background: var(--nav-bg) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border-bottom: 1px solid var(--nav-border) !important;
+          }
+        }
       `}</style>
     </>
   );

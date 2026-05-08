@@ -1,29 +1,44 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, Zap } from 'lucide-react';
 
 const DISMISS_KEY = 'ann_wahinn_v1';
 
+function setAnnH(px: number) {
+  document.documentElement.style.setProperty('--ann-h', `${px}px`);
+}
+
 export default function AnnouncementBanner() {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [scrolledPast, setScrolledPast] = useState(false);
+  const innerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!localStorage.getItem(DISMISS_KEY)) {
       setVisible(true);
     } else {
-      document.documentElement.style.setProperty('--ann-h', '0px');
+      setAnnH(0);
     }
   }, []);
+
+  // Sync --ann-h with actual rendered height via ResizeObserver
+  useEffect(() => {
+    if (!visible || !innerRef.current) return;
+    const el = innerRef.current;
+    const sync = () => setAnnH(el.offsetHeight);
+    sync();
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [visible]);
 
   useEffect(() => {
     if (!visible) return;
     setScrolledPast(false);
-    document.documentElement.style.setProperty('--ann-h', '44px');
   }, [pathname, visible]);
 
   useEffect(() => {
@@ -37,7 +52,11 @@ export default function AnnouncementBanner() {
     const update = () => {
       const past = window.scrollY > getHeroThreshold() && window.innerWidth > 900;
       setScrolledPast(past);
-      document.documentElement.style.setProperty('--ann-h', past ? '0px' : '44px');
+      if (past) {
+        setAnnH(0);
+      } else if (innerRef.current) {
+        setAnnH(innerRef.current.offsetHeight);
+      }
     };
     update();
     window.addEventListener('scroll', update, { passive: true });
@@ -49,7 +68,7 @@ export default function AnnouncementBanner() {
   }, [visible]);
 
   const dismiss = () => {
-    document.documentElement.style.setProperty('--ann-h', '0px');
+    setAnnH(0);
     localStorage.setItem(DISMISS_KEY, '1');
     setVisible(false);
   };
@@ -67,7 +86,7 @@ export default function AnnouncementBanner() {
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           style={{ overflow: 'hidden', position: 'relative', zIndex: 1300 }}
         >
-          <div style={{
+          <div ref={innerRef} style={{
             background: 'linear-gradient(92deg, #060D1F 0%, #0E2E75 45%, #060D1F 100%)',
             borderBottom: '1px solid rgba(77,134,245,0.22)',
             position: 'relative',
@@ -81,13 +100,13 @@ export default function AnnouncementBanner() {
               animation: 'annSweep 4s ease-in-out infinite',
             }} />
 
-            <div style={{
+            <div className="ann-wrap" style={{
               maxWidth: 1200, margin: '0 auto',
               padding: '10px 56px 10px 20px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              gap: 12, flexWrap: 'nowrap',
               position: 'relative', zIndex: 1,
             }}>
-
               {/* Badge */}
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 5,
@@ -101,14 +120,21 @@ export default function AnnouncementBanner() {
                 </span>
               </div>
 
-              <p style={{ fontSize: 13, color: '#C0D2F5', margin: 0, fontWeight: 400, lineHeight: 1.5 }}>
+              {/* Desktop: full text */}
+              <p className="ann-body-full" style={{ fontSize: 13, color: '#C0D2F5', margin: 0, fontWeight: 400, lineHeight: 1.5, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 <span style={{ fontWeight: 700, color: '#fff' }}>WahInnovations</span>
                 {' '}has merged into{' '}
                 <span style={{ fontWeight: 700, color: '#80A9FF' }}>MoreYeahs IT Technologies</span>
                 {', '}enhancing our Salesforce solutions with AI and Data Engineering.
               </p>
 
+              {/* Mobile: short text */}
+              <p className="ann-body-short" style={{ fontSize: 12, color: '#C0D2F5', margin: 0, fontWeight: 400, display: 'none' }}>
+                <span style={{ fontWeight: 700, color: '#fff' }}>WahInnovations</span> joined MoreYeahs.
+              </p>
+
               <a
+                className="ann-cta"
                 href="/contact-us"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 5,
@@ -144,6 +170,11 @@ export default function AnnouncementBanner() {
             @keyframes annSweep {
               0%   { background-position: 200% 0 }
               100% { background-position: -200% 0 }
+            }
+            @media(max-width:640px) {
+              .ann-body-full { display: none !important; }
+              .ann-body-short { display: block !important; }
+              .ann-cta { display: none !important; }
             }
           `}</style>
         </motion.div>

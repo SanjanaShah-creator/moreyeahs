@@ -97,10 +97,14 @@ export default function HeroSection() {
           .hero-sub { font-size:14px !important; padding:0 8px; }
           .hero-badge { font-size:10px !important; padding:5px 12px !important; }
           .hero-trusted-label { display:none !important; }
+          .hero-ticker-logo-lg { height:44px !important; }
+          .hero-ticker-logo-md { height:36px !important; }
+          .hero-ticker-item { padding:0 10px !important; min-width:unset !important; }
         }
         @media(max-width:480px){
           .hero-h1 { font-size: clamp(24px,8.5vw,34px) !important; }
-          .hero-ticker-item { padding: 0 10px !important; }
+          .hero-ticker-logo-lg { height:36px !important; }
+          .hero-ticker-logo-md { height:30px !important; }
         }
       `}</style>
 
@@ -262,16 +266,14 @@ export default function HeroSection() {
                   flexShrink: 0,
                   minWidth: p.medium ? 150 : 170,
                 }}>
-                  {/* Light-theme logo */}
                   <img
                     src={p.lightSrc} alt={p.name}
-                    className="logo-light"
+                    className={`logo-light ${p.medium ? 'hero-ticker-logo-md' : 'hero-ticker-logo-lg'}`}
                     style={{ height: p.medium ? 80 : 108, maxWidth: 260, width: 'auto', objectFit: 'contain' }}
                   />
-                  {/* Dark-theme logo (hidden via CSS class, shown in .dark) */}
                   <img
                     src={p.darkSrc} alt={p.name}
-                    className="logo-dark"
+                    className={`logo-dark ${p.medium ? 'hero-ticker-logo-md' : 'hero-ticker-logo-lg'}`}
                     style={{ height: p.medium ? 80 : 108, maxWidth: 260, width: 'auto', objectFit: 'contain' }}
                   />
                 </div>

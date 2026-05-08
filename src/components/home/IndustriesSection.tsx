@@ -269,7 +269,7 @@ export default function IndustriesSection() {
           <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(5,8,20,0.65) 0%, rgba(5,8,20,0.22) 40%, rgba(5,8,20,0.22) 55%, rgba(5,8,20,0.80) 100%)', pointerEvents: 'none' }} />
 
           <div style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', padding: '0 20px' }}>
-            <div style={{ paddingTop: 72 }}>
+            <div className="ind-mobile-content-top" style={{ paddingTop: 72 }}>
               <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>Industries We Serve</div>
               <h2 style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.03em', color: '#fff', lineHeight: 1.12 }}>
                 Deep Expertise<br />Across Nine Sectors
@@ -348,7 +348,13 @@ export default function IndustriesSection() {
         .ind-mobile-sticky  { display: none !important; }
         @media(max-width:768px){
           .ind-desktop-sticky { display: none !important; }
-          .ind-mobile-sticky  { display: block !important; }
+          .ind-mobile-sticky  {
+            display: block !important;
+            top: calc(var(--ann-h,0px) + 0px) !important;
+          }
+          .ind-mobile-content-top {
+            padding-top: calc(var(--ann-h,0px) + 76px) !important;
+          }
         }
       `}</style>
     </section>
