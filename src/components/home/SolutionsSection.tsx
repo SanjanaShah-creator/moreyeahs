@@ -194,13 +194,13 @@ function DomainCard({
       {/* Large faded card number — bottom corner watermark */}
       <div style={{
         position: 'absolute',
-        bottom: -24, right: 24,
-        fontSize: 'clamp(100px,15vw,190px)',
+        bottom: 12, right: 32,
+        fontSize: 'clamp(140px,20vw,260px)',
         fontWeight: 900,
         letterSpacing: '-0.06em',
         lineHeight: 1,
         color: domain.accent,
-        opacity: 0.07,
+        opacity: 0.13,
         userSelect: 'none',
         pointerEvents: 'none',
         zIndex: 0,
@@ -210,9 +210,6 @@ function DomainCard({
 
       {/* Content */}
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
-        <div style={{ position: 'absolute', top: 24, left: 28 }}>
-          <div className="section-badge" style={{ marginBottom: 0 }}>Our Solutions</div>
-        </div>
 
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }} className="sol-row">
@@ -278,6 +275,23 @@ export default function SolutionsSection() {
   return (
     /* Outer section bg matches card bg — no black gaps ever */
     <section style={{ background: 'var(--bg)', position: 'relative' }}>
+
+      {/* Static header — sits above the sticky scroll */}
+      <div style={{ paddingTop: 88, paddingBottom: 56, textAlign: 'center', position: 'relative', zIndex: 10 }}>
+        <div className="container">
+          <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 16 }}>Our Solutions</div>
+          <h2 style={{ fontSize: 'clamp(32px,4vw,56px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.15, color: 'var(--fg)', marginBottom: 14 }}>
+            Everything your business{' '}
+            <span style={{ background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              needs to grow.
+            </span>
+          </h2>
+          <p style={{ fontSize: 16, color: 'var(--fg-3)', lineHeight: 1.7, maxWidth: 520, margin: '0 auto' }}>
+            Five specialized practices — data, cloud, Microsoft, Salesforce, and custom development — delivered by one unified team.
+          </p>
+        </div>
+      </div>
+
       <div ref={scrollRef} style={{ height: `${n * VH_PER_CARD}vh`, position: 'relative' }}>
         <div className="sol-sticky" style={{
           position: 'sticky', top: 88,
