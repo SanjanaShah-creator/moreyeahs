@@ -17,10 +17,13 @@ export type FormPayload = {
 };
 
 export async function submitForm(payload: FormPayload): Promise<void> {
-  // Route through our own Next.js API — avoids CORS and no-cors body stripping
-  await fetch('/api/contact', {
+  const res = await fetch('/api/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.message || `Server error ${res.status}`);
+  }
 }

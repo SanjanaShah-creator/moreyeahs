@@ -29,6 +29,7 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
   const [fileData, setFileData] = useState<{ base64: string; name: string; mime: string } | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -50,22 +51,29 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    await submitForm({
-      formType: 'Careers',
-      name: form.name,
-      email: form.email,
-      phone: form.phone,
-      role: jobTitle,
-      coverNote: form.message,
-      extra: form.fileName || 'No resume attached',
-      ...(fileData && {
-        resumeBase64: fileData.base64,
-        resumeFileName: fileData.name,
-        resumeMimeType: fileData.mime,
-      }),
-    });
-    setSubmitting(false);
-    setSubmitted(true);
+    setError(null);
+    try {
+      await submitForm({
+        formType: 'Careers',
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        role: jobTitle,
+        coverNote: form.message,
+        extra: form.fileName || 'No resume attached',
+        ...(fileData && {
+          resumeBase64: fileData.base64,
+          resumeFileName: fileData.name,
+          resumeMimeType: fileData.mime,
+        }),
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError('Something went wrong sending your application. Please try again or email us directly at digitalmoreyeahs@gmail.com');
+      console.error('[ApplyForm]', err);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -151,6 +159,11 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
           <input type="file" accept=".pdf,.doc,.docx" onChange={handleFile} style={{ display: 'none' }} />
         </label>
       </div>
+      {error && (
+        <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: 10, padding: '12px 16px', fontSize: 13, color: '#ef4444', lineHeight: 1.6 }}>
+          {error}
+        </div>
+      )}
       <button
         type="submit"
         disabled={submitting}

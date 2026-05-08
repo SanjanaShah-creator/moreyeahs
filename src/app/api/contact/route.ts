@@ -21,8 +21,10 @@ export async function POST(req: NextRequest) {
     // ── 2. Email handling via Nodemailer ─────────────────────────────────
     const needsEmail = payload.formType === 'Careers' || payload.formType === 'Newsletter Subscription';
     if (needsEmail) {
-      if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-        console.error('[contact] Missing GMAIL_USER or GMAIL_APP_PASSWORD');
+      const appPassword = process.env.GMAIL_APP_PASSWORD;
+      if (!process.env.GMAIL_USER || !appPassword || appPassword === 'your_app_password_here') {
+        console.error('[contact] GMAIL_APP_PASSWORD is missing or still set to placeholder — email not sent');
+        return NextResponse.json({ status: 'error', message: 'Email credentials not configured on server' }, { status: 500 });
       } else {
         const transporter = nodemailer.createTransport({
           service: 'gmail',
