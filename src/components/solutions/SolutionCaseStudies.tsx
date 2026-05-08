@@ -13,6 +13,22 @@ import {
 
 const BLUE = '#4D86F5';
 
+const FILTER_KEYWORDS: Record<string, string[]> = {
+  'salesforce':                  ['salesforce'],
+  'data-science':                ['ai', 'data', 'machine-learning', 'artificial-intelligence', 'computer-vision', 'iot', 'intelligence', 'seed', 'surveillance', 'healthcare', 'clinical'],
+  'microsoft':                   ['microsoft', 'azure', 'dynamics', 'sharepoint', 'power-platform', 'm365', 'teams'],
+  'cloud':                       ['cloud', 'infrastructure', 'devops', 'kubernetes', 'aws', 'gcp', 'cicd'],
+  'web-application-development': ['web', 'mobile', 'app', 'application', 'react', 'flutter', 'ecommerce'],
+};
+
+function matchesFilter(cs: CaseStudy, filter: string): boolean {
+  const keywords = FILTER_KEYWORDS[filter] ?? [filter];
+  const terms = cs._embedded?.['wp:term']?.flat() ?? [];
+  const termText = terms.map(t => `${t.name} ${t.slug}`).join(' ').toLowerCase();
+  const slugText = cs.slug.toLowerCase();
+  return keywords.some(kw => termText.includes(kw) || slugText.includes(kw));
+}
+
 interface Props {
   filter: string;       // URL param value e.g. "data-science"
   solutionName: string; // e.g. "Data Science & AI"
@@ -23,11 +39,14 @@ export default function SolutionCaseStudies({ filter, solutionName }: Props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchCaseStudies({ perPage: 3 })
-      .then(d => setCases(d.slice(0, 3)))
+    fetchCaseStudies({ perPage: 50 })
+      .then(all => {
+        const filtered = all.filter(cs => matchesFilter(cs, filter));
+        setCases((filtered.length > 0 ? filtered : all).slice(0, 3));
+      })
       .catch(() => {})
       .finally(() => setLoading(false));
-  }, []);
+  }, [filter]);
 
   return (
     <section style={{ background: 'var(--bg-2)', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>

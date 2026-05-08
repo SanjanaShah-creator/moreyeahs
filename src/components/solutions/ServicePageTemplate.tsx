@@ -577,6 +577,27 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
   );
 }
 
+const CASE_FILTER_KEYWORDS: Record<string, string[]> = {
+  'salesforce':                  ['salesforce'],
+  'data-science':                ['ai', 'data', 'machine-learning', 'artificial-intelligence', 'computer-vision', 'iot', 'intelligence', 'seed', 'surveillance', 'healthcare', 'clinical'],
+  'microsoft-services':          ['microsoft', 'azure', 'dynamics', 'sharepoint', 'power-platform', 'm365', 'teams'],
+  'cloud-infrastructure':        ['cloud', 'infrastructure', 'devops', 'kubernetes', 'aws', 'gcp', 'cicd'],
+  'web-app-development':         ['web', 'mobile', 'app', 'application', 'react', 'flutter', 'ecommerce'],
+};
+
+function filterForHref(href: string): string {
+  const segment = href.split('/solutions/')[1] ?? '';
+  return segment.replace('-services', '');
+}
+
+function caseMatchesFilter(cs: WPCaseStudy, filterKey: string): boolean {
+  const keywords = CASE_FILTER_KEYWORDS[filterKey] ?? [filterKey];
+  const terms = cs._embedded?.['wp:term']?.flat() ?? [];
+  const termText = terms.map(t => `${t.name} ${t.slug}`).join(' ').toLowerCase();
+  const slugText = cs.slug.toLowerCase();
+  return keywords.some(kw => termText.includes(kw) || slugText.includes(kw));
+}
+
 /* ── ServicePageTemplate ───────────────────────────────────────────────── */
 export default function ServicePageTemplate({ data }: { data: ServicePageData }) {
   const heroRef = useRef<HTMLElement>(null);
@@ -590,11 +611,15 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
   const [wpLoading, setWpLoading] = useState(true);
 
   useEffect(() => {
-    fetchCaseStudies({ perPage: 3 })
-      .then(d => setWpCases(d.slice(0, 3)))
+    const filterKey = filterForHref(data.solutionHref);
+    fetchCaseStudies({ perPage: 50 })
+      .then(all => {
+        const filtered = all.filter(cs => caseMatchesFilter(cs, filterKey));
+        setWpCases((filtered.length > 0 ? filtered : all).slice(0, 3));
+      })
       .catch(() => {})
       .finally(() => setWpLoading(false));
-  }, []);
+  }, [data.solutionHref]);
 
   return (
     <>

@@ -28,6 +28,34 @@ function getTermLabel(cs: CaseStudy): { domain: string; industry: string } {
   return { domain, industry };
 }
 
+function getBroadCategory(cs: CaseStudy): string {
+  const slug = cs.slug.toLowerCase();
+  const terms = (cs._embedded?.['wp:term']?.flat() ?? []).map(t => `${t.name} ${t.slug}`).join(' ').toLowerCase();
+  const text = slug + ' ' + terms;
+  if (text.includes('salesforce')) return 'salesforce';
+  if (text.includes('microsoft') || text.includes('azure') || text.includes('dynamics')) return 'microsoft';
+  if (text.includes('cloud') || text.includes('devops')) return 'cloud';
+  if (text.includes('web') || text.includes('mobile')) return 'web';
+  if (text.includes('ai') || text.includes('data') || text.includes('machine') || text.includes('intelligence')) return 'ai';
+  return 'other';
+}
+
+function pickDiverse(all: CaseStudy[], count: number): CaseStudy[] {
+  const seen = new Set<string>();
+  const result: CaseStudy[] = [];
+  for (const cs of all) {
+    const cat = getBroadCategory(cs);
+    if (!seen.has(cat)) { seen.add(cat); result.push(cs); }
+    if (result.length === count) return result;
+  }
+  // fill remaining if not enough diversity
+  for (const cs of all) {
+    if (!result.includes(cs)) result.push(cs);
+    if (result.length === count) return result;
+  }
+  return result;
+}
+
 function SkeletonCard() {
   return (
     <div className="glass" style={{ padding: 28, display: 'flex', flexDirection: 'column', gap: 16, minHeight: 280 }}>
@@ -61,10 +89,10 @@ export default function CaseStudiesSection() {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    fetchCaseStudies({ perPage: 3 })
+    fetchCaseStudies({ perPage: 20 })
       .then(data => {
         if (data.length === 0) setFailed(true);
-        else setCases(data.slice(0, 3));
+        else setCases(pickDiverse(data, 3));
       })
       .catch(() => setFailed(true))
       .finally(() => setLoading(false));
