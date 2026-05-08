@@ -365,16 +365,16 @@ export default function DataSciencePage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
-              className="glass"
+              className="glass ds-tr-card"
               style={{ padding: '40px', position: 'relative', overflow: 'hidden', minHeight: 360, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gridArea: 'tr', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
-              <div className="ds-tr-deco" style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
-                <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass" width={160} height={160} style={{ objectFit: 'contain' }} />
-              </div>
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <h3 style={{ fontSize: 'clamp(24px,1.8vw,30px)', fontWeight: 700, color: 'var(--fg)', lineHeight: 1.2, letterSpacing: '-0.02em' }}>
                   Visibility without action<br /><span className="grad">creates noise.</span>
                 </h3>
+              </div>
+              <div className="ds-tr-deco" style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
+                <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass" width={160} height={160} style={{ objectFit: 'contain' }} />
               </div>
               <p style={{ fontSize: 18, fontWeight: 400, color: 'var(--fg-3)', lineHeight: 1.6, position: 'relative', zIndex: 1 }}>
                 We design for outcomes,<br />not observation.
@@ -847,7 +847,8 @@ export default function DataSciencePage() {
         }
         @media(max-width:768px){
           .ds-hero-video-wrap{min-height:220px!important;max-height:260px!important}
-          .ds-tr-deco{bottom:10px!important;right:10px!important;width:90px!important;height:90px!important}
+          .ds-tr-card{min-height:260px!important}
+          .ds-tr-deco{position:relative!important;bottom:auto!important;right:auto!important;width:96px!important;height:96px!important;margin:10px auto!important;align-self:center!important}
           .ds-br-robot-wrap{display:none!important}
           .ds-br-content{max-width:100%!important}
           .pipeline-wrap{flex-direction:column!important;overflow-x:visible!important;align-items:center!important;gap:0!important}
@@ -860,7 +861,7 @@ export default function DataSciencePage() {
           .ds-blog-card{flex:none!important}
           .svc-overlay-light{background:rgba(238,244,255,0.96)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .svc-overlay-dark{background:rgba(10,20,60,0.92)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-          .ds-svc-stack>*{padding:28px!important}
+          .ds-svc-stack>*{padding:28px!important;position:static!important;top:auto!important;z-index:auto!important}
         }
         @media(max-width:640px){
           .ds-ind-grid{grid-template-columns:1fr!important}

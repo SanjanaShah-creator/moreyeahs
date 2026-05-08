@@ -697,7 +697,7 @@ export default function MicrosoftServicesPage() {
           .ds-blog-card-img{display:none!important}
           .ds-blog-card{flex:none!important}
           .svc-overlay-light{background:rgba(238,244,255,0.96)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-          .ds-svc-stack>*{padding:28px!important}
+          .ds-svc-stack>*{padding:28px!important;position:static!important;top:auto!important;z-index:auto!important}
         }
         @media(max-width:640px){
           .ds-ind-grid{grid-template-columns:1fr!important}

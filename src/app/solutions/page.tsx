@@ -86,13 +86,13 @@ export default function SolutionsPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
+      <section className="sol-hero-section" style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
         <NoiseOverlay />
         <div className="blob" style={{ width: 560, height: 560, top: '-100px', right: '-5%', background: 'radial-gradient(circle, rgba(26,86,219,0.14), transparent 65%)' }} />
         <div className="blob" style={{ width: 400, height: 400, bottom: '-60px', left: '-8%', background: 'radial-gradient(circle, rgba(10,31,79,0.30), transparent 68%)' }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <motion.div variants={stagger} initial="hidden" animate="visible" style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto 80px' }}>
+          <motion.div variants={stagger} initial="hidden" animate="visible" className="sol-hero-inner" style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto 80px' }}>
             <motion.div variants={FV} transition={FT}>
               <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 20 }}>Our Solutions</div>
             </motion.div>
@@ -126,7 +126,7 @@ export default function SolutionsPage() {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.05 }}
               >
-                <div className="glass" style={{ padding: '40px 40px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }} data-odd={i % 2 !== 0}>
+                <div className="glass sol-card-grid" style={{ padding: '40px 40px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }} data-odd={i % 2 !== 0}>
                   {/* Text */}
                   <div style={{ order: i % 2 === 0 ? 1 : 2 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
@@ -277,6 +277,14 @@ export default function SolutionsPage() {
           .glass[data-odd]{direction:ltr}
           .glass > div[style*="order: 2"]{order:unset!important}
           .glass > div[style*="order: 1"]{order:unset!important}
+        }
+        @media(max-width:768px){
+          .sol-card-grid{grid-template-columns:1fr!important;gap:28px!important;padding:28px 20px!important}
+          .sol-card-grid>div{order:unset!important}
+          .sol-hero-inner{margin-bottom:36px!important}
+        }
+        @media(max-width:640px){
+          .sol-hero-section{padding-top:88px!important;padding-bottom:36px!important}
         }
       `}</style>
     </>
