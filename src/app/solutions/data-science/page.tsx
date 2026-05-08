@@ -17,7 +17,7 @@ import TestimonialsSection from '@/components/home/TestimonialsSection';
 import CTASection from '@/components/home/CTASection';
 import SolutionCaseStudies from '@/components/solutions/SolutionCaseStudies';
 
-/* â”€â”€â”€ Animation constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â"€â"€â"€ Animation constants â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 const EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const FU = (delay = 0, distance = 56) => ({
@@ -41,7 +41,7 @@ const STAGGER = {
   visible: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
 };
 
-/* â”€â”€â”€ Word-by-word title component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â"€â"€â"€ Word-by-word title component â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 function WordReveal({ text, className, style, delay = 0 }: {
   text: string; className?: string; style?: React.CSSProperties; delay?: number;
 }) {
@@ -62,7 +62,7 @@ function WordReveal({ text, className, style, delay = 0 }: {
   );
 }
 
-/* â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â"€â"€â"€ Data â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 const SPECIALIZATIONS = [
   'Predictive Modeling',
   'Intelligent Automation',
@@ -125,7 +125,7 @@ const INDUSTRIES = [
   {
     Icon: ShoppingCart, label: 'Retail & E-Commerce',
     headline: 'Demand Forecasting & Personalisation',
-    desc: 'Drive 20â€“40% revenue uplift through AI-powered recommendation engines, dynamic pricing, and inventory demand forecasting.',
+    desc: 'Drive 20—40% revenue uplift through AI-powered recommendation engines, dynamic pricing, and inventory demand forecasting.',
     tags: ['Recommendation Engines', 'Dynamic Pricing', 'Churn Prevention'],
   },
   {
@@ -143,7 +143,7 @@ const INDUSTRIES = [
   {
     Icon: Truck, label: 'Logistics & Supply Chain',
     headline: 'Route Optimisation & Inventory Intelligence',
-    desc: 'Reduce logistics costs by 18â€“25% through AI-powered route planning, real-time supply chain visibility, and demand-driven inventory.',
+    desc: 'Reduce logistics costs by 18—25% through AI-powered route planning, real-time supply chain visibility, and demand-driven inventory.',
     tags: ['Route Optimisation', 'Supply Visibility', 'Demand Sensing'],
   },
 ];
@@ -174,7 +174,7 @@ const PROBLEMS = [
 const FAQS = [
   {
     q: 'How long does it take to see ROI from a data science engagement?',
-    a: 'Most clients see measurable impact within 8â€“12 weeks for targeted use cases like churn prediction or demand forecasting. Larger platform builds typically deliver ROI at the 4â€“6 month mark. We always prioritise quick wins alongside long-term infrastructure.',
+    a: 'Most clients see measurable impact within 8—12 weeks for targeted use cases like churn prediction or demand forecasting. Larger platform builds typically deliver ROI at the 4—6 month mark. We always prioritise quick wins alongside long-term infrastructure.',
   },
   {
     q: 'Do you work with our existing data infrastructure or replace it?',
@@ -182,7 +182,7 @@ const FAQS = [
   },
   {
     q: 'What data do you need to get started on an AI/ML project?',
-    a: 'We start with a data audit in week one. For predictive models, 12â€“24 months of historical transaction or operational data is ideal. We can also work with smaller datasets using transfer learning and synthetic data augmentation where appropriate.',
+    a: 'We start with a data audit in week one. For predictive models, 12—24 months of historical transaction or operational data is ideal. We can also work with smaller datasets using transfer learning and synthetic data augmentation where appropriate.',
   },
   {
     q: 'How do you ensure data security and regulatory compliance?',
@@ -194,16 +194,16 @@ const FAQS = [
   },
   {
     q: 'What makes MoreYeahs different from an in-house data science team?',
-    a: "We bring a full stack: data engineers, ML engineers, domain specialists, and MLOps architects working together. You get senior expertise across the entire pipeline without the 6â€“12 month hiring cycle, and you can scale the engagement up or down as your needs evolve.",
+    a: "We bring a full stack: data engineers, ML engineers, domain specialists, and MLOps architects working together. You get senior expertise across the entire pipeline without the 6—12 month hiring cycle, and you can scale the engagement up or down as your needs evolve.",
   },
 ];
 
-/* â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â"€â"€â"€ Page â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 export default function DataSciencePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openProb, setOpenProb] = useState<number | null>(null);
 
-  /* Parallax â€” hero */
+  /* Parallax — hero */
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
@@ -219,7 +219,7 @@ export default function DataSciencePage() {
   return (
     <>
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          HERO â€” parallax video + word reveal title
+          HERO — parallax video + word reveal title
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section
         ref={heroRef}
@@ -258,25 +258,27 @@ export default function DataSciencePage() {
           {/* Hero split */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24, alignItems: 'stretch' }} className="ds-hero-split">
 
-            {/* LEFT â€” video with parallax */}
+            {/* LEFT — video with parallax */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.0, ease: EXPO, delay: 0.3 }}
+              className="ds-hero-video-wrap"
               style={{ borderRadius: 24, overflow: 'hidden', minHeight: 480, position: 'relative', background: 'var(--bg-2)' }}
             >
               <motion.div style={{ y: videoY, position: 'absolute', inset: '-20% 0', height: '140%' }}>
                 <video
-                  autoPlay muted loop playsInline preload="none"
+                  autoPlay muted loop playsInline preload="metadata"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 >
+                  <source src="/videos/Data Science Solution Hero Section.webm" type="video/webm" />
                   <source src="/videos/Data Science Solution Hero Section.mp4" type="video/mp4" />
                 </video>
               </motion.div>
               <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.30)', zIndex: 1 }} />
             </motion.div>
 
-            {/* RIGHT â€” expertise card slides in */}
+            {/* RIGHT — expertise card slides in */}
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
@@ -313,7 +315,7 @@ export default function DataSciencePage() {
       </section>
 
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR APPROACH â€” 2Ã—2 bento, directional reveals
+          OUR APPROACH — 2Ã—2 bento, directional reveals
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg)', padding: '120px 0', position: 'relative' }}>
         <NoiseOverlay />
@@ -335,7 +337,7 @@ export default function DataSciencePage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gridTemplateAreas: '"tl tl tl tl tr tr tr" "bl bl bl br br br br"', gap: 16 }} className="ds-bento">
 
-            {/* TL â€” slides from left */}
+            {/* TL — slides from left */}
             <motion.div
               variants={FL(0)}
               initial="hidden"
@@ -357,7 +359,7 @@ export default function DataSciencePage() {
               </div>
             </motion.div>
 
-            {/* TR â€” slides from right */}
+            {/* TR — slides from right */}
             <motion.div
               variants={FR(0.1)}
               initial="hidden"
@@ -366,7 +368,7 @@ export default function DataSciencePage() {
               className="glass"
               style={{ padding: '40px', position: 'relative', overflow: 'hidden', minHeight: 360, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gridArea: 'tr', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
-              <div style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
+              <div className="ds-tr-deco" style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
                 <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass" width={160} height={160} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ position: 'relative', zIndex: 1 }}>
@@ -379,16 +381,17 @@ export default function DataSciencePage() {
               </p>
             </motion.div>
 
-            {/* BL â€” Explore Blogs */}
+            {/* BL — Explore Blogs */}
             <motion.div
               variants={FL(0.15)}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
               className="glass"
-              style={{ padding: '40px', display: 'flex', gap: 24, minHeight: 380, gridArea: 'bl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
+              style={{ padding: '40px', display: 'flex', minHeight: 380, gridArea: 'bl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
-              <div style={{ flex: '0 0 150px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minWidth: 150 }}>
+              <div className="ds-blog-bento-inner" style={{ display: 'flex', gap: 24, flex: 1, minHeight: 0 }}>
+              <div className="ds-blog-header-col" style={{ flex: '0 0 150px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minWidth: 150 }}>
                 <h3 style={{ fontSize: 'clamp(22px,2.5vw,36px)', fontWeight: 700, color: 'var(--fg)', lineHeight: 1.2, letterSpacing: '-0.02em' }}>
                   Explore<br />More<br /><span className="grad">Blogs</span>
                 </h3>
@@ -396,8 +399,8 @@ export default function DataSciencePage() {
                   Explore Blogs <ArrowRight size={12} strokeWidth={2} />
                 </Link>
               </div>
-              <Link href="/blog/how-will-ai-take-over-jobs" style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', textDecoration: 'none', minHeight: 0 }}>
-                <div style={{ height: 160, flexShrink: 0, position: 'relative', overflow: 'hidden' }}><img src="https://dev.moreyeahs.com/wp-content/uploads/2025/12/How-Will-Artificial-Intelligence-Affect-Jobs-in-2026.jpg" alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={e => { const el = e.currentTarget as HTMLImageElement; el.style.display = 'none'; const p = el.parentElement; if (p) { p.style.background = 'linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)'; } }} /></div>
+              <Link className="ds-blog-card" href="/blog/how-will-ai-take-over-jobs" style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', textDecoration: 'none', minHeight: 0 }}>
+                <div className="ds-blog-card-img" style={{ height: 160, flexShrink: 0, position: 'relative', overflow: 'hidden' }}><img src="https://dev.moreyeahs.com/wp-content/uploads/2025/12/How-Will-Artificial-Intelligence-Affect-Jobs-in-2026.jpg" alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={e => { const el = e.currentTarget as HTMLImageElement; el.style.display = 'none'; const p = el.parentElement; if (p) { p.style.background = 'linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)'; } }} /></div>
                 <div style={{ padding: '14px 16px 16px', background: 'var(--bg)', display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <span style={{ fontSize: 10, fontWeight: 700, color: '#4D86F5', background: 'rgba(77,134,245,0.10)', border: '1px solid rgba(77,134,245,0.22)', padding: '3px 10px', borderRadius: 100, alignSelf: 'flex-start' }}>AI</span>
                   <p style={{ fontSize: 12, fontWeight: 700, color: 'var(--fg)', lineHeight: 1.4, margin: 0 }}>How Will AI Affect Jobs in 2026?</p>
@@ -407,9 +410,10 @@ export default function DataSciencePage() {
                   </span>
                 </div>
               </Link>
+              </div>{/* /ds-blog-bento-inner */}
             </motion.div>
 
-            {/* BR â€” slides from right */}
+            {/* BR — slides from right */}
             <motion.div
               variants={FR(0.2)}
               initial="hidden"
@@ -417,7 +421,7 @@ export default function DataSciencePage() {
               viewport={{ once: true, margin: '-60px' }}
               style={{ background: 'linear-gradient(135deg,#1A56DB 0%,#0E2E75 55%,#0A1F4F 100%)', borderRadius: 20, padding: '40px', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: 300, gridArea: 'br' }}
             >
-              <div style={{ position: 'relative', zIndex: 1, maxWidth: 'calc(100% - 300px)' }}>
+              <div className="ds-br-content" style={{ position: 'relative', zIndex: 1, maxWidth: 'calc(100% - 300px)' }}>
                 <h3 style={{ fontSize: 'clamp(22px,2.5vw,36px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 18, letterSpacing: '-0.02em' }}>Our Specializations</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
                   {SPECIALIZATIONS.map((s, si) => (
@@ -438,7 +442,7 @@ export default function DataSciencePage() {
                   Contact Us <ArrowRight size={12} strokeWidth={2} />
                 </Link>
               </div>
-              <div style={{ position: 'absolute', bottom: 0, right: 0, zIndex: 1, width: 280, height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="ds-br-robot-wrap" style={{ position: 'absolute', bottom: 0, right: 0, zIndex: 1, width: 280, height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/images/robot-with-tick-symbol 3.png" alt="Robot" width={280} height={280} style={{ objectFit: 'contain' }} />
               </div>
             </motion.div>
@@ -447,7 +451,7 @@ export default function DataSciencePage() {
       </section>
 
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR SERVICES â€” sticky stacking
+          OUR SERVICES — sticky stacking
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
         <NoiseOverlay />
@@ -485,7 +489,7 @@ export default function DataSciencePage() {
                   padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
                 }}
               >
-                <div style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
+                <div className={`svc-overlay ${svc.dark ? 'svc-overlay-dark' : 'svc-overlay-light'}`} style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 60, position: 'relative', zIndex: 1 }} className="svc-card-inner">
                   <div style={{ flex: '0 0 auto', maxWidth: 280 }}>
                     <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 12, marginBottom: 20, background: svc.dark ? 'rgba(77,134,245,0.25)' : 'rgba(26,86,219,0.10)', border: svc.dark ? '1px solid rgba(77,134,245,0.40)' : '1px solid rgba(77,134,245,0.25)', fontSize: 13, fontWeight: 800, color: svc.dark ? '#80A9FF' : '#1A56DB' }}>
@@ -517,7 +521,7 @@ export default function DataSciencePage() {
       </section>
 
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          HOW IT FITS TOGETHER â€” flow steps
+          HOW IT FITS TOGETHER — flow steps
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'linear-gradient(160deg,#050d1e 0%,#0a1f4f 30%,#0e2e75 65%,#1a56db 100%)', padding: '120px 0', position: 'relative' }}>
         <NoiseOverlay />
@@ -536,10 +540,11 @@ export default function DataSciencePage() {
             </h2>
           </motion.div>
 
-          <div style={{ display: 'flex', alignItems: 'flex-start', overflowX: 'auto', gap: 0, paddingBottom: 8 }}>
+          <div className="pipeline-wrap" style={{ display: 'flex', alignItems: 'flex-start', overflowX: 'auto', gap: 0, paddingBottom: 8 }}>
             {STEPS.map((s, i) => (
               <motion.div
                 key={s.step}
+                className="pipeline-step"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
@@ -547,6 +552,7 @@ export default function DataSciencePage() {
                 style={{ display: 'flex', alignItems: 'flex-start', flexShrink: 0 }}
               >
                 <motion.div
+                  className="pipeline-step-inner"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.25, ease: EXPO }}
                   style={{ textAlign: 'center', width: 'clamp(140px,18vw,210px)', padding: '0 16px' }}
@@ -560,6 +566,7 @@ export default function DataSciencePage() {
                 </motion.div>
                 {i < STEPS.length - 1 && (
                   <motion.div
+                    className="pipeline-connector"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -576,7 +583,7 @@ export default function DataSciencePage() {
       </section>
 
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          INDUSTRY USE CASES â€” staggered scale cards
+          INDUSTRY USE CASES — staggered scale cards
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
@@ -634,14 +641,14 @@ export default function DataSciencePage() {
       </section>
 
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          PROBLEMS & SOLUTIONS â€” opposing slide
+          PROBLEMS & SOLUTIONS — opposing slide
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg-2)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: 80, alignItems: 'flex-start' }} className="ds-prob-row">
 
-            {/* Left â€” slides from left, stays sticky */}
+            {/* Left — slides from left, stays sticky */}
             <motion.div
               variants={FL(0)}
               initial="hidden"
@@ -658,7 +665,7 @@ export default function DataSciencePage() {
               </p>
             </motion.div>
 
-            {/* Right â€” items slide from right with stagger */}
+            {/* Right — items slide from right with stagger */}
             <motion.div
               variants={STAGGER}
               initial="hidden"
@@ -724,14 +731,14 @@ export default function DataSciencePage() {
       <SolutionCaseStudies filter="data-science" solutionName="Data Science & AI" />
 
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          FAQs â€” opposing slide
+          FAQs — opposing slide
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 'clamp(40px,6vw,88px)', alignItems: 'start' }} className="ds-faq-layout">
 
-            {/* Left â€” slides from left, sticky */}
+            {/* Left — slides from left, sticky */}
             <motion.div
               variants={FL(0)}
               initial="hidden"
@@ -748,7 +755,7 @@ export default function DataSciencePage() {
               </p>
             </motion.div>
 
-            {/* Right â€” staggered from right */}
+            {/* Right — staggered from right */}
             <motion.div
               variants={STAGGER}
               initial="hidden"
@@ -836,10 +843,28 @@ export default function DataSciencePage() {
           .ds-faq-layout>div:first-child{position:static!important}
           .ds-svc-stack>*{position:static!important}
         }
+        @media(max-width:768px){
+          .ds-hero-video-wrap{min-height:220px!important;max-height:260px!important}
+          .ds-tr-deco{display:none!important}
+          .ds-br-robot-wrap{display:none!important}
+          .ds-br-content{max-width:100%!important}
+          .pipeline-wrap{flex-direction:column!important;overflow-x:visible!important;align-items:center!important;gap:0!important}
+          .pipeline-step{flex-direction:column!important;align-items:center!important;width:100%!important}
+          .pipeline-step-inner{width:100%!important;max-width:280px!important}
+          .pipeline-connector{padding:0 0 4px!important;transform:rotate(90deg);display:flex;justify-content:center}
+          .ds-blog-bento-inner{flex-direction:column!important}
+          .ds-blog-header-col{flex:none!important;min-width:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;margin-bottom:16px!important;gap:12px!important}
+          .ds-blog-card-img{display:none!important}
+          .ds-blog-card{flex:none!important}
+          .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .svc-overlay-dark{background:rgba(10,20,60,0.92)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .ds-svc-stack>*{padding:28px!important}
+        }
         @media(max-width:640px){
           .ds-ind-grid{grid-template-columns:1fr!important}
           .svc-card-inner{flex-direction:column!important;align-items:flex-start!important;gap:24px!important}
           .svc-card-inner>div:last-child{flex:auto!important;width:100%!important}
+          .svc-card-inner>div:first-child{flex:none!important}
         }
       `}</style>
     </>

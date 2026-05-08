@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
@@ -15,7 +15,7 @@ import CTASection from '@/components/home/CTASection';
 import SolutionCaseStudies from '@/components/solutions/SolutionCaseStudies';
 import { EXPO, FU, FL, FR, SC, STAGGER } from '@/lib/anim';
 
-/* â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â"€â"€â"€ Data â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 const SPECIALIZATIONS = [
   'Multi-Cloud Architecture Design',
   'DevOps & CI/CD Automation',
@@ -137,7 +137,7 @@ const FAQS = [
   },
 ];
 
-/* â”€â”€â”€ Word Reveal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â"€â"€â"€ Word Reveal â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 function WordReveal({ text, delay = 0, className, style }: { text: string; delay?: number; className?: string; style?: React.CSSProperties }) {
   const words = text.split(' ');
   return (
@@ -157,7 +157,7 @@ function WordReveal({ text, delay = 0, className, style }: { text: string; delay
   );
 }
 
-/* â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â"€â"€â"€ Page â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 export default function CloudInfrastructurePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openProb, setOpenProb] = useState<number | null>(null);
@@ -198,7 +198,7 @@ export default function CloudInfrastructurePage() {
           </motion.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24, alignItems: 'stretch' }} className="ds-hero-split">
-            {/* LEFT â€” video */}
+            {/* LEFT â€" video */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               animate={{ opacity: 1, x: 0 }}
@@ -206,14 +206,15 @@ export default function CloudInfrastructurePage() {
               style={{ borderRadius: 24, overflow: 'hidden', minHeight: 480, position: 'relative', background: 'var(--bg-2)' }}
             >
               <motion.div style={{ y: videoY, position: 'absolute', inset: 0 }}>
-                <video autoPlay muted loop playsInline preload="none" aria-label="Cloud and infrastructure solutions overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
+                <video autoPlay muted loop playsInline preload="metadata" aria-label="Cloud and infrastructure solutions overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
+                  <source src="/videos/Cloud and Infrastructure Solution  Hero Section.webm" type="video/webm" />
                   <source src="/videos/Cloud and Infrastructure Solution  Hero Section.mp4" type="video/mp4" />
                 </video>
               </motion.div>
               <div style={{ position: 'absolute', inset: 0, background: 'rgba(0, 0, 0, 0.35)', zIndex: 1 }} />
             </motion.div>
 
-            {/* RIGHT â€” expertise card */}
+            {/* RIGHT â€" expertise card */}
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
@@ -250,7 +251,7 @@ export default function CloudInfrastructurePage() {
       </section>
 
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR APPROACH â€” 2Ã—2 bento
+          OUR APPROACH â€" 2Ã—2 bento
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative' }}>
         <NoiseOverlay />
@@ -267,7 +268,7 @@ export default function CloudInfrastructurePage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gridTemplateAreas: '"tl tl tl tl tr tr tr" "bl bl bl br br br br"', gap: 16 }} className="ds-bento">
 
-            {/* TL â€” Reliability */}
+            {/* TL â€" Reliability */}
             <motion.div
               variants={FL(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
               className="glass" style={{ padding: '40px', display: 'flex', flexDirection: 'column', minHeight: 360, gridArea: 'tl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
@@ -285,12 +286,12 @@ export default function CloudInfrastructurePage() {
               </div>
             </motion.div>
 
-            {/* TR â€” Complexity quote */}
+            {/* TR â€" Complexity quote */}
             <motion.div
               variants={FR(0.1)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
               className="glass" style={{ padding: '40px', position: 'relative', overflow: 'hidden', minHeight: 360, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gridArea: 'tr', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
-              <div style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
+              <div className="ds-tr-deco" style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
                 <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass illustration" width={160} height={160} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ position: 'relative', zIndex: 1 }}>
@@ -303,12 +304,13 @@ export default function CloudInfrastructurePage() {
               </p>
             </motion.div>
 
-            {/* BL â€” Explore Blogs */}
+            {/* BL â€" Explore Blogs */}
             <motion.div
               variants={FL(0.15)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
               className="glass" style={{ padding: '40px', display: 'flex', gap: 24, minHeight: 380, gridArea: 'bl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
-              <div style={{ flex: '0 0 150px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minWidth: 150 }}>
+              <div className="ds-blog-bento-inner" style={{ display: 'flex', gap: 24, flex: 1, minHeight: 0 }}>
+              <div className="ds-blog-header-col" style={{ flex: '0 0 150px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minWidth: 150 }}>
                 <h3 style={{ fontSize: 'clamp(22px,2.5vw,36px)', fontWeight: 700, color: 'var(--fg)', lineHeight: 1.2, letterSpacing: '-0.02em' }}>
                   Explore<br />More<br /><span className="grad">Blogs</span>
                 </h3>
@@ -316,8 +318,8 @@ export default function CloudInfrastructurePage() {
                   Explore Blogs <ArrowRight size={12} strokeWidth={2} />
                 </Link>
               </div>
-              <Link href="/blog/the-evolution-of-devops-in-cloud-computing-trends-shaping-the-future" style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', textDecoration: 'none', minHeight: 0 }}>
-                <div style={{ height: 160, flexShrink: 0, position: 'relative', overflow: 'hidden' }}><img src="https://dev.moreyeahs.com/wp-content/uploads/2024/10/The-Evolution-of-DevOps-in-Cloud-Computing_-Trends-Shaping-the-Future.jpg" alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={e => { const el = e.currentTarget as HTMLImageElement; el.style.display = 'none'; const p = el.parentElement; if (p) { p.style.background = 'linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)'; } }} /></div>
+              <Link href="/blog/the-evolution-of-devops-in-cloud-computing-trends-shaping-the-future" className="ds-blog-card" style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', textDecoration: 'none', minHeight: 0 }}>
+                <div className="ds-blog-card-img" style={{ height: 160, flexShrink: 0, position: 'relative', overflow: 'hidden' }}><img src="https://dev.moreyeahs.com/wp-content/uploads/2024/10/The-Evolution-of-DevOps-in-Cloud-Computing_-Trends-Shaping-the-Future.jpg" alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={e => { const el = e.currentTarget as HTMLImageElement; el.style.display = 'none'; const p = el.parentElement; if (p) { p.style.background = 'linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)'; } }} /></div>
                 <div style={{ padding: '14px 16px 16px', background: 'var(--bg)', display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>
                   <span style={{ fontSize: 10, fontWeight: 700, color: '#4D86F5', background: 'rgba(77,134,245,0.10)', border: '1px solid rgba(77,134,245,0.22)', padding: '3px 10px', borderRadius: 100, alignSelf: 'flex-start' }}>Cloud</span>
                   <p style={{ fontSize: 12, fontWeight: 700, color: 'var(--fg)', lineHeight: 1.4, margin: 0 }}>The Evolution of DevOps in Cloud Computing</p>
@@ -327,14 +329,15 @@ export default function CloudInfrastructurePage() {
                   </span>
                 </div>
               </Link>
+              </div>{/* /ds-blog-bento-inner */}
             </motion.div>
 
-            {/* BR â€” Specializations */}
+            {/* BR â€" Specializations */}
             <motion.div
               variants={FR(0.2)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
               style={{ background: 'linear-gradient(135deg, #1A56DB 0%, #0E2E75 55%, #0A1F4F 100%)', borderRadius: 20, padding: '40px', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: 300, gridArea: 'br' }}
             >
-              <div style={{ position: 'relative', zIndex: 1, maxWidth: 'calc(100% - 300px)' }}>
+              <div className="ds-br-content" style={{ position: 'relative', zIndex: 1, maxWidth: 'calc(100% - 300px)' }}>
                 <h3 style={{ fontSize: 'clamp(22px,2.5vw,36px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 18, letterSpacing: '-0.02em' }}>Our Specializations</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
                   {SPECIALIZATIONS.map((s, i) => (
@@ -355,7 +358,7 @@ export default function CloudInfrastructurePage() {
                   Contact Us <ArrowRight size={12} strokeWidth={2} />
                 </Link>
               </div>
-              <div style={{ position: 'absolute', bottom: 0, right: 0, zIndex: 1, width: 280, height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="ds-br-robot-wrap" style={{ position: 'absolute', bottom: 0, right: 0, zIndex: 1, width: 280, height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/images/robot-with-tick-symbol 3.png" alt="Cloud engineering robot illustration" width={280} height={280} style={{ objectFit: 'contain' }} />
               </div>
             </motion.div>
@@ -364,7 +367,7 @@ export default function CloudInfrastructurePage() {
       </section>
 
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR SERVICES â€” sticky stacking
+          OUR SERVICES â€" sticky stacking
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
         <NoiseOverlay />
@@ -392,7 +395,7 @@ export default function CloudInfrastructurePage() {
                 border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid var(--card-border)',
                 padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
               }}>
-                <div style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
+                <div className={`svc-overlay ${svc.dark ? 'svc-overlay-dark' : 'svc-overlay-light'}`} style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 60, position: 'relative', zIndex: 1 }} className="svc-card-inner">
                   <div style={{ flex: '0 0 auto', maxWidth: 280 }}>
                     <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 12, marginBottom: 20, background: svc.dark ? 'rgba(77,134,245,0.25)' : 'rgba(26,86,219,0.10)', border: svc.dark ? '1px solid rgba(77,134,245,0.40)' : '1px solid rgba(77,134,245,0.25)', fontSize: 13, fontWeight: 800, color: svc.dark ? '#80A9FF' : '#1A56DB' }}>
@@ -424,7 +427,7 @@ export default function CloudInfrastructurePage() {
       </section>
 
       {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          HOW IT FITS TOGETHER â€” pipeline steps
+          HOW IT FITS TOGETHER â€" pipeline steps
       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'linear-gradient(160deg, #050d1e 0%, #0a1f4f 30%, #0e2e75 65%, #1a56db 100%)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
@@ -439,9 +442,10 @@ export default function CloudInfrastructurePage() {
             </h2>
           </motion.div>
 
-          <div style={{ display: 'flex', alignItems: 'flex-start', overflowX: 'auto', gap: 0, paddingBottom: 8, paddingTop: 4 }}>
+          <div className="pipeline-wrap" style={{ display: 'flex', alignItems: 'flex-start', overflowX: 'auto', gap: 0, paddingBottom: 8, paddingTop: 4 }}>
             {STEPS.map((s, i) => (
               <motion.div key={s.step}
+                className="pipeline-step"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -449,7 +453,7 @@ export default function CloudInfrastructurePage() {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                 style={{ display: 'flex', alignItems: 'flex-start', flexShrink: 0 }}
               >
-                <div style={{ textAlign: 'center', width: 'clamp(140px,18vw,210px)', padding: '0 16px' }}>
+                <div className="pipeline-step-inner" style={{ textAlign: 'center', width: 'clamp(140px,18vw,210px)', padding: '0 16px' }}>
                   <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(77,134,245,0.18)', border: '1px solid rgba(77,134,245,0.32)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
                     <s.Icon size={26} color="#80A9FF" strokeWidth={1.5} />
                   </div>
@@ -458,7 +462,7 @@ export default function CloudInfrastructurePage() {
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.58)', lineHeight: 1.6 }}>{s.sub}</p>
                 </div>
                 {i < STEPS.length - 1 && (
-                  <div style={{ paddingTop: 24, flexShrink: 0, color: 'rgba(255,255,255,0.28)' }}>
+                  <div className="pipeline-connector" style={{ paddingTop: 24, flexShrink: 0, color: 'rgba(255,255,255,0.28)' }}>
                     <ChevronRight size={20} strokeWidth={1.5} />
                   </div>
                 )}
@@ -661,10 +665,28 @@ export default function CloudInfrastructurePage() {
           .ds-faq-layout>div:first-child{position:static!important}
           .ds-svc-stack>*{position:static!important}
         }
+        @media(max-width:768px){
+          .ds-hero-video-wrap{min-height:220px!important;max-height:260px!important}
+          .ds-tr-deco{display:none!important}
+          .ds-br-robot-wrap{display:none!important}
+          .ds-br-content{max-width:100%!important}
+          .pipeline-wrap{flex-direction:column!important;overflow-x:visible!important;align-items:center!important;gap:0!important}
+          .pipeline-step{flex-direction:column!important;align-items:center!important;width:100%!important}
+          .pipeline-step-inner{width:100%!important;max-width:280px!important}
+          .pipeline-connector{padding:0 0 4px!important;transform:rotate(90deg);display:flex;justify-content:center}
+          .ds-blog-bento-inner{flex-direction:column!important}
+          .ds-blog-header-col{flex:none!important;min-width:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;margin-bottom:16px!important;gap:12px!important}
+          .ds-blog-card-img{display:none!important}
+          .ds-blog-card{flex:none!important}
+          .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .svc-overlay-dark{background:rgba(10,20,60,0.92)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .ds-svc-stack>*{padding:28px!important}
+        }
         @media(max-width:640px){
           .ds-ind-grid{grid-template-columns:1fr!important}
           .svc-card-inner{flex-direction:column!important;align-items:flex-start!important;gap:24px!important}
-          .svc-card-inner>div:last-child{flex:auto!important;width:100%!important}
+          .svc-card-inner>div:last-child{flex:1 1 auto!important;width:100%!important;flex-shrink:1!important}
+          .svc-card-inner>div:first-child{max-width:100%!important;flex:none!important}
         }
       `}</style>
     </>
