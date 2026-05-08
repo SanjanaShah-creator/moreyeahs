@@ -213,10 +213,11 @@ function MegaMenu({ items, isOpen, openUp = false, onMouseEnter, onMouseLeave }:
                   <span style={{
                     fontSize: 12, fontWeight: hovered === i ? 700 : 500,
                     color: hovered === i ? 'var(--fg)' : 'var(--fg-2)',
-                    lineHeight: 1.3, transition: 'color 0.12s',
+                    lineHeight: 1.3, transition: 'color 0.12s', flex: 1,
                   }}>
                     {item.label}
                   </span>
+                  <ArrowRight size={10} strokeWidth={2} style={{ color: hovered === i ? '#4D86F5' : 'var(--fg-3)', opacity: hovered === i ? 1 : 0.4, flexShrink: 0, transition: 'opacity 0.15s, color 0.15s' }} />
                 </Link>
               ))}
             </div>
@@ -332,7 +333,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [pastHero, setPastHero] = useState(false);
-  const [screenWide, setScreenWide] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [solOpen, setSolOpen] = useState(false);
@@ -340,8 +340,6 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const tSol = useRef<HTMLDivElement>(null);
   const tIns = useRef<HTMLDivElement>(null);
-  const bSol = useRef<HTMLDivElement>(null);
-  const bIns = useRef<HTMLDivElement>(null);
   const solTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const insTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -361,13 +359,10 @@ export default function Navbar() {
       if (y < 80) { setPastHero(false); return; }
       setPastHero(y > getHeroThreshold());
     };
-    const onResize = () => setScreenWide(window.innerWidth > 900);
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize, { passive: true });
-    onScroll(); onResize();
+    onScroll();
     return () => {
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onResize);
     };
   }, []);
 
@@ -379,8 +374,7 @@ export default function Navbar() {
   const isDark = mounted ? theme === 'dark' : true;
   const toggleTheme = () => setTheme(isDark ? 'light' : 'dark');
 
-  const showTopNav    = !pastHero || !screenWide;
-  const showBottomPill = pastHero && screenWide;
+  const showTopNav = true;
 
   const closeMobile = () => { setMobileOpen(false); setMobileExpanded(null); };
 
@@ -398,8 +392,6 @@ export default function Navbar() {
     </button>
   );
 
-  const pillSpring = { type: 'spring', stiffness: 280, damping: 24 } as const;
-
   return (
     <>
       {/* ── TOP NAV ── */}
@@ -414,10 +406,10 @@ export default function Navbar() {
             transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
             style={{
               position: 'fixed', top: 'var(--ann-h, 0px)', left: 0, right: 0, zIndex: 150, padding: '20px 0',
-              background: (solOpen || insOpen) ? 'var(--nav-bg)' : 'transparent',
-              backdropFilter: (solOpen || insOpen) ? 'blur(20px)' : 'none',
-              WebkitBackdropFilter: (solOpen || insOpen) ? 'blur(20px)' : 'none',
-              borderBottom: (solOpen || insOpen) ? '1px solid var(--nav-border)' : '1px solid transparent',
+              background: (pastHero || solOpen || insOpen) ? 'var(--nav-bg)' : 'transparent',
+              backdropFilter: (pastHero || solOpen || insOpen) ? 'blur(20px)' : 'none',
+              WebkitBackdropFilter: (pastHero || solOpen || insOpen) ? 'blur(20px)' : 'none',
+              borderBottom: (pastHero || solOpen || insOpen) ? '1px solid var(--nav-border)' : '1px solid transparent',
               transition: 'background 0.25s, backdrop-filter 0.25s, border-color 0.25s, top 0.35s ease',
             }}
           >
@@ -490,82 +482,6 @@ export default function Navbar() {
               </div>
             </div>
           </motion.nav>
-        )}
-      </AnimatePresence>
-
-      {/* ── BOTTOM STICKY PILL (desktop only) ── */}
-      <AnimatePresence>
-        {showBottomPill && (
-          <motion.div
-            key="bottom-nav"
-            initial={{ y: 80, opacity: 0, scaleX: 0.15 }}
-            animate={{ y: 0, opacity: 1, scaleX: 1 }}
-            exit={{ y: 80, opacity: 0, scaleX: 0.15 }}
-            transition={pillSpring}
-            style={{
-              position: 'fixed', bottom: 28, left: 0, right: 0,
-              display: 'flex', justifyContent: 'center',
-              zIndex: 150, pointerEvents: 'none',
-              transformOrigin: 'center bottom',
-            }}
-          >
-            <div className="bottom-pill" style={{
-              pointerEvents: 'auto',
-              display: 'flex', alignItems: 'center',
-              background: 'var(--nav-bg)',
-              backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)',
-              border: '1px solid var(--border)',
-              borderRadius: 999, padding: '8px 12px', gap: 2,
-              boxShadow: '0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(77,134,245,0.07)',
-            }}>
-              <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', padding: '2px 12px 2px 4px', marginRight: 2, borderRight: '1px solid var(--border)', flexShrink: 0 }}>
-                <img src="/images/MoreYeahs White theme Logo.png" alt="MoreYeahs" className="nav-logo-light nav-logo-pill" width="100" height="24" />
-                <img src="/images/MoreYeahs Dark Theme Logo.png"  alt="MoreYeahs" className="nav-logo-dark  nav-logo-pill" width="100" height="22" />
-              </Link>
-
-              <Link href="/" style={NAV_LINK}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>Home</Link>
-
-              <div ref={bSol} style={{ position: 'relative' }} onMouseEnter={openSol} onMouseLeave={closeSol}>
-                <Link href="/solutions" style={NAV_LINK}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>
-                  Solutions <ChevronDown size={12} strokeWidth={2} style={{ transition: 'transform 0.2s', transform: solOpen ? 'rotate(180deg)' : 'none' }} />
-                </Link>
-                <MegaMenu items={SOLUTIONS} isOpen={solOpen} openUp onMouseEnter={openSol} onMouseLeave={closeSol} />
-              </div>
-
-              <div ref={bIns} style={{ position: 'relative' }} onMouseEnter={openIns} onMouseLeave={closeIns}>
-                <button style={NAV_LINK}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>
-                  Insights <ChevronDown size={12} strokeWidth={2} style={{ transition: 'transform 0.2s', transform: insOpen ? 'rotate(180deg)' : 'none' }} />
-                </button>
-                <Dropdown items={INSIGHTS} isOpen={insOpen} openUp onMouseEnter={openIns} onMouseLeave={closeIns} />
-              </div>
-
-              {[['Case Studies', '/case-studies'], ['Careers', '/careers'], ['Resources', '/resources']].map(([l, h]) => (
-                <Link key={l} href={h} style={NAV_LINK}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>{l}</Link>
-              ))}
-
-              <div style={{ width: 1, height: 20, background: 'var(--border)', margin: '0 8px', flexShrink: 0 }} />
-              {mounted && <ThemeBtn compact />}
-              <Link href="/contact-us" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 6,
-                background: '#1A56DB', color: '#fff',
-                fontSize: 12, fontWeight: 700, borderRadius: 999,
-                padding: '8px 18px', textDecoration: 'none', marginLeft: 4, flexShrink: 0,
-                transition: 'background 0.2s',
-              }}
-                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.background = '#0E2E75')}
-                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.background = '#1A56DB')}>
-                <Headphones size={12} strokeWidth={1.5} /> Contact Us
-              </Link>
-            </div>
-          </motion.div>
         )}
       </AnimatePresence>
 

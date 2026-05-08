@@ -209,7 +209,7 @@ function DomainCard({
       </div>
 
       {/* Content */}
-      <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'clamp(40px,8vh,96px)', position: 'relative', zIndex: 1 }}>
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'clamp(12px,2.5vh,32px)', position: 'relative', zIndex: 1 }}>
 
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }} className="sol-row">
