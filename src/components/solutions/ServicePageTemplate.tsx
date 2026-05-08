@@ -1076,6 +1076,10 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
           .process-grid{ grid-template-columns: 1fr !important; }
           .process-grid > div:first-child{ position: static !important; }
         }
+        @media(max-width:768px){
+          .process-grid > div:first-child{ display: none !important; }
+          .process-grid{ display: block !important; }
+        }
         /* ── Tablet ── */
         @media(max-width:960px){
           .svc-faq-grid{grid-template-columns:1fr!important}
