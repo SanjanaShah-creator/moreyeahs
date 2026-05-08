@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     const payload = await req.json();
     const { resumeBase64, resumeMimeType, resumeFileName, ...gasPayload } = payload;
 
-    console.log('[contact] formType:', payload.formType);
+    console.log('[contact] formType:', payload.formType, '| resumeBase64 bytes:', resumeBase64?.length ?? 0, '| resumeFileName:', resumeFileName ?? 'none');
 
     // ── 1. Always send to GAS (Google Sheets) ───────────────────────────
     fetch(GAS_URL, {

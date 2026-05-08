@@ -29,6 +29,7 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
   const [fileData, setFileData] = useState<{ base64: string; name: string; mime: string } | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [fileLoading, setFileLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -38,13 +39,15 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
     const file = e.target.files?.[0];
     if (!file) return;
     setForm((f) => ({ ...f, fileName: file.name }));
+    setFileLoading(true);
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
-      // result is "data:application/pdf;base64,XXXX" — strip the prefix
       const base64 = result.split(',')[1];
       setFileData({ base64, name: file.name, mime: file.type });
+      setFileLoading(false);
     };
+    reader.onerror = () => setFileLoading(false);
     reader.readAsDataURL(file);
   };
 
@@ -166,7 +169,7 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
       )}
       <button
         type="submit"
-        disabled={submitting}
+        disabled={submitting || fileLoading}
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           background: submitting ? 'var(--fg-3)' : BLUE, color: '#fff', fontSize: 14, fontWeight: 700,
