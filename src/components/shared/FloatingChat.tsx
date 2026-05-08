@@ -79,6 +79,7 @@ export default function FloatingChat() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 16 }}
             transition={{ duration: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
+            className="chat-panel"
             style={{
               position: 'absolute', bottom: 68, right: 0,
               width: 360, height: 530,
@@ -212,6 +213,17 @@ export default function FloatingChat() {
         @keyframes chatBounce {
           0%, 60%, 100% { transform: translateY(0); }
           30% { transform: translateY(-5px); }
+        }
+        @media(max-width:640px) {
+          .chat-panel {
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            bottom: 0 !important;
+            right: 0 !important;
+            border-radius: 0 !important;
+          }
         }
       `}</style>
     </div>

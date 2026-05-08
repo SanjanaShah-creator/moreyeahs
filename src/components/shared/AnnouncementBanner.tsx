@@ -50,12 +50,14 @@ export default function AnnouncementBanner() {
         : window.innerHeight * 0.88;
     };
     const update = () => {
-      const past = window.scrollY > getHeroThreshold() && window.innerWidth > 900;
-      setScrolledPast(past);
-      if (past) {
-        setAnnH(0);
-      } else if (innerRef.current) {
-        setAnnH(innerRef.current.offsetHeight);
+      const bannerH = innerRef.current ? innerRef.current.offsetHeight : 0;
+      if (window.innerWidth <= 900) {
+        // Mobile: once the banner scrolls out of view, nav snaps to top
+        setAnnH(window.scrollY >= bannerH ? 0 : bannerH);
+      } else {
+        const past = window.scrollY > getHeroThreshold();
+        setScrolledPast(past);
+        setAnnH(past ? 0 : bannerH);
       }
     };
     update();

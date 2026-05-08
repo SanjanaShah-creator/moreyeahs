@@ -96,7 +96,7 @@ export default function HeroSection() {
           .hero-cta-link { width:100% !important; max-width:300px !important; justify-content:center !important; }
           .hero-sub { font-size:14px !important; padding:0 8px; }
           .hero-badge { font-size:10px !important; padding:5px 12px !important; }
-          .hero-trusted-label { display:none !important; }
+          .hero-trusted-label { font-size:9px !important; }
           .hero-ticker-logo-lg { height:44px !important; }
           .hero-ticker-logo-md { height:36px !important; }
           .hero-ticker-item { padding:0 10px !important; min-width:unset !important; }

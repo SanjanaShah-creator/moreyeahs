@@ -727,17 +727,20 @@ export default function Navbar() {
             exit={{ y: 72, opacity: 0 }}
             transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              position: 'fixed', bottom: 24, left: '50%',
-              transform: 'translateX(-50%)',
-              zIndex: 150,
-              display: 'flex', alignItems: 'center',
-              background: 'var(--nav-bg)',
-              backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
-              border: '1px solid var(--nav-border)',
-              borderRadius: 999, padding: '6px 10px', gap: 2,
-              boxShadow: '0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.10)',
+              position: 'fixed', bottom: 24, left: 0, right: 0,
+              zIndex: 150, display: 'flex', justifyContent: 'center',
+              pointerEvents: 'none',
             }}
           >
+          <div style={{
+            pointerEvents: 'auto',
+            display: 'flex', alignItems: 'center',
+            background: 'var(--nav-bg)',
+            backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
+            border: '1px solid var(--nav-border)',
+            borderRadius: 999, padding: '6px 10px', gap: 2,
+            boxShadow: '0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.10)',
+          }}>
             <Link href="/" style={{
               display: 'flex', alignItems: 'center', padding: '4px 10px',
               borderRadius: 999, textDecoration: 'none', transition: 'background 0.15s',
@@ -791,6 +794,7 @@ export default function Navbar() {
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#1A56DB'; }}>
               Contact Us
             </Link>
+          </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -804,6 +808,8 @@ export default function Navbar() {
             -webkit-backdrop-filter: blur(20px) !important;
             border-bottom: 1px solid var(--nav-border) !important;
           }
+          .nav-logo-light { height: 28px !important; width: auto !important; }
+          .nav-logo-dark  { height: 26px !important; width: auto !important; }
         }
       `}</style>
     </>
