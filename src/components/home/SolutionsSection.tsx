@@ -120,7 +120,7 @@ const DOMAINS = [
 ];
 
 const n = DOMAINS.length;
-const VH_PER_CARD = 80;
+const VH_PER_CARD = 120;
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -192,7 +192,7 @@ function DomainCard({
       )}
 
       {/* Large faded card number — bottom corner watermark */}
-      <div style={{
+      <div className="sol-watermark" style={{
         position: 'absolute',
         bottom: 12, right: 32,
         fontSize: 'clamp(140px,20vw,260px)',
@@ -209,7 +209,7 @@ function DomainCard({
       </div>
 
       {/* Content */}
-      <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'clamp(12px,2.5vh,32px)', position: 'relative', zIndex: 1 }}>
+      <div className="sol-card-content" style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
 
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }} className="sol-row">
@@ -312,6 +312,8 @@ export default function SolutionsSection() {
         @media(max-width:768px){
           .sol-row{grid-template-columns:1fr!important;gap:28px!important}
           .sol-row>div{order:unset!important}
+          .sol-card-content{justify-content:flex-start!important;padding-top:calc(8px + 3vh)!important}
+          .sol-watermark{display:none!important}
           .sol-sticky{
             top:calc(76px + var(--ann-h,0px))!important;
             height:calc(100vh - 76px - var(--ann-h,0px))!important;

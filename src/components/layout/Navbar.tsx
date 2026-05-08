@@ -335,15 +335,26 @@ export default function Navbar() {
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [mobileSubExpanded, setMobileSubExpanded] = useState<string | null>(null);
   const [solOpen, setSolOpen] = useState(false);
   const [insOpen, setInsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [screenWide, setScreenWide] = useState(false);
   const tSol = useRef<HTMLDivElement>(null);
   const tIns = useRef<HTMLDivElement>(null);
+  const bSol = useRef<HTMLDivElement>(null);
+  const bIns = useRef<HTMLDivElement>(null);
   const solTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const insTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => { setMounted(true); }, []);
+
+  useEffect(() => {
+    const check = () => setScreenWide(window.innerWidth > 900);
+    check();
+    window.addEventListener('resize', check, { passive: true });
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   useEffect(() => { setPastHero(false); }, [pathname]);
 
@@ -374,9 +385,10 @@ export default function Navbar() {
   const isDark = mounted ? theme === 'dark' : true;
   const toggleTheme = () => setTheme(isDark ? 'light' : 'dark');
 
-  const showTopNav = true;
+  const showTopNav = !pastHero || !screenWide;
+  const showBottomPill = pastHero && screenWide;
 
-  const closeMobile = () => { setMobileOpen(false); setMobileExpanded(null); };
+  const closeMobile = () => { setMobileOpen(false); setMobileExpanded(null); setMobileSubExpanded(null); };
 
   const ThemeBtn = ({ compact }: { compact?: boolean }) => (
     <button onClick={toggleTheme} style={{
@@ -406,10 +418,10 @@ export default function Navbar() {
             transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
             style={{
               position: 'fixed', top: 'var(--ann-h, 0px)', left: 0, right: 0, zIndex: 150, padding: '20px 0',
-              background: (pastHero || solOpen || insOpen) ? 'var(--nav-bg)' : 'transparent',
-              backdropFilter: (pastHero || solOpen || insOpen) ? 'blur(20px)' : 'none',
-              WebkitBackdropFilter: (pastHero || solOpen || insOpen) ? 'blur(20px)' : 'none',
-              borderBottom: (pastHero || solOpen || insOpen) ? '1px solid var(--nav-border)' : '1px solid transparent',
+              background: (solOpen || insOpen) ? 'var(--nav-bg)' : 'transparent',
+              backdropFilter: (solOpen || insOpen) ? 'blur(20px)' : 'none',
+              WebkitBackdropFilter: (solOpen || insOpen) ? 'blur(20px)' : 'none',
+              borderBottom: (solOpen || insOpen) ? '1px solid var(--nav-border)' : '1px solid transparent',
               transition: 'background 0.25s, backdrop-filter 0.25s, border-color 0.25s, top 0.35s ease',
             }}
           >
@@ -536,24 +548,71 @@ export default function Navbar() {
                     exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.22 }}
                     style={{ overflow: 'hidden' }}
                   >
-                    <div style={{ padding: '4px 8px 10px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <div style={{ padding: '4px 8px 10px', display: 'flex', flexDirection: 'column', gap: 1 }}>
                       {SOLUTIONS.map(s => (
-                        <Link key={s.href} href={s.href} onClick={closeMobile}
-                          style={{
-                            display: 'flex', alignItems: 'center', gap: 10,
-                            padding: '10px 12px', borderRadius: 8, textDecoration: 'none', transition: 'background 0.15s',
-                          }}
-                          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(26,86,219,0.06)')}
-                          onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-                        >
-                          <div style={{
-                            width: 30, height: 30, borderRadius: 8, background: 'rgba(26,86,219,0.08)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                          }}>
-                            <s.Icon size={14} color="#4D86F5" strokeWidth={1.5} />
+                        <div key={s.href}>
+                          {/* Solution row: label links to page, chevron toggles services */}
+                          <div style={{ display: 'flex', alignItems: 'center', borderRadius: 8, overflow: 'hidden' }}>
+                            <Link href={s.href} onClick={closeMobile}
+                              style={{
+                                display: 'flex', alignItems: 'center', gap: 10, flex: 1,
+                                padding: '10px 12px', textDecoration: 'none', transition: 'background 0.15s',
+                              }}
+                              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(26,86,219,0.06)')}
+                              onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+                            >
+                              <div style={{
+                                width: 30, height: 30, borderRadius: 8, background: 'rgba(26,86,219,0.08)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                              }}>
+                                <s.Icon size={14} color="#4D86F5" strokeWidth={1.5} />
+                              </div>
+                              <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-2)' }}>{s.label}</span>
+                            </Link>
+                            <button
+                              onClick={() => setMobileSubExpanded(v => v === s.href ? null : s.href)}
+                              style={{
+                                padding: '10px 12px', background: 'none', border: 'none',
+                                cursor: 'pointer', borderRadius: 8, transition: 'background 0.15s', flexShrink: 0,
+                              }}
+                              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(26,86,219,0.06)')}
+                              onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+                            >
+                              <ChevronDown size={13} strokeWidth={2} style={{
+                                color: 'var(--fg-3)', transition: 'transform 0.2s',
+                                transform: mobileSubExpanded === s.href ? 'rotate(180deg)' : 'none',
+                              }} />
+                            </button>
                           </div>
-                          <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-2)' }}>{s.label}</span>
-                        </Link>
+
+                          {/* Sub-services */}
+                          <AnimatePresence>
+                            {mobileSubExpanded === s.href && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
+                                style={{ overflow: 'hidden' }}
+                              >
+                                <div style={{ paddingLeft: 52, paddingBottom: 6, display: 'flex', flexDirection: 'column', gap: 1 }}>
+                                  {s.services.map(svc => (
+                                    <Link key={svc.href} href={svc.href} onClick={closeMobile}
+                                      style={{
+                                        display: 'flex', alignItems: 'center', gap: 8,
+                                        padding: '8px 12px', borderRadius: 8, textDecoration: 'none',
+                                        fontSize: 13, color: 'var(--fg-3)', transition: 'background 0.12s, color 0.12s',
+                                      }}
+                                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.06)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
+                                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-3)'; }}
+                                    >
+                                      <ArrowRight size={11} strokeWidth={2} color="#4D86F5" style={{ flexShrink: 0 }} />
+                                      {svc.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
                       ))}
                       <Link href="/solutions" onClick={closeMobile}
                         style={{
@@ -653,6 +712,84 @@ export default function Navbar() {
               boxShadow: '0 4px 20px rgba(26,86,219,0.38)',
             }}>
               <Headphones size={15} strokeWidth={1.5} /> Contact Us
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── BOTTOM PILL (desktop only, past hero) ── */}
+      <AnimatePresence>
+        {showBottomPill && (
+          <motion.div
+            key="bottom-pill"
+            initial={{ y: 72, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 72, opacity: 0 }}
+            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              position: 'fixed', bottom: 24, left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 150,
+              display: 'flex', alignItems: 'center',
+              background: 'var(--nav-bg)',
+              backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
+              border: '1px solid var(--nav-border)',
+              borderRadius: 999, padding: '6px 10px', gap: 2,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.10)',
+            }}
+          >
+            <Link href="/" style={{
+              display: 'flex', alignItems: 'center', padding: '4px 10px',
+              borderRadius: 999, textDecoration: 'none', transition: 'background 0.15s',
+            }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}>
+              <img src="/images/MoreYeahs White theme Logo.png" alt="MoreYeahs" className="nav-logo-light" style={{ height: 22, width: 'auto' }} />
+              <img src="/images/MoreYeahs Dark Theme Logo.png"  alt="MoreYeahs" className="nav-logo-dark"  style={{ height: 20, width: 'auto' }} />
+            </Link>
+
+            <div style={{ width: 1, height: 18, background: 'var(--border)', margin: '0 4px' }} />
+
+            <div ref={bSol} style={{ position: 'relative' }} onMouseEnter={openSol} onMouseLeave={closeSol}>
+              <button style={NAV_LINK}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>
+                Solutions <ChevronDown size={12} strokeWidth={2} style={{ transition: 'transform 0.2s', transform: solOpen ? 'rotate(180deg)' : 'none' }} />
+              </button>
+              <MegaMenu items={SOLUTIONS} isOpen={solOpen} openUp onMouseEnter={openSol} onMouseLeave={closeSol} />
+            </div>
+
+            <div ref={bIns} style={{ position: 'relative' }} onMouseEnter={openIns} onMouseLeave={closeIns}>
+              <button style={NAV_LINK}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>
+                Insights <ChevronDown size={12} strokeWidth={2} style={{ transition: 'transform 0.2s', transform: insOpen ? 'rotate(180deg)' : 'none' }} />
+              </button>
+              <Dropdown items={INSIGHTS} isOpen={insOpen} openUp onMouseEnter={openIns} onMouseLeave={closeIns} />
+            </div>
+
+            {[['Case Studies', '/case-studies'], ['Careers', '/careers'], ['Resources', '/resources']].map(([l, h]) => (
+              <Link key={l} href={h} style={NAV_LINK}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>{l}</Link>
+            ))}
+
+            <div style={{ width: 1, height: 18, background: 'var(--border)', margin: '0 4px' }} />
+
+            {mounted && <ThemeBtn compact />}
+
+            <Link href="/contact-us" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              background: '#1A56DB', color: '#fff',
+              fontSize: 12, fontWeight: 700, borderRadius: 999,
+              padding: '8px 16px', textDecoration: 'none',
+              boxShadow: '0 2px 12px rgba(26,86,219,0.35)',
+              transition: 'background 0.2s',
+              marginLeft: 4, flexShrink: 0,
+            }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#0E2E75'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#1A56DB'; }}>
+              Contact Us
             </Link>
           </motion.div>
         )}
