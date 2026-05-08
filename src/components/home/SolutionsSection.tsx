@@ -182,11 +182,11 @@ function DomainCard({
         }} />
       )}
 
-      {/* Subtle blue tint overlay for accent cards */}
+      {/* Blue gradient overlay for accent cards (2nd and 4th) */}
       {isAccent && (
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'rgba(26,86,219,0.03)',
+          background: 'linear-gradient(135deg, rgba(26,86,219,0.10) 0%, rgba(77,134,245,0.06) 40%, transparent 75%)',
           zIndex: 0, pointerEvents: 'none',
         }} />
       )}
@@ -209,7 +209,7 @@ function DomainCard({
       </div>
 
       {/* Content */}
-      <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'clamp(40px,8vh,96px)', position: 'relative', zIndex: 1 }}>
 
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }} className="sol-row">
