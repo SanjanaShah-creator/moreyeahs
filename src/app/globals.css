@@ -499,3 +499,11 @@ body {
   from { left: -120%; }
   to   { left: 165%; }
 }
+
+/* ─── Hide Spline watermark badge ────────────────────────────── */
+a[href*="spline.design"],
+[data-spline-attribution],
+div[style*="position: fixed"][style*="bottom"][style*="left"] > a[target="_blank"][href*="spline"] {
+  display: none !important;
+  pointer-events: none !important;
+}

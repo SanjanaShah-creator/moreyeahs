@@ -30,10 +30,10 @@ const SOLUTION_SERVICES: Record<string, Array<{ name: string; href: string }>> =
     { name: 'DevOps & Automation',  href: '/solutions/cloud-infrastructure/devops-automation' },
   ],
   '/solutions/microsoft-services': [
-    { name: 'Azure Solutions',        href: '/solutions/microsoft-services/azure' },
-    { name: 'CRM & ERP',             href: '/solutions/microsoft-services/crm-erp' },
-    { name: 'SharePoint & Intranet', href: '/solutions/microsoft-services/sharepoint' },
-    { name: 'Automation & Analytics',href: '/solutions/microsoft-services/automation-analytics' },
+    { name: 'Azure',                              href: '/solutions/microsoft-services/azure' },
+    { name: 'Microsoft CRM & ERP',               href: '/solutions/microsoft-services/crm-erp' },
+    { name: 'SharePoint',                         href: '/solutions/microsoft-services/sharepoint' },
+    { name: 'Microsoft Automation & Analytics',   href: '/solutions/microsoft-services/automation-analytics' },
   ],
   '/solutions/salesforce-services': [
     { name: 'Implementation',    href: '/solutions/salesforce-services/implementation' },

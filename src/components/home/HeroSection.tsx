@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
@@ -49,6 +49,8 @@ const TICKER = [...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS];
 export default function HeroSection() {
   const tickerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
 
   /* ── cursor-follow spring glow ── */
   const rawX = useMotionValue(0);
@@ -140,7 +142,7 @@ export default function HeroSection() {
           padding: 'clamp(108px,13vh,150px) 24px clamp(160px,20vh,220px)',
         }}>
           <motion.div
-            variants={stagger} initial="hidden" animate="visible"
+            variants={stagger} initial="hidden" animate={mounted ? 'visible' : 'hidden'}
             style={{ maxWidth: 820, width: '100%' }}
           >
             {/* Badge */}
@@ -225,7 +227,7 @@ export default function HeroSection() {
 
         {/* ── Trusted by — logo pill strip ── */}
         <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }} animate={mounted ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.8, duration: 0.7 }}
           className="hero-trusted-wrap"
           style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 4, paddingBottom: 14 }}

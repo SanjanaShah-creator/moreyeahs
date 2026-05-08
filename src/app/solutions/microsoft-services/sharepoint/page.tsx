@@ -6,7 +6,7 @@ import { Layers, Users, Search, Shield, RefreshCw, Zap, Database, Monitor } from
 const data: ServicePageData = {
   solution: 'Microsoft Services',
   solutionHref: '/solutions/microsoft-services',
-  name: 'SharePoint & Intranet',
+  name: 'SharePoint',
   tagline: 'Your intranet. Your knowledge base. Built to be used.',
   heroDesc: "SharePoint deployments fail when they are built for IT, not for the people who have to open them every day. We design and build SharePoint environments that employees genuinely use — modern intranet portals, structured document management, automated approval workflows, and knowledge bases that are actually searchable. People first, technology second.",
   stats: [

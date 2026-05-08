@@ -1,4 +1,3 @@
 {
-  "terminal.integrated.cwd": "${workspaceFolder}",
-  "terminal.integrated.defaultProfile.windows": "Command Prompt"
+    "kiroAgent.configureMCP": "Disabled"
 }

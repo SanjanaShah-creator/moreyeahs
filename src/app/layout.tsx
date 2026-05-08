@@ -64,6 +64,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.moreyeahs.com',
   },
+  icons: {
+    icon: [{ url: '/images/og-image.png', type: 'image/png' }],
+    shortcut: '/images/og-image.png',
+    apple: '/images/og-image.png',
+  },
 };
 
 const organizationSchema = {

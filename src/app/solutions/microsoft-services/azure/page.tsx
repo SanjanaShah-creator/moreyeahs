@@ -6,7 +6,7 @@ import { Cloud, Shield, Database, Zap, Layers, RefreshCw, BarChart3, Lock } from
 const data: ServicePageData = {
   solution: 'Microsoft Services',
   solutionHref: '/solutions/microsoft-services',
-  name: 'Azure Cloud Services',
+  name: 'Azure',
   tagline: 'Enterprise-grade Azure. Built to last, not just to launch.',
   heroDesc: "Azure is vast, and without proper architecture guardrails it becomes an expensive, ungoverned sprawl that frustrates every team trying to use it. We design, deploy, and manage production-ready Azure environments — from enterprise landing zones and hybrid connectivity to AKS workloads and AI services — with governance and cost control built in from the start.",
   stats: [

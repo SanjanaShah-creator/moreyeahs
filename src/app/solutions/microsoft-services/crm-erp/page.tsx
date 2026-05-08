@@ -6,7 +6,7 @@ import { Monitor, Database, GitBranch, Users, BarChart3, Settings, Layers, Refre
 const data: ServicePageData = {
   solution: 'Microsoft Services',
   solutionHref: '/solutions/microsoft-services',
-  name: 'Microsoft Dynamics 365',
+  name: 'Microsoft CRM & ERP',
   tagline: 'Dynamics done the way your business actually runs.',
   heroDesc: "Out-of-the-box Dynamics 365 is powerful. Misconfigured Dynamics 365 is an expensive spreadsheet that everyone resents. We implement and customise Dynamics 365 CRM and ERP solutions that actually fit your real processes — with the integrations completed, the data migrated properly, and users who adopt it from day one.",
   stats: [

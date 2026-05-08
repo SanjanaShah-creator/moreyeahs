@@ -26,21 +26,21 @@ const SPECIALIZATIONS = [
 const SERVICES = [
   {
     id: 'd365',
-    href: '/solutions/microsoft-services/crm-erp', title: 'Dynamics 365 CRM & ERP', dark: false,
+    href: '/solutions/microsoft-services/crm-erp', title: 'Microsoft CRM & ERP', dark: false,
     tagline: 'Connected operations, from sales to finance.',
     desc: 'Implement and optimise Dynamics 365 across Sales, Customer Service, Finance, and Operations to unify your business data and eliminate the silos that slow teams down.',
     list: ['Full-lifecycle CRM implementation', 'ERP configuration and data migration', 'Custom entity and workflow design', 'Integration with third-party systems'],
   },
   {
     id: 'power',
-    href: '/solutions/microsoft-services/automation-analytics', title: 'Power Platform & BI', dark: true,
+    href: '/solutions/microsoft-services/automation-analytics', title: 'Microsoft Automation & Analytics', dark: true,
     tagline: 'Automate workflows. Visualise decisions.',
     desc: 'Build low-code business applications, automated approval workflows, and executive dashboards that surface the insights your leadership team needs without waiting on IT.',
     list: ['Power Apps custom application builds', 'Power Automate flow design', 'Power BI dashboard development', 'Dataverse modelling and governance'],
   },
   {
     id: 'azure',
-    href: '/solutions/microsoft-services/azure', title: 'Azure Cloud Services', dark: false,
+    href: '/solutions/microsoft-services/azure', title: 'Azure', dark: false,
     tagline: 'Enterprise cloud, architected for your workloads.',
     desc: 'Design, migrate, and manage Azure environments with the right mix of compute, storage, networking, and AI services for your specific business requirements.',
     list: ['Azure architecture design and review', 'Cloud migration and modernisation', 'Azure Active Directory and security', 'Managed services and cost control'],
