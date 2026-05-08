@@ -156,6 +156,8 @@ function DomainCard({
     i < n - 1 ? [1, 0.92] : [1, 1],
   );
 
+  const isAccent = i % 2 !== 0;
+
   return (
     <motion.div
       style={{
@@ -163,7 +165,6 @@ function DomainCard({
         zIndex: i + 1,
         y: yEntry, scale, opacity,
         transformOrigin: 'top center',
-        /* Each card fills with page bg — no black gaps */
         background: 'var(--bg)',
         borderRadius: i === 0 ? 0 : 20,
         overflow: 'hidden',
@@ -172,13 +173,45 @@ function DomainCard({
     >
       <NoiseOverlay />
 
+      {/* Subtle left accent stripe for 2nd and 4th cards */}
+      {isAccent && (
+        <div style={{
+          position: 'absolute', left: 0, top: 0, bottom: 0, width: 4,
+          background: 'linear-gradient(to bottom, #4D86F5, #1A56DB 60%, #0E2E75)',
+          zIndex: 2,
+        }} />
+      )}
+
+      {/* Subtle blue tint overlay for accent cards */}
+      {isAccent && (
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(26,86,219,0.03)',
+          zIndex: 0, pointerEvents: 'none',
+        }} />
+      )}
+
+      {/* Large faded card number — bottom corner watermark */}
+      <div style={{
+        position: 'absolute',
+        bottom: -24, right: 24,
+        fontSize: 'clamp(100px,15vw,190px)',
+        fontWeight: 900,
+        letterSpacing: '-0.06em',
+        lineHeight: 1,
+        color: domain.accent,
+        opacity: 0.07,
+        userSelect: 'none',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }}>
+        {String(i + 1).padStart(2, '0')}
+      </div>
+
       {/* Content */}
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
-        <div style={{ position: 'absolute', top: 24, left: 28, display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{ position: 'absolute', top: 24, left: 28 }}>
           <div className="section-badge" style={{ marginBottom: 0 }}>Our Solutions</div>
-          <span style={{ fontSize: 12, color: 'var(--fg-3)', fontWeight: 500 }}>
-            {String(i + 1).padStart(2, '0')} / {String(n).padStart(2, '0')}
-          </span>
         </div>
 
         <div className="container">

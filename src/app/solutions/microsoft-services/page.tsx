@@ -401,15 +401,17 @@ export default function MicrosoftServicesPage() {
               <div key={svc.id} style={{
                 position: 'sticky', top: `${80 + i * 20}px`, zIndex: i + 2,
                 borderRadius: 24, overflow: 'hidden',
-                backgroundImage: `url('/images/${svc.dark ? 'Services Card Slide 2.png' : 'White Service card New.png'}')`,
-                backgroundSize: 'cover', backgroundPosition: 'center',
-                border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid var(--card-border)',
+                ...(svc.dark
+                  ? { background: 'linear-gradient(135deg, #1A56DB 0%, #0E2E75 55%, #0A1F4F 100%)' }
+                  : { backgroundImage: `url('/images/White Service card New.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }
+                ),
+                border: svc.dark ? '1px solid rgba(77,134,245,0.25)' : '1px solid var(--card-border)',
                 padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
               }}>
-                <div style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
+                {!svc.dark && <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: '0 8px 40px rgba(0,0,0,0.10)' }} />}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 60, position: 'relative', zIndex: 1 }} className="svc-card-inner">
                   <div style={{ flex: '0 0 auto', maxWidth: 280 }}>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 12, marginBottom: 20, background: svc.dark ? 'rgba(77,134,245,0.25)' : 'rgba(26,86,219,0.10)', border: svc.dark ? '1px solid rgba(77,134,245,0.40)' : '1px solid rgba(77,134,245,0.25)', fontSize: 13, fontWeight: 800, color: svc.dark ? '#80A9FF' : '#1A56DB' }}>
+                    <div style={{ fontSize: 'clamp(64px,8vw,100px)', fontWeight: 900, lineHeight: 1, letterSpacing: '-0.05em', marginBottom: 16, color: svc.dark ? 'rgba(128,169,255,0.40)' : 'rgba(26,86,219,0.13)' }}>
                       {`0${i + 1}`}
                     </div>
                     <h3 style={{ fontSize: 'clamp(24px,2.8vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, color: svc.dark ? '#fff' : '#1A56DB', marginBottom: 20 }}>{svc.title}</h3>
