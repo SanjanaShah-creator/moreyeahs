@@ -220,7 +220,8 @@ export default function WebAppDevelopmentPage() {
               style={{ borderRadius: 24, overflow: 'hidden', minHeight: 480, position: 'relative', background: 'var(--bg-2)' }}
             >
               <motion.div style={{ y: videoY, position: 'absolute', inset: 0 }}>
-                <video autoPlay muted loop playsInline preload="none" aria-label="Web and app development solutions overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
+                <video autoPlay muted loop playsInline preload="metadata" aria-label="Web and app development solutions overview" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}>
+                  <source src="/videos/Web App Development Solution Hero Section.webm" type="video/webm" />
                   <source src="/videos/Web App Development Solution Hero Section.mp4" type="video/mp4" />
                 </video>
               </motion.div>
@@ -304,7 +305,7 @@ export default function WebAppDevelopmentPage() {
               variants={FR(0.1)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
               className="glass" style={{ padding: '40px', position: 'relative', overflow: 'hidden', minHeight: 360, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gridArea: 'tr', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
-              <div style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
+              <div className="ds-tr-deco" style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
                 <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass illustration" width={160} height={160} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ position: 'relative', zIndex: 1 }}>
@@ -331,8 +332,8 @@ export default function WebAppDevelopmentPage() {
                   Explore Blogs <ArrowRight size={12} strokeWidth={2} />
                 </Link>
               </div>
-              <Link href="/blog/react-vs-angular" style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', textDecoration: 'none', minHeight: 0 }}>
-                <div style={{ height: 160, flexShrink: 0, position: 'relative', overflow: 'hidden' }}><img src="https://dev.moreyeahs.com/wp-content/uploads/2025/09/React-vs-Angular-%E2%80%94-Which-Framework-Fits-Your-Project-Best.jpg" alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={e => { const el = e.currentTarget as HTMLImageElement; el.style.display = 'none'; const p = el.parentElement; if (p) { p.style.background = 'linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)'; } }} /></div>
+              <Link href="/blog/react-vs-angular" className="ds-blog-card" style={{ flex: 1, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', textDecoration: 'none', minHeight: 0 }}>
+                <div className="ds-blog-card-img" style={{ height: 160, flexShrink: 0, position: 'relative', overflow: 'hidden' }}><img src="https://dev.moreyeahs.com/wp-content/uploads/2025/09/React-vs-Angular-%E2%80%94-Which-Framework-Fits-Your-Project-Best.jpg" alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={e => { const el = e.currentTarget as HTMLImageElement; el.style.display = 'none'; const p = el.parentElement; if (p) { p.style.background = 'linear-gradient(135deg, #1A56DB 0%, #4D86F5 50%, #80A9FF 100%)'; } }} /></div>
                 <div style={{ padding: '14px 16px 16px', background: 'var(--bg)', display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>
                   <span style={{ fontSize: 10, fontWeight: 700, color: '#4D86F5', background: 'rgba(77,134,245,0.10)', border: '1px solid rgba(77,134,245,0.22)', padding: '3px 10px', borderRadius: 100, alignSelf: 'flex-start' }}>Web Dev</span>
                   <p style={{ fontSize: 12, fontWeight: 700, color: 'var(--fg)', lineHeight: 1.4, margin: 0 }}>React vs Angular: Which Framework Fits Your Project?</p>
@@ -371,7 +372,7 @@ export default function WebAppDevelopmentPage() {
                   Contact Us <ArrowRight size={12} strokeWidth={2} />
                 </Link>
               </div>
-              <div style={{ position: 'absolute', bottom: 0, right: 0, zIndex: 1, width: 280, height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="ds-br-robot-wrap" style={{ position: 'absolute', bottom: 0, right: 0, zIndex: 1, width: 280, height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/images/robot-with-tick-symbol 3.png" alt="Web and app development robot illustration" width={280} height={280} style={{ objectFit: 'contain' }} />
               </div>
             </motion.div>
@@ -414,7 +415,7 @@ export default function WebAppDevelopmentPage() {
                   border: svc.dark ? '1px solid rgba(77,134,245,0.15)' : '1px solid var(--card-border)',
                   padding: 'clamp(40px,5vw,72px)', marginBottom: 16,
                 }}>
-                <div style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
+                <div className={`svc-overlay ${svc.dark ? 'svc-overlay-dark' : 'svc-overlay-light'}`} style={{ position: 'absolute', inset: 0, background: svc.dark ? 'rgba(10,20,60,0.38)' : 'rgba(255,255,255,0.82)', backdropFilter: 'blur(4px)', boxShadow: svc.dark ? 'none' : '0 8px 40px rgba(0,0,0,0.10)' }} />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 60, position: 'relative', zIndex: 1 }} className="svc-card-inner">
                   <div style={{ flex: '0 0 auto', maxWidth: 280 }}>
                     <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 12, marginBottom: 20, background: svc.dark ? 'rgba(77,134,245,0.25)' : 'rgba(26,86,219,0.10)', border: svc.dark ? '1px solid rgba(77,134,245,0.40)' : '1px solid rgba(77,134,245,0.25)', fontSize: 13, fontWeight: 800, color: svc.dark ? '#80A9FF' : '#1A56DB' }}>
@@ -685,26 +686,32 @@ export default function WebAppDevelopmentPage() {
           .ds-svc-stack>*{position:static!important}
         }
         @media(max-width:768px){
-          /* Hide video on mobile — avoids gray box and saves bandwidth */
-          .ds-hero-video-wrap{display:none!important}
+          /* Video — constrain height on mobile, do not hide */
+          .ds-hero-video-wrap{min-height:220px!important;max-height:260px!important}
+          /* Hide decorative overlay images that cause text overlap */
+          .ds-tr-deco{display:none!important}
+          .ds-br-robot-wrap{display:none!important}
+          .ds-br-content{max-width:100%!important}
           /* Pipeline — vertical layout with centered steps */
           .pipeline-wrap{flex-direction:column!important;overflow-x:visible!important;align-items:center!important;gap:0!important}
           .pipeline-step{flex-direction:column!important;align-items:center!important;width:100%!important}
           .pipeline-step-inner{width:100%!important;max-width:280px!important}
           .pipeline-connector{padding:0 0 4px!important;transform:rotate(90deg);display:flex;justify-content:center}
-          /* Blog bento — stack vertically */
+          /* Blog bento — stack vertically, hide image so text card is fully readable */
           .ds-blog-bento-inner{flex-direction:column!important}
-          .ds-blog-header-col{flex:auto!important;min-width:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;margin-bottom:16px}
-          /* BR bento — hide robot, let content go full width */
-          .ds-br-content{max-width:100%!important}
-          /* Service cards — reduce padding */
+          .ds-blog-header-col{flex:none!important;min-width:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;margin-bottom:16px!important;gap:12px!important}
+          .ds-blog-card-img{display:none!important}
+          .ds-blog-card{flex:none!important}
+          /* Service cards — more opaque overlay so text is always readable */
+          .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .svc-overlay-dark{background:rgba(10,20,60,0.92)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .ds-svc-stack>*{padding:28px!important}
         }
         @media(max-width:640px){
           .ds-ind-grid{grid-template-columns:1fr!important}
           .svc-card-inner{flex-direction:column!important;align-items:flex-start!important;gap:20px!important}
-          .svc-card-inner>div:last-child{flex:auto!important;width:100%!important}
-          .svc-card-inner>div:first-child{max-width:100%!important}
+          .svc-card-inner>div:last-child{flex:1 1 auto!important;width:100%!important;flex-shrink:1!important}
+          .svc-card-inner>div:first-child{max-width:100%!important;flex:none!important}
         }
       `}</style>
     </>
