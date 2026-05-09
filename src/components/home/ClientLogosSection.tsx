@@ -3,48 +3,24 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+/*
+ * inDark: how to treat this logo in dark mode
+ *   'invert'  — dark-on-transparent logo → invert to white
+ *   'keep'    — colourful logo → just brighten slightly, don't invert
+ */
 const CLIENTS = [
-  {
-    name: 'Prometheus',
-    light: '/images/Client Logo 1.png',
-    dark:  '/images/Client Dark theme logo 1.png',
-    size: 'normal',
-  },
-  {
-    name: 'Flyers Soft',
-    light: '/images/Client Logo 2.png',
-    dark:  '/images/Client Dark theme logo 2.png',
-    size: 'large',
-  },
-  {
-    name: 'Abdo',
-    light: '/images/Client Logo 3.png',
-    dark:  '/images/Client Dark theme logo 3.png',
-    size: 'normal',
-  },
-  {
-    name: 'Supersourcing',
-    light: '/images/Client Logo 4.png',
-    dark:  '/images/Client Dark theme logo 4.png',
-    size: 'normal',
-  },
-  {
-    name: 'TerraSecure',
-    light: '/images/Client Logo 5.png',
-    dark:  '/images/Client Dark theme logo 5.png',
-    size: 'large',
-  },
-  {
-    name: 'DevLabs',
-    light: '/images/Client Logo 6.png',
-    dark:  '/images/Client Dark theme logo 6.png',
-    size: 'large',
-  },
+  { name: 'Prometheus',    src: '/images/Client Logo 1.png', size: 'normal', inDark: 'invert' },
+  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png', size: 'large',  inDark: 'keep'   },
+  { name: 'Abdo',          src: '/images/Client Logo 3.png', size: 'normal', inDark: 'invert' },
+  { name: 'Supersourcing', src: '/images/Client Logo 4.png', size: 'normal', inDark: 'invert' },
+  { name: 'TerraSecure',   src: '/images/Client Logo 5.png', size: 'large',  inDark: 'keep'   },
+  { name: 'DevLabs',       src: '/images/Client Logo 6.png', size: 'large',  inDark: 'keep'   },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
   const [hovered, setHovered] = useState(false);
   const boxH = client.size === 'large' ? 76 : 44;
+  const slug = client.name.toLowerCase().replace(/\s/g, '-');
 
   return (
     <div
@@ -53,49 +29,42 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
       className="logo-card"
       style={{
         position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 110,
-        padding: '0 24px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        height: 110, padding: '0 24px',
         border: '1px solid var(--border)',
-        overflow: 'hidden',
-        cursor: 'default',
+        overflow: 'hidden', cursor: 'default',
         transition: 'background 0.3s',
         background: hovered ? 'rgba(26,86,219,0.06)' : 'transparent',
       }}
     >
-      {/* Spotlight glow from above */}
+      {/* Spotlight glow */}
       <div className="logo-spotlight" style={{
-        position: 'absolute', top: -80, left: '50%',
-        transform: 'translateX(-50%)',
+        position: 'absolute', top: -80, left: '50%', transform: 'translateX(-50%)',
         width: 200, height: 200, borderRadius: '50%',
         background: 'radial-gradient(circle, rgba(77,134,245,0.45) 0%, rgba(26,86,219,0.12) 50%, transparent 72%)',
-        opacity: hovered ? 1 : 0,
-        transition: 'opacity 0.4s ease',
+        opacity: hovered ? 1 : 0, transition: 'opacity 0.4s ease',
         pointerEvents: 'none', zIndex: 1,
       }} />
 
-      {/* Top edge light beam */}
+      {/* Top beam */}
       <div className="logo-beam" style={{
         position: 'absolute', top: 0, left: '15%', right: '15%', height: 1,
         background: 'linear-gradient(90deg, transparent, rgba(77,134,245,0.8), transparent)',
-        opacity: hovered ? 1 : 0,
-        transition: 'opacity 0.4s ease',
+        opacity: hovered ? 1 : 0, transition: 'opacity 0.4s ease',
         pointerEvents: 'none', zIndex: 2,
       }} />
 
-      {/* Logo box */}
+      {/* Logo */}
       <div style={{
         position: 'relative', zIndex: 3,
         width: '100%', height: boxH,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
-        {/* Light theme logo */}
         <img
-          src={client.light}
+          src={client.src}
           alt={client.name}
-          className="logo-img logo-light-img"
+          className={`logo-img logo-client logo-client-${slug}`}
+          data-dark={client.inDark}
           style={{
             maxWidth: '100%', maxHeight: '100%',
             width: 'auto', height: 'auto',
@@ -103,21 +72,6 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
             display: 'block',
             filter: hovered ? 'none' : 'grayscale(1) brightness(0.55)',
             opacity: hovered ? 1 : 0.65,
-            transition: 'filter 0.4s ease, opacity 0.4s ease',
-          }}
-        />
-        {/* Dark theme logo */}
-        <img
-          src={client.dark}
-          alt={client.name}
-          className="logo-img logo-dark-img"
-          style={{
-            maxWidth: '100%', maxHeight: '100%',
-            width: 'auto', height: 'auto',
-            objectFit: 'contain', objectPosition: 'center',
-            display: 'none',
-            filter: hovered ? 'none' : 'grayscale(1) brightness(0.7)',
-            opacity: hovered ? 1 : 0.7,
             transition: 'filter 0.4s ease, opacity 0.4s ease',
           }}
         />
@@ -129,13 +83,11 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
 export default function ClientLogosSection() {
   return (
     <section style={{
-      background: 'var(--bg)',
-      position: 'relative',
-      overflow: 'hidden',
-      padding: '72px 0 64px',
+      background: 'var(--bg)', position: 'relative',
+      overflow: 'hidden', padding: '72px 0 64px',
     }}>
 
-      {/* Dot-grid background */}
+      {/* Dot-grid */}
       <div aria-hidden style={{
         position: 'absolute', inset: 0,
         backgroundImage: 'radial-gradient(circle, rgba(77,134,245,0.16) 1px, transparent 1px)',
@@ -147,7 +99,6 @@ export default function ClientLogosSection() {
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
 
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -159,9 +110,8 @@ export default function ClientLogosSection() {
             Clients &amp; Partners
           </div>
           <h2 style={{
-            fontSize: 'clamp(22px,2.8vw,36px)',
-            fontWeight: 800, letterSpacing: '-0.03em',
-            color: 'var(--fg)', lineHeight: 1.15, marginBottom: 10,
+            fontSize: 'clamp(22px,2.8vw,36px)', fontWeight: 800,
+            letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.15, marginBottom: 10,
           }}>
             Trusted by <span className="grad">Growing Businesses</span>
           </h2>
@@ -170,7 +120,6 @@ export default function ClientLogosSection() {
           </p>
         </motion.div>
 
-        {/* Logo grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -178,20 +127,14 @@ export default function ClientLogosSection() {
           variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
           className="client-logos-grid"
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(6, 1fr)',
-            border: '1px solid var(--border)',
-            borderRadius: 16,
-            overflow: 'hidden',
+            display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)',
+            border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden',
           }}
         >
           {CLIENTS.map((client) => (
             <motion.div
               key={client.name}
-              variants={{
-                hidden:  { opacity: 0, y: 12 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-              }}
+              variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45 } } }}
             >
               <LogoCard client={client} />
             </motion.div>
@@ -200,29 +143,47 @@ export default function ClientLogosSection() {
       </div>
 
       <style>{`
-        /* Light/dark logo switching */
-        .logo-light-img { display: block; }
-        .logo-dark-img  { display: none; }
-        .dark .logo-light-img { display: none !important; }
-        .dark .logo-dark-img  { display: block !important; }
-
         /* Desktop / tablet */
         @media(max-width:1024px){
           .client-logos-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
 
-        /* Mobile: 2-col, logos always full color */
+        /* Mobile: 2-col, always full color */
         @media(max-width:640px){
-          .client-logos-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            width: 100%;
-          }
-          .logo-img {
-            filter: none !important;
-            opacity: 1 !important;
-          }
+          .client-logos-grid { grid-template-columns: repeat(2, 1fr) !important; width: 100%; }
+          .logo-img { filter: none !important; opacity: 1 !important; }
           .logo-spotlight, .logo-beam { display: none !important; }
           .logo-card { padding: 0 12px !important; height: 88px !important; }
+        }
+
+        /* Dark mode — invert only dark-on-transparent logos */
+        .dark .logo-client[data-dark="invert"] {
+          filter: invert(1) brightness(1.9) !important;
+          opacity: 0.8 !important;
+        }
+        .dark .logo-card:hover .logo-client[data-dark="invert"] {
+          filter: invert(1) brightness(2.2) !important;
+          opacity: 1 !important;
+        }
+        /* Colourful logos: just brighten in dark mode */
+        .dark .logo-client[data-dark="keep"] {
+          filter: brightness(1.15) !important;
+          opacity: 0.9 !important;
+        }
+        .dark .logo-card:hover .logo-client[data-dark="keep"] {
+          filter: brightness(1.3) !important;
+          opacity: 1 !important;
+        }
+        /* Mobile dark: always-on versions */
+        @media(max-width:640px){
+          .dark .logo-client[data-dark="invert"] {
+            filter: invert(1) brightness(1.9) !important;
+            opacity: 0.85 !important;
+          }
+          .dark .logo-client[data-dark="keep"] {
+            filter: brightness(1.15) !important;
+            opacity: 0.95 !important;
+          }
         }
       `}</style>
     </section>
