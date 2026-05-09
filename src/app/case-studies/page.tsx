@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -11,7 +11,7 @@ import Link from 'next/link';
 import NoiseOverlay from '@/components/ui/NoiseOverlay';
 import { GradientBars } from '@/components/ui/gradient-bar-hero-section';
 import {
-  fetchAllCaseStudies, fetchCategories, stripHtmlTags, truncateText, formatDate,
+  fetchAllCaseStudies, fetchCategories, fetchIndustryTerms, stripHtmlTags, truncateText, formatDate,
   getCoverImage, getLocalCaseStudyImage, type CaseStudy, type WordPressCategory,
 } from '@/lib/wordpress-api';
 
@@ -21,11 +21,11 @@ const FV = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 const FT = { duration: 0.6 };
 const stagger = { visible: { transition: { staggerChildren: 0.1 } } };
 
-/* ── Always use primary blue shades only ── */
+/* â”€â”€ Always use primary blue shades only â”€â”€ */
 const PRIMARY = '#1A56DB';
 const PRIMARY_LIGHT = '#4D86F5';
 
-/* ── Site services from Navbar — used to classify WP categories ── */
+/* â”€â”€ Site services from Navbar â€” used to classify WP categories â”€â”€ */
 const SITE_SERVICES = new Set([
   // Data Science & AI
   'ai', 'ai & machine learning', 'machine learning', 'computer vision',
@@ -41,7 +41,7 @@ const SITE_SERVICES = new Set([
   'web application development', 'mobile app development', 'design & quality',
 ]);
 
-/* ── Smart term classification: split WP "category" into Industries / Services ── */
+/* â”€â”€ Smart term classification: split WP "category" into Industries / Services â”€â”€ */
 const INDUSTRY_TERMS = new Set([
   'healthcare', 'fintech', 'finance', 'retail', 'e-commerce', 'ecommerce',
   'manufacturing', 'education', 'edtech', 'agritech', 'agriculture',
@@ -132,7 +132,7 @@ function buildGroups(studies: CS[], allCategories: WordPressCategory[]) {
   });
 }
 
-/* ─── Sidebar filter ─────────────────────────────────────────────── */
+/* â”€â”€â”€ Sidebar filter â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 interface SidebarProps {
   groups: ReturnType<typeof buildGroups>;
   selected: Set<number>;
@@ -229,7 +229,7 @@ function FilterSidebar({ groups, selected, onToggle, search, onSearch, onClear, 
   );
 }
 
-/* ─── Page ──────────────────────────────────────────────────────── */
+/* â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function CaseStudiesPageInner() {
   const searchParams = useSearchParams();
   const filterParam = searchParams.get('filter'); // e.g. "salesforce", "data-science"
@@ -248,10 +248,14 @@ function CaseStudiesPageInner() {
     Promise.all([
       fetchAllCaseStudies({ perPage: 100 }),
       fetchCategories(),
+      fetchIndustryTerms(),
     ])
-      .then(([raw, cats]) => {
+      .then(([raw, cats, industryTerms]) => {
         setStudies(raw.map(transform));
-        setAllCats(cats);
+        // Merge industry-taxonomy terms into categories, deduplicating by id
+        const seen = new Set(cats.map(c => c.id));
+        const merged = [...cats, ...industryTerms.filter(t => !seen.has(t.id))];
+        setAllCats(merged);
       })
       .catch(e => { console.error(e); setError('Failed to load case studies'); })
       .finally(() => setLoading(false));
@@ -261,10 +265,12 @@ function CaseStudiesPageInner() {
   useEffect(() => {
     if (loading || filterApplied || !filterParam || allCategories.length === 0) return;
     const q = filterParam.toLowerCase().replace(/-/g, ' ');
-    // Match categories whose name contains the filter keyword
-    const matches = allCategories.filter(c =>
-      c.name.toLowerCase().includes(q) || q.includes(c.name.toLowerCase())
-    );
+    const qs = filterParam.toLowerCase(); // slug-format (with dashes)
+    const matches = allCategories.filter(c => {
+      const name = c.name.toLowerCase();
+      const slug = c.slug.toLowerCase();
+      return name.includes(q) || q.includes(name) || slug.includes(qs) || qs.includes(slug);
+    });
     if (matches.length > 0) {
       setSelected(new Set(matches.map(c => c.id)));
     }
@@ -336,7 +342,7 @@ function CaseStudiesPageInner() {
       <section className="section" style={{ background: 'var(--bg-2)' }}>
         <div className="container">
           {loading ? (
-            /* ── Skeleton matching actual layout: sidebar + 2-col grid ── */
+            /* â”€â”€ Skeleton matching actual layout: sidebar + 2-col grid â”€â”€ */
             <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: 32, alignItems: 'start' }} className="cs-layout">
               {/* Sidebar skeleton */}
               <div style={{ background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden' }}>
@@ -391,7 +397,7 @@ function CaseStudiesPageInner() {
                 </button>
               </div>
 
-              {/* Count + active pills — above the grid so sidebar aligns with first card */}
+              {/* Count + active pills â€” above the grid so sidebar aligns with first card */}
               <div className="cs-pills-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 10, paddingLeft: 292 }}>
                 <p style={{ fontSize: 13, color: 'var(--fg-3)', margin: 0 }}>
                   {filtered.length === studies.length
@@ -426,7 +432,7 @@ function CaseStudiesPageInner() {
                     </div>
                   ) : (
                     <>
-                      {/* Cards — use animate (not whileInView) so they always render visible */}
+                      {/* Cards â€” use animate (not whileInView) so they always render visible */}
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 24 }} className="cs-grid">
                         {paginated.map(({ slug, title, summary, date, category, coverImage, gradientColor1, gradientColor2 }, i) => (
                           <motion.div
@@ -530,7 +536,7 @@ function CaseStudiesPageInner() {
       {/* Bottom CTA */}
       <section className="section" style={{ background: 'var(--bg)' }}>
         <div className="container">
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.6 }}
             className="glass" style={{ maxWidth: 720, margin: '0 auto', padding: '64px 48px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
             <div className="blob" style={{ width: 340, height: 340, top: '-80px', right: '-60px', background: 'radial-gradient(circle, rgba(26,86,219,0.15), transparent 65%)' }} />
             <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 20, position: 'relative', zIndex: 1 }}>Start Your Project</div>

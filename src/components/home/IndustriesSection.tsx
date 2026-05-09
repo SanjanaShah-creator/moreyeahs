@@ -59,44 +59,39 @@ const INDUSTRIES = [
 
 const IND_COUNT = INDUSTRIES.length;
 
-function preloadVideo(src: string) {
-  const video = document.createElement('video');
-  video.preload = 'auto';
-  video.muted = true;
-  video.src = src;
-  video.load();
-}
-
 export default function IndustriesSection() {
   const [active, setActive] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [videoEnabled, setVideoEnabled] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const desktopVideoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
-  const preloadedRef = useRef<Set<string>>(new Set());
 
+  /* Detect low-end / save-data conditions and disable video */
+  useEffect(() => {
+    type NavConn = { saveData?: boolean; effectiveType?: string };
+    const conn = (navigator as unknown as { connection?: NavConn }).connection;
+    const slow = conn?.saveData || ['slow-2g', '2g'].includes(conn?.effectiveType ?? '');
+    const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (slow || noMotion) setVideoEnabled(false);
+  }, []);
+
+  /* Track section visibility */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
     if (containerRef.current) observer.observe(containerRef.current);
     return () => observer.disconnect();
   }, []);
 
+  /* Pause videos when section scrolls out of view */
   useEffect(() => {
-    if (!isVisible) return;
-    const toPreload = [
-      INDUSTRIES[(active + 1) % IND_COUNT].video,
-      INDUSTRIES[(active - 1 + IND_COUNT) % IND_COUNT].video,
-    ];
-    toPreload.forEach(src => {
-      if (!preloadedRef.current.has(src)) {
-        preloadedRef.current.add(src);
-        preloadVideo(src);
-      }
-    });
-  }, [active, isVisible]);
+    if (isVisible) return;
+    desktopVideoRef.current?.pause();
+    mobileVideoRef.current?.pause();
+  }, [isVisible]);
 
   const handleScroll = useCallback(() => {
     if (!containerRef.current || !isVisible) return;
@@ -116,18 +111,22 @@ export default function IndustriesSection() {
   }, [handleScroll]);
 
   const playVideo = useCallback((ref: React.RefObject<HTMLVideoElement | null>, src: string) => {
+    if (!videoEnabled) return;
     const el = ref.current;
     if (!el) return;
-    if (el.getAttribute('src') !== src) el.src = src;
+    if (el.src !== src && !(el.src.endsWith(src))) {
+      el.src = src;
+    }
     el.play().catch(() => {});
-  }, []);
+  }, [videoEnabled]);
 
+  /* Play active video only when section is visible */
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || !videoEnabled) return;
     const src = INDUSTRIES[active].video;
     playVideo(desktopVideoRef, src);
     playVideo(mobileVideoRef, src);
-  }, [active, isVisible, playVideo]);
+  }, [active, isVisible, videoEnabled, playVideo]);
 
   const ind = INDUSTRIES[active];
 
@@ -143,8 +142,8 @@ export default function IndustriesSection() {
         style={{
           position: 'absolute', bottom: 0, right: 0,
           width: 360, zIndex: 2,
-          backdropFilter: 'blur(28px)',
-          WebkitBackdropFilter: 'blur(28px)',
+          backdropFilter: 'blur(18px)',
+          WebkitBackdropFilter: 'blur(18px)',
           borderRadius: '24px 0 0 0',
           padding: '26px 28px 30px',
         }}
@@ -243,28 +242,34 @@ export default function IndustriesSection() {
             </div>
           </div>
 
-          <div style={{ position: 'relative', overflow: 'hidden' }}>
-            <video
-              ref={desktopVideoRef}
-              src={INDUSTRIES[0].video}
-              autoPlay muted loop playsInline
-              preload="auto"
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
+          <div style={{ position: 'relative', overflow: 'hidden', background: '#050810' }}>
+            {videoEnabled ? (
+              <video
+                ref={desktopVideoRef}
+                muted loop playsInline
+                preload="metadata"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            ) : (
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #0E2E75 0%, #1A56DB 60%, #050810 100%)' }} />
+            )}
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(5,8,16,0.55) 0%, transparent 50%)', pointerEvents: 'none', zIndex: 1 }} />
             {InfoCard}
           </div>
         </div>
 
         {/* ══ MOBILE ══ */}
-        <div className="ind-mobile-sticky" style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', display: 'none' }}>
-          <video
-            ref={mobileVideoRef}
-            src={INDUSTRIES[0].video}
-            autoPlay muted loop playsInline
-            preload="auto"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
-          />
+        <div className="ind-mobile-sticky" style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', display: 'none', background: '#050810' }}>
+          {videoEnabled ? (
+            <video
+              ref={mobileVideoRef}
+              muted loop playsInline
+              preload="metadata"
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+            />
+          ) : (
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #0E2E75 0%, #1A56DB 60%, #050810 100%)', zIndex: 0 }} />
+          )}
 
           <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(to bottom, rgba(5,8,20,0.65) 0%, rgba(5,8,20,0.22) 40%, rgba(5,8,20,0.22) 55%, rgba(5,8,20,0.80) 100%)', pointerEvents: 'none' }} />
 
@@ -308,7 +313,7 @@ export default function IndustriesSection() {
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
+                  backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
                   background: 'rgba(8,12,24,0.55)', border: '1px solid rgba(77,134,245,0.18)',
                   borderRadius: '16px 16px 0 0', padding: '18px 18px 24px', marginBottom: 0,
                 }}>

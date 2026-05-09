@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { FileText, Mail } from 'lucide-react';
@@ -26,10 +26,10 @@ Client deliverables are subject to intellectual property provisions set forth in
   {
     title: '4. Use of the Website',
     content: `You agree not to use the website:
-• In any way that violates any applicable local, national, or international law or regulation
-• To transmit any unsolicited or unauthorised advertising or promotional material
-• To impersonate or attempt to impersonate MoreYeahs, a MoreYeahs employee, another user, or any other person or entity
-• To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the website, or which may harm MoreYeahs or users of the website
+â€¢ In any way that violates any applicable local, national, or international law or regulation
+â€¢ To transmit any unsolicited or unauthorised advertising or promotional material
+â€¢ To impersonate or attempt to impersonate MoreYeahs, a MoreYeahs employee, another user, or any other person or entity
+â€¢ To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the website, or which may harm MoreYeahs or users of the website
 
 We reserve the right to terminate your use of the website for violating any of the prohibited uses.`,
   },
@@ -96,7 +96,7 @@ export default function TermsPage() {
               Terms & Conditions
             </h1>
             <p style={{ fontSize: 14, color: 'var(--fg-3)', marginBottom: 48 }}>
-              Last updated: <strong style={{ color: 'var(--fg-2)' }}>January 1, 2026</strong> · MoreYeahs IT Technologies Pvt Ltd
+              Last updated: <strong style={{ color: 'var(--fg-2)' }}>January 1, 2026</strong> Â· MoreYeahs IT Technologies Pvt Ltd
             </p>
 
             <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.78, marginBottom: 48, padding: '20px 24px', borderRadius: 12, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.14)' }}>
@@ -109,7 +109,7 @@ export default function TermsPage() {
                   key={s.title}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-40px' }}
+                  viewport={{ once: false, margin: '-40px' }}
                   transition={{ duration: 0.5, delay: i * 0.03 }}
                 >
                   <h2 style={{ fontSize: 18, fontWeight: 700, color: 'var(--fg)', marginBottom: 12, letterSpacing: '-0.01em' }}>{s.title}</h2>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
@@ -15,7 +15,7 @@ import CTASection from '@/components/home/CTASection';
 import SolutionCaseStudies from '@/components/solutions/SolutionCaseStudies';
 import { EXPO, FU, FL, FR, SC, STAGGER } from '@/lib/anim';
 
-/* ─── Data ─────────────────────────────────────────────────────────── */
+/* â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const SPECIALIZATIONS = [
   'Sales Cloud Implementation & Optimisation',
   'Service Cloud & Case Management',
@@ -27,14 +27,14 @@ const SERVICES = [
   {
     id: 'implementation', title: 'Salesforce Implementation', dark: false,
     tagline: 'Get Salesforce right from day one.',
-    desc: 'End-to-end Salesforce implementation across Sales Cloud, Service Cloud, and Marketing Cloud — designed around your actual processes, not a generic template.',
+    desc: 'End-to-end Salesforce implementation across Sales Cloud, Service Cloud, and Marketing Cloud â€” designed around your actual processes, not a generic template.',
     list: ['Full-lifecycle CRM implementation', 'Custom object and workflow design', 'Data migration and validation', 'Role-based training and adoption'],
     href: '/solutions/salesforce-services/implementation',
   },
   {
     id: 'managed-services', title: 'Salesforce Support & Managed Services', dark: true,
     tagline: 'Keep your Salesforce org healthy and growing.',
-    desc: 'Ongoing support, optimisation, and development for your Salesforce org — so your team always has a trusted partner to call when things need to change.',
+    desc: 'Ongoing support, optimisation, and development for your Salesforce org â€” so your team always has a trusted partner to call when things need to change.',
     list: ['Org health monitoring and audits', 'Feature development and enhancements', 'User support and troubleshooting', 'Release management and upgrades'],
     href: '/solutions/salesforce-services/managed-services',
   },
@@ -137,7 +137,7 @@ const FAQS = [
   },
 ];
 
-/* ─── Word Reveal ───────────────────────────────────────────────────── */
+/* â”€â”€â”€ Word Reveal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function WordReveal({ text, delay = 0, className, style }: { text: string; delay?: number; className?: string; style?: React.CSSProperties }) {
   const words = text.split(' ');
   return (
@@ -157,7 +157,7 @@ function WordReveal({ text, delay = 0, className, style }: { text: string; delay
   );
 }
 
-/* ─── Page ──────────────────────────────────────────────────────────── */
+/* â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export default function SalesforceServicesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openProb, setOpenProb] = useState<number | null>(null);
@@ -173,9 +173,9 @@ export default function SalesforceServicesPage() {
 
   return (
     <>
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           HERO
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section ref={heroRef} style={{ background: 'var(--bg)', paddingTop: 100, paddingBottom: 64, position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -198,7 +198,7 @@ export default function SalesforceServicesPage() {
           </motion.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24, alignItems: 'stretch' }} className="ds-hero-split">
-            {/* LEFT — video */}
+            {/* LEFT â€” video */}
             <motion.div
               className="ds-hero-video-wrap"
               initial={{ opacity: 0, x: -60 }}
@@ -215,7 +215,7 @@ export default function SalesforceServicesPage() {
               <div style={{ position: 'absolute', inset: 0, background: 'rgba(0, 0, 0, 0.35)', zIndex: 1 }} />
             </motion.div>
 
-            {/* RIGHT — expertise card */}
+            {/* RIGHT â€” expertise card */}
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
@@ -251,14 +251,14 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
-          OUR APPROACH — 2×2 bento
-      ══════════════════════════════════════════════════ */}
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+          OUR APPROACH â€” 2Ã—2 bento
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div
-            variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+            variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
             style={{ marginBottom: 48 }}
           >
             <div className="section-badge" style={{ marginBottom: 16 }}>Our Approach</div>
@@ -271,7 +271,7 @@ export default function SalesforceServicesPage() {
 
             {/* TL */}
             <motion.div
-              variants={FL(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+              variants={FL(0)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               className="glass" style={{ padding: '40px', display: 'flex', flexDirection: 'column', minHeight: 360, gridArea: 'tl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
               <div className="ds-bento-icon" style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(26,86,219,0.10)', border: '1px solid rgba(77,134,245,0.20)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24 }}>
@@ -289,7 +289,7 @@ export default function SalesforceServicesPage() {
 
             {/* TR */}
             <motion.div
-              variants={FR(0.1)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+              variants={FR(0.1)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               className="glass" style={{ padding: '40px', position: 'relative', overflow: 'hidden', minHeight: 360, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gridArea: 'tr', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
               <div className="ds-tr-deco" style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
@@ -305,9 +305,9 @@ export default function SalesforceServicesPage() {
               </p>
             </motion.div>
 
-            {/* BL — Explore Blogs */}
+            {/* BL â€” Explore Blogs */}
             <motion.div
-              variants={FL(0.15)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+              variants={FL(0.15)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               className="glass" style={{ padding: '40px', display: 'flex', gap: 24, minHeight: 380, gridArea: 'bl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
               <div className="ds-blog-bento-inner" style={{ display: 'flex', gap: 24, flex: 1, minHeight: 0 }}>
@@ -333,9 +333,9 @@ export default function SalesforceServicesPage() {
               </div>{/* /ds-blog-bento-inner */}
             </motion.div>
 
-            {/* BR — Specializations */}
+            {/* BR â€” Specializations */}
             <motion.div
-              variants={FR(0.2)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+              variants={FR(0.2)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               style={{ background: 'linear-gradient(135deg, #1A56DB 0%, #0E2E75 55%, #0A1F4F 100%)', borderRadius: 20, padding: '40px', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: 300, gridArea: 'br' }}
             >
               <div className="ds-br-content" style={{ position: 'relative', zIndex: 1, maxWidth: 'calc(100% - 300px)' }}>
@@ -346,7 +346,7 @@ export default function SalesforceServicesPage() {
                       key={s}
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false }}
                       transition={{ duration: 0.5, ease: EXPO, delay: 0.3 + i * 0.08 }}
                       style={{ display: 'flex', alignItems: 'center', gap: 10 }}
                     >
@@ -367,14 +367,14 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
-          OUR SERVICES — sticky stacking
-      ══════════════════════════════════════════════════ */}
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+          OUR SERVICES â€” sticky stacking
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div
-            variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+            variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
             style={{ marginBottom: 48 }}
           >
             <div className="section-badge" style={{ marginBottom: 16 }}>What We Offer</div>
@@ -409,13 +409,13 @@ export default function SalesforceServicesPage() {
                       Learn More <ArrowRight size={13} strokeWidth={1.5} />
                     </Link>
                   </div>
-                  <div style={{ flex: '0 0 520px' }}>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>
                     <p style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: svc.dark ? '#fff' : '#0A1F4F', lineHeight: 1.3, marginBottom: 10 }}>{svc.tagline}</p>
                     <p style={{ fontSize: 15, color: svc.dark ? 'rgba(255,255,255,0.80)' : '#3D3D3D', lineHeight: 1.75, marginBottom: 28 }}>{svc.desc}</p>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 24px' }}>
                       {svc.list.map(item => (
                         <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                          <span style={{ width: 17, height: 17, borderRadius: '50%', background: svc.dark ? 'rgba(77,134,245,0.25)' : 'rgba(26,86,219,0.12)', border: svc.dark ? '1px solid rgba(77,134,245,0.40)' : '1px solid rgba(77,134,245,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 8, color: svc.dark ? '#80A9FF' : '#1A56DB', flexShrink: 0, marginTop: 2 }}>✓</span>
+                          <span style={{ width: 17, height: 17, borderRadius: '50%', background: svc.dark ? 'rgba(77,134,245,0.25)' : 'rgba(26,86,219,0.12)', border: svc.dark ? '1px solid rgba(77,134,245,0.40)' : '1px solid rgba(77,134,245,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 8, color: svc.dark ? '#80A9FF' : '#1A56DB', flexShrink: 0, marginTop: 2 }}>âœ“</span>
                           <span style={{ fontSize: 14, color: svc.dark ? 'rgba(255,255,255,0.85)' : '#262626', lineHeight: 1.55 }}>{item}</span>
                         </div>
                       ))}
@@ -429,14 +429,14 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           HOW IT FITS TOGETHER
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'linear-gradient(160deg, #050d1e 0%, #0a1f4f 30%, #0e2e75 65%, #1a56db 100%)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div
-            variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+            variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
             style={{ marginBottom: 64 }}
           >
             <div className="section-badge" style={{ marginBottom: 16, background: 'rgba(77,134,245,0.18)', border: '1px solid rgba(77,134,245,0.30)' }}>Pipeline</div>
@@ -451,7 +451,7 @@ export default function SalesforceServicesPage() {
                 className="pipeline-step"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.7, ease: EXPO, delay: i * 0.12 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                 style={{ display: 'flex', alignItems: 'flex-start', flexShrink: 0 }}
@@ -475,14 +475,14 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           INDUSTRY USE CASES
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div
-            variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+            variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
             style={{ marginBottom: 56 }}
           >
             <div className="section-badge" style={{ marginBottom: 16 }}>Industry Use Cases</div>
@@ -495,7 +495,7 @@ export default function SalesforceServicesPage() {
           </motion.div>
 
           <motion.div
-            variants={STAGGER(0.09)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+            variants={STAGGER(0.09)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
             style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="ds-ind-grid"
           >
             {INDUSTRIES.map(ind => (
@@ -523,16 +523,16 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           PROBLEMS & SOLUTIONS
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg-2)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: 80, alignItems: 'flex-start' }} className="ds-prob-row">
 
             <div style={{ position: 'sticky', top: 100 }}>
-              <motion.div variants={FL(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}>
+              <motion.div variants={FL(0)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}>
                 <div className="section-badge" style={{ marginBottom: 16, background: 'rgba(26,86,219,0.12)', border: '1px solid rgba(26,86,219,0.25)' }}>Common Challenges</div>
                 <h2 style={{ fontSize: 'clamp(28px,3.5vw,48px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.15, color: 'var(--fg)', marginBottom: 16 }}>
                   Problems We <span className="grad">Solve</span>
@@ -544,7 +544,7 @@ export default function SalesforceServicesPage() {
             </div>
 
             <motion.div
-              variants={STAGGER(0.07)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+              variants={STAGGER(0.07)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               style={{ display: 'flex', flexDirection: 'column', gap: 12 }}
             >
               {PROBLEMS.map((item, i) => (
@@ -579,21 +579,21 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           TESTIMONIALS
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <SolutionCaseStudies filter="salesforce" solutionName="Salesforce" />
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           FAQs
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 'clamp(40px,6vw,88px)', alignItems: 'start' }} className="ds-faq-layout">
 
             <motion.div
-              variants={FL(0)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+              variants={FL(0)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               style={{ position: 'sticky', top: 100 }}
             >
               <div className="section-badge" style={{ marginBottom: 16 }}>FAQ</div>
@@ -606,7 +606,7 @@ export default function SalesforceServicesPage() {
             </motion.div>
 
             <motion.div
-              variants={STAGGER(0.07)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+              variants={STAGGER(0.07)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               style={{ display: 'flex', flexDirection: 'column', gap: 10 }} className="ds-faq-grid"
             >
               {FAQS.map((item, i) => (
@@ -638,9 +638,9 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           CTA
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <TestimonialsSection />
 
       <CTASection />

@@ -126,6 +126,12 @@ body {
   .section { padding: 48px 0; }
 }
 
+/* ─── Laptop responsive fix (laptop only — does NOT affect mobile) ── */
+/* Service card inner gap reduction only between 769px and 1100px */
+@media(min-width:769px) and (max-width:1100px){
+  .svc-card-inner{ gap: 32px !important; }
+}
+
 /* ─── Mobile nav ─────────────────────────────────────────────────── */
 @media(max-width:768px){
   .desktop-nav { display: none !important; }

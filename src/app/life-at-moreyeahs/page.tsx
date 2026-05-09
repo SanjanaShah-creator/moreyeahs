@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -13,7 +13,7 @@ const FV = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 const FT = { duration: 0.6 };
 const stagger = { visible: { transition: { staggerChildren: 0.12 } } };
 
-/* ─── Data ──────────────────────────────────────────────────────── */
+/* â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 const PRIDE_STATS = [
   { Icon: Award, value: '12', label: 'Years', sub: 'Total Industrial experience' },
@@ -30,7 +30,7 @@ const PRIDE_EVENTS = [
     highlights: [
       'Jungle safari and wildlife spotting at one of India\'s finest tiger reserves',
       'Bonfire evenings with team games, stories, and laughter',
-      'Mindful walks through the forest — a reset from the everyday grind',
+      'Mindful walks through the forest â€” a reset from the everyday grind',
       'Strengthened bonds that carry back into how we work together',
     ],
     stats: [
@@ -51,11 +51,11 @@ const PRIDE_EVENTS = [
   {
     title: 'Town Hall',
     eyebrow: 'Company Gathering',
-    desc: 'Our quarterly Town Hall is where the whole company comes together — to align on vision, celebrate wins, and recognize the people who make it all happen.',
+    desc: 'Our quarterly Town Hall is where the whole company comes together â€” to align on vision, celebrate wins, and recognize the people who make it all happen.',
     highlights: [
       'Company-wide updates on goals, milestones, and the road ahead',
       'Spotlight awards recognizing outstanding contributions across teams',
-      'Open Q&A with leadership — honest conversations, no filters',
+      'Open Q&A with leadership â€” honest conversations, no filters',
       'A reminder that behind every project is a team that genuinely cares',
     ],
     stats: [
@@ -83,7 +83,7 @@ const VALUES = [
 ];
 
 const PERKS = [
-  { Icon: Heart,       title: 'Health Insurance',      desc: 'Full coverage for you and your family — medical, dental, and vision.' },
+  { Icon: Heart,       title: 'Health Insurance',      desc: 'Full coverage for you and your family â€” medical, dental, and vision.' },
   { Icon: Globe2,      title: 'Remote-First',          desc: 'Work from anywhere with optional access to our Indore and Cedar Park offices.' },
   { Icon: Clock,       title: 'Flexible Hours',        desc: 'Async-first culture. Own your schedule, deliver great work.' },
   { Icon: TrendingUp,  title: 'Performance Bonuses',   desc: 'Performance bonuses twice a year recognising outstanding contributions across the team.' },
@@ -116,7 +116,7 @@ export default function LifeAtMoreYeahsPage() {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
         <GradientBars count={16} />
         <NoiseOverlay />
@@ -139,12 +139,12 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* ── Moments of Pride ────────────────────────────────────────── */}
+      {/* â”€â”€ Moments of Pride â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section" style={{ background: 'var(--bg-2)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }} className="pride-layout">
-            {/* Left — text + stats */}
-            <motion.div initial={{ opacity: 0, x: -28 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.65 }}>
+            {/* Left â€” text + stats */}
+            <motion.div initial={{ opacity: 0, x: -28 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.65 }}>
               <div className="section-badge" style={{ marginBottom: 16 }}>Our Journey</div>
               <h2 style={{ fontSize: 'clamp(28px,4vw,44px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', marginBottom: 24, lineHeight: 1.1 }}>
                 Moments Of <span className="grad">Pride.</span>
@@ -164,11 +164,11 @@ export default function LifeAtMoreYeahsPage() {
               </div>
             </motion.div>
 
-            {/* Right — team photo */}
+            {/* Right â€” team photo */}
             <motion.div
               initial={{ opacity: 0, x: 28 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.65 }}
               className="pride-stats-grid"
             >
@@ -177,7 +177,7 @@ export default function LifeAtMoreYeahsPage() {
                   key={label}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(26,86,219,0.14)', transition: { duration: 0.3 } }}
                   className="glass pride-stat-card"
@@ -197,7 +197,7 @@ export default function LifeAtMoreYeahsPage() {
             className="pride-event-showcase"
             initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.65 }}
           >
             <div className="pride-showcase-head">
@@ -280,7 +280,7 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* ── Values Grid (4 + centered image + 4) ──────────────────────── */}
+      {/* â”€â”€ Values Grid (4 + centered image + 4) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section" style={{ background: 'var(--bg)' }}>
         <div className="container">
           <ScrollReveal variant="clipUp" style={{ textAlign: 'center', marginBottom: 56 }}>
@@ -297,7 +297,7 @@ export default function LifeAtMoreYeahsPage() {
                 key={title}
                 initial={{ opacity: 0, y: 32, scale: 0.96, filter: 'blur(4px)' }}
                 whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: i * 0.09, ease: [0.16, 1, 0.3, 1] }}
                 className="glass"
                 style={{ padding: '28px 22px' }}
@@ -334,7 +334,7 @@ export default function LifeAtMoreYeahsPage() {
                 key={title}
                 initial={{ opacity: 0, y: 32, scale: 0.96, filter: 'blur(4px)' }}
                 whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: i * 0.09, ease: [0.16, 1, 0.3, 1] }}
                 className="glass"
                 style={{ padding: '28px 22px' }}
@@ -350,7 +350,7 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* ── Perks & Benefits ──────────────────────────────────────────– */}
+      {/* â”€â”€ Perks & Benefits â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â€“ */}
       <section className="section" style={{ background: 'var(--bg-2)' }}>
         <div className="container">
           <ScrollReveal variant="clipUp" style={{ textAlign: 'center', marginBottom: 52 }}>
@@ -366,7 +366,7 @@ export default function LifeAtMoreYeahsPage() {
                 key={title}
                 initial={{ opacity: 0, y: 32, scale: 0.96, filter: 'blur(4px)' }}
                 whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="glass"
                 style={{ padding: '28px 24px', display: 'flex', gap: 18, alignItems: 'flex-start' }}
@@ -384,7 +384,7 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* ── Team Videos ──────────────────────────────────────────────── */}
+      {/* â”€â”€ Team Videos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section" style={{ background: 'var(--bg)' }}>
         <div className="container">
           <ScrollReveal variant="clipUp" style={{ textAlign: 'center', marginBottom: 52 }}>
@@ -401,7 +401,7 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────────────── */}
+      {/* â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <TestimonialsSection />
 
       <section className="section" style={{ background: 'var(--bg)' }}>
@@ -717,7 +717,7 @@ export default function LifeAtMoreYeahsPage() {
           .values-grid-top, .values-grid-bottom { grid-template-columns: repeat(2, 1fr) !important; }
           .perks-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
-        /* ── team videos ── */
+        /* â”€â”€ team videos â”€â”€ */
         .team-video-card { border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; }
         .team-video-card:hover { box-shadow: 0 20px 60px rgba(26,86,219,0.18); transform: translateY(-4px); }
         .voices-scroll-track::-webkit-scrollbar { display: none; }

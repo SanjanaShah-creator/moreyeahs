@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
@@ -70,11 +70,11 @@ export default function TestimonialsSection() {
           alignItems: 'center',
         }}>
 
-          {/* ── LEFT: sticky heading + stats ── */}
+          {/* â”€â”€ LEFT: sticky heading + stats â”€â”€ */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: false, margin: '-60px' }}
             transition={{ duration: 0.7 }}
           >
             <div className="section-badge" style={{ marginBottom: 18 }}>Client Stories</div>
@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
               What Our<br />Clients <span className="grad">Say</span>
             </h2>
             <p style={{ fontSize: 15, color: 'var(--fg-3)', lineHeight: 1.72, maxWidth: 300, marginBottom: 36 }}>
-              Real results from real partnerships — here&apos;s what the teams we&apos;ve worked with have to say.
+              Real results from real partnerships â€” here&apos;s what the teams we&apos;ve worked with have to say.
             </p>
 
             {/* Stats */}
@@ -95,7 +95,7 @@ export default function TestimonialsSection() {
                   key={s.label}
                   initial={{ opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
                   style={{
                     display: 'flex', alignItems: 'center', gap: 16,
@@ -119,7 +119,7 @@ export default function TestimonialsSection() {
             </div>
           </motion.div>
 
-          {/* ── RIGHT: vertical auto-scroll column ── */}
+          {/* â”€â”€ RIGHT: vertical auto-scroll column â”€â”€ */}
           <div
             className="test-right"
             style={{

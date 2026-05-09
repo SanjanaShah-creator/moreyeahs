@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
@@ -15,7 +15,7 @@ const BLUE = '#4D86F5';
 const BLUE_LIGHT = 'rgba(77,134,245,0.08)';
 const EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-/* ─── Job data ──────────────────────────────────────────────────────── */
+/* â”€â”€â”€ Job data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export type Job = {
   id: string;
   title: string;
@@ -55,13 +55,13 @@ export const JOBS: Job[] = [
       'Strong Python skills; proficiency in PyTorch or TensorFlow',
       'Experience with cloud ML platforms (SageMaker, Vertex AI, or Azure ML)',
       'Knowledge of MLOps tooling: MLflow, Kubeflow, or similar',
-      'Excellent communication skills — you can explain models to non-technical stakeholders',
+      'Excellent communication skills â€” you can explain models to non-technical stakeholders',
       'Bonus: experience in NLP, computer vision, or time-series forecasting',
     ],
     offer: [
       'Competitive salary benchmarked to top-tier tech companies',
       'Fully remote with optional co-working stipend',
-      '₹60K annual learning & conference budget',
+      'â‚¹60K annual learning & conference budget',
       'Health insurance for you and dependents',
       'Stock options and performance bonuses',
       'Quarterly team offsites',
@@ -76,7 +76,7 @@ export const JOBS: Job[] = [
     department: 'Web & App',
     experience: 'Mid-level',
     desc: 'Build scalable web applications using Next.js, TypeScript, and Node.js. Work with designers and clients to ship polished, high-performance products.',
-    overview: 'You will join our Web & App team to design and ship customer-facing products across a variety of industries. You will work in a collaborative squad with a product designer, PM, and backend specialist — owning features from Figma handoff to production deployment.',
+    overview: 'You will join our Web & App team to design and ship customer-facing products across a variety of industries. You will work in a collaborative squad with a product designer, PM, and backend specialist â€” owning features from Figma handoff to production deployment.',
     responsibilities: [
       'Build responsive, accessible web applications with Next.js, TypeScript, and Tailwind CSS',
       'Develop RESTful and GraphQL APIs using Node.js and PostgreSQL/MongoDB',
@@ -87,10 +87,10 @@ export const JOBS: Job[] = [
     ],
     requirements: [
       '3+ years of professional full-stack development experience',
-      'Expert-level Next.js, TypeScript, React — you understand RSC and the App Router',
+      'Expert-level Next.js, TypeScript, React â€” you understand RSC and the App Router',
       'Solid Node.js/Express backend skills',
       'Familiarity with CI/CD, Docker, and cloud deployments',
-      'Eye for design — you care about pixel-perfect implementation',
+      'Eye for design â€” you care about pixel-perfect implementation',
       'Bonus: experience with animation libraries (Framer Motion) or design systems',
     ],
     offer: [
@@ -146,7 +146,7 @@ export const JOBS: Job[] = [
     department: 'Cloud & Infrastructure',
     experience: 'Senior',
     desc: 'Architect and maintain cloud infrastructure on AWS and GCP. Drive IaC adoption, manage CI/CD pipelines, and enforce security and compliance best practices.',
-    overview: 'You will design and operate the cloud backbone for our clients — ranging from fast-growing startups to regulated enterprises. You will have significant autonomy to modernise infrastructure, introduce best practices, and mentor clients on cloud-native architecture.',
+    overview: 'You will design and operate the cloud backbone for our clients â€” ranging from fast-growing startups to regulated enterprises. You will have significant autonomy to modernise infrastructure, introduce best practices, and mentor clients on cloud-native architecture.',
     responsibilities: [
       'Design and provision cloud infrastructure using Terraform and Pulumi',
       'Build and maintain robust CI/CD pipelines with GitHub Actions, ArgoCD, and Jenkins',
@@ -164,7 +164,7 @@ export const JOBS: Job[] = [
       'Experience working in SOC 2 or ISO 27001 environments is a plus',
     ],
     offer: [
-      'Fully remote — work from anywhere',
+      'Fully remote â€” work from anywhere',
       'Competitive salary with cloud certification bonuses',
       'Annual learning budget + certification reimbursement',
       'Health coverage',
@@ -181,13 +181,13 @@ export const JOBS: Job[] = [
     department: 'Growth',
     experience: 'Senior',
     desc: 'Identify and develop new business opportunities across North America and APAC. Partner with our solutions team to craft compelling proposals and close enterprise deals.',
-    overview: 'You will drive MoreYeahs\'s growth by opening new accounts and expanding existing relationships across enterprise markets. You will work closely with our technical solutions team to scope deals, build compelling proposals, and guide prospects through the sales journey — from first conversation to signed contract.',
+    overview: 'You will drive MoreYeahs\'s growth by opening new accounts and expanding existing relationships across enterprise markets. You will work closely with our technical solutions team to scope deals, build compelling proposals, and guide prospects through the sales journey â€” from first conversation to signed contract.',
     responsibilities: [
       'Prospect and develop enterprise accounts across North America and APAC',
       'Run discovery calls and solution workshops with C-suite and VP-level stakeholders',
       'Collaborate with solutions architects to create technically accurate proposals',
       'Manage a healthy pipeline in Salesforce CRM with accurate forecasting',
-      'Negotiate commercial terms and close contracts ($250K–$2M ACV range)',
+      'Negotiate commercial terms and close contracts ($250Kâ€“$2M ACV range)',
       'Work with marketing on outbound campaigns, events, and partner channels',
     ],
     requirements: [
@@ -209,13 +209,13 @@ export const JOBS: Job[] = [
   },
 ];
 
-/* ─── Filter options ────────────────────────────────────────────────── */
+/* â”€â”€â”€ Filter options â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const DEPARTMENTS = ['All Departments', 'Data Science & AI', 'Web & App', 'Salesforce Services', 'Cloud & Infrastructure', 'Growth'];
 const EXPERIENCE_LEVELS = ['All Levels', 'Junior', 'Mid-level', 'Senior', 'Lead'];
 const JOB_TYPES = ['All Types', 'Full-time', 'Part-time', 'Contract'];
 const WORK_PREFS = ['All Preferences', 'Remote', 'Hybrid', 'On-site'];
 
-/* ─── Perks ─────────────────────────────────────────────────────────── */
+/* â”€â”€â”€ Perks â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const PERKS = [
   { Icon: Globe2,    title: 'Remote-Friendly',  desc: 'Work from anywhere. We hire across time zones with an async-first culture.' },
   { Icon: TrendingUp,title: 'Growth Path',       desc: 'Clear career ladders, mentorship programmes, and dedicated learning time to grow every year.' },
@@ -223,7 +223,7 @@ const PERKS = [
   { Icon: Coffee,    title: 'Great Culture',      desc: 'Quarterly offsites, hackathons, flexible hours, and a team that ships and celebrates.' },
 ];
 
-/* ─── FilterChip ─────────────────────────────────────────────────────── */
+/* â”€â”€â”€ FilterChip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function FilterSelect({
   label, value, options, onChange,
 }: { label: string; value: string; options: string[]; onChange: (v: string) => void }) {
@@ -259,7 +259,7 @@ function FilterSelect({
   );
 }
 
-/* ─── JobCard ────────────────────────────────────────────────────────── */
+/* â”€â”€â”€ JobCard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function JobCard({ job, index }: { job: Job; index: number }) {
   const prefColors: Record<string, string> = {
     Remote: '#4D86F5',
@@ -342,7 +342,7 @@ function JobCard({ job, index }: { job: Job; index: number }) {
   );
 }
 
-/* ─── Page ──────────────────────────────────────────────────────────── */
+/* â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export default function CareersPage() {
   const [experience, setExperience] = useState('All Levels');
   const [jobType, setJobType] = useState('All Types');
@@ -364,7 +364,7 @@ export default function CareersPage() {
 
   return (
     <>
-      {/* ── Hero ──────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{
         background: 'var(--bg)',
         position: 'relative', overflow: 'hidden',
@@ -419,7 +419,7 @@ export default function CareersPage() {
               transition={{ duration: 0.6 }}
               style={{ fontSize: 17, color: 'var(--fg-3)', lineHeight: 1.78, maxWidth: 560, margin: '0 auto 36px' }}
             >
-              Join a team of specialists who care deeply about craft, outcomes, and each other. Do the most meaningful work of your career — and have fun doing it.
+              Join a team of specialists who care deeply about craft, outcomes, and each other. Do the most meaningful work of your career â€” and have fun doing it.
             </motion.p>
 
             <motion.div
@@ -429,7 +429,7 @@ export default function CareersPage() {
             >
               {[
                 { label: `${JOBS.length} Open Roles` },
-                { label: '4.8★ Glassdoor' },
+                { label: '4.8â˜… Glassdoor' },
                 { label: '92% Retention' },
               ].map(({ label }) => (
                 <span key={label} style={{
@@ -445,7 +445,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* ── Why MoreYeahs ─────────────────────────────────────────────── */}
+      {/* â”€â”€ Why MoreYeahs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg-2)', padding: '72px 0' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 20 }} className="careers-perks-grid">
@@ -454,7 +454,7 @@ export default function CareersPage() {
                 key={title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.08, ease: EXPO }}
                 style={{
                   padding: '28px 24px', borderRadius: 18,
@@ -476,13 +476,13 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* ── Open Roles (filters + listings) ───────────────────────────── */}
+      {/* â”€â”€ Open Roles (filters + listings) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg)', padding: '80px 0 120px' }}>
         <div className="container">
           {/* Section heading */}
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.55 }}
+            viewport={{ once: false }} transition={{ duration: 0.55 }}
             style={{ marginBottom: 48 }}
           >
             <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase', color: BLUE, marginBottom: 12 }}>
@@ -492,7 +492,7 @@ export default function CareersPage() {
               <h2 style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.15 }}>
                 Find your next opportunity
               </h2>
-              {/* Filter toggle — mobile only, shown via CSS at ≤860px */}
+              {/* Filter toggle â€” mobile only, shown via CSS at â‰¤860px */}
               <button
                 className="careers-filter-toggle"
                 onClick={() => setFiltersOpen(!filtersOpen)}
@@ -513,7 +513,7 @@ export default function CareersPage() {
           {/* Two-column layout */}
           <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: 40, alignItems: 'start' }} className="careers-layout">
 
-            {/* ── Left filter panel — always visible on desktop, toggled on mobile via CSS ── */}
+            {/* â”€â”€ Left filter panel â€” always visible on desktop, toggled on mobile via CSS â”€â”€ */}
             <div
               className={`careers-filter-panel ${filtersOpen ? 'open' : ''}`}
               style={{
@@ -550,7 +550,7 @@ export default function CareersPage() {
               <FilterSelect label="Work Preference" value={workPref} options={WORK_PREFS} onChange={setWorkPref} />
             </div>
 
-            {/* ── Right listings ── */}
+            {/* â”€â”€ Right listings â”€â”€ */}
             <div>
               {/* Result count */}
               <div style={{ fontSize: 13, color: 'var(--fg-3)', marginBottom: 20 }}>
@@ -564,7 +564,7 @@ export default function CareersPage() {
                   background: 'var(--card-bg)', border: '1px solid var(--border)',
                   borderRadius: 18,
                 }}>
-                  <div style={{ fontSize: 32, marginBottom: 12 }}>🔍</div>
+                  <div style={{ fontSize: 32, marginBottom: 12 }}>ðŸ”</div>
                   <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 8 }}>No matching roles</h3>
                   <p style={{ fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.7 }}>
                     Try adjusting your filters or{' '}
@@ -585,7 +585,7 @@ export default function CareersPage() {
               {/* Open application banner */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: false }} transition={{ duration: 0.5, delay: 0.2 }}
                 style={{
                   marginTop: 32, borderRadius: 18, padding: '28px 32px',
                   background: BLUE_LIGHT, border: `1px solid ${BLUE}25`,
@@ -602,7 +602,7 @@ export default function CareersPage() {
                   </p>
                 </div>
                 <a
-                  href="mailto:careers@moreyeahs.com?subject=Open Application — MoreYeahs"
+                  href="mailto:careers@moreyeahs.com?subject=Open Application â€” MoreYeahs"
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: 7,
                     fontSize: 13, fontWeight: 700, color: BLUE,

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, TrendingUp, Users, CheckCircle2, ChevronRight } from 'lucide-react';
@@ -9,14 +9,14 @@ import { GradientBars } from '@/components/ui/gradient-bar-hero-section';
 export default function CaseStudyPage() {
   return (
     <>
-      {/* ── Hero ────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
         <GradientBars count={16} />
         <NoiseOverlay />
 
         <div className="container" style={{ position: 'relative', zIndex: 3 }}>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            {/* Breadcrumb — site standard: ← Parent > Current */}
+            {/* Breadcrumb â€” site standard: â† Parent > Current */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--fg-3)', marginBottom: 28, flexWrap: 'wrap' }}>
               <Link href="/case-studies" style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--fg-3)', textDecoration: 'none', fontWeight: 600 }}>
                 <ArrowLeft size={12} strokeWidth={2} /> Case Studies
@@ -58,21 +58,21 @@ export default function CaseStudyPage() {
         </div>
       </section>
 
-      {/* ── Key Metrics ──────────────────────────────────────────────── */}
+      {/* â”€â”€ Key Metrics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 60, paddingBottom: 60, borderBottom: '1px solid var(--border)' }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
               {[
-                { metric: '94.2%', label: 'Model Accuracy', icon: '🎯' },
-                { metric: '60%', label: 'Clinical Time Saved', icon: '⏱️' },
-                { metric: '38%', label: 'Misdiagnosis Reduction', icon: '📉' },
-                { metric: '2,500+', label: 'Patients Evaluated', icon: '👥' },
+                { metric: '94.2%', label: 'Model Accuracy', icon: 'ðŸŽ¯' },
+                { metric: '60%', label: 'Clinical Time Saved', icon: 'â±ï¸' },
+                { metric: '38%', label: 'Misdiagnosis Reduction', icon: 'ðŸ“‰' },
+                { metric: '2,500+', label: 'Patients Evaluated', icon: 'ðŸ‘¥' },
               ].map((item, idx) => (
                 <div key={idx} style={{
                   background: 'var(--card-bg)', border: '1px solid var(--card-border)',
@@ -92,13 +92,13 @@ export default function CaseStudyPage() {
         </div>
       </section>
 
-      {/* ── Content ──────────────────────────────────────────────────── */}
+      {/* â”€â”€ Content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 120 }}>
         <div className="container">
           <motion.article
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
             style={{ maxWidth: 800, margin: '0 auto' }}
           >
@@ -115,14 +115,14 @@ export default function CaseStudyPage() {
               </p>
               <ul style={{ listStyle: 'none', padding: 0, marginBottom: 16 }}>
                 {[
-                  'Diagnostic variance across clinicians—even for the same patient presentation',
+                  'Diagnostic variance across cliniciansâ€”even for the same patient presentation',
                   'Limited time for complex case review due to high patient volumes',
                   'Incomplete integration of multimodal data (imaging, lab results, medical history)',
                   'No real-time decision support during diagnosis formation',
                   'Missed rare disease patterns that required specialist-level knowledge',
                 ].map((item, idx) => (
                   <li key={idx} style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 12, paddingLeft: 20, position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, color: '#4D86F5' }}>→</span>
+                    <span style={{ position: 'absolute', left: 0, color: '#4D86F5' }}>â†’</span>
                     {item}
                   </li>
                 ))}
@@ -135,7 +135,7 @@ export default function CaseStudyPage() {
                 Our Solution
               </h2>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 16 }}>
-                We designed and deployed a multimodal deep-learning platform that ingests multiple data streams—imaging files, lab work, patient history, genetic markers, and clinical notes—to generate real-time diagnostic hypotheses with confidence scores. The system was built to assist, not replace, clinicians; all predictions were presented alongside explanatory insights into which data points contributed most to each recommendation.
+                We designed and deployed a multimodal deep-learning platform that ingests multiple data streamsâ€”imaging files, lab work, patient history, genetic markers, and clinical notesâ€”to generate real-time diagnostic hypotheses with confidence scores. The system was built to assist, not replace, clinicians; all predictions were presented alongside explanatory insights into which data points contributed most to each recommendation.
               </p>
 
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24, marginBottom: 24 }}>
@@ -162,11 +162,11 @@ export default function CaseStudyPage() {
               </h2>
               <div style={{ display: 'grid', gap: 16 }}>
                 {[
-                  { week: 'Week 1–2', milestone: 'Discovery & Data Assessment', desc: 'Interviews with radiologists, pathologists, and ER physicians. Audit of 5,000 historical cases.' },
-                  { week: 'Week 3–4', milestone: 'Pilot Data Pipeline', desc: 'Build data extraction from EHR and PACS. Create anonymized training dataset.' },
-                  { week: 'Week 5–6', milestone: 'Model Development & Validation', desc: 'Train ensemble models. Cross-validation on hold-out test set. Achieve 94.2% accuracy.' },
-                  { week: 'Week 7–8', milestone: 'API & UI Development', desc: 'Real-time inference API. Clinician dashboard. HIPAA audit & compliance sign-off.' },
-                  { week: 'Week 9–12', milestone: 'Pilot Deployment & Training', desc: 'Roll out to 2 hospital departments. Clinician training. Real-world feedback loops.' },
+                  { week: 'Week 1â€“2', milestone: 'Discovery & Data Assessment', desc: 'Interviews with radiologists, pathologists, and ER physicians. Audit of 5,000 historical cases.' },
+                  { week: 'Week 3â€“4', milestone: 'Pilot Data Pipeline', desc: 'Build data extraction from EHR and PACS. Create anonymized training dataset.' },
+                  { week: 'Week 5â€“6', milestone: 'Model Development & Validation', desc: 'Train ensemble models. Cross-validation on hold-out test set. Achieve 94.2% accuracy.' },
+                  { week: 'Week 7â€“8', milestone: 'API & UI Development', desc: 'Real-time inference API. Clinician dashboard. HIPAA audit & compliance sign-off.' },
+                  { week: 'Week 9â€“12', milestone: 'Pilot Deployment & Training', desc: 'Roll out to 2 hospital departments. Clinician training. Real-world feedback loops.' },
                 ].map((item, idx) => (
                   <div key={idx} style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 8, padding: 16, display: 'grid', gridTemplateColumns: '120px 1fr', gap: 16 }}>
                     <div style={{ fontSize: 13, fontWeight: 700, color: '#4D86F5' }}>{item.week}</div>
@@ -189,7 +189,7 @@ export default function CaseStudyPage() {
                   { title: 'Model Performance', stats: '94.2% accuracy on hold-out test set. 89% sensitivity, 97% specificity.' },
                   { title: 'Clinical Adoption', stats: '68% of diagnosticians now consult the system for complex cases. Average 2.3 predictions reviewed per diagnostic encounter.' },
                   { title: 'Misdiagnosis Reduction', stats: '38% reduction in diagnostic errors within the first 6 months of full deployment.' },
-                  { title: 'Time Savings', stats: 'Clinicians report 60% faster diagnosis formation for complex cases, freeing up 2–3 hours per shift for patient care.' },
+                  { title: 'Time Savings', stats: 'Clinicians report 60% faster diagnosis formation for complex cases, freeing up 2â€“3 hours per shift for patient care.' },
                   { title: 'Patient Outcomes', stats: 'Median time-to-treatment reduced by 18%. Downstream complications (due to delayed diagnosis) dropped 22%.' },
                   { title: 'ROI Realization', stats: 'Reduced malpractice claim frequency saved $1.2M in year 1. Operational efficiency gains: $2.1M.' },
                 ].map((item, idx) => (
@@ -210,21 +210,21 @@ export default function CaseStudyPage() {
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24, marginBottom: 16 }}>
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 12 }}>Challenge: Data Quality & Completeness</h3>
                 <p style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.7 }}>
-                  Not all patient records were complete—some imaging studies were missing, lab results were inconsistently recorded, and some diagnoses were vague. We had to develop sophisticated imputation strategies and build the model to gracefully handle sparse data.
+                  Not all patient records were completeâ€”some imaging studies were missing, lab results were inconsistently recorded, and some diagnoses were vague. We had to develop sophisticated imputation strategies and build the model to gracefully handle sparse data.
                 </p>
               </div>
 
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24, marginBottom: 16 }}>
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 12 }}>Challenge: Clinician Trust & Adoption</h3>
                 <p style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.7 }}>
-                  AI in healthcare triggers skepticism. Clinicians didn't want a "black box" predicting diagnoses. We invested heavily in explainability—showing which imaging regions, lab values, and patient factors contributed to each prediction. This transparency was critical to adoption.
+                  AI in healthcare triggers skepticism. Clinicians didn't want a "black box" predicting diagnoses. We invested heavily in explainabilityâ€”showing which imaging regions, lab values, and patient factors contributed to each prediction. This transparency was critical to adoption.
                 </p>
               </div>
 
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24 }}>
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 12 }}>Challenge: Regulatory & Compliance</h3>
                 <p style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.7 }}>
-                  FDA classification was ambiguous—is this a medical device? Requires pre-market approval? We worked with regulatory consultants to position the system as a clinical decision support tool (not a diagnostic device) and ensure full HIPAA/SOC 2 compliance.
+                  FDA classification was ambiguousâ€”is this a medical device? Requires pre-market approval? We worked with regulatory consultants to position the system as a clinical decision support tool (not a diagnostic device) and ensure full HIPAA/SOC 2 compliance.
                 </p>
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function CaseStudyPage() {
                 The client is now planning Phase 2 expansion: scaling the platform across all 14 hospitals and extending the diagnostic scope to 8 additional specialties (currently it covers emergency medicine and radiology interpretation).
               </p>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8 }}>
-                We're also exploring integration with their EHR vendor to embed the predictions directly into clinician workflows—reducing the friction of using a separate tool.
+                We're also exploring integration with their EHR vendor to embed the predictions directly into clinician workflowsâ€”reducing the friction of using a separate tool.
               </p>
             </div>
 

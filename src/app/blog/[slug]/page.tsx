@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
@@ -263,7 +263,7 @@ export default function BlogPostPage() {
             id="blog-content"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
             style={{ maxWidth: 820, margin: '0 auto', background: 'var(--bg)', padding: '48px 40px', borderRadius: 20, boxShadow: '0 20px 60px rgba(0,0,0,0.08)', position: 'relative', overflow: 'hidden' }}
             className="prose"

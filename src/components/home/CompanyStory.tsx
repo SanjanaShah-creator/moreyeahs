@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { Globe, Award, Users, Layers, ArrowRight } from 'lucide-react';
@@ -22,12 +22,12 @@ export default function CompanyStory() {
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }} className="story-grid">
 
-          {/* Left — slides in from left */}
+          {/* Left â€” slides in from left */}
           <motion.div
             variants={FL(0)}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: false, margin: '-80px' }}
           >
             <div className="section-badge" style={{ marginBottom: 20 }}>About MoreYeahs</div>
 
@@ -57,12 +57,12 @@ export default function CompanyStory() {
             </Link>
           </motion.div>
 
-          {/* Right — stat cards stagger from right */}
+          {/* Right â€” stat cards stagger from right */}
           <motion.div
             variants={STAGGER()}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: false, margin: '-80px' }}
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}
           >
             {STATS.map(({ Icon, value, label, sub }, i) => (

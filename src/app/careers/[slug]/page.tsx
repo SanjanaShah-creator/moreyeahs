@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, use } from 'react';
 import { motion } from 'framer-motion';
@@ -196,7 +196,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: false, margin: '-60px' }}
       transition={{ duration: 0.5, ease: EXPO }}
       style={{ marginBottom: 48 }}
     >

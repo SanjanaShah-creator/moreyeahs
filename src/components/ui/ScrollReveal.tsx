@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion, type TargetAndTransition, type Variants } from 'framer-motion';
 
@@ -59,7 +59,7 @@ export default function ScrollReveal({
   );
 }
 
-/** Staggered children — wrap a list container */
+/** Staggered children â€” wrap a list container */
 export function ScrollRevealGroup({
   children,
   stagger = 0.1,
@@ -94,7 +94,7 @@ export function ScrollRevealGroup({
       style={style}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: false, amount: 0.1 }}
       variants={containerVariants}
     >
       {Array.isArray(children)

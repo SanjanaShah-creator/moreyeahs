@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { Shield, Mail } from 'lucide-react';
@@ -14,18 +14,18 @@ We also automatically collect certain information when you visit our website, in
   {
     title: '2. How We Use Your Information',
     content: `We use the information we collect to:
-• Respond to your inquiries and provide the services you request
-• Send you technical notices, updates, and support messages
-• Send marketing communications, if you have opted in
-• Monitor and analyse trends, usage, and activities on our website
-• Detect and prevent fraudulent transactions and other illegal activities
-• Personalise and improve your experience on our website`,
+â€¢ Respond to your inquiries and provide the services you request
+â€¢ Send you technical notices, updates, and support messages
+â€¢ Send marketing communications, if you have opted in
+â€¢ Monitor and analyse trends, usage, and activities on our website
+â€¢ Detect and prevent fraudulent transactions and other illegal activities
+â€¢ Personalise and improve your experience on our website`,
   },
   {
     title: '3. Information Sharing',
     content: `We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties without your consent, except as described in this Privacy Policy.
 
-We may share your information with trusted third-party service providers who assist us in operating our website, conducting our business, or serving you — provided that those parties agree to keep this information confidential. We may also release your information when required by law or to protect the rights, property, or safety of MoreYeahs IT Technologies, our clients, or others.`,
+We may share your information with trusted third-party service providers who assist us in operating our website, conducting our business, or serving you â€” provided that those parties agree to keep this information confidential. We may also release your information when required by law or to protect the rights, property, or safety of MoreYeahs IT Technologies, our clients, or others.`,
   },
   {
     title: '4. Data Security',
@@ -46,12 +46,12 @@ You can choose to have your computer warn you each time a cookie is being sent, 
   {
     title: '7. Your Rights (GDPR & CCPA)',
     content: `Depending on your location, you may have certain rights regarding your personal data, including:
-• The right to access the personal data we hold about you
-• The right to request correction of inaccurate personal data
-• The right to request deletion of your personal data
-• The right to object to processing of your personal data
-• The right to data portability
-• The right to withdraw consent at any time
+â€¢ The right to access the personal data we hold about you
+â€¢ The right to request correction of inaccurate personal data
+â€¢ The right to request deletion of your personal data
+â€¢ The right to object to processing of your personal data
+â€¢ The right to data portability
+â€¢ The right to withdraw consent at any time
 
 To exercise any of these rights, please contact us at digitalmoreyeahs@gmail.com.`,
   },
@@ -89,7 +89,7 @@ export default function PrivacyPolicyPage() {
               Privacy Policy
             </h1>
             <p style={{ fontSize: 14, color: 'var(--fg-3)', marginBottom: 48 }}>
-              Last updated: <strong style={{ color: 'var(--fg-2)' }}>January 1, 2026</strong> · MoreYeahs IT Technologies Pvt Ltd
+              Last updated: <strong style={{ color: 'var(--fg-2)' }}>January 1, 2026</strong> Â· MoreYeahs IT Technologies Pvt Ltd
             </p>
 
             <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.78, marginBottom: 48, padding: '20px 24px', borderRadius: 12, background: 'rgba(26,86,219,0.06)', border: '1px solid rgba(77,134,245,0.14)' }}>
@@ -102,7 +102,7 @@ export default function PrivacyPolicyPage() {
                   key={s.title}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-40px' }}
+                  viewport={{ once: false, margin: '-40px' }}
                   transition={{ duration: 0.5, delay: i * 0.03 }}
                 >
                   <h2 style={{ fontSize: 18, fontWeight: 700, color: 'var(--fg)', marginBottom: 12, letterSpacing: '-0.01em' }}>{s.title}</h2>

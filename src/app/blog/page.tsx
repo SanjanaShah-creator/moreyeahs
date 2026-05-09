@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -109,7 +109,7 @@ export default function BlogPage() {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
         <GradientBars count={16} />
         <NoiseOverlay />
@@ -126,17 +126,17 @@ export default function BlogPage() {
               <span className="grad">AI, Data &amp; Cloud</span>
             </motion.h1>
             <motion.p variants={FV} transition={FT} style={{ fontSize: 17, color: 'var(--fg-3)', lineHeight: 1.8, maxWidth: 560, margin: '0 auto' }}>
-              Technical deep-dives, lessons from the field, and forward-looking perspectives — written by the engineers and architects who build the systems.
+              Technical deep-dives, lessons from the field, and forward-looking perspectives â€” written by the engineers and architects who build the systems.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Featured Post ─────────────────────────────────────────────── */}
+      {/* â”€â”€ Featured Post â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section" style={{ background: 'var(--bg-2)', paddingBottom: 0 }}>
         <div className="container">
           {loading ? (
-            <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65 }}>
+            <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.65 }}>
               <div style={{ marginBottom: 24 }}>
                 <div className="skeleton" style={{ width: 120, height: 16, borderRadius: 999, marginBottom: 20 }} />
               </div>
@@ -156,7 +156,7 @@ export default function BlogPage() {
               </div>
             </motion.div>
           ) : featuredPost ? (
-            <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65 }}>
+            <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.65 }}>
               <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 24 }}>Featured Article</div>
               <div className="glass" style={{ padding: 0, position: 'relative', overflow: 'hidden', width: '100%', margin: 0 }}>
                 <div className="blob" style={{ width: 320, height: 320, top: '-50px', right: '-30px', background: 'radial-gradient(circle, rgba(26,86,219,0.11), transparent 65%)' }} />
@@ -209,10 +209,10 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ── Blog Grid ─────────────────────────────────────────────────── */}
+      {/* â”€â”€ Blog Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section" style={{ background: 'var(--bg-2)' }}>
         <div className="container">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 44 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.6 }} style={{ marginBottom: 44 }}>
             <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 16 }}>Latest Posts</div>
             <h2 style={{ fontSize: 'clamp(24px,3vw,38px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.15 }}>
               More from the team
@@ -306,7 +306,7 @@ export default function BlogPage() {
 
                   {/* Body */}
                   <div style={{ padding: '18px 20px 16px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    {/* Category badge — below the image */}
+                    {/* Category badge â€” below the image */}
                     <div style={{ marginBottom: 10 }}>
                       <CategoryBadge label={category} />
                     </div>
@@ -344,12 +344,12 @@ export default function BlogPage() {
               ))}
             </div>
               
-              {/* ── Pagination ─────────────────────────────────────────── */}
+              {/* â”€â”€ Pagination â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
               {totalPages > 1 && (
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, marginTop: 56 }}
               >
@@ -441,10 +441,10 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ── Newsletter ────────────────────────────────────────────────── */}
+      {/* â”€â”€ Newsletter â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section" style={{ background: 'var(--bg)' }}>
         <div className="container">
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.6 }}
             className="glass"
             style={{ maxWidth: 640, margin: '0 auto', padding: '56px 48px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
             <div className="blob" style={{ width: 360, height: 360, top: '-80px', right: '-80px', background: 'radial-gradient(circle, rgba(26,86,219,0.13), transparent 65%)' }} />
@@ -455,12 +455,12 @@ export default function BlogPage() {
               Stay up to date
             </h2>
             <p style={{ fontSize: 14, color: 'var(--fg-3)', lineHeight: 1.75, maxWidth: 420, margin: '0 auto 28px', position: 'relative', zIndex: 1 }}>
-              Get our latest articles, case studies, and engineering insights delivered to your inbox — no noise, unsubscribe any time.
+              Get our latest articles, case studies, and engineering insights delivered to your inbox â€” no noise, unsubscribe any time.
             </p>
             <div style={{ display: 'flex', gap: 10, maxWidth: 420, margin: '0 auto', position: 'relative', zIndex: 1 }} className="newsletter-form">
               {newsletterState === 'done' ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', width: '100%', padding: '13px 0', color: '#22c55e', fontWeight: 700, fontSize: 14 }}>
-                  <CheckCircle size={18} strokeWidth={2} /> You&apos;re subscribed — thanks!
+                  <CheckCircle size={18} strokeWidth={2} /> You&apos;re subscribed â€” thanks!
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: 10, width: '100%' }}>
@@ -476,7 +476,7 @@ export default function BlogPage() {
                     style={{ padding: '13px 22px', borderRadius: 12, fontSize: 14, fontWeight: 700, background: newsletterState === 'loading' ? 'rgba(26,86,219,0.5)' : '#1A56DB', color: '#fff', border: 'none', cursor: newsletterState === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(26,86,219,0.28)', transition: 'background 0.2s, transform 0.2s', fontFamily: 'inherit' }}
                     onMouseEnter={e => { if (newsletterState !== 'loading') { (e.currentTarget as HTMLElement).style.background = '#0E2E75'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; } }}
                     onMouseLeave={e => { if (newsletterState !== 'loading') { (e.currentTarget as HTMLElement).style.background = '#1A56DB'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; } }}>
-                    {newsletterState === 'loading' ? 'Subscribing…' : 'Subscribe'}
+                    {newsletterState === 'loading' ? 'Subscribingâ€¦' : 'Subscribe'}
                   </button>
                 </form>
               )}

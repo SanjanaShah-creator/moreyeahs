@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Calendar } from 'lucide-react';
@@ -21,7 +21,7 @@ export default function CTASection() {
           variants={SC(0)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: false, margin: '-80px' }}
           style={{
             borderRadius: 28,
             padding: 'clamp(52px,7vw,88px)',
@@ -41,7 +41,7 @@ export default function CTASection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.7, ease: EXPO, delay: 0.15 }}
             >
               <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 24, background: 'rgba(26,86,219,0.14)', border: '1px solid rgba(77,134,245,0.30)' }}>
@@ -53,7 +53,7 @@ export default function CTASection() {
             <motion.h2
               initial={{ opacity: 0, y: 32, filter: 'blur(8px)' }}
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.9, ease: EXPO, delay: 0.25 }}
               style={{ fontSize: 'clamp(30px,5vw,58px)', fontWeight: 800, letterSpacing: '-0.04em', color: 'var(--fg)', lineHeight: 1.06, marginBottom: 20 }}
             >
@@ -64,7 +64,7 @@ export default function CTASection() {
             <motion.p
               initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8, ease: EXPO, delay: 0.35 }}
               style={{ fontSize: 17, color: 'var(--fg-3)', maxWidth: 480, margin: '0 auto 40px', lineHeight: 1.74 }}
             >
@@ -74,7 +74,7 @@ export default function CTASection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.7, ease: EXPO, delay: 0.45 }}
               style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 32 }}
             >
@@ -109,7 +109,7 @@ export default function CTASection() {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6, ease: EXPO, delay: 0.55 }}
               style={{ display: 'flex', gap: 28, justifyContent: 'center', flexWrap: 'wrap' }}
             >

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -72,7 +72,7 @@ export default function SolutionCaseStudies({ filter, solutionName }: Props) {
 
         {/* Cards */}
         <motion.div
-          variants={STAGGER(0.1)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}
+          variants={STAGGER(0.1)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-60px' }}
           style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 24 }}
         >
           {loading

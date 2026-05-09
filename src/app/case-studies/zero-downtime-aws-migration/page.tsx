@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, TrendingUp, DollarSign, CheckCircle2, ChevronRight } from 'lucide-react';
@@ -9,14 +9,14 @@ import { GradientBars } from '@/components/ui/gradient-bar-hero-section';
 export default function AWSMigrationCaseStudy() {
   return (
     <>
-      {/* ── Hero ────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
         <GradientBars count={16} />
         <NoiseOverlay />
 
         <div className="container" style={{ position: 'relative', zIndex: 3 }}>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            {/* Breadcrumb — site standard: ← Parent > Current */}
+            {/* Breadcrumb â€” site standard: â† Parent > Current */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--fg-3)', marginBottom: 28, flexWrap: 'wrap' }}>
               <Link href="/case-studies" style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--fg-3)', textDecoration: 'none', fontWeight: 600 }}>
                 <ArrowLeft size={12} strokeWidth={2} /> Case Studies
@@ -58,21 +58,21 @@ export default function AWSMigrationCaseStudy() {
         </div>
       </section>
 
-      {/* ── Key Metrics ──────────────────────────────────────────────── */}
+      {/* â”€â”€ Key Metrics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 60, paddingBottom: 60, borderBottom: '1px solid var(--border)' }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
               {[
-                { metric: '$420K', label: 'Annual Cost Savings', icon: '💰' },
-                { metric: '99.99%', label: 'Uptime Achieved', icon: '✅' },
-                { metric: '42%', label: 'Infrastructure Reduction', icon: '📉' },
-                { metric: '12→34', label: 'Microservices Deployed', icon: '🚀' },
+                { metric: '$420K', label: 'Annual Cost Savings', icon: 'ðŸ’°' },
+                { metric: '99.99%', label: 'Uptime Achieved', icon: 'âœ…' },
+                { metric: '42%', label: 'Infrastructure Reduction', icon: 'ðŸ“‰' },
+                { metric: '12â†’34', label: 'Microservices Deployed', icon: 'ðŸš€' },
               ].map((item, idx) => (
                 <div key={idx} style={{
                   background: 'var(--card-bg)', border: '1px solid var(--card-border)',
@@ -92,13 +92,13 @@ export default function AWSMigrationCaseStudy() {
         </div>
       </section>
 
-      {/* ── Content ──────────────────────────────────────────────────── */}
+      {/* â”€â”€ Content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 120 }}>
         <div className="container">
           <motion.article
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
             style={{ maxWidth: 800, margin: '0 auto' }}
           >
@@ -116,19 +116,19 @@ export default function AWSMigrationCaseStudy() {
               <ul style={{ listStyle: 'none', padding: 0, marginBottom: 16 }}>
                 {[
                   'High capital expenditure: $1.2M/year in hardware, cooling, and co-location fees',
-                  'Rigid scaling: Adding capacity required 8–12 week procurement cycles',
+                  'Rigid scaling: Adding capacity required 8â€“12 week procurement cycles',
                   'Operational risk: Single points of failure could impact millions in daily transactions',
                   'Limited elasticity: Spikes in transaction volume required expensive over-provisioning',
                   'Compliance complexity: Distributed systems across multiple data centers, hard to audit',
                 ].map((item, idx) => (
                   <li key={idx} style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 12, paddingLeft: 20, position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, color: '#0EA472' }}>→</span>
+                    <span style={{ position: 'absolute', left: 0, color: '#0EA472' }}>â†’</span>
                     {item}
                   </li>
                 ))}
               </ul>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8 }}>
-                The client needed to migrate to the cloud without any downtime—every minute offline cost them $1.6M in transaction fees and potential reputational damage.
+                The client needed to migrate to the cloud without any downtimeâ€”every minute offline cost them $1.6M in transaction fees and potential reputational damage.
               </p>
             </div>
 
@@ -142,16 +142,16 @@ export default function AWSMigrationCaseStudy() {
               </p>
 
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24, marginBottom: 24 }}>
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 14 }}>Phase 1: Foundation (Weeks 1–3)</h3>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 14 }}>Phase 1: Foundation (Weeks 1â€“3)</h3>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   {[
                     'Set up AWS infrastructure (VPCs, security groups, IAM roles, KMS encryption)',
                     'Deploy RDS Multi-AZ databases with cross-region replication to legacy data center',
-                    'Build bi-directional data sync pipeline (legacy ↔ AWS) using AWS DMS and Kafka',
+                    'Build bi-directional data sync pipeline (legacy â†” AWS) using AWS DMS and Kafka',
                     'Establish monitoring and alerting across both environments',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 10, paddingLeft: 20, position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: 0 }}>→</span>
+                      <span style={{ position: 'absolute', left: 0 }}>â†’</span>
                       {item}
                     </li>
                   ))}
@@ -159,7 +159,7 @@ export default function AWSMigrationCaseStudy() {
               </div>
 
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24, marginBottom: 24 }}>
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 14 }}>Phase 2: Containerization (Weeks 4–6)</h3>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 14 }}>Phase 2: Containerization (Weeks 4â€“6)</h3>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   {[
                     'Decompose monoliths into 34 microservices using domain-driven design',
@@ -168,7 +168,7 @@ export default function AWSMigrationCaseStudy() {
                     'Implement service-to-service communication via API Gateway and gRPC',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 10, paddingLeft: 20, position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: 0 }}>→</span>
+                      <span style={{ position: 'absolute', left: 0 }}>â†’</span>
                       {item}
                     </li>
                   ))}
@@ -176,18 +176,18 @@ export default function AWSMigrationCaseStudy() {
               </div>
 
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24 }}>
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 14 }}>Phase 3: Traffic Shift (Weeks 7–12)</h3>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 14 }}>Phase 3: Traffic Shift (Weeks 7â€“12)</h3>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   {[
                     'Week 7: Route 5% of transaction traffic to AWS via weighted ALB routing',
-                    'Week 8: 20% traffic shift. Monitor 48 hours. Zero issues → proceed',
+                    'Week 8: 20% traffic shift. Monitor 48 hours. Zero issues â†’ proceed',
                     'Week 9: 50% traffic shift. Validate database consistency, latency, error rates',
                     'Week 10: 80% traffic shift. Conduct load testing to 100% capacity',
                     'Week 11: 95% traffic shift. Keep legacy systems as hot standby',
                     'Week 12: 100% traffic shift. Sunset legacy infrastructure over 2-week decommission window',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 10, paddingLeft: 20, position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: 0 }}>→</span>
+                      <span style={{ position: 'absolute', left: 0 }}>â†’</span>
                       {item}
                     </li>
                   ))}
@@ -232,7 +232,7 @@ export default function AWSMigrationCaseStudy() {
                   <strong>After:</strong> $780K/year (AWS compute, storage, data transfer)
                 </p>
                 <p style={{ fontSize: 14, color: '#0EA472', lineHeight: 1.7, marginTop: 12, fontWeight: 700 }}>
-                  ✓ $420K/year savings (~35% reduction)
+                  âœ“ $420K/year savings (~35% reduction)
                 </p>
               </div>
 
@@ -246,7 +246,7 @@ export default function AWSMigrationCaseStudy() {
                     'Auto-scaling handled peak traffic (9pm EST holiday spike) with zero manual intervention',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 8, paddingLeft: 20, position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: 0 }}>✓</span>
+                      <span style={{ position: 'absolute', left: 0 }}>âœ“</span>
                       {item}
                     </li>
                   ))}
@@ -262,7 +262,7 @@ export default function AWSMigrationCaseStudy() {
                     'Debugging & root-cause analysis: 60% faster with centralized logging (CloudWatch)',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 8, paddingLeft: 20, position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: 0 }}>✓</span>
+                      <span style={{ position: 'absolute', left: 0 }}>âœ“</span>
                       {item}
                     </li>
                   ))}
@@ -278,7 +278,7 @@ export default function AWSMigrationCaseStudy() {
 
               <div style={{ display: 'grid', gap: 16 }}>
                 {[
-                  { title: '1. Test Your Rollback Plan', desc: 'We conducted 6 full rollback simulations before go-live. When traffic anomalies occurred in Week 9, rolling back took 28 seconds—faster than expected.' },
+                  { title: '1. Test Your Rollback Plan', desc: 'We conducted 6 full rollback simulations before go-live. When traffic anomalies occurred in Week 9, rolling back took 28 secondsâ€”faster than expected.' },
                   { title: '2. Idempotency is Non-Negotiable', desc: 'Network failures during migration could cause retries. Every payment transaction had a unique idempotency key; the system could safely replay requests without double-charging.' },
                   { title: '3. Communicate with Stakeholders', desc: 'Weekly status calls with C-suite, compliance, and ops teams built confidence. Transparency about risks and mitigations was critical.' },
                   { title: '4. Plan for the Unexpected', desc: 'We budgeted 2 extra weeks into the timeline "just in case." We used 1 week for additional performance testing when latency targets were nearly missed in Week 8.' },

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -223,7 +223,7 @@ export default function CaseStudiesSection() {
 
         {!loading && failed && (
           <motion.div
-            variants={FU(0.1)} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}
+            variants={FU(0.1)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-60px' }}
             style={{ textAlign: 'center', padding: '48px 24px 16px' }}
           >
             <p style={{ fontSize: 14, color: 'var(--fg-3)', marginBottom: 20 }}>

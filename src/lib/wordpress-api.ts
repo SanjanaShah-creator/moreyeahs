@@ -315,6 +315,39 @@ export async function fetchCategories(): Promise<WordPressCategory[]> {
   }
 }
 
+// Fetch terms from any registered custom taxonomy (e.g. 'industry', 'services')
+// Returns empty array gracefully if the taxonomy doesn't exist in WP.
+export async function fetchTaxonomyTerms(taxonomySlug: string): Promise<WordPressCategory[]> {
+  try {
+    const response = await fetch(
+      `${wpUrl(taxonomySlug)}?per_page=100`,
+      { next: { revalidate: 600 } }
+    );
+    if (!response.ok) return [];
+    const data = await response.json();
+    if (!Array.isArray(data)) return [];
+    return data;
+  } catch {
+    return [];
+  }
+}
+
+// Fetch all industry terms — tries common WP taxonomy slugs and deduplicates by id.
+export async function fetchIndustryTerms(): Promise<WordPressCategory[]> {
+  const slugsToTry = ['industry', 'industries', 'case_study_industry', 'cs_industry'];
+  const seen = new Set<number>();
+  const all: WordPressCategory[] = [];
+  await Promise.all(
+    slugsToTry.map(async (slug) => {
+      const terms = await fetchTaxonomyTerms(slug);
+      for (const t of terms) {
+        if (!seen.has(t.id)) { seen.add(t.id); all.push(t); }
+      }
+    })
+  );
+  return all;
+}
+
 // Fetch all case studies
 export async function fetchCaseStudies(params?: {
   search?: string;

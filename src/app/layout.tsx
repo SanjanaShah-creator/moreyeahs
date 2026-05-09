@@ -65,9 +65,12 @@ export const metadata: Metadata = {
     canonical: 'https://www.moreyeahs.com',
   },
   icons: {
-    icon: [{ url: '/images/og-image.png', type: 'image/png' }],
-    shortcut: '/images/og-image.png',
-    apple: '/images/og-image.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/images/og-image.png', type: 'image/png', sizes: '32x32' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [{ url: '/images/og-image.png', sizes: '32x32', type: 'image/png' }],
   },
 };
 

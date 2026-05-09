@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { Brain, Cloud, Monitor, Zap, Code2, ArrowRight, CheckCircle } from 'lucide-react';
@@ -30,7 +30,7 @@ const SOLUTIONS = [
     tag: 'Cloud & Infrastructure',
     tagline: 'Scalable, reliable, automated',
     href: '/solutions/cloud-infrastructure',
-    desc: 'We engineer cloud-native platforms that form the backbone of modern digital products — fast, secure, and built for real-world demand.',
+    desc: 'We engineer cloud-native platforms that form the backbone of modern digital products â€” fast, secure, and built for real-world demand.',
     services: [
       { label: 'Cloud Platform Setup (AWS/GCP/Azure)', href: '/solutions/cloud-infrastructure/cloud-platform-setup' },
       { label: 'DevOps & Automation',                  href: '/solutions/cloud-infrastructure/devops-automation' },
@@ -43,7 +43,7 @@ const SOLUTIONS = [
     tag: 'Microsoft Services',
     tagline: 'Connected Microsoft ecosystems',
     href: '/solutions/microsoft-services',
-    desc: 'We design, implement, and optimize Microsoft-powered business ecosystems — CRM, ERP, analytics, automation, and cloud — all working as one unified environment.',
+    desc: 'We design, implement, and optimize Microsoft-powered business ecosystems â€” CRM, ERP, analytics, automation, and cloud â€” all working as one unified environment.',
     services: [
       { label: 'Microsoft CRM & ERP',                href: '/solutions/microsoft-services/crm-erp' },
       { label: 'Microsoft Automation & Analytics',   href: '/solutions/microsoft-services/automation-analytics' },
@@ -64,14 +64,14 @@ const SOLUTIONS = [
       { label: 'Salesforce Implementation',             href: '/solutions/salesforce-services/implementation' },
     ],
     accent: '#80A9FF',
-    stat: { value: '3×', label: 'Pipeline increase' },
+    stat: { value: '3Ã—', label: 'Pipeline increase' },
   },
   {
     Icon: Code2,
     tag: 'Web & App Development',
     tagline: 'Products built to scale',
     href: '/solutions/web-app-development',
-    desc: 'From web applications to mobile apps — we build fast, scalable, and beautiful digital products using modern tech stacks tailored to your business needs.',
+    desc: 'From web applications to mobile apps â€” we build fast, scalable, and beautiful digital products using modern tech stacks tailored to your business needs.',
     services: [
       { label: 'Web Application Development', href: '/solutions/web-app-development/web-application' },
       { label: 'Mobile App Development',       href: '/solutions/web-app-development/mobile-app' },
@@ -100,7 +100,7 @@ export default function SolutionsPage() {
               Five Solutions.<br /><span style={{ background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>One Trusted Partner.</span>
             </motion.h1>
             <motion.p variants={FV} transition={FT} style={{ fontSize: 16, color: 'var(--fg-3)', lineHeight: 1.75, marginBottom: 36 }}>
-              From data science to cloud infrastructure, from Microsoft ecosystems to custom-built products — MoreYeahs brings end-to-end engineering capability under one roof.
+              From data science to cloud infrastructure, from Microsoft ecosystems to custom-built products â€” MoreYeahs brings end-to-end engineering capability under one roof.
             </motion.p>
             <motion.div variants={FV} transition={FT}>
               <Link href="/contact-us" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#1A56DB', color: '#fff', fontSize: 14, fontWeight: 700, borderRadius: 10, padding: '13px 26px', textDecoration: 'none', boxShadow: '0 6px 22px rgba(26,86,219,0.35)', transition: 'background 0.2s, transform 0.2s' }}
@@ -123,7 +123,7 @@ export default function SolutionsPage() {
                 key={sol.tag}
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
+                viewport={{ once: false, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.05 }}
               >
                 <div className="glass sol-card-grid" style={{ padding: '40px 40px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }} data-odd={i % 2 !== 0}>
@@ -196,7 +196,7 @@ export default function SolutionsPage() {
               Proof in <span style={{ background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Real Results</span>
             </h2>
             <p style={{ fontSize: 15, color: 'var(--fg-3)', lineHeight: 1.75, textAlign: 'center', maxWidth: 520, margin: '0 auto' }}>
-              Browse case studies by solution area — see exactly how we have delivered outcomes for clients like yours.
+              Browse case studies by solution area â€” see exactly how we have delivered outcomes for clients like yours.
             </p>
           </div>
 
@@ -255,7 +255,7 @@ export default function SolutionsPage() {
         <NoiseOverlay />
         <div className="blob" style={{ width: 440, height: 440, top: '-60px', right: '-5%', background: 'radial-gradient(circle, rgba(26,86,219,0.12), transparent 68%)' }} />
         <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.6 }}>
             <div className="section-badge" style={{ justifyContent: 'center', marginBottom: 20 }}>Ready to Start?</div>
             <h2 style={{ fontSize: 'clamp(28px,4vw,44px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.1, marginBottom: 16 }}>
               Not sure which solution fits? <span style={{ background: 'linear-gradient(120deg,#4D86F5 0%,#80A9FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Let&apos;s talk.</span>
