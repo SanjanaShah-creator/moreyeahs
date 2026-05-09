@@ -2,34 +2,14 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import NoiseOverlay from '@/components/ui/NoiseOverlay';
 
-const CLIENTS: Array<{ name: string; lightSrc: string; darkSrc: string }> = [
-  {
-    name: 'Google Cloud',
-    lightSrc: '/images/Google Cloud Light Theme Logo.png',
-    darkSrc:  '/images/Google Cloud Dark Theme Logo.png',
-  },
-  {
-    name: 'Microsoft',
-    lightSrc: '/images/Microsoft Solutions Light Theme Logo.png',
-    darkSrc:  '/images/Microsoft Google Cloud Dark Theme Logo.png',
-  },
-  {
-    name: 'AWS',
-    lightSrc: '/images/AWS Light Theme Logo.png',
-    darkSrc:  '/images/AWS Dark Theme Logo.png',
-  },
-  {
-    name: 'Salesforce',
-    lightSrc: '/images/Salesforce ISV Partner Light Theme Logo.png',
-    darkSrc:  '/images/Salesforce Google Cloud Dark Theme Logo.png',
-  },
-  {
-    name: 'Zoho',
-    lightSrc: '/images/Zoho Authorized Light Theme Logo.png',
-    darkSrc:  '/images/Zoho Google Cloud Dark Theme Logo.png',
-  },
+const CLIENTS = [
+  { name: 'Prometheus',    src: '/images/Client Logo 1.png' },
+  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png' },
+  { name: 'Abdo',          src: '/images/Client Logo 3.png' },
+  { name: 'Supersourcing', src: '/images/Client Logo 4.png' },
+  { name: 'TerraSecure',   src: '/images/Client Logo 5.png' },
+  { name: 'Client',        src: '/images/Client Logo 6.png' },
 ];
 
 function LogoCard({ client }: { client: typeof CLIENTS[0] }) {
@@ -44,87 +24,102 @@ function LogoCard({ client }: { client: typeof CLIENTS[0] }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '28px 32px',
-        borderRadius: 16,
+        padding: '32px 28px',
+        /* grid cell border — forms the grid lines */
         border: '1px solid var(--border)',
-        background: 'var(--card-bg)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
+        background: hovered ? 'rgba(26,86,219,0.04)' : 'transparent',
         overflow: 'hidden',
         cursor: 'default',
-        transition: 'border-color 0.3s',
-        borderColor: hovered ? 'rgba(77,134,245,0.35)' : 'var(--border)',
+        transition: 'background 0.3s',
+        minHeight: 120,
       }}
     >
-      {/* Spotlight glow that appears on hover — comes from above */}
-      <div
+      {/* Spotlight glow from above on hover */}
+      <div style={{
+        position: 'absolute',
+        top: -80,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: 200,
+        height: 200,
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(77,134,245,0.45) 0%, rgba(26,86,219,0.12) 50%, transparent 72%)',
+        opacity: hovered ? 1 : 0,
+        transition: 'opacity 0.4s ease',
+        pointerEvents: 'none',
+        zIndex: 1,
+      }} />
+
+      {/* Top edge light beam */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: '15%',
+        right: '15%',
+        height: 1,
+        background: 'linear-gradient(90deg, transparent, rgba(77,134,245,0.8), transparent)',
+        opacity: hovered ? 1 : 0,
+        transition: 'opacity 0.4s ease',
+        pointerEvents: 'none',
+        zIndex: 2,
+      }} />
+
+      {/* Logo — grayscale + dim by default, full color on hover */}
+      <img
+        src={client.src}
+        alt={client.name}
         style={{
-          position: 'absolute',
-          top: -60,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: 160,
-          height: 160,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(77,134,245,0.55) 0%, rgba(26,86,219,0.18) 45%, transparent 72%)',
-          opacity: hovered ? 1 : 0,
-          transition: 'opacity 0.35s ease',
-          pointerEvents: 'none',
-          zIndex: 1,
+          position: 'relative',
+          zIndex: 3,
+          maxHeight: 56,
+          maxWidth: 160,
+          width: 'auto',
+          height: 'auto',
+          objectFit: 'contain',
+          display: 'block',
+          filter: hovered ? 'none' : 'grayscale(1) brightness(0.55)',
+          opacity: hovered ? 1 : 0.6,
+          transition: 'filter 0.4s ease, opacity 0.4s ease',
         }}
       />
-
-      {/* Top edge glow line */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: '20%',
-          right: '20%',
-          height: 1,
-          background: 'linear-gradient(90deg, transparent, rgba(77,134,245,0.7), transparent)',
-          opacity: hovered ? 1 : 0,
-          transition: 'opacity 0.35s ease',
-          pointerEvents: 'none',
-          zIndex: 2,
-        }}
-      />
-
-      {/* Logo — desaturated by default, full color on hover */}
-      <div style={{ position: 'relative', zIndex: 3, transition: 'filter 0.35s ease, opacity 0.35s ease', filter: hovered ? 'none' : 'grayscale(1)', opacity: hovered ? 1 : 0.45 }}>
-        <img
-          src={client.lightSrc}
-          alt={client.name}
-          className="logo-light"
-          style={{ height: 52, maxWidth: 180, width: 'auto', objectFit: 'contain', display: 'block' }}
-        />
-        <img
-          src={client.darkSrc}
-          alt={client.name}
-          className="logo-dark"
-          style={{ height: 52, maxWidth: 180, width: 'auto', objectFit: 'contain', display: 'block' }}
-        />
-      </div>
     </div>
   );
 }
 
 export default function ClientLogosSection() {
   return (
-    <section style={{ background: 'var(--bg-2)', position: 'relative', overflow: 'hidden', padding: '80px 0' }}>
-      <NoiseOverlay />
+    <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', padding: '88px 0' }}>
+
+      {/* ── Subtle dot-grid background ── */}
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage:
+            'radial-gradient(circle, rgba(77,134,245,0.18) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+          maskImage:
+            'radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)',
+          WebkitMaskImage:
+            'radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: '-60px' }}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: 48 }}
+          style={{ textAlign: 'center', marginBottom: 52 }}
         >
           <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 16 }}>
-            Our Partners &amp; Clients
+            Clients &amp; Partners
           </div>
           <h2 style={{
             fontSize: 'clamp(22px,2.8vw,36px)',
@@ -132,32 +127,38 @@ export default function ClientLogosSection() {
             letterSpacing: '-0.03em',
             color: 'var(--fg)',
             lineHeight: 1.15,
-            marginBottom: 12,
+            marginBottom: 10,
           }}>
-            Trusted by <span className="grad">Industry Leaders</span>
+            Trusted by <span className="grad">Growing Businesses</span>
           </h2>
-          <p style={{ fontSize: 14, color: 'var(--fg-3)', maxWidth: 420, margin: '0 auto', lineHeight: 1.7 }}>
-            We partner with the world&apos;s leading technology platforms to deliver enterprise-grade solutions.
+          <p style={{ fontSize: 14, color: 'var(--fg-3)', maxWidth: 400, margin: '0 auto', lineHeight: 1.7 }}>
+            From startups to enterprises — teams that chose MoreYeahs to build, scale, and grow.
           </p>
         </motion.div>
 
-        {/* Logo grid */}
+        {/* ── Logo grid — bordered cells form the grid lines ── */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-60px' }}
-          variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+          variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
           className="client-logos-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(5, 1fr)',
-            gap: 16,
+            gridTemplateColumns: 'repeat(6, 1fr)',
+            /* outer border wraps the whole grid */
+            border: '1px solid var(--border)',
+            borderRadius: 16,
+            overflow: 'hidden',
           }}
         >
           {CLIENTS.map((client) => (
             <motion.div
               key={client.name}
-              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
+              variants={{
+                hidden:   { opacity: 0, y: 12 },
+                visible:  { opacity: 1, y: 0, transition: { duration: 0.45 } },
+              }}
             >
               <LogoCard client={client} />
             </motion.div>
@@ -169,7 +170,7 @@ export default function ClientLogosSection() {
         @media(max-width:900px){
           .client-logos-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
-        @media(max-width:560px){
+        @media(max-width:520px){
           .client-logos-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>

@@ -171,7 +171,7 @@ export default function LeadCapturePopup() {
                       whileTap={!loading ? { scale: 0.97 } : {}}
                       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 20px', borderRadius: 10, background: loading ? 'rgba(26,86,219,0.5)' : '#1A56DB', color: '#fff', fontSize: 13, fontWeight: 700, border: 'none', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'inherit', boxShadow: '0 6px 20px rgba(26,86,219,0.30)', transition: 'background .2s' }}
                     >
-                      {loading ? 'Subscribing…' : <><span>Get free insights</span><ArrowRight size={13} strokeWidth={2} /></>}
+                      {loading ? 'Subscribing…' : <><span>Book Strategy Session</span><ArrowRight size={13} strokeWidth={2} /></>}
                     </motion.button>
                   </form>
 
