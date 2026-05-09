@@ -682,10 +682,10 @@ export default function WebAppDevelopmentPage() {
           .ds-bento{display:flex!important;flex-direction:column!important}
           .ds-ind-grid{grid-template-columns:1fr 1fr!important}
           .ds-prob-row{grid-template-columns:1fr!important}
-          .ds-prob-row>div:first-child{position:static!important}
+          .ds-prob-row>div:first-child{position:relative!important}
           .ds-faq-layout{grid-template-columns:1fr!important}
-          .ds-faq-layout>div:first-child{position:static!important}
-          .ds-svc-stack>*{position:static!important}
+          .ds-faq-layout>div:first-child{position:relative!important}
+          .ds-svc-stack>*{position:relative!important}
         }
         @media(max-width:768px){
           /* Video — constrain height on mobile, do not hide */
@@ -707,7 +707,7 @@ export default function WebAppDevelopmentPage() {
           /* Service cards — more opaque overlay so text is always readable */
           .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .svc-overlay-dark{background:rgba(10,20,60,0.92)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-          .ds-svc-stack>*{padding:28px!important;position:static!important;top:auto!important;z-index:auto!important}
+          .ds-svc-stack>*{padding:28px!important;position:relative!important;top:auto!important;z-index:auto!important}
         }
         @media(max-width:640px){
           .ds-ind-grid{grid-template-columns:1fr!important}
