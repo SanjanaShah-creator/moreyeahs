@@ -11,12 +11,12 @@ import { motion } from 'framer-motion';
  * DevLabs light is 1536×1024 (wide), dark is 466×120 (wide flat).
  */
 const CLIENTS = [
-  { name: 'Prometheus',    light: '/images/Client Logo 1.png',            dark: '/images/Client Dark theme logo 1.png', lightH: 40, darkH: 44,  wide: false },
-  { name: 'Flyers Soft',   light: '/images/Client Logo 2.png',            dark: '/images/Client Dark theme logo 2.png', lightH: 72, darkH: 72,  wide: false },
-  { name: 'Abdo',          light: '/images/Client Logo 3.png',            dark: '/images/Client Dark theme logo 3.png', lightH: 40, darkH: 64,  wide: false },
-  { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 32, darkH: 52,  wide: false },
-  { name: 'TerraSecure',   light: '/images/Client Logo 5.png',            dark: '/images/Client Dark theme logo 5.png', lightH: 72, darkH: 72,  wide: false },
-  { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 68, darkH: 44,  wide: true  },
+  { name: 'Prometheus',    light: '/images/Client Logo 1.png',            dark: '/images/Client Dark theme logo 1.png', lightH: 40, darkH: 44,  wide: false, darkWide: false },
+  { name: 'Flyers Soft',   light: '/images/Client Logo 2.png',            dark: '/images/Client Dark theme logo 2.png', lightH: 72, darkH: 72,  wide: false, darkWide: false },
+  { name: 'Abdo',          light: '/images/Client Logo 3.png',            dark: '/images/Client Dark theme logo 3.png', lightH: 40, darkH: 64,  wide: false, darkWide: false },
+  { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 32, darkH: 52,  wide: false, darkWide: true  },
+  { name: 'TerraSecure',   light: '/images/Client Logo 5.png',            dark: '/images/Client Dark theme logo 5.png', lightH: 72, darkH: 72,  wide: false, darkWide: false },
+  { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 68, darkH: 44,  wide: true,  darkWide: false },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
@@ -30,7 +30,7 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
       style={{
         position: 'relative',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        height: 110, padding: client.wide ? '0 8px' : '0 20px',
+        height: 110, padding: client.wide || client.darkWide ? '0 8px' : '0 20px',
         border: '1px solid var(--border)',
         overflow: 'hidden', cursor: 'default',
         transition: 'background 0.3s',
@@ -89,7 +89,8 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
           className="logo-img"
           style={{
             maxWidth: '100%', maxHeight: '100%',
-            width: 'auto', height: 'auto',
+            width: client.darkWide ? '100%' : 'auto',
+            height: 'auto',
             objectFit: 'contain', objectPosition: 'center', display: 'block',
             filter: hovered ? 'none' : 'grayscale(1) brightness(0.7)',
             opacity: hovered ? 1 : 0.7,
