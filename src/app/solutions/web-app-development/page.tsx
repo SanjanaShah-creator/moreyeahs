@@ -685,7 +685,6 @@ export default function WebAppDevelopmentPage() {
           .ds-prob-row>div:first-child{position:relative!important}
           .ds-faq-layout{grid-template-columns:1fr!important}
           .ds-faq-layout>div:first-child{position:relative!important}
-          .ds-svc-stack>*{position:relative!important}
         }
         @media(max-width:768px){
           /* Video — constrain height on mobile, do not hide */

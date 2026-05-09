@@ -665,7 +665,6 @@ export default function CloudInfrastructurePage() {
           .ds-prob-row>div:first-child{position:relative!important}
           .ds-faq-layout{grid-template-columns:1fr!important}
           .ds-faq-layout>div:first-child{position:relative!important}
-          .ds-svc-stack>*{position:relative!important}
         }
         @media(max-width:768px){
           .ds-hero-video-wrap{min-height:220px!important;max-height:260px!important}
