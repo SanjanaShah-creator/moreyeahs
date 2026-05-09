@@ -68,6 +68,11 @@ html {
   scroll-padding-top: 80px; /* Account for fixed navbar */
 }
 
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   background: var(--bg);
   color: var(--fg);
@@ -76,6 +81,7 @@ body {
   line-height: 1.6;
   transition: background 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

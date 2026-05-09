@@ -7,7 +7,7 @@ import {
 } from 'framer-motion';
 import {
   ArrowRight, BarChart2, Cpu, ChevronRight,
-  CloudUpload, Settings, BarChart, Send, Plus, Minus,
+  CloudUpload, Settings, BarChart, Send, Plus,
   HeartPulse, DollarSign, ShoppingCart, Factory, GraduationCap, Truck, Brain,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -852,7 +852,7 @@ export default function DataSciencePage() {
           .ds-tr-bottom-p{padding-bottom:100px!important}
           .ds-br-robot-wrap{display:none!important}
           .ds-br-content{max-width:100%!important}
-          .pipeline-wrap{flex-direction:column!important;overflow-x:visible!important;align-items:center!important;gap:0!important}
+          .pipeline-wrap{flex-direction:column!important;overflow-x:hidden!important;align-items:center!important;gap:0!important}
           .pipeline-step{flex-direction:column!important;align-items:center!important;width:100%!important}
           .pipeline-step-inner{width:100%!important;max-width:280px!important}
           .pipeline-connector{padding:0 0 4px!important;transform:rotate(90deg);display:flex;justify-content:center}

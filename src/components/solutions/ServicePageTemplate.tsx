@@ -883,8 +883,8 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
       </section>
 
       {/* ── PROCESS ── */}
-      {/* NOTE: overflow must NOT be hidden here — it would break position:sticky */}
-      <section className="svc-section-pad" style={{ background: 'var(--bg)', padding: '80px 0 60px', position: 'relative' }}>
+      {/* overflow-x:clip clips the blob without creating a scroll container, so sticky still works */}
+      <section className="svc-section-pad" style={{ background: 'var(--bg)', padding: '80px 0 60px', position: 'relative', overflowX: 'clip' }}>
         <NoiseOverlay />
         <div
           className="blob"
