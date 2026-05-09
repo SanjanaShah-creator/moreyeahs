@@ -492,12 +492,12 @@ export default function CareersPage() {
               <h2 style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.15 }}>
                 Find your next opportunity
               </h2>
-              {/* Filter toggle — always visible */}
+              {/* Filter toggle — mobile only, shown via CSS at ≤860px */}
               <button
                 className="careers-filter-toggle"
                 onClick={() => setFiltersOpen(!filtersOpen)}
                 style={{
-                  display: 'flex', alignItems: 'center', gap: 8,
+                  display: 'none', alignItems: 'center', gap: 8,
                   fontSize: 13, fontWeight: 700, color: BLUE,
                   background: BLUE_LIGHT, border: `1px solid ${BLUE}30`,
                   padding: '9px 16px', borderRadius: 10, cursor: 'pointer',
@@ -511,11 +511,11 @@ export default function CareersPage() {
           </motion.div>
 
           {/* Two-column layout */}
-          <div style={{ display: 'grid', gridTemplateColumns: filtersOpen ? '240px 1fr' : '1fr', gap: 40, alignItems: 'start' }} className="careers-layout">
+          <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: 40, alignItems: 'start' }} className="careers-layout">
 
-            {/* ── Left filter panel — only rendered when open ── */}
-            {filtersOpen && <div
-              className="careers-filter-panel"
+            {/* ── Left filter panel — always visible on desktop, toggled on mobile via CSS ── */}
+            <div
+              className={`careers-filter-panel ${filtersOpen ? 'open' : ''}`}
               style={{
                 position: 'sticky', top: 100,
                 background: 'var(--card-bg)', border: '1px solid var(--border)',
@@ -548,7 +548,7 @@ export default function CareersPage() {
               <FilterSelect label="Experience" value={experience} options={EXPERIENCE_LEVELS} onChange={setExperience} />
               <FilterSelect label="Job Type" value={jobType} options={JOB_TYPES} onChange={setJobType} />
               <FilterSelect label="Work Preference" value={workPref} options={WORK_PREFS} onChange={setWorkPref} />
-            </div>}
+            </div>
 
             {/* ── Right listings ── */}
             <div>
@@ -625,7 +625,9 @@ export default function CareersPage() {
         }
         @media(max-width:860px){
           .careers-layout{ grid-template-columns: 1fr !important; }
-          .careers-filter-panel{ position:static !important; }
+          .careers-filter-toggle{ display:inline-flex !important; }
+          .careers-filter-panel{ position:static !important; display:none !important; }
+          .careers-filter-panel.open{ display:flex !important; }
         }
         @media(max-width:600px){
           .careers-perks-grid{ grid-template-columns: 1fr !important; }
