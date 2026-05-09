@@ -16,7 +16,7 @@ const CLIENTS = [
   { name: 'Abdo',          light: '/images/Client Logo 3.png',            dark: '/images/Client Dark theme logo 3.png', lightH: 40, darkH: 64,  wide: false, darkWide: false },
   { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 32, darkH: 52,  wide: false, darkWide: true  },
   { name: 'TerraSecure',   light: '/images/Client Logo 5.png',            dark: '/images/Client Dark theme logo 5.png', lightH: 72, darkH: 72,  wide: false, darkWide: false },
-  { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 68, darkH: 44,  wide: true,  darkWide: false },
+  { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 68, darkH: 32,  wide: true,  darkWide: false },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
