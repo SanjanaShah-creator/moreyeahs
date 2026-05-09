@@ -9,7 +9,7 @@ const CLIENTS = [
   { name: 'Abdo',          src: '/images/Client Logo 3.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
   { name: 'Supersourcing', src: '/images/Client Logo 4.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
   { name: 'TerraSecure',   src: '/images/Client Logo 5.png', size: 'large',  bg: 'transparent',          darkBg: 'transparent'              },
-  { name: 'DevLabs',       src: '/images/Client Logo 6.png', size: 'normal', bg: 'rgba(15,30,80,0.06)',  darkBg: 'rgba(255,255,255,0.06)'   },
+  { name: 'DevLabs',       src: '/images/Client Logo 6.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
