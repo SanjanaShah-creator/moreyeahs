@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const CLIENTS = [
-  { name: 'Prometheus',       src: '/images/Client Logo 1.png', size: 'normal' },
-  { name: 'Flyers Soft',      src: '/images/Client Logo 2.png', size: 'normal' },
-  { name: 'Abdo',             src: '/images/Client Logo 3.png', size: 'normal' },
-  { name: 'Supersourcing',    src: '/images/Client Logo 4.png', size: 'normal' },
-  { name: 'TerraSecure',      src: '/images/Client Logo 5.png', size: 'large'  },
-  { name: 'DevLabs',          src: '/images/Client Logo 6.png', size: 'normal' },
+  { name: 'Prometheus',    src: '/images/Client Logo 1.png', size: 'normal', bg: 'transparent' },
+  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png', size: 'normal', bg: 'rgba(245,245,250,0.6)' },
+  { name: 'Abdo',          src: '/images/Client Logo 3.png', size: 'normal', bg: 'transparent' },
+  { name: 'Supersourcing', src: '/images/Client Logo 4.png', size: 'normal', bg: 'transparent' },
+  { name: 'TerraSecure',   src: '/images/Client Logo 5.png', size: 'large',  bg: 'transparent' },
+  { name: 'DevLabs',       src: '/images/Client Logo 6.png', size: 'normal', bg: 'rgba(15,30,80,0.06)'  },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
@@ -25,14 +25,16 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        /* fixed height so every cell is identical */
-        height: 100,
-        padding: '0 20px',
+        height: 110,
+        padding: '0 24px',
         border: '1px solid var(--border)',
         overflow: 'hidden',
         cursor: 'default',
         transition: 'background 0.3s',
-        background: hovered ? 'rgba(26,86,219,0.04)' : 'transparent',
+        /* per-logo base bg + hover tint layered on top */
+        background: hovered
+          ? `rgba(26,86,219,0.06)`
+          : client.bg,
       }}
     >
       {/* Spotlight glow from above — desktop hover only */}
@@ -51,7 +53,7 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
         zIndex: 1,
       }} />
 
-      {/* Top edge light beam — desktop hover only */}
+      {/* Top edge light beam */}
       <div className="logo-beam" style={{
         position: 'absolute',
         top: 0,
@@ -65,12 +67,12 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
         zIndex: 2,
       }} />
 
-      {/* Logo — fixed box, object-fit contain keeps aspect ratio centred */}
+      {/* Logo box — fixed inner height, object-fit contain */}
       <div style={{
         position: 'relative',
         zIndex: 3,
         width: '100%',
-        height: client.size === 'large' ? 72 : 48,
+        height: client.size === 'large' ? 76 : 44,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -80,8 +82,10 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
           alt={client.name}
           className="logo-img"
           style={{
-            width: '100%',
-            height: '100%',
+            maxWidth: '100%',
+            maxHeight: '100%',
+            width: 'auto',
+            height: 'auto',
             objectFit: 'contain',
             objectPosition: 'center',
             display: 'block',
