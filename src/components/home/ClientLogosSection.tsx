@@ -14,7 +14,6 @@ const CLIENTS = [
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
   const [hovered, setHovered] = useState(false);
-  const imgHeight = client.size === 'large' ? 80 : 52;
 
   return (
     <div
@@ -26,11 +25,12 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '28px 20px',
+        /* fixed height so every cell is identical */
+        height: 100,
+        padding: '0 20px',
         border: '1px solid var(--border)',
         overflow: 'hidden',
         cursor: 'default',
-        minHeight: 110,
         transition: 'background 0.3s',
         background: hovered ? 'rgba(26,86,219,0.04)' : 'transparent',
       }}
@@ -65,26 +65,32 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
         zIndex: 2,
       }} />
 
-      {/* Logo */}
-      <img
-        src={client.src}
-        alt={client.name}
-        className="logo-img"
-        style={{
-          position: 'relative',
-          zIndex: 3,
-          maxHeight: imgHeight,
-          maxWidth: '85%',
-          width: 'auto',
-          height: 'auto',
-          objectFit: 'contain',
-          display: 'block',
-          /* desktop: grayscale until hover */
-          filter: hovered ? 'none' : 'grayscale(1) brightness(0.55)',
-          opacity: hovered ? 1 : 0.65,
-          transition: 'filter 0.4s ease, opacity 0.4s ease',
-        }}
-      />
+      {/* Logo — fixed box, object-fit contain keeps aspect ratio centred */}
+      <div style={{
+        position: 'relative',
+        zIndex: 3,
+        width: '100%',
+        height: client.size === 'large' ? 72 : 48,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <img
+          src={client.src}
+          alt={client.name}
+          className="logo-img"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            objectPosition: 'center',
+            display: 'block',
+            filter: hovered ? 'none' : 'grayscale(1) brightness(0.55)',
+            opacity: hovered ? 1 : 0.65,
+            transition: 'filter 0.4s ease, opacity 0.4s ease',
+          }}
+        />
+      </div>
     </div>
   );
 }
@@ -189,7 +195,7 @@ export default function ClientLogosSection() {
           .logo-spotlight,
           .logo-beam { display: none !important; }
           /* Slightly less padding on small cells */
-          .logo-card { padding: 22px 16px !important; min-height: 90px !important; }
+          .logo-card { padding: 0 12px !important; min-height: unset !important; height: 88px !important; }
         }
       `}</style>
     </section>
