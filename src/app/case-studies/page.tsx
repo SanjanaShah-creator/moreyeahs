@@ -392,7 +392,7 @@ function CaseStudiesPageInner() {
               </div>
 
               {/* Count + active pills — above the grid so sidebar aligns with first card */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 10, paddingLeft: 292 }}>
+              <div className="cs-pills-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 10, paddingLeft: 292 }}>
                 <p style={{ fontSize: 13, color: 'var(--fg-3)', margin: 0 }}>
                   {filtered.length === studies.length
                     ? `${studies.length} case ${studies.length === 1 ? 'study' : 'studies'}`
@@ -551,7 +551,7 @@ function CaseStudiesPageInner() {
       </section>
 
       <style>{`
-        @media(max-width:1100px){ .cs-layout{grid-template-columns:1fr!important} .cs-sidebar{display:none!important} .cs-sidebar.mobile-open{display:block!important} .mobile-filter-toggle{display:flex!important} .cs-grid{grid-template-columns:repeat(2,1fr)!important} }
+        @media(max-width:1100px){ .cs-layout{grid-template-columns:1fr!important} .cs-sidebar{display:none!important} .cs-sidebar.mobile-open{display:block!important} .mobile-filter-toggle{display:flex!important} .cs-grid{grid-template-columns:repeat(2,1fr)!important} .cs-pills-row{padding-left:0!important} }
         @media(max-width:640px){ .cs-grid{grid-template-columns:1fr!important} }
       `}</style>
     </>
