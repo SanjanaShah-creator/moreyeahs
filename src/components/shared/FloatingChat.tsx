@@ -215,29 +215,30 @@ export default function FloatingChat() {
           30% { transform: translateY(-5px); }
         }
 
-        /* ── Mobile: full-screen sheet with rounded top corners ── */
+        /* ── Mobile: floating sheet, all 4 corners rounded, clears announcement banner ── */
         @media(max-width:640px) {
-          /* Wrapper sits at bottom-right; on mobile we override the panel only */
           .chat-panel {
             position: fixed !important;
-            top: 12px !important;
-            left: 12px !important;
-            right: 12px !important;
-            bottom: 0 !important;
+            /* sit below the announcement banner + small gap */
+            top: calc(var(--ann-h, 0px) + 8px) !important;
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
             width: auto !important;
             height: auto !important;
-            max-height: calc(100dvh - 12px) !important;
-            border-radius: 20px 20px 0 0 !important;
+            max-height: calc(100dvh - var(--ann-h, 0px) - 18px) !important;
+            /* all 4 corners rounded */
+            border-radius: 20px !important;
             transform: none !important;
           }
 
-          /* Header: add top safe-area inset so it clears the status bar */
+          /* Header: safe-area padding + matching top radius */
           .chat-header-mobile {
             padding-top: max(15px, env(safe-area-inset-top)) !important;
             border-radius: 20px 20px 0 0 !important;
           }
 
-          /* Input row: add bottom safe-area so it clears the home indicator */
+          /* Input row: safe-area bottom */
           .chat-input-row-mobile {
             padding-bottom: max(13px, env(safe-area-inset-bottom)) !important;
           }
