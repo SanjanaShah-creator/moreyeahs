@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const CLIENTS = [
   { name: 'Prometheus',    src: '/images/Client Logo 1.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
-  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png', size: 'normal', bg: 'rgba(245,245,250,0.5)', darkBg: 'rgba(255,255,255,0.06)'   },
+  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png', size: 'large',  bg: 'transparent',           darkBg: 'transparent'              },
   { name: 'Abdo',          src: '/images/Client Logo 3.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
   { name: 'Supersourcing', src: '/images/Client Logo 4.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
   { name: 'TerraSecure',   src: '/images/Client Logo 5.png', size: 'large',  bg: 'transparent',          darkBg: 'transparent'              },
@@ -210,15 +210,17 @@ export default function ClientLogosSection() {
           filter: invert(1) brightness(2) !important;
           opacity: 1 !important;
         }
-        /* TerraSecure & Flyers Soft are colourful — don't invert them */
+        /* TerraSecure, Flyers Soft & DevLabs are colourful — don't invert them */
         .dark .logo-img[data-logo="terrasecure"],
-        .dark .logo-img[data-logo="flyers-soft"] {
-          filter: brightness(1.1) !important;
-          opacity: 0.85 !important;
+        .dark .logo-img[data-logo="flyers-soft"],
+        .dark .logo-img[data-logo="devlabs"] {
+          filter: brightness(1.15) !important;
+          opacity: 0.9 !important;
         }
         .dark .logo-card:hover .logo-img[data-logo="terrasecure"],
-        .dark .logo-card:hover .logo-img[data-logo="flyers-soft"] {
-          filter: brightness(1.2) !important;
+        .dark .logo-card:hover .logo-img[data-logo="flyers-soft"],
+        .dark .logo-card:hover .logo-img[data-logo="devlabs"] {
+          filter: brightness(1.3) !important;
           opacity: 1 !important;
         }
         /* Mobile dark: same rules but always-on */
@@ -228,8 +230,9 @@ export default function ClientLogosSection() {
             opacity: 0.85 !important;
           }
           .dark .logo-img[data-logo="terrasecure"],
-          .dark .logo-img[data-logo="flyers-soft"] {
-            filter: brightness(1.1) !important;
+          .dark .logo-img[data-logo="flyers-soft"],
+          .dark .logo-img[data-logo="devlabs"] {
+            filter: brightness(1.15) !important;
             opacity: 0.9 !important;
           }
         }
