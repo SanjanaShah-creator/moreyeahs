@@ -93,7 +93,7 @@ export default function FloatingChat() {
             }}
           >
             {/* Header */}
-            <div style={{ background: 'linear-gradient(135deg,#1A56DB,#4D86F5)', padding: '15px 16px', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+            <div className="chat-header-mobile" style={{ background: 'linear-gradient(135deg,#1A56DB,#4D86F5)', padding: '15px 16px', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
               <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(255,255,255,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Bot size={16} color="#fff" strokeWidth={1.5} />
               </div>
@@ -169,7 +169,7 @@ export default function FloatingChat() {
             </div>
 
             {/* Input row */}
-            <div style={{ padding: '8px 12px 13px', borderTop: '1px solid var(--border)', display: 'flex', gap: 8, flexShrink: 0, background: 'var(--card-bg)' }}>
+            <div className="chat-input-row-mobile" style={{ padding: '8px 12px 13px', borderTop: '1px solid var(--border)', display: 'flex', gap: 8, flexShrink: 0, background: 'var(--card-bg)' }}>
               <input
                 ref={inputRef} type="text" placeholder="Type a message…"
                 value={input} onChange={e => setInput(e.target.value)} onKeyDown={onKeyDown}
@@ -190,8 +190,8 @@ export default function FloatingChat() {
         )}
       </AnimatePresence>
 
-      {/* Toggle button */}
-      <div style={{ position: 'relative' }}>
+      {/* Toggle button — hidden on mobile when chat is open */}
+      <div style={{ position: 'relative' }} className={open ? 'chat-fab-hidden' : ''}>
         <motion.button
           onClick={() => setOpen(o => !o)}
           whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }}
@@ -214,15 +214,37 @@ export default function FloatingChat() {
           0%, 60%, 100% { transform: translateY(0); }
           30% { transform: translateY(-5px); }
         }
+
+        /* ── Mobile: full-screen sheet with rounded top corners ── */
         @media(max-width:640px) {
+          /* Wrapper sits at bottom-right; on mobile we override the panel only */
           .chat-panel {
             position: fixed !important;
-            inset: 0 !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
             width: 100% !important;
             height: 100% !important;
-            bottom: 0 !important;
-            right: 0 !important;
+            max-height: 100dvh !important;
             border-radius: 0 !important;
+            /* Remove the absolute offset so it fills the viewport */
+            transform: none !important;
+          }
+
+          /* Header: add top safe-area inset so it clears the status bar */
+          .chat-header-mobile {
+            padding-top: max(15px, env(safe-area-inset-top)) !important;
+          }
+
+          /* Input row: add bottom safe-area so it clears the home indicator */
+          .chat-input-row-mobile {
+            padding-bottom: max(13px, env(safe-area-inset-bottom)) !important;
+          }
+
+          /* Hide the toggle FAB while chat is open on mobile */
+          .chat-fab-hidden {
+            display: none !important;
           }
         }
       `}</style>
