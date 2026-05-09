@@ -4,23 +4,23 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 /*
- * inDark: how to treat this logo in dark mode
- *   'invert'  — dark-on-transparent logo → invert to white
- *   'keep'    — colourful logo → just brighten slightly, don't invert
+ * lightH / darkH: inner box height in px for each theme
+ * Wide flat logos (Prometheus, Abdo, Supersourcing) need a smaller box height
+ * so they don't get stretched — the width fills the cell naturally.
+ * Square/tall logos (Flyers Soft, TerraSecure) need a taller box.
+ * DevLabs light is 1536×1024 (wide), dark is 466×120 (wide flat).
  */
 const CLIENTS = [
-  { name: 'Prometheus',    src: '/images/Client Logo 1.png', size: 'normal', inDark: 'invert' },
-  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png', size: 'large',  inDark: 'keep'   },
-  { name: 'Abdo',          src: '/images/Client Logo 3.png', size: 'normal', inDark: 'invert' },
-  { name: 'Supersourcing', src: '/images/Client Logo 4.png', size: 'normal', inDark: 'invert' },
-  { name: 'TerraSecure',   src: '/images/Client Logo 5.png', size: 'large',  inDark: 'keep'   },
-  { name: 'DevLabs',       src: '/images/Client Logo 6.png', size: 'large',  inDark: 'keep'   },
+  { name: 'Prometheus',    light: '/images/Client Logo 1.png',            dark: '/images/Client Dark theme logo 1.png', lightH: 40, darkH: 44 },
+  { name: 'Flyers Soft',   light: '/images/Client Logo 2.png',            dark: '/images/Client Dark theme logo 2.png', lightH: 72, darkH: 72 },
+  { name: 'Abdo',          light: '/images/Client Logo 3.png',            dark: '/images/Client Dark theme logo 3.png', lightH: 40, darkH: 40 },
+  { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 32, darkH: 32 },
+  { name: 'TerraSecure',   light: '/images/Client Logo 5.png',            dark: '/images/Client Dark theme logo 5.png', lightH: 72, darkH: 72 },
+  { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 52, darkH: 44 },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
   const [hovered, setHovered] = useState(false);
-  const boxH = client.size === 'large' ? 76 : 44;
-  const slug = client.name.toLowerCase().replace(/\s/g, '-');
 
   return (
     <div
@@ -30,7 +30,7 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
       style={{
         position: 'relative',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        height: 110, padding: '0 24px',
+        height: 110, padding: '0 20px',
         border: '1px solid var(--border)',
         overflow: 'hidden', cursor: 'default',
         transition: 'background 0.3s',
@@ -54,24 +54,43 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
         pointerEvents: 'none', zIndex: 2,
       }} />
 
-      {/* Logo */}
-      <div style={{
+      {/* Light logo */}
+      <div className="logo-box-light" style={{
         position: 'relative', zIndex: 3,
-        width: '100%', height: boxH,
+        width: '100%', height: client.lightH,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
         <img
-          src={client.src}
+          src={client.light}
           alt={client.name}
-          className={`logo-img logo-client logo-client-${slug}`}
-          data-dark={client.inDark}
+          className="logo-img"
           style={{
             maxWidth: '100%', maxHeight: '100%',
             width: 'auto', height: 'auto',
-            objectFit: 'contain', objectPosition: 'center',
-            display: 'block',
+            objectFit: 'contain', objectPosition: 'center', display: 'block',
             filter: hovered ? 'none' : 'grayscale(1) brightness(0.55)',
             opacity: hovered ? 1 : 0.65,
+            transition: 'filter 0.4s ease, opacity 0.4s ease',
+          }}
+        />
+      </div>
+
+      {/* Dark logo — hidden by default, shown via CSS in dark mode */}
+      <div className="logo-box-dark" style={{
+        position: 'relative', zIndex: 3,
+        width: '100%', height: client.darkH,
+        display: 'none', alignItems: 'center', justifyContent: 'center',
+      }}>
+        <img
+          src={client.dark}
+          alt={client.name}
+          className="logo-img"
+          style={{
+            maxWidth: '100%', maxHeight: '100%',
+            width: 'auto', height: 'auto',
+            objectFit: 'contain', objectPosition: 'center', display: 'block',
+            filter: hovered ? 'none' : 'grayscale(1) brightness(0.7)',
+            opacity: hovered ? 1 : 0.7,
             transition: 'filter 0.4s ease, opacity 0.4s ease',
           }}
         />
@@ -143,6 +162,12 @@ export default function ClientLogosSection() {
       </div>
 
       <style>{`
+        /* Theme switching — show light or dark logo box */
+        .logo-box-light { display: flex !important; }
+        .logo-box-dark  { display: none  !important; }
+        .dark .logo-box-light { display: none  !important; }
+        .dark .logo-box-dark  { display: flex !important; }
+
         /* Desktop / tablet */
         @media(max-width:1024px){
           .client-logos-grid { grid-template-columns: repeat(3, 1fr) !important; }
@@ -154,36 +179,6 @@ export default function ClientLogosSection() {
           .logo-img { filter: none !important; opacity: 1 !important; }
           .logo-spotlight, .logo-beam { display: none !important; }
           .logo-card { padding: 0 12px !important; height: 88px !important; }
-        }
-
-        /* Dark mode — invert only dark-on-transparent logos */
-        .dark .logo-client[data-dark="invert"] {
-          filter: invert(1) brightness(1.9) !important;
-          opacity: 0.8 !important;
-        }
-        .dark .logo-card:hover .logo-client[data-dark="invert"] {
-          filter: invert(1) brightness(2.2) !important;
-          opacity: 1 !important;
-        }
-        /* Colourful logos: just brighten in dark mode */
-        .dark .logo-client[data-dark="keep"] {
-          filter: brightness(1.15) !important;
-          opacity: 0.9 !important;
-        }
-        .dark .logo-card:hover .logo-client[data-dark="keep"] {
-          filter: brightness(1.3) !important;
-          opacity: 1 !important;
-        }
-        /* Mobile dark: always-on versions */
-        @media(max-width:640px){
-          .dark .logo-client[data-dark="invert"] {
-            filter: invert(1) brightness(1.9) !important;
-            opacity: 0.85 !important;
-          }
-          .dark .logo-client[data-dark="keep"] {
-            filter: brightness(1.15) !important;
-            opacity: 0.95 !important;
-          }
         }
       `}</style>
     </section>
