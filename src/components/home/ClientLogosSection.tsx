@@ -13,10 +13,10 @@ import { motion } from 'framer-motion';
 const CLIENTS = [
   { name: 'Prometheus',    light: '/images/Client Logo 1.png',            dark: '/images/Client Dark theme logo 1.png', lightH: 40, darkH: 44 },
   { name: 'Flyers Soft',   light: '/images/Client Logo 2.png',            dark: '/images/Client Dark theme logo 2.png', lightH: 72, darkH: 72 },
-  { name: 'Abdo',          light: '/images/Client Logo 3.png',            dark: '/images/Client Dark theme logo 3.png', lightH: 40, darkH: 40 },
-  { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 32, darkH: 32 },
+  { name: 'Abdo',          light: '/images/Client Logo 3.png',            dark: '/images/Client Dark theme logo 3.png', lightH: 40, darkH: 64 },
+  { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 32, darkH: 52 },
   { name: 'TerraSecure',   light: '/images/Client Logo 5.png',            dark: '/images/Client Dark theme logo 5.png', lightH: 72, darkH: 72 },
-  { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 52, darkH: 44 },
+  { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 68, darkH: 44 },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
