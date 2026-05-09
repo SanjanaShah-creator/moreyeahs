@@ -14,7 +14,7 @@ const CLIENTS = [
   { name: 'Prometheus',    light: '/images/Client Logo 1.png',            dark: '/images/Client Dark theme logo 1.png', lightH: 40, darkH: 44,  wide: false, darkWide: false },
   { name: 'Flyers Soft',   light: '/images/Client Logo 2.png',            dark: '/images/Client Dark theme logo 2.png', lightH: 72, darkH: 72,  wide: false, darkWide: false },
   { name: 'Abdo',          light: '/images/Client Logo 3.png',            dark: '/images/Client Dark theme logo 3.png', lightH: 40, darkH: 64,  wide: false, darkWide: false },
-  { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 32, darkH: 52,  wide: false, darkWide: true  },
+  { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 32, darkH: 70,  wide: false, darkWide: true  },
   { name: 'TerraSecure',   light: '/images/Client Logo 5.png',            dark: '/images/Client Dark theme logo 5.png', lightH: 72, darkH: 72,  wide: false, darkWide: false },
   { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 68, darkH: 32,  wide: true,  darkWide: false },
 ] as const;
@@ -80,7 +80,9 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
       {/* Dark logo — hidden by default, shown via CSS in dark mode */}
       <div className="logo-box-dark" style={{
         position: 'relative', zIndex: 3,
-        width: '100%', height: client.darkH,
+        width: '100%',
+        /* darkWide: no fixed height, let width drive the size */
+        height: client.darkWide ? 'auto' : client.darkH,
         display: 'none', alignItems: 'center', justifyContent: 'center',
       }}>
         <img
@@ -88,7 +90,8 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
           alt={client.name}
           className="logo-img"
           style={{
-            maxWidth: '100%', maxHeight: '100%',
+            maxWidth: '100%',
+            maxHeight: client.darkWide ? 'none' : '100%',
             width: client.darkWide ? '100%' : 'auto',
             height: 'auto',
             objectFit: 'contain', objectPosition: 'center', display: 'block',
