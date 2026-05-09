@@ -4,16 +4,47 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const CLIENTS = [
-  { name: 'Prometheus',    src: '/images/Client Logo 1.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
-  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png', size: 'large',  bg: 'transparent',           darkBg: 'transparent'              },
-  { name: 'Abdo',          src: '/images/Client Logo 3.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
-  { name: 'Supersourcing', src: '/images/Client Logo 4.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
-  { name: 'TerraSecure',   src: '/images/Client Logo 5.png', size: 'large',  bg: 'transparent',          darkBg: 'transparent'              },
-  { name: 'DevLabs',       src: '/images/Client Logo 6.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
+  {
+    name: 'Prometheus',
+    light: '/images/Client Logo 1.png',
+    dark:  '/images/Client Dark theme logo 1.png',
+    size: 'normal',
+  },
+  {
+    name: 'Flyers Soft',
+    light: '/images/Client Logo 2.png',
+    dark:  '/images/Client Dark theme logo 2.png',
+    size: 'large',
+  },
+  {
+    name: 'Abdo',
+    light: '/images/Client Logo 3.png',
+    dark:  '/images/Client Dark theme logo 3.png',
+    size: 'normal',
+  },
+  {
+    name: 'Supersourcing',
+    light: '/images/Client Logo 4.png',
+    dark:  '/images/Client Dark theme logo 4.png',
+    size: 'normal',
+  },
+  {
+    name: 'TerraSecure',
+    light: '/images/Client Logo 5.png',
+    dark:  '/images/Client Dark theme logo 5.png',
+    size: 'large',
+  },
+  {
+    name: 'DevLabs',
+    light: '/images/Client Logo 6.png',
+    dark:  '/images/Client Dark theme logo 6.png',
+    size: 'large',
+  },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
   const [hovered, setHovered] = useState(false);
+  const boxH = client.size === 'large' ? 76 : 44;
 
   return (
     <div
@@ -31,67 +62,62 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
         overflow: 'hidden',
         cursor: 'default',
         transition: 'background 0.3s',
-        /* per-logo base bg + hover tint layered on top */
-        background: hovered
-          ? `rgba(26,86,219,0.06)`
-          : client.bg,
+        background: hovered ? 'rgba(26,86,219,0.06)' : 'transparent',
       }}
     >
-      {/* Spotlight glow from above — desktop hover only */}
+      {/* Spotlight glow from above */}
       <div className="logo-spotlight" style={{
-        position: 'absolute',
-        top: -80,
-        left: '50%',
+        position: 'absolute', top: -80, left: '50%',
         transform: 'translateX(-50%)',
-        width: 200,
-        height: 200,
-        borderRadius: '50%',
+        width: 200, height: 200, borderRadius: '50%',
         background: 'radial-gradient(circle, rgba(77,134,245,0.45) 0%, rgba(26,86,219,0.12) 50%, transparent 72%)',
         opacity: hovered ? 1 : 0,
         transition: 'opacity 0.4s ease',
-        pointerEvents: 'none',
-        zIndex: 1,
+        pointerEvents: 'none', zIndex: 1,
       }} />
 
       {/* Top edge light beam */}
       <div className="logo-beam" style={{
-        position: 'absolute',
-        top: 0,
-        left: '15%',
-        right: '15%',
-        height: 1,
+        position: 'absolute', top: 0, left: '15%', right: '15%', height: 1,
         background: 'linear-gradient(90deg, transparent, rgba(77,134,245,0.8), transparent)',
         opacity: hovered ? 1 : 0,
         transition: 'opacity 0.4s ease',
-        pointerEvents: 'none',
-        zIndex: 2,
+        pointerEvents: 'none', zIndex: 2,
       }} />
 
-      {/* Logo box — fixed inner height, object-fit contain */}
+      {/* Logo box */}
       <div style={{
-        position: 'relative',
-        zIndex: 3,
-        width: '100%',
-        height: client.size === 'large' ? 76 : 44,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        position: 'relative', zIndex: 3,
+        width: '100%', height: boxH,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
+        {/* Light theme logo */}
         <img
-          src={client.src}
+          src={client.light}
           alt={client.name}
-          className="logo-img"
-          data-logo={client.name.toLowerCase().replace(/\s/g, '-')}
+          className="logo-img logo-light-img"
           style={{
-            maxWidth: '100%',
-            maxHeight: '100%',
-            width: 'auto',
-            height: 'auto',
-            objectFit: 'contain',
-            objectPosition: 'center',
+            maxWidth: '100%', maxHeight: '100%',
+            width: 'auto', height: 'auto',
+            objectFit: 'contain', objectPosition: 'center',
             display: 'block',
             filter: hovered ? 'none' : 'grayscale(1) brightness(0.55)',
             opacity: hovered ? 1 : 0.65,
+            transition: 'filter 0.4s ease, opacity 0.4s ease',
+          }}
+        />
+        {/* Dark theme logo */}
+        <img
+          src={client.dark}
+          alt={client.name}
+          className="logo-img logo-dark-img"
+          style={{
+            maxWidth: '100%', maxHeight: '100%',
+            width: 'auto', height: 'auto',
+            objectFit: 'contain', objectPosition: 'center',
+            display: 'none',
+            filter: hovered ? 'none' : 'grayscale(1) brightness(0.7)',
+            opacity: hovered ? 1 : 0.7,
             transition: 'filter 0.4s ease, opacity 0.4s ease',
           }}
         />
@@ -111,14 +137,12 @@ export default function ClientLogosSection() {
 
       {/* Dot-grid background */}
       <div aria-hidden style={{
-        position: 'absolute',
-        inset: 0,
+        position: 'absolute', inset: 0,
         backgroundImage: 'radial-gradient(circle, rgba(77,134,245,0.16) 1px, transparent 1px)',
         backgroundSize: '32px 32px',
         maskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)',
         WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)',
-        pointerEvents: 'none',
-        zIndex: 0,
+        pointerEvents: 'none', zIndex: 0,
       }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -136,11 +160,8 @@ export default function ClientLogosSection() {
           </div>
           <h2 style={{
             fontSize: 'clamp(22px,2.8vw,36px)',
-            fontWeight: 800,
-            letterSpacing: '-0.03em',
-            color: 'var(--fg)',
-            lineHeight: 1.15,
-            marginBottom: 10,
+            fontWeight: 800, letterSpacing: '-0.03em',
+            color: 'var(--fg)', lineHeight: 1.15, marginBottom: 10,
           }}>
             Trusted by <span className="grad">Growing Businesses</span>
           </h2>
@@ -179,12 +200,18 @@ export default function ClientLogosSection() {
       </div>
 
       <style>{`
-        /* ── Desktop / tablet ── */
+        /* Light/dark logo switching */
+        .logo-light-img { display: block; }
+        .logo-dark-img  { display: none; }
+        .dark .logo-light-img { display: none !important; }
+        .dark .logo-dark-img  { display: block !important; }
+
+        /* Desktop / tablet */
         @media(max-width:1024px){
           .client-logos-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
 
-        /* ── Mobile: 2-col, full-width, logos always in color ── */
+        /* Mobile: 2-col, logos always full color */
         @media(max-width:640px){
           .client-logos-grid {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -194,47 +221,8 @@ export default function ClientLogosSection() {
             filter: none !important;
             opacity: 1 !important;
           }
-          .logo-spotlight,
-          .logo-beam { display: none !important; }
-          .logo-card { padding: 0 12px !important; min-height: unset !important; height: 88px !important; }
-        }
-
-        /* ── Dark mode: invert dark logos so they show on dark bg ── */
-        /* Logos that are dark-on-transparent need inversion in dark mode */
-        .dark .logo-img {
-          filter: invert(1) brightness(1.8) !important;
-          opacity: 0.75 !important;
-        }
-        /* On hover in dark mode: invert but keep full brightness */
-        .dark .logo-card:hover .logo-img {
-          filter: invert(1) brightness(2) !important;
-          opacity: 1 !important;
-        }
-        /* TerraSecure, Flyers Soft & DevLabs are colourful — don't invert them */
-        .dark .logo-img[data-logo="terrasecure"],
-        .dark .logo-img[data-logo="flyers-soft"],
-        .dark .logo-img[data-logo="devlabs"] {
-          filter: brightness(1.15) !important;
-          opacity: 0.9 !important;
-        }
-        .dark .logo-card:hover .logo-img[data-logo="terrasecure"],
-        .dark .logo-card:hover .logo-img[data-logo="flyers-soft"],
-        .dark .logo-card:hover .logo-img[data-logo="devlabs"] {
-          filter: brightness(1.3) !important;
-          opacity: 1 !important;
-        }
-        /* Mobile dark: same rules but always-on */
-        @media(max-width:640px){
-          .dark .logo-img {
-            filter: invert(1) brightness(1.8) !important;
-            opacity: 0.85 !important;
-          }
-          .dark .logo-img[data-logo="terrasecure"],
-          .dark .logo-img[data-logo="flyers-soft"],
-          .dark .logo-img[data-logo="devlabs"] {
-            filter: brightness(1.15) !important;
-            opacity: 0.9 !important;
-          }
+          .logo-spotlight, .logo-beam { display: none !important; }
+          .logo-card { padding: 0 12px !important; height: 88px !important; }
         }
       `}</style>
     </section>

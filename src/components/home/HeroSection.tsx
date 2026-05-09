@@ -143,7 +143,7 @@ export default function HeroSection() {
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center',
           textAlign: 'center',
-          padding: 'clamp(108px,13vh,150px) 24px clamp(160px,20vh,220px)',
+          padding: 'clamp(108px,13vh,150px) 24px clamp(60px,8vh,100px)',
         }}>
           <motion.div
             variants={stagger} initial="hidden" animate={mounted ? 'visible' : 'hidden'}
@@ -234,7 +234,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }} animate={mounted ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.8, duration: 0.7 }}
           className="hero-trusted-wrap"
-          style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 4, paddingBottom: 14 }}
+          style={{ paddingBottom: 14 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '0 24px', marginBottom: 12 }}>
             <span className="hero-trusted-label" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--fg-3)', whiteSpace: 'nowrap' }}>
