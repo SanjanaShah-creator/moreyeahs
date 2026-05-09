@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const CLIENTS = [
-  { name: 'Prometheus',    src: '/images/Client Logo 1.png', size: 'normal', bg: 'transparent' },
-  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png', size: 'normal', bg: 'rgba(245,245,250,0.6)' },
-  { name: 'Abdo',          src: '/images/Client Logo 3.png', size: 'normal', bg: 'transparent' },
-  { name: 'Supersourcing', src: '/images/Client Logo 4.png', size: 'normal', bg: 'transparent' },
-  { name: 'TerraSecure',   src: '/images/Client Logo 5.png', size: 'large',  bg: 'transparent' },
-  { name: 'DevLabs',       src: '/images/Client Logo 6.png', size: 'normal', bg: 'rgba(15,30,80,0.06)'  },
+  { name: 'Prometheus',    src: '/images/Client Logo 1.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
+  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png', size: 'normal', bg: 'rgba(245,245,250,0.5)', darkBg: 'rgba(255,255,255,0.06)'   },
+  { name: 'Abdo',          src: '/images/Client Logo 3.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
+  { name: 'Supersourcing', src: '/images/Client Logo 4.png', size: 'normal', bg: 'transparent',          darkBg: 'transparent'              },
+  { name: 'TerraSecure',   src: '/images/Client Logo 5.png', size: 'large',  bg: 'transparent',          darkBg: 'transparent'              },
+  { name: 'DevLabs',       src: '/images/Client Logo 6.png', size: 'normal', bg: 'rgba(15,30,80,0.06)',  darkBg: 'rgba(255,255,255,0.06)'   },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
@@ -81,6 +81,7 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
           src={client.src}
           alt={client.name}
           className="logo-img"
+          data-logo={client.name.toLowerCase().replace(/\s/g, '-')}
           style={{
             maxWidth: '100%',
             maxHeight: '100%',
@@ -187,19 +188,50 @@ export default function ClientLogosSection() {
         @media(max-width:640px){
           .client-logos-grid {
             grid-template-columns: repeat(2, 1fr) !important;
-            /* stretch to full container width */
             width: 100%;
           }
-          /* Always show full color on touch — no hover state */
           .logo-img {
             filter: none !important;
             opacity: 1 !important;
           }
-          /* Hide the hover-only decorations */
           .logo-spotlight,
           .logo-beam { display: none !important; }
-          /* Slightly less padding on small cells */
           .logo-card { padding: 0 12px !important; min-height: unset !important; height: 88px !important; }
+        }
+
+        /* ── Dark mode: invert dark logos so they show on dark bg ── */
+        /* Logos that are dark-on-transparent need inversion in dark mode */
+        .dark .logo-img {
+          filter: invert(1) brightness(1.8) !important;
+          opacity: 0.75 !important;
+        }
+        /* On hover in dark mode: invert but keep full brightness */
+        .dark .logo-card:hover .logo-img {
+          filter: invert(1) brightness(2) !important;
+          opacity: 1 !important;
+        }
+        /* TerraSecure & Flyers Soft are colourful — don't invert them */
+        .dark .logo-img[data-logo="terrasecure"],
+        .dark .logo-img[data-logo="flyers-soft"] {
+          filter: brightness(1.1) !important;
+          opacity: 0.85 !important;
+        }
+        .dark .logo-card:hover .logo-img[data-logo="terrasecure"],
+        .dark .logo-card:hover .logo-img[data-logo="flyers-soft"] {
+          filter: brightness(1.2) !important;
+          opacity: 1 !important;
+        }
+        /* Mobile dark: same rules but always-on */
+        @media(max-width:640px){
+          .dark .logo-img {
+            filter: invert(1) brightness(1.8) !important;
+            opacity: 0.85 !important;
+          }
+          .dark .logo-img[data-logo="terrasecure"],
+          .dark .logo-img[data-logo="flyers-soft"] {
+            filter: brightness(1.1) !important;
+            opacity: 0.9 !important;
+          }
         }
       `}</style>
     </section>
