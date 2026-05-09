@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -41,22 +41,44 @@ const SITE_SERVICES = new Set([
   'web application development', 'mobile app development', 'design & quality',
 ]);
 
-/* â”€â”€ Smart term classification: split WP "category" into Industries / Services â”€â”€ */
+
+/* -- Smart term classification: split WP "category" into Industries / Services -- */
 const INDUSTRY_TERMS = new Set([
-  'healthcare', 'fintech', 'finance', 'retail', 'e-commerce', 'ecommerce',
-  'manufacturing', 'education', 'edtech', 'agritech', 'agriculture',
-  'insurance', 'real estate', 'logistics', 'legal', 'media', 'telecom',
-  'government', 'energy', 'automotive', 'hospitality', 'professional services',
-  'banking', 'pharma', 'pharmaceuticals', 'nonprofit', 'consumer goods', 'bfsi',
+  // verticals / industries
+  'healthcare', 'health care', 'health tech', 'healthtech', 'medtech',
+  'fintech', 'finance', 'financial services', 'banking', 'bfsi', 'insurance',
+  'retail', 'e-commerce', 'ecommerce', 'consumer goods',
+  'manufacturing', 'industrial',
+  'education', 'edtech', 'ed-tech',
+  'agritech', 'agriculture', 'agri-tech',
+  'real estate', 'proptech',
+  'logistics', 'supply chain',
+  'legal', 'legaltech',
+  'media', 'entertainment',
+  'telecom', 'telecommunications',
+  'government', 'public sector',
+  'energy', 'oil & gas', 'utilities',
+  'automotive',
+  'hospitality', 'travel', 'tourism',
+  'professional services', 'consulting',
+  'pharma', 'pharmaceuticals', 'life sciences',
+  'nonprofit', 'ngo', 'social impact',
+  'sports', 'sports tech',
+  'security', 'cybersecurity',
+  'saas', 'b2b saas',
 ]);
 
-function classifyTerm(name: string): string {
+function classifyTerm(name: string, taxonomySlug?: string): string {
+  if (taxonomySlug) {
+    const ts = taxonomySlug.toLowerCase();
+    if (ts.includes('industr') || ts === 'sector' || ts === 'vertical') return 'Industries';
+    if (ts.includes('service') || ts === 'category') return 'Services';
+  }
   const lower = name.toLowerCase().trim();
   if (SITE_SERVICES.has(lower)) return 'Services';
   if (INDUSTRY_TERMS.has(lower)) return 'Industries';
-  return 'Services'; // default to Services for unknown terms
+  return 'Services';
 }
-
 
 function taxonomyLabel(slug: string): string {
   const map: Record<string, string> = {
@@ -106,7 +128,7 @@ function buildGroups(studies: CS[], allCategories: WordPressCategory[]) {
   // Pre-populate ALL WP categories at count 0, classified as Services or Industries
   for (const cat of allCategories) {
     if (!cat.name || cat.slug === 'uncategorized') continue;
-    const groupKey = classifyTerm(cat.name);
+    const groupKey = classifyTerm(cat.name, cat.slug);
     if (!map.has(groupKey)) map.set(groupKey, new Map());
     map.get(groupKey)!.set(cat.id, { id: cat.id, name: cat.name, count: 0 });
   }
@@ -114,7 +136,7 @@ function buildGroups(studies: CS[], allCategories: WordPressCategory[]) {
   // Count actual case studies per term
   for (const s of studies)
     for (const t of s.terms) {
-      const groupKey = t.taxonomy === 'category' ? classifyTerm(t.name) : taxonomyLabel(t.taxonomy);
+      const groupKey = t.taxonomy === 'category' ? classifyTerm(t.name, t.taxonomy) : taxonomyLabel(t.taxonomy);
       if (!map.has(groupKey)) map.set(groupKey, new Map());
       const g = map.get(groupKey)!;
       if (!g.has(t.id)) g.set(t.id, { id: t.id, name: t.name, count: 0 });
