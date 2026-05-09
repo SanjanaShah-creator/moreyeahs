@@ -4,38 +4,39 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const CLIENTS = [
-  { name: 'Prometheus',    src: '/images/Client Logo 1.png' },
-  { name: 'Flyers Soft',   src: '/images/Client Logo 2.png' },
-  { name: 'Abdo',          src: '/images/Client Logo 3.png' },
-  { name: 'Supersourcing', src: '/images/Client Logo 4.png' },
-  { name: 'TerraSecure',   src: '/images/Client Logo 5.png' },
-  { name: 'Client',        src: '/images/Client Logo 6.png' },
-];
+  { name: 'Prometheus',       src: '/images/Client Logo 1.png', size: 'normal' },
+  { name: 'Flyers Soft',      src: '/images/Client Logo 2.png', size: 'normal' },
+  { name: 'Abdo',             src: '/images/Client Logo 3.png', size: 'normal' },
+  { name: 'Supersourcing',    src: '/images/Client Logo 4.png', size: 'normal' },
+  { name: 'TerraSecure',      src: '/images/Client Logo 5.png', size: 'large'  },
+  { name: 'DevLabs',          src: '/images/Client Logo 6.png', size: 'normal' },
+] as const;
 
-function LogoCard({ client }: { client: typeof CLIENTS[0] }) {
+function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
   const [hovered, setHovered] = useState(false);
+  const imgHeight = client.size === 'large' ? 80 : 52;
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="logo-card"
       style={{
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '32px 28px',
-        /* grid cell border — forms the grid lines */
+        padding: '28px 20px',
         border: '1px solid var(--border)',
-        background: hovered ? 'rgba(26,86,219,0.04)' : 'transparent',
         overflow: 'hidden',
         cursor: 'default',
+        minHeight: 110,
         transition: 'background 0.3s',
-        minHeight: 120,
+        background: hovered ? 'rgba(26,86,219,0.04)' : 'transparent',
       }}
     >
-      {/* Spotlight glow from above on hover */}
-      <div style={{
+      {/* Spotlight glow from above — desktop hover only */}
+      <div className="logo-spotlight" style={{
         position: 'absolute',
         top: -80,
         left: '50%',
@@ -50,8 +51,8 @@ function LogoCard({ client }: { client: typeof CLIENTS[0] }) {
         zIndex: 1,
       }} />
 
-      {/* Top edge light beam */}
-      <div style={{
+      {/* Top edge light beam — desktop hover only */}
+      <div className="logo-beam" style={{
         position: 'absolute',
         top: 0,
         left: '15%',
@@ -64,21 +65,23 @@ function LogoCard({ client }: { client: typeof CLIENTS[0] }) {
         zIndex: 2,
       }} />
 
-      {/* Logo — grayscale + dim by default, full color on hover */}
+      {/* Logo */}
       <img
         src={client.src}
         alt={client.name}
+        className="logo-img"
         style={{
           position: 'relative',
           zIndex: 3,
-          maxHeight: 56,
-          maxWidth: 160,
+          maxHeight: imgHeight,
+          maxWidth: '85%',
           width: 'auto',
           height: 'auto',
           objectFit: 'contain',
           display: 'block',
+          /* desktop: grayscale until hover */
           filter: hovered ? 'none' : 'grayscale(1) brightness(0.55)',
-          opacity: hovered ? 1 : 0.6,
+          opacity: hovered ? 1 : 0.65,
           transition: 'filter 0.4s ease, opacity 0.4s ease',
         }}
       />
@@ -88,25 +91,24 @@ function LogoCard({ client }: { client: typeof CLIENTS[0] }) {
 
 export default function ClientLogosSection() {
   return (
-    <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', padding: '88px 0' }}>
+    <section style={{
+      background: 'var(--bg)',
+      position: 'relative',
+      overflow: 'hidden',
+      padding: '72px 0 64px',
+    }}>
 
-      {/* ── Subtle dot-grid background ── */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage:
-            'radial-gradient(circle, rgba(77,134,245,0.18) 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
-          maskImage:
-            'radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)',
-          WebkitMaskImage:
-            'radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
+      {/* Dot-grid background */}
+      <div aria-hidden style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'radial-gradient(circle, rgba(77,134,245,0.16) 1px, transparent 1px)',
+        backgroundSize: '32px 32px',
+        maskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)',
+        WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
 
@@ -116,9 +118,9 @@ export default function ClientLogosSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: '-60px' }}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: 52 }}
+          style={{ textAlign: 'center', marginBottom: 44 }}
         >
-          <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 16 }}>
+          <div className="section-badge" style={{ display: 'inline-flex', marginBottom: 14 }}>
             Clients &amp; Partners
           </div>
           <h2 style={{
@@ -136,7 +138,7 @@ export default function ClientLogosSection() {
           </p>
         </motion.div>
 
-        {/* ── Logo grid — bordered cells form the grid lines ── */}
+        {/* Logo grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -146,7 +148,6 @@ export default function ClientLogosSection() {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(6, 1fr)',
-            /* outer border wraps the whole grid */
             border: '1px solid var(--border)',
             borderRadius: 16,
             overflow: 'hidden',
@@ -156,8 +157,8 @@ export default function ClientLogosSection() {
             <motion.div
               key={client.name}
               variants={{
-                hidden:   { opacity: 0, y: 12 },
-                visible:  { opacity: 1, y: 0, transition: { duration: 0.45 } },
+                hidden:  { opacity: 0, y: 12 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
               }}
             >
               <LogoCard client={client} />
@@ -167,11 +168,28 @@ export default function ClientLogosSection() {
       </div>
 
       <style>{`
-        @media(max-width:900px){
+        /* ── Desktop / tablet ── */
+        @media(max-width:1024px){
           .client-logos-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
-        @media(max-width:520px){
-          .client-logos-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+        /* ── Mobile: 2-col, full-width, logos always in color ── */
+        @media(max-width:640px){
+          .client-logos-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            /* stretch to full container width */
+            width: 100%;
+          }
+          /* Always show full color on touch — no hover state */
+          .logo-img {
+            filter: none !important;
+            opacity: 1 !important;
+          }
+          /* Hide the hover-only decorations */
+          .logo-spotlight,
+          .logo-beam { display: none !important; }
+          /* Slightly less padding on small cells */
+          .logo-card { padding: 22px 16px !important; min-height: 90px !important; }
         }
       `}</style>
     </section>
