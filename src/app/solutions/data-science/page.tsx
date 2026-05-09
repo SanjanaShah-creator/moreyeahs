@@ -476,10 +476,10 @@ export default function DataSciencePage() {
             {SERVICES.map((svc, i) => (
               <motion.div
                 key={svc.id}
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 1, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.85, ease: EXPO, delay: i * 0.06 }}
+                transition={{ duration: 0.7, ease: EXPO, delay: i * 0.05 }}
                 style={{
                   position: 'sticky', top: `${80 + i * 20}px`, zIndex: i + 2,
                   borderRadius: 24, overflow: 'hidden',

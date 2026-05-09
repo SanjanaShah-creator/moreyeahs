@@ -357,46 +357,12 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
   );
 }
 
-/* ── ProcessSection — left step list + right content, auto-advances ──────── */
-const STEP_DELAY = 4500;
-
+/* ── ProcessSection — left step list + right content, click-only ──────────── */
 function ProcessSection({ steps }: { steps: ProcessStep[] }) {
-  const [active, setActive]   = useState(0);
-  const [timerKey, setTimerKey] = useState(0); // bumped on manual click to restart interval
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  /* Reset to step 0 whenever the section scrolls into view */
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setActive(0);
-          setTimerKey(k => k + 1);
-        }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  /* Auto-advance: loops back to step 0 after the last step */
-  useEffect(() => {
-    const id = setInterval(() => {
-      setActive(a => (a + 1 >= steps.length ? 0 : a + 1));
-    }, STEP_DELAY);
-    return () => clearInterval(id);
-  }, [timerKey, steps.length]);
-
-  const go = (i: number) => {
-    setActive(i);
-    setTimerKey(k => k + 1); // reset countdown from this step
-  };
+  const [active, setActive] = useState(0);
 
   return (
-    <div ref={sectionRef} className="process-grid" style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 20, alignItems: 'start' }}>
+    <div className="process-grid" style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 20, alignItems: 'start' }}>
 
       {/* ── Left: step selector ── */}
       <div style={{ position: 'sticky', top: 100, display: 'flex', flexDirection: 'column', gap: 3 }}>
@@ -406,9 +372,8 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
           return (
             <button
               key={i}
-              onClick={() => go(i)}
+              onClick={() => setActive(i)}
               style={{
-                position: 'relative', overflow: 'hidden',
                 display: 'flex', alignItems: 'center', gap: 14,
                 padding: '13px 16px', borderRadius: 14,
                 background: isActive ? BLUE_LIGHT : 'transparent',
@@ -419,7 +384,6 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
               onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.background = `${BLUE}06`; }}
               onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
             >
-              {/* Number circle */}
               <div style={{
                 width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
                 background: i <= active ? BLUE : 'var(--bg-2)',
@@ -438,21 +402,6 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
               }}>
                 {step.title}
               </span>
-
-              {/* Timer bar — fills across active button over STEP_DELAY ms */}
-              {isActive && (
-                <motion.div
-                  key={`timer-${timerKey}-${i}`}
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: STEP_DELAY / 1000, ease: 'linear' }}
-                  style={{
-                    position: 'absolute', bottom: 0, left: 0, right: 0,
-                    height: 2, background: BLUE, borderRadius: '0 0 14px 14px',
-                    transformOrigin: 'left',
-                  }}
-                />
-              )}
             </button>
           );
         })}
@@ -490,7 +439,6 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
             minHeight: 320,
           }}
         >
-          {/* Ambient top bar */}
           <div style={{ height: 3, background: `linear-gradient(90deg, ${BLUE}, ${BLUE}55)`, borderRadius: '24px 24px 0 0' }} />
 
           <div style={{ padding: 'clamp(28px,3.5vw,48px)' }}>
@@ -513,11 +461,7 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
 
             {/* Badge */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 22, position: 'relative', zIndex: 1 }}>
-              <motion.span
-                animate={{ scale: [1, 1.5, 1], opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 2.2, repeat: Infinity }}
-                style={{ width: 7, height: 7, borderRadius: '50%', background: BLUE, display: 'inline-block' }}
-              />
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: BLUE, display: 'inline-block', flexShrink: 0 }} />
               <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', color: BLUE }}>
                 Step {steps[active]?.number} of {steps.length}
               </span>
@@ -546,26 +490,30 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
                 onClick={() => setActive(a => Math.max(0, a - 1))}
                 disabled={active === 0}
                 style={{
-                  width: 40, height: 40, borderRadius: '50%', border: `1px solid ${BLUE}30`,
-                  background: active === 0 ? 'var(--bg-2)' : BLUE_LIGHT,
-                  color: active === 0 ? 'var(--fg-3)' : BLUE,
+                  width: 40, height: 40, minWidth: 40, padding: 0,
+                  borderRadius: '50%', boxSizing: 'border-box', flexShrink: 0,
+                  border: active === 0 ? `1px solid ${BLUE}20` : 'none',
+                  background: active === 0 ? 'var(--bg-2)' : BLUE,
+                  color: active === 0 ? 'var(--fg-3)' : '#fff',
                   cursor: active === 0 ? 'not-allowed' : 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   opacity: active === 0 ? 0.35 : 1, transition: 'all 0.2s',
                 }}
-              ><ArrowLeft size={15} strokeWidth={2.5} /></button>
+              ><ArrowLeft size={16} strokeWidth={2} /></button>
               <button
                 onClick={() => setActive(a => Math.min(steps.length - 1, a + 1))}
                 disabled={active === steps.length - 1}
                 style={{
-                  width: 40, height: 40, borderRadius: '50%', border: 'none',
+                  width: 40, height: 40, minWidth: 40, padding: 0,
+                  borderRadius: '50%', boxSizing: 'border-box', flexShrink: 0,
+                  border: active === steps.length - 1 ? `1px solid ${BLUE}20` : 'none',
                   background: active === steps.length - 1 ? 'var(--bg-2)' : BLUE,
                   color: active === steps.length - 1 ? 'var(--fg-3)' : '#fff',
                   cursor: active === steps.length - 1 ? 'not-allowed' : 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   opacity: active === steps.length - 1 ? 0.35 : 1, transition: 'all 0.2s',
                 }}
-              ><ArrowRight size={15} strokeWidth={2.5} /></button>
+              ><ArrowRight size={16} strokeWidth={2} /></button>
               <span style={{ fontSize: 12, color: 'var(--fg-3)', marginLeft: 4 }}>
                 {active < steps.length - 1 ? 'Next: ' + steps[active + 1]?.title : 'All steps complete ✓'}
               </span>

@@ -1,10 +1,12 @@
-import HeroSection         from '@/components/home/HeroSection';
-import SolutionsSection    from '@/components/home/SolutionsSection';
-import IndustriesSection   from '@/components/home/IndustriesSection';
-import CompanyStory        from '@/components/home/CompanyStory';
-import CaseStudiesSection  from '@/components/home/CaseStudiesSection';
-import TestimonialsSection from '@/components/home/TestimonialsSection';
-import CTASection          from '@/components/home/CTASection';
+import dynamic from 'next/dynamic';
+import HeroSection from '@/components/home/HeroSection';
+
+const SolutionsSection   = dynamic(() => import('@/components/home/SolutionsSection'));
+const IndustriesSection  = dynamic(() => import('@/components/home/IndustriesSection'));
+const CompanyStory       = dynamic(() => import('@/components/home/CompanyStory'));
+const CaseStudiesSection = dynamic(() => import('@/components/home/CaseStudiesSection'));
+const TestimonialsSection = dynamic(() => import('@/components/home/TestimonialsSection'));
+const CTASection         = dynamic(() => import('@/components/home/CTASection'));
 
 export default function Home() {
   return (
