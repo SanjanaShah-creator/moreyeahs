@@ -220,21 +220,21 @@ export default function FloatingChat() {
           /* Wrapper sits at bottom-right; on mobile we override the panel only */
           .chat-panel {
             position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
+            top: 12px !important;
+            left: 12px !important;
+            right: 12px !important;
             bottom: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            max-height: 100dvh !important;
-            border-radius: 0 !important;
-            /* Remove the absolute offset so it fills the viewport */
+            width: auto !important;
+            height: auto !important;
+            max-height: calc(100dvh - 12px) !important;
+            border-radius: 20px 20px 0 0 !important;
             transform: none !important;
           }
 
           /* Header: add top safe-area inset so it clears the status bar */
           .chat-header-mobile {
             padding-top: max(15px, env(safe-area-inset-top)) !important;
+            border-radius: 20px 20px 0 0 !important;
           }
 
           /* Input row: add bottom safe-area so it clears the home indicator */
