@@ -4,15 +4,13 @@
  * GridBeam — MoreYeahs design-system grid panel.
  *
  * Idle:  3 gradient beams travel square-to-square along grid-aligned paths.
- *        Each uses an animated linearGradient (same technique as original Beam
- *        component) — the gradient coordinates move, dragging the light blob
- *        along the path.
+ *        Each uses a CSS-animated linearGradient — the gradient coordinates
+ *        move via @keyframes, dragging the light blob along the path.
  *
  * Hover: Exact grid-cell highlight + radial glow spreading to nearby squares.
  */
 
 import React, { useRef, useState, useCallback } from 'react';
-import { motion } from 'framer-motion';
 
 /* ─── constants ─────────────────────────────────────────────────────── */
 const BLUE      = '#4D86F5';
@@ -20,11 +18,26 @@ const BLUE_MID  = '#1A56DB';
 const BLUE_SOFT = '#80A9FF';
 const CELL   = 44; // must match .gb-grid background-size
 
+/* ─── CSS keyframe injection (runs once) ────────────────────────────── */
+const BEAM_STYLE_ID = 'gb-beam-keyframes';
+if (typeof document !== 'undefined' && !document.getElementById(BEAM_STYLE_ID)) {
+  const s = document.createElement('style');
+  s.id = BEAM_STYLE_ID;
+  s.textContent = `
+    @keyframes gbBeamMove {
+      0%   { x1: 50%; x2: 60%; y1: 180%; y2: 200%; }
+      100% { x1: 10%; x2: 20%; y1: -80%; y2: -60%; }
+    }
+    .gb-beam-grad { animation: gbBeamMove linear infinite; }
+  `;
+  document.head.appendChild(s);
+}
+
 /* ─── BeamPath ──────────────────────────────────────────────────────── */
 /**
- * Renders an L/staircase path whose stroke is an animated linearGradient.
- * The gradient coordinates animate from below the path to above it, dragging
- * the coloured blob upward — identical technique to the original Beam SVG.
+ * Renders an L/staircase path whose stroke is a CSS-animated linearGradient.
+ * Uses plain SVG linearGradient with inline style animation to avoid
+ * framer-motion's motion.linearGradient which causes Turbopack panics.
  */
 function BeamPath({
   d,
@@ -38,13 +51,23 @@ function BeamPath({
   gradId: string;
   duration?: number;
   delay?: number;
-  /** gradient start coords (percentages) when beam is "off screen below" */
   from: { x1: string; x2: string; y1: string; y2: string };
-  /** gradient end coords when beam has fully traversed the path */
   to: { x1: string; x2: string; y1: string; y2: string };
 }) {
+  const keyframesId = `${gradId}-kf`;
+  const styleContent = `
+    @keyframes ${keyframesId} {
+      0%   { x1: ${from.x1}; x2: ${from.x2}; y1: ${from.y1}; y2: ${from.y2}; }
+      100% { x1: ${to.x1};   x2: ${to.x2};   y1: ${to.y1};   y2: ${to.y2}; }
+    }
+    #${gradId} {
+      animation: ${keyframesId} ${duration}s linear ${delay}s infinite;
+    }
+  `;
+
   return (
     <g>
+      <style>{styleContent}</style>
       {/* Ghost path — faint so grid feels connected */}
       <path d={d} stroke={`${BLUE}12`} strokeWidth={1} fill="none" strokeLinejoin="round" />
 
@@ -60,27 +83,19 @@ function BeamPath({
       />
 
       <defs>
-        <motion.linearGradient
+        <linearGradient
           id={gradId}
           gradientUnits="userSpaceOnUse"
-          variants={{ initial: from, animate: to }}
-          initial="initial"
-          animate="animate"
-          // @ts-ignore — framer-motion types don't expose linearGradient directly
-          transition={{
-            duration,
-            delay,
-            repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'linear',
-            repeatDelay: 1.8,
-          }}
+          x1={from.x1}
+          x2={from.x2}
+          y1={from.y1}
+          y2={from.y2}
         >
           <stop stopColor={BLUE_SOFT} stopOpacity={0} />
           <stop stopColor={BLUE_SOFT} stopOpacity={0.9} offset="0.2" />
           <stop stopColor={BLUE_MID}  stopOpacity={1}   offset="0.6" />
           <stop stopColor={BLUE}      stopOpacity={0}   offset="1" />
-        </motion.linearGradient>
+        </linearGradient>
       </defs>
     </g>
   );
@@ -242,26 +257,30 @@ export const Beam = () => (
     fill="none" xmlns="http://www.w3.org/2000/svg"
     className="absolute top-0 left-0 ml-24 mt-8 pointer-events-none"
   >
+    <style>{`
+      @keyframes beamGradStandaloneAnim {
+        0%   { x1: 40%; x2: 50%; y1: 160%; y2: 180%; }
+        100% { x1: 0%;  x2: 10%; y1: -40%; y2: -20%; }
+      }
+      #beamGradStandalone {
+        animation: beamGradStandaloneAnim 1.8s linear 0s infinite;
+      }
+    `}</style>
     <path
       d="M31 .5h32M0 .5h32m30 31h32m-1 0h32m-1 31h32M62.5 32V0m62 63V31"
       stroke="url(#beamGradStandalone)" strokeWidth={1.5}
     />
     <defs>
-      <motion.linearGradient
+      <linearGradient
         id="beamGradStandalone"
-        variants={{
-          initial: { x1: '40%', x2: '50%', y1: '160%', y2: '180%' },
-          animate: { x1: '0%',  x2: '10%', y1: '-40%', y2: '-20%' },
-        }}
-        animate="animate" initial="initial"
-        // @ts-ignore
-        transition={{ duration: 1.8, repeat: Infinity, repeatType: 'loop', ease: 'linear', repeatDelay: 2 }}
+        gradientUnits="userSpaceOnUse"
+        x1="40%" x2="50%" y1="160%" y2="180%"
       >
         <stop stopColor={BLUE_SOFT} stopOpacity={0} />
         <stop stopColor={BLUE_SOFT} />
         <stop offset="0.325" stopColor={BLUE_MID} />
         <stop offset="1"     stopColor={BLUE} stopOpacity={0} />
-      </motion.linearGradient>
+      </linearGradient>
     </defs>
   </svg>
 );

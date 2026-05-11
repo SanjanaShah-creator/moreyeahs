@@ -1,5 +1,3 @@
-'use client';
-
 // Light-mode color palette used when rendering PDF (always white background)
 const PDF_COLORS = {
   text:        'rgb(15, 20, 40)',
