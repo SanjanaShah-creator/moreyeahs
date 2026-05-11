@@ -232,7 +232,7 @@ export default function AWSMigrationCaseStudy() {
                   <strong>After:</strong> $780K/year (AWS compute, storage, data transfer)
                 </p>
                 <p style={{ fontSize: 14, color: '#0EA472', lineHeight: 1.7, marginTop: 12, fontWeight: 700 }}>
-                  âœ“ $420K/year savings (~35% reduction)
+                  ✓ $420K/year savings (~35% reduction)
                 </p>
               </div>
 
@@ -246,7 +246,7 @@ export default function AWSMigrationCaseStudy() {
                     'Auto-scaling handled peak traffic (9pm EST holiday spike) with zero manual intervention',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 8, paddingLeft: 20, position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: 0 }}>âœ“</span>
+                      <span style={{ position: 'absolute', left: 0 }}>✓</span>
                       {item}
                     </li>
                   ))}
@@ -262,7 +262,7 @@ export default function AWSMigrationCaseStudy() {
                     'Debugging & root-cause analysis: 60% faster with centralized logging (CloudWatch)',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 8, paddingLeft: 20, position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: 0 }}>âœ“</span>
+                      <span style={{ position: 'absolute', left: 0 }}>✓</span>
                       {item}
                     </li>
                   ))}

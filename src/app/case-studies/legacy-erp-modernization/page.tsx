@@ -70,7 +70,7 @@ export default function Dynamics365CaseStudy() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
               {[
                 { metric: '55%', label: 'Faster Procurement', icon: 'âš¡' },
-                { metric: '100%', label: 'Compliance Achieved', icon: 'âœ“' },
+                { metric: '100%', label: 'Compliance Achieved', icon: '✓' },
                 { metric: '12', label: 'Departments Unified', icon: 'ðŸ›ï¸' },
                 { metric: '8 wks', label: 'Implementation', icon: 'ðŸš€' },
               ].map((item, idx) => (

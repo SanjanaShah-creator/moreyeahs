@@ -393,7 +393,7 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
                 boxShadow: isActive ? `0 0 0 6px ${BLUE}18` : 'none',
                 transition: 'all 0.3s',
               }}>
-                {done ? 'âœ“' : step.number}
+                {done ? '✓' : step.number}
               </div>
               <span style={{
                 fontSize: 13, fontWeight: isActive ? 700 : 500,
@@ -515,7 +515,7 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
                 }}
               ><ArrowRight size={16} strokeWidth={2} /></button>
               <span style={{ fontSize: 12, color: 'var(--fg-3)', marginLeft: 4 }}>
-                {active < steps.length - 1 ? 'Next: ' + steps[active + 1]?.title : 'All steps complete âœ“'}
+                {active < steps.length - 1 ? 'Next: ' + steps[active + 1]?.title : 'All steps complete ✓'}
               </span>
             </div>
           </div>
