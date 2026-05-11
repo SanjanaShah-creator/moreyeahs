@@ -585,7 +585,6 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         ref={heroRef}
         style={{
           background: 'var(--bg)',
-          minHeight: '100svh',
           display: 'flex',
           alignItems: 'center',
           position: 'relative',
@@ -616,7 +615,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
                 textAlign: 'center',
                 maxWidth: 760,
                 margin: '0 auto',
-                paddingTop: 40,
+                paddingTop: 60,
                 paddingBottom: 80,
                 display: 'flex',
                 flexDirection: 'column',
@@ -775,7 +774,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
       {/* ’€’€ PROBLEM ’€’€ */}
       <section
         className="svc-section-pad"
-        style={{ background: 'var(--bg-section-dark)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}
+        style={{ background: 'var(--bg-section-dark)', padding: 'clamp(72px,8vw,100px) 0', position: 'relative', overflow: 'hidden' }}
       >
         <div
           className="blob"
@@ -826,7 +825,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
       </section>
 
       {/* ’€’€ CAPABILITIES ’€’€ */}
-      <section className="svc-section-pad" style={{ background: 'var(--bg-2)', padding: '120px 0', position: 'relative' }}>
+      <section className="svc-section-pad" style={{ background: 'var(--bg-2)', padding: 'clamp(72px,8vw,100px) 0', position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div
@@ -924,7 +923,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
       {/* ’€’€ CASE STUDIES – hidden on sub-service pages ’€’€ */}
 
       {/* ’€’€ FAQ ’€’€ */}
-      <section style={{ background: 'var(--bg)', padding: '120px 0', position: 'relative' }}>
+      <section style={{ background: 'var(--bg)', padding: 'clamp(72px,8vw,100px) 0', position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 56, alignItems: 'start' }} className="svc-faq-grid">

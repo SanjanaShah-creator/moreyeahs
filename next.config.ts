@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         hostname: 'moreyeahs.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'prod.moreyeahs.com',
+        pathname: '/**',
+      },
     ],
   },
   async headers() {

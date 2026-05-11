@@ -12,6 +12,25 @@ function wpUrl(path: string): string {
 // Shared fetch options — revalidate every 10 minutes
 const CACHE_OPTS: RequestInit = { next: { revalidate: 600 } };
 
+/* ── Client-side localStorage cache (6 hours TTL) ── */
+const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
+
+function lsGet<T>(key: string): T | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const { data, ts } = JSON.parse(raw) as { data: T; ts: number };
+    if (Date.now() - ts > CACHE_TTL_MS) { localStorage.removeItem(key); return null; }
+    return data;
+  } catch { return null; }
+}
+
+function lsSet<T>(key: string, data: T): void {
+  if (typeof window === 'undefined') return;
+  try { localStorage.setItem(key, JSON.stringify({ data, ts: Date.now() })); } catch { /* quota exceeded */ }
+}
+
 export interface FeaturedMedia {
   source_url: string;
   alt_text: string;
@@ -215,6 +234,10 @@ export async function fetchAllPosts(params?: {
   categories?: number[];
   perPage?: number;
 }): Promise<WordPressPost[]> {
+  const cacheKey = `wp_posts_${params?.search ?? ''}_${(params?.categories ?? []).join(',')}_${params?.perPage ?? 100}`;
+  const cached = lsGet<WordPressPost[]>(cacheKey);
+  if (cached) return cached;
+
   const pageSize = params?.perPage ?? 100;
   let allPosts: WordPressPost[] = [];
   let page = 1;
@@ -226,23 +249,14 @@ export async function fetchAllPosts(params?: {
       page,
       perPage: pageSize,
     });
-
-    if (pagePosts.length === 0) {
-      break;
-    }
-
+    if (pagePosts.length === 0) break;
     allPosts = allPosts.concat(pagePosts);
-
-    if (pagePosts.length < pageSize) {
-      break;
-    }
-
+    if (pagePosts.length < pageSize) break;
     page += 1;
-    if (page > 20) {
-      break;
-    }
+    if (page > 20) break;
   }
 
+  lsSet(cacheKey, allPosts);
   return allPosts;
 }
 
@@ -323,6 +337,7 @@ export async function fetchTaxonomyTerms(taxonomySlug: string): Promise<WordPres
       `${wpUrl(taxonomySlug)}?per_page=100`,
       { next: { revalidate: 600 } }
     );
+    // 404 means taxonomy doesn't exist — silent fail, not an error
     if (!response.ok) return [];
     const data = await response.json();
     if (!Array.isArray(data)) return [];
@@ -369,12 +384,19 @@ export async function fetchCaseStudies(params?: {
     const response = await fetch(url, { next: { revalidate: 600 } });
 
     if (!response.ok) {
+      // Don't log expected 404s (taxonomy/post type not found)
+      if (response.status !== 404) {
+        console.error(`Failed to fetch case studies: ${response.status}`);
+      }
       throw new Error(`Failed to fetch case studies: ${response.status}`);
     }
 
     return await response.json();
   } catch (error) {
-    console.error('Error fetching case studies:', error);
+    // Only log non-404 errors
+    if (!(error instanceof Error && error.message.includes('404'))) {
+      console.error('Error fetching case studies:', error);
+    }
     return [];
   }
 }
@@ -384,6 +406,10 @@ export async function fetchAllCaseStudies(params?: {
   search?: string;
   perPage?: number;
 }): Promise<CaseStudy[]> {
+  const cacheKey = `wp_case_studies_${params?.search ?? ''}_${params?.perPage ?? 100}`;
+  const cached = lsGet<CaseStudy[]>(cacheKey);
+  if (cached) return cached;
+
   const pageSize = params?.perPage ?? 100;
   let allStudies: CaseStudy[] = [];
   let page = 1;
@@ -394,23 +420,14 @@ export async function fetchAllCaseStudies(params?: {
       page,
       perPage: pageSize,
     });
-
-    if (pageStudies.length === 0) {
-      break;
-    }
-
+    if (pageStudies.length === 0) break;
     allStudies = allStudies.concat(pageStudies);
-
-    if (pageStudies.length < pageSize) {
-      break;
-    }
-
+    if (pageStudies.length < pageSize) break;
     page += 1;
-    if (page > 20) {
-      break;
-    }
+    if (page > 20) break;
   }
 
+  lsSet(cacheKey, allStudies);
   return allStudies;
 }
 

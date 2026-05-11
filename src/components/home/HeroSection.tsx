@@ -147,7 +147,7 @@ export default function HeroSection() {
         }}>
           <motion.div
             variants={stagger} initial="hidden" animate={mounted ? 'visible' : 'hidden'}
-            style={{ maxWidth: 820, width: '100%' }}
+            style={{ maxWidth: 1000, width: '100%' }}
           >
             {/* Badge */}
             <motion.div variants={FV} transition={{ duration: 0.5 }}>
@@ -188,8 +188,8 @@ export default function HeroSection() {
               className="hero-sub"
               variants={FV} transition={{ duration: 0.6 }}
               style={{
-                fontSize: 16, color: 'var(--fg-3)', lineHeight: 1.7,
-                marginBottom: 38, maxWidth: 520, margin: '0 auto 38px',
+                fontSize: 'clamp(15px,1.1vw,18px)', color: 'var(--fg-3)', lineHeight: 1.75,
+                marginBottom: 38, maxWidth: 720, margin: '0 auto 38px',
               }}
             >
               AI &amp; cloud engineering built for the scale of modern enterprise, from strategy to production.

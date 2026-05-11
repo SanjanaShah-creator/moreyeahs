@@ -11,12 +11,12 @@ import { motion } from 'framer-motion';
  * DevLabs light is 1536×1024 (wide), dark is 466×120 (wide flat).
  */
 const CLIENTS = [
-  { name: 'Prometheus',    light: '/images/Client Logo 1.png',            dark: '/images/Client Dark theme logo 1.png', lightH: 40, darkH: 44,  wide: false, darkWide: false },
+  { name: 'Prometheus',    light: '/images/Client Logo 1.png',            dark: '/images/Client Dark theme logo 1.png', lightH: 44, darkH: 44,  wide: false, darkWide: false },
   { name: 'Flyers Soft',   light: '/images/Client Logo 2.png',            dark: '/images/Client Dark theme logo 2.png', lightH: 72, darkH: 72,  wide: false, darkWide: false },
-  { name: 'Abdo',          light: '/images/Client Logo 3.png',            dark: '/images/Client Dark theme logo 3.png', lightH: 40, darkH: 64,  wide: false, darkWide: false },
-  { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 32, darkH: 70,  wide: false, darkWide: true  },
+  { name: 'Abdo',          light: '/images/Client Logo 3.png',            dark: '/images/Client Dark theme logo 3.png', lightH: 36, darkH: 64,  wide: false, darkWide: false },
+  { name: 'Supersourcing', light: '/images/Client Logo 4.png',            dark: '/images/Client Dark theme logo 4.png', lightH: 36, darkH: 70,  wide: false, darkWide: true  },
   { name: 'TerraSecure',   light: '/images/Client Logo 5.png',            dark: '/images/Client Dark theme logo 5.png', lightH: 72, darkH: 72,  wide: false, darkWide: false },
-  { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 68, darkH: 32,  wide: true,  darkWide: false },
+  { name: 'DevLabs',       light: '/images/Client Logo 6.png',            dark: '/images/Client Dark theme logo 6.png', lightH: 32, darkH: 32,  wide: true,  darkWide: false },
 ] as const;
 
 function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
@@ -57,7 +57,8 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
       {/* Light logo */}
       <div className="logo-box-light" style={{
         position: 'relative', zIndex: 3,
-        width: '100%', height: client.lightH,
+        width: '100%',
+        height: client.wide ? 'auto' : client.lightH,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
         <img
@@ -65,13 +66,13 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
           alt={client.name}
           className="logo-img"
           style={{
-            maxWidth: '100%', maxHeight: '100%',
-            /* wide logos: fill width so they appear larger */
+            maxWidth: '100%',
+            maxHeight: client.wide ? 'none' : '100%',
             width: client.wide ? '100%' : 'auto',
-            height: client.wide ? 'auto' : 'auto',
+            height: 'auto',
             objectFit: 'contain', objectPosition: 'center', display: 'block',
-            filter: hovered ? 'none' : 'grayscale(1) brightness(0.55)',
-            opacity: hovered ? 1 : 0.65,
+            filter: hovered ? 'none' : 'grayscale(1) brightness(0.35)',
+            opacity: hovered ? 1 : 0.85,
             transition: 'filter 0.4s ease, opacity 0.4s ease',
           }}
         />
@@ -108,7 +109,7 @@ function LogoCard({ client }: { client: typeof CLIENTS[number] }) {
 export default function ClientLogosSection() {
   return (
     <section style={{
-      background: 'var(--bg)', position: 'relative',
+      background: 'var(--bg-2)', position: 'relative',
       overflow: 'hidden', padding: '72px 0 64px',
     }}>
 

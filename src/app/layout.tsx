@@ -129,6 +129,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://prod.moreyeahs.com" />
         <script dangerouslySetInnerHTML={{
           __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}try{document.documentElement.style.setProperty('--ann-h',localStorage.getItem('ann_wahinn_v1')?'0px':'44px')}catch(e){}})()`,
         }} />

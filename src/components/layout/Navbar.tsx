@@ -103,7 +103,7 @@ function Dropdown({ items, isOpen, openUp = false, onMouseEnter, onMouseLeave }:
             position: 'absolute',
             ...(openUp ? { bottom: 'calc(100% + 10px)', top: 'auto' } : { top: 'calc(100% + 10px)', bottom: 'auto' }),
             left: '50%', transform: 'translateX(-50%)',
-            minWidth: 240, zIndex: 300,
+            minWidth: 240, zIndex: 600,
             background: 'var(--nav-bg)',
             backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
             border: '1px solid var(--border)',
@@ -150,7 +150,7 @@ function MegaMenu({ items, isOpen, openUp = false, onMouseEnter, onMouseLeave }:
             position: 'absolute',
             ...(openUp ? { bottom: 'calc(100% + 12px)', top: 'auto' } : { top: 'calc(100% + 12px)', bottom: 'auto' }),
             left: '50%', transform: 'translateX(-50%)',
-            width: 760, zIndex: 300,
+            width: 760, zIndex: 600,
             background: 'var(--bg)',
             border: '1px solid var(--border)',
             borderRadius: 20,
@@ -417,12 +417,12 @@ export default function Navbar() {
             exit={{ y: -60, opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              position: 'fixed', top: 'var(--ann-h, 0px)', left: 0, right: 0, zIndex: 150, padding: '20px 0',
-              background: (solOpen || insOpen) ? 'var(--nav-bg)' : 'transparent',
-              backdropFilter: (solOpen || insOpen) ? 'blur(20px)' : 'none',
-              WebkitBackdropFilter: (solOpen || insOpen) ? 'blur(20px)' : 'none',
-              borderBottom: (solOpen || insOpen) ? '1px solid var(--nav-border)' : '1px solid transparent',
-              transition: 'background 0.25s, backdrop-filter 0.25s, border-color 0.25s, top 0.35s ease',
+              position: 'fixed', top: 'var(--ann-h, 0px)', left: 0, right: 0, zIndex: 500, padding: '20px 0',
+              background: 'transparent',
+              backdropFilter: 'none',
+              WebkitBackdropFilter: 'none',
+              borderBottom: '1px solid transparent',
+              transition: 'top 0.35s ease',
             }}
           >
             <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
@@ -441,8 +441,8 @@ export default function Navbar() {
                 borderRadius: 999, padding: '7px 10px', gap: 2,
               }}>
                 <Link href="/" style={NAV_LINK}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(26,86,219,0.08)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>Home</Link>
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--fg)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}>Home</Link>
 
                 <div ref={tSol} style={{ position: 'relative' }} onMouseEnter={openSol} onMouseLeave={closeSol}>
                   <Link href="/solutions" style={NAV_LINK}
@@ -506,7 +506,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
             style={{
-              position: 'fixed', inset: 0, top: 'calc(76px + var(--ann-h, 0px))', zIndex: 140,
+              position: 'fixed', inset: 0, top: 'calc(76px + var(--ann-h, 0px))', zIndex: 490,
               background: 'var(--nav-bg)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
               padding: '12px 16px 40px',
               display: 'flex', flexDirection: 'column', gap: 2,

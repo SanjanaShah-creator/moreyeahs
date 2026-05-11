@@ -114,10 +114,28 @@ export default function IndustriesSection() {
     if (!videoEnabled) return;
     const el = ref.current;
     if (!el) return;
-    if (el.src !== src && !(el.src.endsWith(src))) {
+    // Only change src if it's actually different — avoids full reload on same video
+    const currentSrc = el.getAttribute('data-current-src') || '';
+    if (currentSrc !== src) {
+      el.setAttribute('data-current-src', src);
       el.src = src;
+      el.load();
     }
     el.play().catch(() => {});
+  }, [videoEnabled]);
+
+  /* Preload first video immediately on mount */
+  useEffect(() => {
+    if (!videoEnabled) return;
+    const firstSrc = INDUSTRIES[0].video;
+    [desktopVideoRef, mobileVideoRef].forEach(ref => {
+      const el = ref.current;
+      if (!el) return;
+      el.setAttribute('data-current-src', firstSrc);
+      el.src = firstSrc;
+      el.load();
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoEnabled]);
 
   /* Play active video only when section is visible */
@@ -247,7 +265,7 @@ export default function IndustriesSection() {
               <video
                 ref={desktopVideoRef}
                 muted loop playsInline
-                preload="metadata"
+                preload="auto"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             ) : (
@@ -264,7 +282,7 @@ export default function IndustriesSection() {
             <video
               ref={mobileVideoRef}
               muted loop playsInline
-              preload="metadata"
+              preload="auto"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
             />
           ) : (
