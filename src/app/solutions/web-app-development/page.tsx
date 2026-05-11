@@ -15,7 +15,7 @@ import CTASection from '@/components/home/CTASection';
 import SolutionCaseStudies from '@/components/solutions/SolutionCaseStudies';
 import { EXPO, FU, FL, FR, SC, STAGGER } from '@/lib/anim';
 
-/* â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Data ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 const SPECIALIZATIONS = [
   'Full-Stack Web Application Development',
   'Mobile App Development (iOS & Android)',
@@ -151,7 +151,7 @@ const FAQS = [
   },
 ];
 
-/* â”€â”€â”€ Word Reveal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Word Reveal ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 function WordReveal({ text, delay = 0, className, style }: { text: string; delay?: number; className?: string; style?: React.CSSProperties }) {
   const words = text.split(' ');
   return (
@@ -171,7 +171,7 @@ function WordReveal({ text, delay = 0, className, style }: { text: string; delay
   );
 }
 
-/* â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Page ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 export default function WebAppDevelopmentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openProb, setOpenProb] = useState<number | null>(null);
@@ -187,9 +187,9 @@ export default function WebAppDevelopmentPage() {
 
   return (
     <>
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           HERO
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section ref={heroRef} style={{ background: 'var(--bg)', paddingTop: 100, paddingBottom: 64, position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -211,7 +211,7 @@ export default function WebAppDevelopmentPage() {
           </motion.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24, alignItems: 'stretch' }} className="ds-hero-split">
-            {/* LEFT â€” video */}
+            {/* LEFT – video */}
             <motion.div
               className="ds-hero-video-wrap"
               initial={{ opacity: 0, x: -60 }}
@@ -228,7 +228,7 @@ export default function WebAppDevelopmentPage() {
               <div style={{ position: 'absolute', inset: 0, background: 'rgba(0, 0, 0, 0.35)', zIndex: 1 }} />
             </motion.div>
 
-            {/* RIGHT â€” expertise card */}
+            {/* RIGHT – expertise card */}
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
@@ -264,9 +264,9 @@ export default function WebAppDevelopmentPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR APPROACH â€” 2Ã—2 bento
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          OUR APPROACH – 2Ã—2 bento
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -318,7 +318,7 @@ export default function WebAppDevelopmentPage() {
               </p>
             </motion.div>
 
-            {/* BL â€” Explore Blogs */}
+            {/* BL – Explore Blogs */}
             <motion.div
               variants={FL(0.15)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               className="glass" style={{ padding: '40px', display: 'flex', gap: 24, minHeight: 380, gridArea: 'bl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
@@ -346,7 +346,7 @@ export default function WebAppDevelopmentPage() {
               </div>{/* /ds-blog-bento-inner */}
             </motion.div>
 
-            {/* BR â€” Specializations */}
+            {/* BR – Specializations */}
             <motion.div
               variants={FR(0.2)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               style={{ background: 'linear-gradient(135deg, #1A56DB 0%, #0E2E75 55%, #0A1F4F 100%)', borderRadius: 20, padding: '40px', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: 300, gridArea: 'br' }}
@@ -380,9 +380,9 @@ export default function WebAppDevelopmentPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR SERVICES â€” sticky stacking
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          OUR SERVICES – sticky stacking
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -448,9 +448,9 @@ export default function WebAppDevelopmentPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           HOW IT FITS TOGETHER
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'linear-gradient(160deg, #050d1e 0%, #0a1f4f 30%, #0e2e75 65%, #1a56db 100%)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -494,9 +494,9 @@ export default function WebAppDevelopmentPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           INDUSTRY USE CASES
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -542,9 +542,9 @@ export default function WebAppDevelopmentPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           PROBLEMS & SOLUTIONS
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg-2)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -598,14 +598,14 @@ export default function WebAppDevelopmentPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           TESTIMONIALS
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <SolutionCaseStudies filter="web-application-development" solutionName="Web & App Development" />
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           FAQs
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -657,9 +657,9 @@ export default function WebAppDevelopmentPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           CTA
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <TestimonialsSection />
 
       <CTASection />
@@ -687,23 +687,23 @@ export default function WebAppDevelopmentPage() {
           .ds-faq-layout>div:first-child{position:relative!important}
         }
         @media(max-width:768px){
-          /* Video â€” constrain height on mobile, do not hide */
+          /* Video – constrain height on mobile, do not hide */
           .ds-hero-video-wrap{min-height:220px!important;max-height:260px!important}
           /* Hide decorative overlay images that cause text overlap */
           .ds-tr-deco{display:none!important}
           .ds-br-robot-wrap{display:none!important}
           .ds-br-content{max-width:100%!important}
-          /* Pipeline â€” vertical layout with centered steps */
+          /* Pipeline – vertical layout with centered steps */
           .pipeline-wrap{flex-direction:column!important;overflow-x:visible!important;align-items:center!important;gap:0!important}
           .pipeline-step{flex-direction:column!important;align-items:center!important;width:100%!important}
           .pipeline-step-inner{width:100%!important;max-width:280px!important}
           .pipeline-connector{padding:0 0 4px!important;transform:rotate(90deg);display:flex;justify-content:center}
-          /* Blog bento â€” stack vertically, hide image so text card is fully readable */
+          /* Blog bento – stack vertically, hide image so text card is fully readable */
           .ds-blog-bento-inner{flex-direction:column!important}
           .ds-blog-header-col{flex:none!important;min-width:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;margin-bottom:16px!important;gap:12px!important}
           .ds-blog-card-img{display:none!important}
           .ds-blog-card{flex:none!important}
-          /* Service cards â€” more opaque overlay so text is always readable */
+          /* Service cards – more opaque overlay so text is always readable */
           .svc-overlay-light{background:rgba(255,255,255,0.97)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .svc-overlay-dark{background:rgba(10,20,60,0.92)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .ds-svc-stack>*{padding:28px!important;position:relative!important;top:auto!important;z-index:auto!important}

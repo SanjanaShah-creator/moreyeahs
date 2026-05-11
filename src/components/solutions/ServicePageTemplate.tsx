@@ -13,11 +13,11 @@ import {
   stripHtmlTags, truncateText, formatDate, getCoverImage, getLocalCaseStudyImage,
 } from '@/lib/wordpress-api';
 
-/* â”€â”€ Brand-consistent blue palette (all service pages use blue only) â”€â”€ */
+/* ’€’€ Brand-consistent blue palette (all service pages use blue only) ’€’€ */
 const BLUE = '#4D86F5';
 const BLUE_LIGHT = 'rgba(77,134,245,0.08)';
 
-/* â”€â”€ Solution â†’ Services map for the switcher nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€ Solution →’ Services map for the switcher nav ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 const SOLUTION_SERVICES: Record<string, Array<{ name: string; href: string }>> = {
   '/solutions/data-science': [
     { name: 'AI & ML Engineering',     href: '/solutions/data-science/ai-ml' },
@@ -85,11 +85,11 @@ export type ServicePageData = {
   process: ProcessStep[];
   caseStudies: CaseStudy[];
   faq: FAQItem[];
-  accent: string;      /* kept for compatibility â€” not used for UI colour */
-  accentLight: string; /* kept for compatibility â€” not used for UI colour */
+  accent: string;      /* kept for compatibility – not used for UI colour */
+  accentLight: string; /* kept for compatibility – not used for UI colour */
 };
 
-/* â”€â”€ SiblingServiceTabs â€” inline tabs rendered inside hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€ SiblingServiceTabs – inline tabs rendered inside hero ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 function SiblingServiceTabs({ solutionHref, centered }: { solutionHref: string; centered?: boolean }) {
   const pathname = usePathname();
   const services = SOLUTION_SERVICES[solutionHref];
@@ -146,7 +146,7 @@ function SiblingServiceTabs({ solutionHref, centered }: { solutionHref: string; 
   );
 }
 
-/* â”€â”€ ServiceSwitcherSection â€” grid of all services in this solution â”€â”€ */
+/* ’€’€ ServiceSwitcherSection – grid of all services in this solution ’€’€ */
 function ServiceSwitcherSection({ solutionHref, solutionName }: { solutionHref: string; solutionName: string }) {
   const pathname = usePathname();
   const services = SOLUTION_SERVICES[solutionHref];
@@ -235,7 +235,7 @@ function ServiceSwitcherSection({ solutionHref, solutionName }: { solutionHref: 
   );
 }
 
-/* â”€â”€ TiltCard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€ TiltCard ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 function TiltCard({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -264,7 +264,7 @@ function TiltCard({ children, style }: { children: React.ReactNode; style?: Reac
   );
 }
 
-/* â”€â”€ FAQAccordion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€ FAQAccordion ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 function FAQAccordion({ items }: { items: FAQItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
   return (
@@ -357,14 +357,14 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
   );
 }
 
-/* â”€â”€ ProcessSection â€” left step list + right content, click-only â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€ ProcessSection – left step list + right content, click-only ’€’€’€’€’€’€’€’€’€’€’€’€ */
 function ProcessSection({ steps }: { steps: ProcessStep[] }) {
   const [active, setActive] = useState(0);
 
   return (
     <div className="process-grid" style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 20, alignItems: 'start' }}>
 
-      {/* â”€â”€ Left: step selector â”€â”€ */}
+      {/* ’€’€ Left: step selector ’€’€ */}
       <div style={{ position: 'sticky', top: 100, display: 'flex', flexDirection: 'column', gap: 3 }}>
         {steps.map((step, i) => {
           const done     = i < active;
@@ -422,7 +422,7 @@ function ProcessSection({ steps }: { steps: ProcessStep[] }) {
         </div>
       </div>
 
-      {/* â”€â”€ Right: content panel â”€â”€ */}
+      {/* ’€’€ Right: content panel ’€’€ */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
@@ -554,7 +554,7 @@ function caseMatchesFilter(cs: WPCaseStudy, filterKey: string): boolean {
   return keywords.some(kw => termText.includes(kw) || slugText.includes(kw));
 }
 
-/* â”€â”€ ServicePageTemplate â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€ ServicePageTemplate ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 export default function ServicePageTemplate({ data }: { data: ServicePageData }) {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
@@ -580,7 +580,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
   return (
     <>
 
-      {/* â”€â”€ HERO â”€â”€ */}
+      {/* ’€’€ HERO ’€’€ */}
       <section
         ref={heroRef}
         style={{
@@ -733,7 +733,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
                 </Link>
               </motion.div>
 
-              {/* Stats â€” centered row */}
+              {/* Stats – centered row */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -772,7 +772,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </div>
       </section>
 
-      {/* â”€â”€ PROBLEM â”€â”€ */}
+      {/* ’€’€ PROBLEM ’€’€ */}
       <section
         className="svc-section-pad"
         style={{ background: 'var(--bg-section-dark)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}
@@ -825,7 +825,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </div>
       </section>
 
-      {/* â”€â”€ CAPABILITIES â”€â”€ */}
+      {/* ’€’€ CAPABILITIES ’€’€ */}
       <section className="svc-section-pad" style={{ background: 'var(--bg-2)', padding: '120px 0', position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -890,7 +890,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </div>
       </section>
 
-      {/* â”€â”€ PROCESS â”€â”€ */}
+      {/* ’€’€ PROCESS ’€’€ */}
       {/* overflow-x:clip clips the blob without creating a scroll container, so sticky still works */}
       <section className="svc-section-pad" style={{ background: 'var(--bg)', padding: '80px 0 60px', position: 'relative', overflowX: 'clip' }}>
         <NoiseOverlay />
@@ -913,7 +913,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
               Our Proven Process
             </h2>
             <p style={{ fontSize: 15, color: 'var(--fg-3)', maxWidth: 480, margin: '14px 0 0', lineHeight: 1.7 }}>
-              A structured approach that delivers reliable results â€” from first conversation to production.
+              A structured approach that delivers reliable results – from first conversation to production.
             </p>
           </motion.div>
 
@@ -921,9 +921,9 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </div>
       </section>
 
-      {/* â”€â”€ CASE STUDIES â€” hidden on sub-service pages â”€â”€ */}
+      {/* ’€’€ CASE STUDIES – hidden on sub-service pages ’€’€ */}
 
-      {/* â”€â”€ FAQ â”€â”€ */}
+      {/* ’€’€ FAQ ’€’€ */}
       <section style={{ background: 'var(--bg)', padding: '120px 0', position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -945,10 +945,10 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         </div>
       </section>
 
-      {/* â”€â”€ SERVICE SWITCHER â”€â”€ */}
+      {/* ’€’€ SERVICE SWITCHER ’€’€ */}
       <ServiceSwitcherSection solutionHref={data.solutionHref} solutionName={data.solution} />
 
-      {/* â”€â”€ CTA â”€â”€ */}
+      {/* ’€’€ CTA ’€’€ */}
       <section style={{ background: 'var(--bg-2)', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div
@@ -981,7 +981,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
               <span style={{ color: BLUE }}>Extraordinary</span>
             </h2>
             <p style={{ fontSize: 16, color: 'var(--fg-3)', lineHeight: 1.75, marginBottom: 36 }}>
-              Our team is ready to help you design, build, and scale your {data.name} initiative. No fluff â€” just outcomes.
+              Our team is ready to help you design, build, and scale your {data.name} initiative. No fluff – just outcomes.
             </p>
             <div className="svc-cta-row" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link
@@ -1036,14 +1036,14 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
           .process-grid > div:first-child{ display: none !important; }
           .process-grid{ display: block !important; }
         }
-        /* â”€â”€ Tablet â”€â”€ */
+        /* ’€’€ Tablet ’€’€ */
         @media(max-width:960px){
           .svc-faq-grid{grid-template-columns:1fr!important}
           .svc-faq-grid>div:first-child{position:static!important}
           .svc-step-content{grid-template-columns:1fr!important;gap:20px!important}
           .svc-process-container{min-height:auto!important}
         }
-        /* â”€â”€ Mobile â”€â”€ */
+        /* ’€’€ Mobile ’€’€ */
         @media(max-width:680px){
           .svc-prevnext{flex-direction:column!important}
           .svc-step-labels span{font-size:9px!important}
@@ -1066,7 +1066,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
           .svc-cta-row{flex-direction:column!important;align-items:center!important}
           .svc-cta-row a{width:100%!important;max-width:320px!important;justify-content:center!important}
         }
-        /* â”€â”€ Shared section padding on mobile â”€â”€ */
+        /* ’€’€ Shared section padding on mobile ’€’€ */
         @media(max-width:680px){
           .svc-section-pad{padding:72px 0!important}
         }

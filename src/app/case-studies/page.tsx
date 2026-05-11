@@ -21,11 +21,11 @@ const FV = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 const FT = { duration: 0.6 };
 const stagger = { visible: { transition: { staggerChildren: 0.1 } } };
 
-/* â”€â”€ Always use primary blue shades only â”€â”€ */
+/* ’€’€ Always use primary blue shades only ’€’€ */
 const PRIMARY = '#1A56DB';
 const PRIMARY_LIGHT = '#4D86F5';
 
-/* â”€â”€ Site services from Navbar â€” used to classify WP categories â”€â”€ */
+/* ’€’€ Site services from Navbar – used to classify WP categories ’€’€ */
 const SITE_SERVICES = new Set([
   // Data Science & AI
   'ai', 'ai & machine learning', 'machine learning', 'computer vision',
@@ -154,7 +154,7 @@ function buildGroups(studies: CS[], allCategories: WordPressCategory[]) {
   });
 }
 
-/* â”€â”€â”€ Sidebar filter â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Sidebar filter ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 interface SidebarProps {
   groups: ReturnType<typeof buildGroups>;
   selected: Set<number>;
@@ -251,7 +251,7 @@ function FilterSidebar({ groups, selected, onToggle, search, onSearch, onClear, 
   );
 }
 
-/* â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Page ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 function CaseStudiesPageInner() {
   const searchParams = useSearchParams();
   const filterParam = searchParams.get('filter'); // e.g. "salesforce", "data-science"
@@ -364,7 +364,7 @@ function CaseStudiesPageInner() {
       <section className="section" style={{ background: 'var(--bg-2)' }}>
         <div className="container">
           {loading ? (
-            /* â”€â”€ Skeleton matching actual layout: sidebar + 2-col grid â”€â”€ */
+            /* ’€’€ Skeleton matching actual layout: sidebar + 2-col grid ’€’€ */
             <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: 32, alignItems: 'start' }} className="cs-layout">
               {/* Sidebar skeleton */}
               <div style={{ background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden' }}>
@@ -419,7 +419,7 @@ function CaseStudiesPageInner() {
                 </button>
               </div>
 
-              {/* Count + active pills â€” above the grid so sidebar aligns with first card */}
+              {/* Count + active pills – above the grid so sidebar aligns with first card */}
               <div className="cs-pills-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 10, paddingLeft: 292 }}>
                 <p style={{ fontSize: 13, color: 'var(--fg-3)', margin: 0 }}>
                   {filtered.length === studies.length
@@ -454,7 +454,7 @@ function CaseStudiesPageInner() {
                     </div>
                   ) : (
                     <>
-                      {/* Cards â€” use animate (not whileInView) so they always render visible */}
+                      {/* Cards – use animate (not whileInView) so they always render visible */}
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 24 }} className="cs-grid">
                         {paginated.map(({ slug, title, summary, date, category, coverImage, gradientColor1, gradientColor2 }, i) => (
                           <motion.div

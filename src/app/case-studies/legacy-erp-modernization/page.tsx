@@ -9,14 +9,14 @@ import { GradientBars } from '@/components/ui/gradient-bar-hero-section';
 export default function Dynamics365CaseStudy() {
   return (
     <>
-      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Hero ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
         <GradientBars count={16} />
         <NoiseOverlay />
 
         <div className="container" style={{ position: 'relative', zIndex: 3 }}>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            {/* Breadcrumb â€” site standard: â† Parent > Parent > Current */}
+            {/* Breadcrumb – site standard: → Parent > Parent > Current */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--fg-3)', marginBottom: 28, flexWrap: 'wrap' }}>
               <Link href="/case-studies" style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--fg-3)', textDecoration: 'none', fontWeight: 600 }}>
                 <ArrowLeft size={12} strokeWidth={2} /> Case Studies
@@ -58,7 +58,7 @@ export default function Dynamics365CaseStudy() {
         </div>
       </section>
 
-      {/* â”€â”€ Key Metrics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Key Metrics ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 60, paddingBottom: 60, borderBottom: '1px solid var(--border)' }}>
         <div className="container">
           <motion.div
@@ -92,7 +92,7 @@ export default function Dynamics365CaseStudy() {
         </div>
       </section>
 
-      {/* â”€â”€ Content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Content ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 120 }}>
         <div className="container">
           <motion.article
@@ -108,7 +108,7 @@ export default function Dynamics365CaseStudy() {
                 The Challenge: Fragmented Procurement Across 12 Departments
               </h2>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 16 }}>
-                Our client was a large regional government entity managing procurement for 12 autonomous departments (transportation, health, environment, etc.). The organization's ERP system was 10+ years oldâ€”a patchwork of legacy applications, manual workflows, and Excel-based reconciliation.
+                Our client was a large regional government entity managing procurement for 12 autonomous departments (transportation, health, environment, etc.). The organization's ERP system was 10+ years old–a patchwork of legacy applications, manual workflows, and Excel-based reconciliation.
               </p>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 16 }}>
                 The results were predictable chaos:
@@ -122,13 +122,13 @@ export default function Dynamics365CaseStudy() {
                   'Decentralized payments; no visibility into government spending',
                 ].map((item, idx) => (
                   <li key={idx} style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 12, paddingLeft: 20, position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, color: '#7C3AED' }}>â†’</span>
+                    <span style={{ position: 'absolute', left: 0, color: '#7C3AED' }}>→’</span>
                     {item}
                   </li>
                 ))}
               </ul>
               <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.8, background: 'rgba(124, 58, 237, 0.1)', padding: 16, borderRadius: 8, borderLeft: '4px solid #7C3AED' }}>
-                <strong>The ask:</strong> Consolidate onto a single ERP system, enforce compliance across all 12 departments, and streamline procurement workflowsâ€”all while maintaining operational continuity.
+                <strong>The ask:</strong> Consolidate onto a single ERP system, enforce compliance across all 12 departments, and streamline procurement workflows–all while maintaining operational continuity.
               </p>
             </div>
 
@@ -176,7 +176,7 @@ export default function Dynamics365CaseStudy() {
                     '<strong>Integrations:</strong> Legacy ERP (data migration), banking system (payment exports), email (order notifications)',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 10, paddingLeft: 20, position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: 0 }}>â†’</span>
+                      <span style={{ position: 'absolute', left: 0 }}>→’</span>
                       <span dangerouslySetInnerHTML={{ __html: item }} />
                     </li>
                   ))}
@@ -187,15 +187,15 @@ export default function Dynamics365CaseStudy() {
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 14 }}>Implementation Timeline</h3>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   {[
-                    '<strong>Week 1â€“2:</strong> Requirements gathering across all 12 departments',
-                    '<strong>Week 3â€“4:</strong> Dynamics 365 core configuration; Power Apps UI design',
-                    '<strong>Week 5â€“6:</strong> Workflow automation (Power Automate); legacy data extraction',
-                    '<strong>Week 7â€“8:</strong> Testing with pilot department (Transportation); feedback iteration',
-                    '<strong>Week 9â€“11:</strong> Rollout to remaining 11 departments (phased weekly)',
-                    '<strong>Week 12â€“14:</strong> Training, hypercare support, go-live stabilization',
+                    '<strong>Week 1–2:</strong> Requirements gathering across all 12 departments',
+                    '<strong>Week 3–4:</strong> Dynamics 365 core configuration; Power Apps UI design',
+                    '<strong>Week 5–6:</strong> Workflow automation (Power Automate); legacy data extraction',
+                    '<strong>Week 7–8:</strong> Testing with pilot department (Transportation); feedback iteration',
+                    '<strong>Week 9–11:</strong> Rollout to remaining 11 departments (phased weekly)',
+                    '<strong>Week 12–14:</strong> Training, hypercare support, go-live stabilization',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 10, paddingLeft: 20, position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: 0 }}>â†’</span>
+                      <span style={{ position: 'absolute', left: 0 }}>→’</span>
                       <span dangerouslySetInnerHTML={{ __html: item }} />
                     </li>
                   ))}
@@ -288,13 +288,13 @@ export default function Dynamics365CaseStudy() {
               <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 12 }}>
                 {[
                   'Large organizations benefit from centralized ERP, but federated UX (Power Apps) preserves departmental autonomy.',
-                  'Office 365 integration dramatically accelerates adoptionâ€”users get a familiar tool, not a foreign system.',
+                  'Office 365 integration dramatically accelerates adoption–users get a familiar tool, not a foreign system.',
                   'Government procurement is uniquely suited to Dynamics 365 + Power Platform: compliance, audit, and customization out-of-the-box.',
-                  'Process redesign is criticalâ€”the new system can\'t fix broken workflows. We spent 25% of effort on process optimization.',
+                  'Process redesign is critical–the new system can\'t fix broken workflows. We spent 25% of effort on process optimization.',
                   'Change management matters: without executive buy-in and user training, no system succeeds.',
                 ].map((item, idx) => (
                   <li key={idx} style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.8, paddingLeft: 20, position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, color: '#7C3AED' }}>â†’</span>
+                    <span style={{ position: 'absolute', left: 0, color: '#7C3AED' }}>→’</span>
                     {item}
                   </li>
                 ))}

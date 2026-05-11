@@ -25,7 +25,7 @@ We also automatically collect certain information when you visit our website, in
     title: '3. Information Sharing',
     content: `We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties without your consent, except as described in this Privacy Policy.
 
-We may share your information with trusted third-party service providers who assist us in operating our website, conducting our business, or serving you â€” provided that those parties agree to keep this information confidential. We may also release your information when required by law or to protect the rights, property, or safety of MoreYeahs IT Technologies, our clients, or others.`,
+We may share your information with trusted third-party service providers who assist us in operating our website, conducting our business, or serving you – provided that those parties agree to keep this information confidential. We may also release your information when required by law or to protect the rights, property, or safety of MoreYeahs IT Technologies, our clients, or others.`,
   },
   {
     title: '4. Data Security',

@@ -109,7 +109,7 @@ export default function BlogPage() {
 
   return (
     <>
-      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Hero ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
         <GradientBars count={16} />
         <NoiseOverlay />
@@ -126,13 +126,13 @@ export default function BlogPage() {
               <span className="grad">AI, Data &amp; Cloud</span>
             </motion.h1>
             <motion.p variants={FV} transition={FT} style={{ fontSize: 17, color: 'var(--fg-3)', lineHeight: 1.8, maxWidth: 560, margin: '0 auto' }}>
-              Technical deep-dives, lessons from the field, and forward-looking perspectives â€” written by the engineers and architects who build the systems.
+              Technical deep-dives, lessons from the field, and forward-looking perspectives – written by the engineers and architects who build the systems.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* â”€â”€ Featured Post â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Featured Post ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section className="section" style={{ background: 'var(--bg-2)', paddingBottom: 0 }}>
         <div className="container">
           {loading ? (
@@ -209,7 +209,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* â”€â”€ Blog Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Blog Grid ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section className="section" style={{ background: 'var(--bg-2)' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.6 }} style={{ marginBottom: 44 }}>
@@ -306,7 +306,7 @@ export default function BlogPage() {
 
                   {/* Body */}
                   <div style={{ padding: '18px 20px 16px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    {/* Category badge â€” below the image */}
+                    {/* Category badge – below the image */}
                     <div style={{ marginBottom: 10 }}>
                       <CategoryBadge label={category} />
                     </div>
@@ -344,7 +344,7 @@ export default function BlogPage() {
               ))}
             </div>
               
-              {/* â”€â”€ Pagination â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+              {/* ’€’€ Pagination ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
               {totalPages > 1 && (
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
@@ -441,7 +441,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* â”€â”€ Newsletter â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Newsletter ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section className="section" style={{ background: 'var(--bg)' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.6 }}
@@ -455,12 +455,12 @@ export default function BlogPage() {
               Stay up to date
             </h2>
             <p style={{ fontSize: 14, color: 'var(--fg-3)', lineHeight: 1.75, maxWidth: 420, margin: '0 auto 28px', position: 'relative', zIndex: 1 }}>
-              Get our latest articles, case studies, and engineering insights delivered to your inbox â€” no noise, unsubscribe any time.
+              Get our latest articles, case studies, and engineering insights delivered to your inbox – no noise, unsubscribe any time.
             </p>
             <div style={{ display: 'flex', gap: 10, maxWidth: 420, margin: '0 auto', position: 'relative', zIndex: 1 }} className="newsletter-form">
               {newsletterState === 'done' ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', width: '100%', padding: '13px 0', color: '#22c55e', fontWeight: 700, fontSize: 14 }}>
-                  <CheckCircle size={18} strokeWidth={2} /> You&apos;re subscribed â€” thanks!
+                  <CheckCircle size={18} strokeWidth={2} /> You&apos;re subscribed – thanks!
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: 10, width: '100%' }}>

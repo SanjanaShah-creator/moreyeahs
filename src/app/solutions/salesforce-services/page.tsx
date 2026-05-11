@@ -15,7 +15,7 @@ import CTASection from '@/components/home/CTASection';
 import SolutionCaseStudies from '@/components/solutions/SolutionCaseStudies';
 import { EXPO, FU, FL, FR, SC, STAGGER } from '@/lib/anim';
 
-/* â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Data ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 const SPECIALIZATIONS = [
   'Sales Cloud Implementation & Optimisation',
   'Service Cloud & Case Management',
@@ -27,14 +27,14 @@ const SERVICES = [
   {
     id: 'implementation', title: 'Salesforce Implementation', dark: false,
     tagline: 'Get Salesforce right from day one.',
-    desc: 'End-to-end Salesforce implementation across Sales Cloud, Service Cloud, and Marketing Cloud â€” designed around your actual processes, not a generic template.',
+    desc: 'End-to-end Salesforce implementation across Sales Cloud, Service Cloud, and Marketing Cloud – designed around your actual processes, not a generic template.',
     list: ['Full-lifecycle CRM implementation', 'Custom object and workflow design', 'Data migration and validation', 'Role-based training and adoption'],
     href: '/solutions/salesforce-services/implementation',
   },
   {
     id: 'managed-services', title: 'Salesforce Support & Managed Services', dark: true,
     tagline: 'Keep your Salesforce org healthy and growing.',
-    desc: 'Ongoing support, optimisation, and development for your Salesforce org â€” so your team always has a trusted partner to call when things need to change.',
+    desc: 'Ongoing support, optimisation, and development for your Salesforce org – so your team always has a trusted partner to call when things need to change.',
     list: ['Org health monitoring and audits', 'Feature development and enhancements', 'User support and troubleshooting', 'Release management and upgrades'],
     href: '/solutions/salesforce-services/managed-services',
   },
@@ -137,7 +137,7 @@ const FAQS = [
   },
 ];
 
-/* â”€â”€â”€ Word Reveal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Word Reveal ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 function WordReveal({ text, delay = 0, className, style }: { text: string; delay?: number; className?: string; style?: React.CSSProperties }) {
   const words = text.split(' ');
   return (
@@ -157,7 +157,7 @@ function WordReveal({ text, delay = 0, className, style }: { text: string; delay
   );
 }
 
-/* â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Page ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 export default function SalesforceServicesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openProb, setOpenProb] = useState<number | null>(null);
@@ -173,9 +173,9 @@ export default function SalesforceServicesPage() {
 
   return (
     <>
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           HERO
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section ref={heroRef} style={{ background: 'var(--bg)', paddingTop: 100, paddingBottom: 64, position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -198,7 +198,7 @@ export default function SalesforceServicesPage() {
           </motion.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24, alignItems: 'stretch' }} className="ds-hero-split">
-            {/* LEFT â€” video */}
+            {/* LEFT – video */}
             <motion.div
               className="ds-hero-video-wrap"
               initial={{ opacity: 0, x: -60 }}
@@ -215,7 +215,7 @@ export default function SalesforceServicesPage() {
               <div style={{ position: 'absolute', inset: 0, background: 'rgba(0, 0, 0, 0.35)', zIndex: 1 }} />
             </motion.div>
 
-            {/* RIGHT â€” expertise card */}
+            {/* RIGHT – expertise card */}
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
@@ -251,9 +251,9 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR APPROACH â€” 2Ã—2 bento
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          OUR APPROACH – 2Ã—2 bento
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -305,7 +305,7 @@ export default function SalesforceServicesPage() {
               </p>
             </motion.div>
 
-            {/* BL â€” Explore Blogs */}
+            {/* BL – Explore Blogs */}
             <motion.div
               variants={FL(0.15)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               className="glass" style={{ padding: '40px', display: 'flex', gap: 24, minHeight: 380, gridArea: 'bl', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
@@ -333,7 +333,7 @@ export default function SalesforceServicesPage() {
               </div>{/* /ds-blog-bento-inner */}
             </motion.div>
 
-            {/* BR â€” Specializations */}
+            {/* BR – Specializations */}
             <motion.div
               variants={FR(0.2)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-80px' }}
               style={{ background: 'linear-gradient(135deg, #1A56DB 0%, #0E2E75 55%, #0A1F4F 100%)', borderRadius: 20, padding: '40px', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: 300, gridArea: 'br' }}
@@ -367,9 +367,9 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR SERVICES â€” sticky stacking
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          OUR SERVICES – sticky stacking
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -429,9 +429,9 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           HOW IT FITS TOGETHER
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'linear-gradient(160deg, #050d1e 0%, #0a1f4f 30%, #0e2e75 65%, #1a56db 100%)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -475,9 +475,9 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           INDUSTRY USE CASES
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -523,9 +523,9 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           PROBLEMS & SOLUTIONS
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg-2)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -579,14 +579,14 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           TESTIMONIALS
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <SolutionCaseStudies filter="salesforce" solutionName="Salesforce" />
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           FAQs
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -638,9 +638,9 @@ export default function SalesforceServicesPage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           CTA
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <TestimonialsSection />
 
       <CTASection />

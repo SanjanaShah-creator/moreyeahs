@@ -13,7 +13,7 @@ const FV = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 const FT = { duration: 0.6 };
 const stagger = { visible: { transition: { staggerChildren: 0.12 } } };
 
-/* â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Data ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 
 const PRIDE_STATS = [
   { Icon: Award, value: '12', label: 'Years', sub: 'Total Industrial experience' },
@@ -30,7 +30,7 @@ const PRIDE_EVENTS = [
     highlights: [
       'Jungle safari and wildlife spotting at one of India\'s finest tiger reserves',
       'Bonfire evenings with team games, stories, and laughter',
-      'Mindful walks through the forest â€” a reset from the everyday grind',
+      'Mindful walks through the forest – a reset from the everyday grind',
       'Strengthened bonds that carry back into how we work together',
     ],
     stats: [
@@ -51,11 +51,11 @@ const PRIDE_EVENTS = [
   {
     title: 'Town Hall',
     eyebrow: 'Company Gathering',
-    desc: 'Our quarterly Town Hall is where the whole company comes together â€” to align on vision, celebrate wins, and recognize the people who make it all happen.',
+    desc: 'Our quarterly Town Hall is where the whole company comes together – to align on vision, celebrate wins, and recognize the people who make it all happen.',
     highlights: [
       'Company-wide updates on goals, milestones, and the road ahead',
       'Spotlight awards recognizing outstanding contributions across teams',
-      'Open Q&A with leadership â€” honest conversations, no filters',
+      'Open Q&A with leadership – honest conversations, no filters',
       'A reminder that behind every project is a team that genuinely cares',
     ],
     stats: [
@@ -83,7 +83,7 @@ const VALUES = [
 ];
 
 const PERKS = [
-  { Icon: Heart,       title: 'Health Insurance',      desc: 'Full coverage for you and your family â€” medical, dental, and vision.' },
+  { Icon: Heart,       title: 'Health Insurance',      desc: 'Full coverage for you and your family – medical, dental, and vision.' },
   { Icon: Globe2,      title: 'Remote-First',          desc: 'Work from anywhere with optional access to our Indore and Cedar Park offices.' },
   { Icon: Clock,       title: 'Flexible Hours',        desc: 'Async-first culture. Own your schedule, deliver great work.' },
   { Icon: TrendingUp,  title: 'Performance Bonuses',   desc: 'Performance bonuses twice a year recognising outstanding contributions across the team.' },
@@ -116,7 +116,7 @@ export default function LifeAtMoreYeahsPage() {
 
   return (
     <>
-      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Hero ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
         <GradientBars count={16} />
         <NoiseOverlay />
@@ -139,11 +139,11 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* â”€â”€ Moments of Pride â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Moments of Pride ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section className="section" style={{ background: 'var(--bg-2)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }} className="pride-layout">
-            {/* Left â€” text + stats */}
+            {/* Left – text + stats */}
             <motion.div initial={{ opacity: 0, x: -28 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.65 }}>
               <div className="section-badge" style={{ marginBottom: 16 }}>Our Journey</div>
               <h2 style={{ fontSize: 'clamp(28px,4vw,44px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', marginBottom: 24, lineHeight: 1.1 }}>
@@ -164,7 +164,7 @@ export default function LifeAtMoreYeahsPage() {
               </div>
             </motion.div>
 
-            {/* Right â€” team photo */}
+            {/* Right – team photo */}
             <motion.div
               initial={{ opacity: 0, x: 28 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -280,7 +280,7 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* â”€â”€ Values Grid (4 + centered image + 4) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Values Grid (4 + centered image + 4) ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section className="section" style={{ background: 'var(--bg)' }}>
         <div className="container">
           <ScrollReveal variant="clipUp" style={{ textAlign: 'center', marginBottom: 56 }}>
@@ -350,7 +350,7 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* â”€â”€ Perks & Benefits â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â€“ */}
+      {/* ’€’€ Perks & Benefits ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€– */}
       <section className="section" style={{ background: 'var(--bg-2)' }}>
         <div className="container">
           <ScrollReveal variant="clipUp" style={{ textAlign: 'center', marginBottom: 52 }}>
@@ -384,7 +384,7 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* â”€â”€ Team Videos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Team Videos ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section className="section" style={{ background: 'var(--bg)' }}>
         <div className="container">
           <ScrollReveal variant="clipUp" style={{ textAlign: 'center', marginBottom: 52 }}>
@@ -401,7 +401,7 @@ export default function LifeAtMoreYeahsPage() {
         </div>
       </section>
 
-      {/* â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ CTA ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <TestimonialsSection />
 
       <section className="section" style={{ background: 'var(--bg)' }}>
@@ -717,7 +717,7 @@ export default function LifeAtMoreYeahsPage() {
           .values-grid-top, .values-grid-bottom { grid-template-columns: repeat(2, 1fr) !important; }
           .perks-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
-        /* â”€â”€ team videos â”€â”€ */
+        /* ’€’€ team videos ’€’€ */
         .team-video-card { border-radius: 16px; overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; }
         .team-video-card:hover { box-shadow: 0 20px 60px rgba(26,86,219,0.18); transform: translateY(-4px); }
         .voices-scroll-track::-webkit-scrollbar { display: none; }

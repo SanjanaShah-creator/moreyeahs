@@ -17,7 +17,7 @@ import TestimonialsSection from '@/components/home/TestimonialsSection';
 import CTASection from '@/components/home/CTASection';
 import SolutionCaseStudies from '@/components/solutions/SolutionCaseStudies';
 
-/* â”€â”€â”€ Animation constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Animation constants ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 const EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const FU = (delay = 0, distance = 56) => ({
@@ -41,7 +41,7 @@ const STAGGER = {
   visible: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
 };
 
-/* â”€â”€â”€ Word-by-word title component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Word-by-word title component ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 function WordReveal({ text, className, style, delay = 0 }: {
   text: string; className?: string; style?: React.CSSProperties; delay?: number;
 }) {
@@ -62,7 +62,7 @@ function WordReveal({ text, className, style, delay = 0 }: {
   );
 }
 
-/* â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Data ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 const SPECIALIZATIONS = [
   'Predictive Modeling',
   'Intelligent Automation',
@@ -125,7 +125,7 @@ const INDUSTRIES = [
   {
     Icon: ShoppingCart, label: 'Retail & E-Commerce',
     headline: 'Demand Forecasting & Personalisation',
-    desc: 'Drive 20â€”40% revenue uplift through AI-powered recommendation engines, dynamic pricing, and inventory demand forecasting.',
+    desc: 'Drive 20–40% revenue uplift through AI-powered recommendation engines, dynamic pricing, and inventory demand forecasting.',
     tags: ['Recommendation Engines', 'Dynamic Pricing', 'Churn Prevention'],
   },
   {
@@ -143,7 +143,7 @@ const INDUSTRIES = [
   {
     Icon: Truck, label: 'Logistics & Supply Chain',
     headline: 'Route Optimisation & Inventory Intelligence',
-    desc: 'Reduce logistics costs by 18â€”25% through AI-powered route planning, real-time supply chain visibility, and demand-driven inventory.',
+    desc: 'Reduce logistics costs by 18–25% through AI-powered route planning, real-time supply chain visibility, and demand-driven inventory.',
     tags: ['Route Optimisation', 'Supply Visibility', 'Demand Sensing'],
   },
 ];
@@ -174,7 +174,7 @@ const PROBLEMS = [
 const FAQS = [
   {
     q: 'How long does it take to see ROI from a data science engagement?',
-    a: 'Most clients see measurable impact within 8â€”12 weeks for targeted use cases like churn prediction or demand forecasting. Larger platform builds typically deliver ROI at the 4â€”6 month mark. We always prioritise quick wins alongside long-term infrastructure.',
+    a: 'Most clients see measurable impact within 8–12 weeks for targeted use cases like churn prediction or demand forecasting. Larger platform builds typically deliver ROI at the 4–6 month mark. We always prioritise quick wins alongside long-term infrastructure.',
   },
   {
     q: 'Do you work with our existing data infrastructure or replace it?',
@@ -182,7 +182,7 @@ const FAQS = [
   },
   {
     q: 'What data do you need to get started on an AI/ML project?',
-    a: 'We start with a data audit in week one. For predictive models, 12â€”24 months of historical transaction or operational data is ideal. We can also work with smaller datasets using transfer learning and synthetic data augmentation where appropriate.',
+    a: 'We start with a data audit in week one. For predictive models, 12–24 months of historical transaction or operational data is ideal. We can also work with smaller datasets using transfer learning and synthetic data augmentation where appropriate.',
   },
   {
     q: 'How do you ensure data security and regulatory compliance?',
@@ -194,16 +194,16 @@ const FAQS = [
   },
   {
     q: 'What makes MoreYeahs different from an in-house data science team?',
-    a: "We bring a full stack: data engineers, ML engineers, domain specialists, and MLOps architects working together. You get senior expertise across the entire pipeline without the 6â€”12 month hiring cycle, and you can scale the engagement up or down as your needs evolve.",
+    a: "We bring a full stack: data engineers, ML engineers, domain specialists, and MLOps architects working together. You get senior expertise across the entire pipeline without the 6–12 month hiring cycle, and you can scale the engagement up or down as your needs evolve.",
   },
 ];
 
-/* â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ’€’€’€ Page ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
 export default function DataSciencePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openProb, setOpenProb] = useState<number | null>(null);
 
-  /* Parallax â€” hero */
+  /* Parallax – hero */
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
@@ -218,9 +218,9 @@ export default function DataSciencePage() {
 
   return (
     <>
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          HERO â€” parallax video + word reveal title
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          HERO – parallax video + word reveal title
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section
         ref={heroRef}
         style={{ background: 'var(--bg)', paddingTop: 100, paddingBottom: 64, position: 'relative', overflow: 'hidden' }}
@@ -258,7 +258,7 @@ export default function DataSciencePage() {
           {/* Hero split */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24, alignItems: 'stretch' }} className="ds-hero-split">
 
-            {/* LEFT â€” video with parallax */}
+            {/* LEFT – video with parallax */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -278,7 +278,7 @@ export default function DataSciencePage() {
               <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.30)', zIndex: 1 }} />
             </motion.div>
 
-            {/* RIGHT â€” expertise card slides in */}
+            {/* RIGHT – expertise card slides in */}
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
@@ -314,9 +314,9 @@ export default function DataSciencePage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR APPROACH â€” 2Ã—2 bento, directional reveals
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          OUR APPROACH – 2Ã—2 bento, directional reveals
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '120px 0', position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -337,7 +337,7 @@ export default function DataSciencePage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gridTemplateAreas: '"tl tl tl tl tr tr tr" "bl bl bl br br br br"', gap: 16 }} className="ds-bento">
 
-            {/* TL â€” slides from left */}
+            {/* TL – slides from left */}
             <motion.div
               variants={FL(0)}
               initial="hidden"
@@ -359,7 +359,7 @@ export default function DataSciencePage() {
               </div>
             </motion.div>
 
-            {/* TR â€” slides from right */}
+            {/* TR – slides from right */}
             <motion.div
               variants={FR(0.1)}
               initial="hidden"
@@ -381,7 +381,7 @@ export default function DataSciencePage() {
               </p>
             </motion.div>
 
-            {/* BL â€” Explore Blogs */}
+            {/* BL – Explore Blogs */}
             <motion.div
               variants={FL(0.15)}
               initial="hidden"
@@ -413,7 +413,7 @@ export default function DataSciencePage() {
               </div>{/* /ds-blog-bento-inner */}
             </motion.div>
 
-            {/* BR â€” slides from right */}
+            {/* BR – slides from right */}
             <motion.div
               variants={FR(0.2)}
               initial="hidden"
@@ -450,9 +450,9 @@ export default function DataSciencePage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          OUR SERVICES â€” sticky stacking
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          OUR SERVICES – sticky stacking
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 0, position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -522,9 +522,9 @@ export default function DataSciencePage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          HOW IT FITS TOGETHER â€” flow steps
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          HOW IT FITS TOGETHER – flow steps
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'linear-gradient(160deg,#050d1e 0%,#0a1f4f 30%,#0e2e75 65%,#1a56db 100%)', padding: '120px 0', position: 'relative' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -584,9 +584,9 @@ export default function DataSciencePage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          INDUSTRY USE CASES â€” staggered scale cards
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          INDUSTRY USE CASES – staggered scale cards
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -642,15 +642,15 @@ export default function DataSciencePage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          PROBLEMS & SOLUTIONS â€” opposing slide
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          PROBLEMS & SOLUTIONS – opposing slide
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg-2)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: 80, alignItems: 'flex-start' }} className="ds-prob-row">
 
-            {/* Left â€” slides from left, stays sticky */}
+            {/* Left – slides from left, stays sticky */}
             <motion.div
               variants={FL(0)}
               initial="hidden"
@@ -667,7 +667,7 @@ export default function DataSciencePage() {
               </p>
             </motion.div>
 
-            {/* Right â€” items slide from right with stagger */}
+            {/* Right – items slide from right with stagger */}
             <motion.div
               variants={STAGGER}
               initial="hidden"
@@ -727,20 +727,20 @@ export default function DataSciencePage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           TESTIMONIALS
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <SolutionCaseStudies filter="data-science" solutionName="Data Science & AI" />
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-          FAQs â€” opposing slide
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
+          FAQs – opposing slide
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 'clamp(40px,6vw,88px)', alignItems: 'start' }} className="ds-faq-layout">
 
-            {/* Left â€” slides from left, sticky */}
+            {/* Left – slides from left, sticky */}
             <motion.div
               variants={FL(0)}
               initial="hidden"
@@ -757,7 +757,7 @@ export default function DataSciencePage() {
               </p>
             </motion.div>
 
-            {/* Right â€” staggered from right */}
+            {/* Right – staggered from right */}
             <motion.div
               variants={STAGGER}
               initial="hidden"
@@ -815,9 +815,9 @@ export default function DataSciencePage() {
         </div>
       </section>
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+      {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
           CTA
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <TestimonialsSection />
 
       <CTASection />

@@ -59,7 +59,7 @@ export default function ScrollReveal({
   );
 }
 
-/** Staggered children â€” wrap a list container */
+/** Staggered children – wrap a list container */
 export function ScrollRevealGroup({
   children,
   stagger = 0.1,

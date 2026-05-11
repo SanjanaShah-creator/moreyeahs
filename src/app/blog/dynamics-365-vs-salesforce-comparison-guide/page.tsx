@@ -9,14 +9,14 @@ import { GradientBars } from '@/components/ui/gradient-bar-hero-section';
 export default function DynamicsBlogPage() {
   return (
     <>
-      {/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Hero ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80 }}>
         <GradientBars count={16} />
         <NoiseOverlay />
 
         <div className="container" style={{ position: 'relative', zIndex: 3 }}>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            {/* Breadcrumb â€” site standard: â† Parent > Current */}
+            {/* Breadcrumb – site standard: → Parent > Current */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--fg-3)', marginBottom: 28, flexWrap: 'wrap' }}>
               <Link href="/blog" style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--fg-3)', textDecoration: 'none', fontWeight: 600 }}>
                 <ArrowLeft size={12} strokeWidth={2} /> Blog
@@ -58,7 +58,7 @@ export default function DynamicsBlogPage() {
         </div>
       </section>
 
-      {/* â”€â”€ Content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ’€’€ Content ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */}
       <section style={{ background: 'var(--bg-2)', paddingTop: 80, paddingBottom: 120 }}>
         <div className="container">
           <motion.article
@@ -74,7 +74,7 @@ export default function DynamicsBlogPage() {
                 Introduction
               </h2>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 16 }}>
-                Choosing a Customer Relationship Management (CRM) platform is one of the most critical decisions your organization will make. The wrong choice can lead to missed revenue opportunities, integration headaches, and unnecessary costs. The two largest enterprise CRM platforms are Salesforce and Microsoft Dynamics 365â€”both powerful, but fundamentally different in approach, pricing, and ecosystem.
+                Choosing a Customer Relationship Management (CRM) platform is one of the most critical decisions your organization will make. The wrong choice can lead to missed revenue opportunities, integration headaches, and unnecessary costs. The two largest enterprise CRM platforms are Salesforce and Microsoft Dynamics 365–both powerful, but fundamentally different in approach, pricing, and ecosystem.
               </p>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8 }}>
                 After helping 25+ organizations navigate this decision, we've developed a framework to evaluate these platforms based on real-world implementation scenarios. This guide will help you cut through the marketing and focus on what matters: total cost of ownership, integration capability, speed to value, and long-term scalability.
@@ -131,7 +131,7 @@ export default function DynamicsBlogPage() {
                     <tr style={{ borderBottom: '1px solid var(--border)' }}>
                       <td style={{ padding: 14, color: 'var(--fg-2)', fontWeight: 600 }}>Base License</td>
                       <td style={{ padding: 14, color: 'var(--fg-2)' }}><strong>$165/user/month</strong> (Pro)</td>
-                      <td style={{ padding: 14, color: 'var(--fg-2)' }}><strong>$50â€“$120/user/month</strong></td>
+                      <td style={{ padding: 14, color: 'var(--fg-2)' }}><strong>$50–$120/user/month</strong></td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--border)' }}>
                       <td style={{ padding: 14, color: 'var(--fg-2)', fontWeight: 600 }}>Platform Fee</td>
@@ -153,7 +153,7 @@ export default function DynamicsBlogPage() {
               </div>
 
               <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.8, background: 'rgba(251, 191, 36, 0.1)', padding: 16, borderRadius: 8, borderLeft: '4px solid #F59E0B' }}>
-                <strong>Real-world scenario:</strong> A 100-person sales team with Salesforce costs ~$165k/year (base licenses). The same team on Dynamics 365 might run $80k/year in CRM licenses alone, but add Microsoft 365 bundles, Power Apps licensing, and customization feesâ€”and the gap narrows to 15â€“30% savings, depending on your Microsoft footprint.
+                <strong>Real-world scenario:</strong> A 100-person sales team with Salesforce costs ~$165k/year (base licenses). The same team on Dynamics 365 might run $80k/year in CRM licenses alone, but add Microsoft 365 bundles, Power Apps licensing, and customization fees–and the gap narrows to 15–30% savings, depending on your Microsoft footprint.
               </p>
             </div>
 
@@ -177,17 +177,17 @@ export default function DynamicsBlogPage() {
                   <div key={idx} style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 16, alignItems: 'center', padding: 16, background: 'var(--card-bg)', borderRadius: 8 }}>
                     <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--fg)' }}>{row.feature}</div>
                     <div style={{ fontSize: 13, color: 'var(--fg-2)' }}>
-                      {'â˜…'.repeat(row.sf)}<span style={{ opacity: 0.3 }}>{'â˜…'.repeat(5 - row.sf)}</span>
+                      {'–'.repeat(row.sf)}<span style={{ opacity: 0.3 }}>{'–'.repeat(5 - row.sf)}</span>
                     </div>
                     <div style={{ fontSize: 13, color: 'var(--fg-2)' }}>
-                      {'â˜…'.repeat(row.d365)}<span style={{ opacity: 0.3 }}>{'â˜…'.repeat(5 - row.d365)}</span>
+                      {'–'.repeat(row.d365)}<span style={{ opacity: 0.3 }}>{'–'.repeat(5 - row.d365)}</span>
                     </div>
                   </div>
                 ))}
               </div>
 
               <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.8 }}>
-                <strong>Key takeaway:</strong> Salesforce wins on specialized use cases (marketing automation, service cloud maturity). Dynamics 365 wins on integrated business operations and low-code customization. For pure sales CRM, both are excellentâ€”the difference is often integration and ecosystem.
+                <strong>Key takeaway:</strong> Salesforce wins on specialized use cases (marketing automation, service cloud maturity). Dynamics 365 wins on integrated business operations and low-code customization. For pure sales CRM, both are excellent–the difference is often integration and ecosystem.
               </p>
             </div>
 
@@ -201,12 +201,12 @@ export default function DynamicsBlogPage() {
                 {[
                   {
                     name: 'Salesforce',
-                    time: '4â€“9 months',
+                    time: '4–9 months',
                     details: ['Sales Cloud only: 4-6 months', 'Multi-cloud deployment: 6-9+ months', 'Requires Apex/SOQL expertise for advanced customization', 'Strong partner ecosystem increases costs but speeds delivery'],
                   },
                   {
                     name: 'Dynamics 365',
-                    time: '3â€“7 months',
+                    time: '3–7 months',
                     details: ['Sales & Service modules: 3-6 months', 'Heavy Power Apps customization: 6-7+ months', 'Shorter learning curve if org uses Office 365', 'More IT-friendly for organizations with strong Azure teams'],
                   },
                 ].map((impl, idx) => (
@@ -216,7 +216,7 @@ export default function DynamicsBlogPage() {
                     <ul style={{ listStyle: 'none', padding: 0 }}>
                       {impl.details.map((detail, i) => (
                         <li key={i} style={{ fontSize: 14, color: 'var(--fg-2)', marginBottom: 8, paddingLeft: 20, position: 'relative' }}>
-                          <span style={{ position: 'absolute', left: 0, color: '#4D86F5' }}>â†’</span>
+                          <span style={{ position: 'absolute', left: 0, color: '#4D86F5' }}>→’</span>
                           {detail}
                         </li>
                       ))}
@@ -278,11 +278,11 @@ export default function DynamicsBlogPage() {
 
               <div style={{ display: 'grid', gap: 16 }}>
                 {[
-                  { title: 'Salesforce', cost: 'AppExchange add-ons', note: 'Essential plugins (CPQ, Service Cloud bundles, Slack integration) add 20â€“40% to license costs' },
+                  { title: 'Salesforce', cost: 'AppExchange add-ons', note: 'Essential plugins (CPQ, Service Cloud bundles, Slack integration) add 20–40% to license costs' },
                   { title: 'Salesforce', cost: 'Apex development', note: 'Custom code requires Salesforce-certified developers. Expensive. Vendor lock-in.' },
                   { title: 'Dynamics 365', cost: 'Power Apps/Automate licensing', note: 'Each Power Apps per-user license can be $10-15/month on top of CRM licenses' },
                   { title: 'Dynamics 365', cost: 'ISV extensions', note: 'Independent software vendors charge separately; not always bundled like Salesforce' },
-                  { title: 'Both', cost: 'Data migration & training', note: '$50kâ€“$150k depending on org size and data quality. Expect 8â€“12 weeks.' },
+                  { title: 'Both', cost: 'Data migration & training', note: '$50k–$150k depending on org size and data quality. Expect 8–12 weeks.' },
                   { title: 'Both', cost: 'User adoption initiatives', note: 'Budget for change management, training, and potential support for 6+ months post-launch.' },
                 ].map((item, idx) => (
                   <div key={idx} style={{ background: 'var(--card-bg)', border: '1px solid var(--border)', borderRadius: 8, padding: 16 }}>
@@ -312,9 +312,9 @@ export default function DynamicsBlogPage() {
               <div style={{ background: 'linear-gradient(135deg, rgba(26,86,219,0.1), rgba(123,58,237,0.1))', border: '1px solid var(--border)', borderRadius: 12, padding: 28 }}>
                 <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 16 }}>
                   {[
-                    '<strong>Salesforce wins if:</strong> You need best-in-class CRM features, deep non-Microsoft integrations, or industry-specific solutions. Expect 3â€“5 year ROI.',
-                    '<strong>Dynamics 365 wins if:</strong> You\'re Microsoft-first, need rapid customization, and want lower licensing costs. Expect 2â€“3 year ROI if already on M365.',
-                    '<strong>Hybrid approach:</strong> Some organizations run bothâ€”Salesforce for sales, Dynamics 365 for service + operations. Complex to manage but maximizes each platform\'s strengths.',
+                    '<strong>Salesforce wins if:</strong> You need best-in-class CRM features, deep non-Microsoft integrations, or industry-specific solutions. Expect 3–5 year ROI.',
+                    '<strong>Dynamics 365 wins if:</strong> You\'re Microsoft-first, need rapid customization, and want lower licensing costs. Expect 2–3 year ROI if already on M365.',
+                    '<strong>Hybrid approach:</strong> Some organizations run both–Salesforce for sales, Dynamics 365 for service + operations. Complex to manage but maximizes each platform\'s strengths.',
                   ].map((item, idx) => (
                     <li key={idx} style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.8 }} dangerouslySetInnerHTML={{ __html: item }} />
                   ))}

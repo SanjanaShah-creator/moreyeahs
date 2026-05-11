@@ -22,7 +22,7 @@ export default function CompanyStory() {
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }} className="story-grid">
 
-          {/* Left â€” slides in from left */}
+          {/* Left – slides in from left */}
           <motion.div
             variants={FL(0)}
             initial="hidden"
@@ -57,7 +57,7 @@ export default function CompanyStory() {
             </Link>
           </motion.div>
 
-          {/* Right â€” stat cards stagger from right */}
+          {/* Right – stat cards stagger from right */}
           <motion.div
             variants={STAGGER()}
             initial="hidden"
