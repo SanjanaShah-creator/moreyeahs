@@ -25,6 +25,16 @@ function brandGradient(id: number): [string, string] {
   return BRAND_GRADIENTS[Math.abs(id) % BRAND_GRADIENTS.length];
 }
 
+/* Pre-render all case study slugs at build time */
+export async function generateStaticParams() {
+  try {
+    const studies = await fetchAllCaseStudies({ perPage: 100 });
+    return studies.map(s => ({ slug: s.slug }));
+  } catch {
+    return [];
+  }
+}
+
 function transformStudy(study: CaseStudy) {
   const allTerms: WPTerm[] = (study._embedded?.['wp:term']?.flat() ?? []) as WPTerm[];
   const validTerms = allTerms.filter(t => t.id && t.name);
