@@ -26,10 +26,10 @@ Client deliverables are subject to intellectual property provisions set forth in
   {
     title: '4. Use of the Website',
     content: `You agree not to use the website:
-â€¢ In any way that violates any applicable local, national, or international law or regulation
-â€¢ To transmit any unsolicited or unauthorised advertising or promotional material
-â€¢ To impersonate or attempt to impersonate MoreYeahs, a MoreYeahs employee, another user, or any other person or entity
-â€¢ To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the website, or which may harm MoreYeahs or users of the website
+• In any way that violates any applicable local, national, or international law or regulation
+• To transmit any unsolicited or unauthorised advertising or promotional material
+• To impersonate or attempt to impersonate MoreYeahs, a MoreYeahs employee, another user, or any other person or entity
+• To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the website, or which may harm MoreYeahs or users of the website
 
 We reserve the right to terminate your use of the website for violating any of the prohibited uses.`,
   },

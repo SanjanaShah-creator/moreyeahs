@@ -61,7 +61,7 @@ export const JOBS: Job[] = [
     offer: [
       'Competitive salary benchmarked to top-tier tech companies',
       'Fully remote with optional co-working stipend',
-      'â‚¹60K annual learning & conference budget',
+      '₹60K annual learning & conference budget',
       'Health insurance for you and dependents',
       'Stock options and performance bonuses',
       'Quarterly team offsites',
@@ -492,7 +492,7 @@ export default function CareersPage() {
               <h2 style={{ fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.15 }}>
                 Find your next opportunity
               </h2>
-              {/* Filter toggle – mobile only, shown via CSS at â‰¤860px */}
+              {/* Filter toggle – mobile only, shown via CSS at ≤860px */}
               <button
                 className="careers-filter-toggle"
                 onClick={() => setFiltersOpen(!filtersOpen)}

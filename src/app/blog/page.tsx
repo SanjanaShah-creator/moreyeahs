@@ -476,7 +476,7 @@ export default function BlogPage() {
                     style={{ padding: '13px 22px', borderRadius: 12, fontSize: 14, fontWeight: 700, background: newsletterState === 'loading' ? 'rgba(26,86,219,0.5)' : '#1A56DB', color: '#fff', border: 'none', cursor: newsletterState === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(26,86,219,0.28)', transition: 'background 0.2s, transform 0.2s', fontFamily: 'inherit' }}
                     onMouseEnter={e => { if (newsletterState !== 'loading') { (e.currentTarget as HTMLElement).style.background = '#0E2E75'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; } }}
                     onMouseLeave={e => { if (newsletterState !== 'loading') { (e.currentTarget as HTMLElement).style.background = '#1A56DB'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; } }}>
-                    {newsletterState === 'loading' ? 'Subscribingâ€¦' : 'Subscribe'}
+                    {newsletterState === 'loading' ? 'Subscribing…' : 'Subscribe'}
                   </button>
                 </form>
               )}

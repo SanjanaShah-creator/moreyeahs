@@ -251,7 +251,7 @@ export default function CloudInfrastructurePage() {
       </section>
 
       {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
-          OUR APPROACH – 2Ã—2 bento
+          OUR APPROACH – 2×2 bento
       •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '100px 0', position: 'relative' }}>
         <NoiseOverlay />

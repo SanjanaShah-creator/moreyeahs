@@ -64,7 +64,7 @@ const SOLUTIONS = [
       { label: 'Salesforce Implementation',             href: '/solutions/salesforce-services/implementation' },
     ],
     accent: '#80A9FF',
-    stat: { value: '3Ã—', label: 'Pipeline increase' },
+    stat: { value: '3×', label: 'Pipeline increase' },
   },
   {
     Icon: Code2,

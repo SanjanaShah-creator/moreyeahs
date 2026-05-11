@@ -315,7 +315,7 @@ export default function DataSciencePage() {
       </section>
 
       {/* ••••••••••••••••••••••••••••••••••••••••••••••••••
-          OUR APPROACH – 2Ã—2 bento, directional reveals
+          OUR APPROACH – 2×2 bento, directional reveals
       •••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <section style={{ background: 'var(--bg)', padding: '120px 0', position: 'relative' }}>
         <NoiseOverlay />

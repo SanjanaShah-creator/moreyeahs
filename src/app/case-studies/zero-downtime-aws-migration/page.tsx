@@ -70,7 +70,7 @@ export default function AWSMigrationCaseStudy() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
               {[
                 { metric: '$420K', label: 'Annual Cost Savings', icon: 'ðŸ’°' },
-                { metric: '99.99%', label: 'Uptime Achieved', icon: 'âœ…' },
+                { metric: '99.99%', label: 'Uptime Achieved', icon: '✅' },
                 { metric: '42%', label: 'Infrastructure Reduction', icon: 'ðŸ“‰' },
                 { metric: '12→’34', label: 'Microservices Deployed', icon: 'ðŸš€' },
               ].map((item, idx) => (

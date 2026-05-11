@@ -14,12 +14,12 @@ We also automatically collect certain information when you visit our website, in
   {
     title: '2. How We Use Your Information',
     content: `We use the information we collect to:
-â€¢ Respond to your inquiries and provide the services you request
-â€¢ Send you technical notices, updates, and support messages
-â€¢ Send marketing communications, if you have opted in
-â€¢ Monitor and analyse trends, usage, and activities on our website
-â€¢ Detect and prevent fraudulent transactions and other illegal activities
-â€¢ Personalise and improve your experience on our website`,
+• Respond to your inquiries and provide the services you request
+• Send you technical notices, updates, and support messages
+• Send marketing communications, if you have opted in
+• Monitor and analyse trends, usage, and activities on our website
+• Detect and prevent fraudulent transactions and other illegal activities
+• Personalise and improve your experience on our website`,
   },
   {
     title: '3. Information Sharing',
@@ -46,12 +46,12 @@ You can choose to have your computer warn you each time a cookie is being sent, 
   {
     title: '7. Your Rights (GDPR & CCPA)',
     content: `Depending on your location, you may have certain rights regarding your personal data, including:
-â€¢ The right to access the personal data we hold about you
-â€¢ The right to request correction of inaccurate personal data
-â€¢ The right to request deletion of your personal data
-â€¢ The right to object to processing of your personal data
-â€¢ The right to data portability
-â€¢ The right to withdraw consent at any time
+• The right to access the personal data we hold about you
+• The right to request correction of inaccurate personal data
+• The right to request deletion of your personal data
+• The right to object to processing of your personal data
+• The right to data portability
+• The right to withdraw consent at any time
 
 To exercise any of these rights, please contact us at digitalmoreyeahs@gmail.com.`,
   },
