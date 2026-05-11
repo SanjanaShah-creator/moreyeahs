@@ -57,7 +57,7 @@ export default function TestimonialsSection() {
   const resume = () => { if (trackRef.current) trackRef.current.style.animationPlayState = 'running'; };
 
   return (
-    <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', padding: '100px 0' }}>
+    <section style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden', padding: 'clamp(56px,8vw,100px) 0' }}>
       <NoiseOverlay />
       <div className="blob" style={{ width: 480, height: 480, top: '5%', right: '-8%', background: 'radial-gradient(circle, rgba(26,86,219,0.10), transparent 68%)' }} />
       <div className="blob" style={{ width: 360, height: 360, bottom: '5%', left: '-6%', background: 'radial-gradient(circle, rgba(10,31,79,0.28), transparent 68%)' }} />

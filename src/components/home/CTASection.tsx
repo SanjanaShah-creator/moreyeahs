@@ -10,7 +10,7 @@ const PERKS = ['No commitment required', 'Free 30-minute session', 'Actionable A
 
 export default function CTASection() {
   return (
-    <section style={{ padding: '80px 0 100px', background: 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ padding: 'clamp(48px,7vw,80px) 0 clamp(56px,8vw,100px)', background: 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
       <NoiseOverlay />
 
       <div className="blob" style={{ width: 560, height: 560, top: '-80px', right: '5%', background: 'radial-gradient(circle, rgba(26,86,219,0.14) 0%, transparent 65%)' }} />

@@ -110,7 +110,7 @@ export default function ClientLogosSection() {
   return (
     <section style={{
       background: 'var(--bg-2)', position: 'relative',
-      overflow: 'hidden', padding: '72px 0 64px',
+      overflow: 'hidden', padding: 'clamp(48px,7vw,72px) 0 clamp(48px,7vw,64px)',
     }}>
 
       {/* Dot-grid */}

@@ -158,7 +158,7 @@ export default function HeroSection() {
                 border: '1px solid rgba(77,134,245,0.28)',
                 padding: '6px 16px', borderRadius: 999, marginBottom: 32,
               }}>
-                AI, Data &amp; Cloud
+                AI-Native Digital Operations
               </span>
             </motion.div>
 
@@ -173,13 +173,13 @@ export default function HeroSection() {
               }}
             >
               <span className="hero-line-wrap">
-                <motion.span variants={lineReveal} style={{ display: 'block' }}>AI‑First Digital</motion.span>
+                <motion.span variants={lineReveal} style={{ display: 'block' }}>Build AI-Powered</motion.span>
               </span>
               <span className="hero-line-wrap">
-                <motion.span variants={lineReveal} style={{ display: 'block' }}>Engineering to Power</motion.span>
+                <motion.span variants={lineReveal} style={{ display: 'block' }}>Digital Operations</motion.span>
               </span>
               <span className="hero-line-wrap">
-                <motion.span variants={lineReveal} className="hero-grad-text" style={{ display: 'block' }}>Modern Enterprises</motion.span>
+                <motion.span variants={lineReveal} className="hero-grad-text" style={{ display: 'block' }}>That Scale.</motion.span>
               </span>
             </motion.h1>
 
@@ -192,7 +192,7 @@ export default function HeroSection() {
                 marginBottom: 38, maxWidth: 720, margin: '0 auto 38px',
               }}
             >
-              AI &amp; cloud engineering built for the scale of modern enterprise, from strategy to production.
+              We help businesses build AI-powered products, automate operations, and launch scalable digital platforms — faster than traditional software companies.
             </motion.p>
 
             {/* CTAs */}

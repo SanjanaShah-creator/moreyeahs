@@ -432,7 +432,7 @@ function DomainCard({
                   </div>
                   <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--fg)', lineHeight: 1.2 }}>{sc.name}</span>
                 </div>
-                <p style={{ fontSize: 12, color: 'var(--fg-3)', lineHeight: 1.5, margin: 0 }}>{sc.desc}</p>
+                <p className="sol-service-desc" style={{ fontSize: 12, color: 'var(--fg-3)', lineHeight: 1.5, margin: 0 }}>{sc.desc}</p>
               </div>
             ))}
           </div>
@@ -513,16 +513,27 @@ export default function SolutionsSection() {
 
       <style>{`
         @media(max-width:768px){
-          .sol-text-area { align-items: flex-start !important; text-align: left !important; padding-top: calc(76px + var(--ann-h,0px) + 24px) !important; }
-          .sol-services { grid-template-columns: 1fr 1fr !important; }
+          .sol-text-area {
+            align-items: flex-start !important;
+            text-align: left !important;
+            padding-top: calc(76px + var(--ann-h,0px) + 12px) !important;
+          }
+          .sol-services { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+          .sol-services > div { padding: 12px 14px !important; }
+          .sol-service-desc { display: none !important; }
           .sol-watermark { display: none !important; }
           .sol-sticky {
             top: calc(76px + var(--ann-h,0px)) !important;
             height: calc(100vh - 76px - var(--ann-h,0px)) !important;
+            overflow-y: auto !important;
           }
+          .sol-mockup-area { display: none !important; }
         }
         @media(max-width:480px){
           .sol-services { grid-template-columns: 1fr !important; }
+          .sol-text-area {
+            padding-top: calc(76px + var(--ann-h,0px) + 8px) !important;
+          }
         }
       `}</style>
     </section>
