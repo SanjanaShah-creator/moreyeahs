@@ -1,5 +1,4 @@
 ﻿import { notFound } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { ArrowLeft, User, Calendar, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import NoiseOverlay from '@/components/ui/NoiseOverlay';
@@ -9,10 +8,6 @@ import {
   stripHtmlTags, formatDate, rewriteWPUrls, WordPressPost,
 } from '@/lib/wordpress-api';
 import BlogPostActions from './BlogPostActions';
-
-const FV = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
-const FT = { duration: 0.6 };
-const stagger = { visible: { transition: { staggerChildren: 0.1 } } };
 
 interface DisplayBlogPost {
   title: string;
@@ -66,10 +61,9 @@ export default async function BlogPostPage({
         <GradientBars count={16} />
         <NoiseOverlay />
         <div className="container" style={{ position: 'relative', zIndex: 3 }}>
-          <motion.div variants={stagger} initial="hidden" animate="visible"
-            style={{ maxWidth: 860, margin: '0 auto' }}>
+          <div style={{ maxWidth: 860, margin: '0 auto' }}>
 
-            <motion.div variants={FV} transition={FT}>
+            <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--fg-3)', marginBottom: 20, flexWrap: 'wrap' }}>
                 <Link href="/blog" style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--fg-3)', textDecoration: 'none', fontWeight: 600 }}>
                   <ArrowLeft size={12} strokeWidth={2} /> Blog
@@ -77,9 +71,9 @@ export default async function BlogPostPage({
                 <ChevronRight size={12} strokeWidth={2} color="var(--fg-3)" />
                 <span style={{ color: '#4D86F5', fontWeight: 700 }}>{post.category}</span>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div variants={FV} transition={FT} style={{ marginBottom: 24 }}>
+            <div style={{ marginBottom: 24 }}>
               {post.category && (
                 <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#4D86F5', background: 'rgba(26,86,219,0.10)', border: '1px solid rgba(77,134,245,0.20)', padding: '4px 10px', borderRadius: 999, display: 'inline-block', marginBottom: 16 }}>
                   {post.category}
@@ -91,9 +85,9 @@ export default async function BlogPostPage({
               <p style={{ fontSize: 15, color: 'var(--fg-3)', lineHeight: 1.75, maxWidth: 620 }}>
                 {post.excerpt}
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div variants={FV} transition={FT} style={{ display: 'flex', alignItems: 'center', gap: 20, paddingTop: 24, borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 20, paddingTop: 24, borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
               {post.author && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   <User size={12} strokeWidth={2} style={{ color: 'var(--fg-3)' }} />
@@ -106,8 +100,8 @@ export default async function BlogPostPage({
               </div>
               {/* Client component handles PDF download, share, and broken image fix */}
               <BlogPostActions title={post.title} slug={slug} />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
