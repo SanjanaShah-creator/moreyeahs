@@ -138,7 +138,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className={manrope.variable}>
+      <body className={manrope.variable} suppressHydrationWarning>
         <Providers>
           <CursorGlow />
           <AnnouncementBanner />
