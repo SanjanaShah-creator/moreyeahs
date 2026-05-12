@@ -555,6 +555,138 @@ function caseMatchesFilter(cs: WPCaseStudy, filterKey: string): boolean {
 }
 
 /* ’€’€ ServicePageTemplate ’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€’€ */
+
+
+/* ── CapScrollSection: tall scroll container, panel starts tilted and rises ── */
+function CapScrollSection({ capabilities, name }: { capabilities: CapabilityItem[]; name: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start 90%', 'end 90%'] });
+  const rotateX = useTransform(scrollYProgress, [0, 0.5], [22, 0]);
+  const scale   = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
+  const cols = capabilities.length <= 2 ? 2 : capabilities.length === 3 ? 3 : 4;
+
+  const Panel = (
+    <>
+      {/* Browser chrome */}
+      <div style={{
+        background: 'rgba(18,22,38,0.98)',
+        borderRadius: '16px 16px 0 0',
+        padding: '11px 18px',
+        display: 'flex', alignItems: 'center', gap: 8,
+        border: '1px solid rgba(77,134,245,0.22)',
+        borderBottom: 'none',
+      }}>
+        <span style={{ width: 11, height: 11, borderRadius: '50%', background: '#ff5f57', flexShrink: 0 }} />
+        <span style={{ width: 11, height: 11, borderRadius: '50%', background: '#febc2e', flexShrink: 0 }} />
+        <span style={{ width: 11, height: 11, borderRadius: '50%', background: '#28c840', flexShrink: 0 }} />
+        <div style={{
+          flex: 1, marginLeft: 10, height: 24, borderRadius: 6,
+          background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)',
+          display: 'flex', alignItems: 'center', paddingLeft: 12,
+          fontSize: 12, color: 'rgba(255,255,255,0.35)',
+        }}>
+          {name} — Core Capabilities
+        </div>
+      </div>
+      {/* Grid */}
+      <div
+        className="svc-cap-grid"
+        style={{
+          background: 'rgba(8,12,24,0.99)',
+          border: '1px solid rgba(77,134,245,0.15)',
+          borderTop: 'none',
+          borderRadius: '0 0 20px 20px',
+          padding: '24px 24px 36px',
+          display: 'grid',
+          gridTemplateColumns: `repeat(${cols}, 1fr)`,
+          gap: 16,
+        }}
+      >
+        {capabilities.map((cap, ci) => (
+          <div key={ci} style={{
+            padding: '20px 22px', borderRadius: 14,
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            display: 'flex', flexDirection: 'column', gap: 12,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{
+                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                background: 'rgba(77,134,245,0.16)', border: '1px solid rgba(77,134,245,0.28)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <cap.Icon size={16} color="#4D86F5" strokeWidth={2} />
+              </div>
+              <span style={{ fontSize: 14, fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>
+                {cap.title}
+              </span>
+            </div>
+            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0 }}>
+              {cap.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop: animated scroll version */}
+      <div
+        ref={containerRef}
+        className="svc-cap-scroll-section svc-cap-desktop"
+        style={{
+          height: '80vh',
+          display: 'flex',
+          alignItems: 'flex-end',
+          position: 'relative',
+          marginTop: '-15vh',
+          zIndex: 0,
+        }}
+      >
+        <div style={{
+          position: 'sticky',
+          bottom: 0,
+          width: '100%',
+          padding: '0 clamp(16px,3vw,48px) 48px',
+          perspective: '1400px',
+          perspectiveOrigin: '50% 100%',
+          zIndex: 2,
+        }}>
+          <motion.div
+            style={{
+              rotateX,
+              scale,
+              transformStyle: 'preserve-3d',
+              transformOrigin: 'bottom center',
+              width: '100%',
+              maxWidth: 1400,
+              margin: '0 auto',
+            }}
+          >
+            {Panel}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Tablet + Mobile: static version, no animation, no negative margin */}
+      <section
+        className="svc-cap-scroll-section svc-cap-mobile"
+        style={{
+          background: 'var(--bg)',
+          padding: '48px clamp(16px,4vw,48px) 56px',
+        }}
+      >
+        <div style={{ maxWidth: 1400, margin: '0 auto' }}>
+          {Panel}
+        </div>
+      </section>
+    </>
+  );
+}
+
+
 export default function ServicePageTemplate({ data }: { data: ServicePageData }) {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
@@ -589,7 +721,9 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
           alignItems: 'center',
           position: 'relative',
           overflow: 'hidden',
+          paddingBottom: 0,
           paddingTop: 90,
+          minHeight: '100vh',
         }}
       >
         {/* GridBeam as full section background */}
@@ -769,9 +903,14 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             </motion.div>
           </motion.div>
         </div>
+
       </section>
 
-      {/* ’€’€ PROBLEM ’€’€ */}
+
+      {data.capabilities.length > 0 && (
+        <CapScrollSection capabilities={data.capabilities} name={data.name} />
+      )}
+
       <section
         className="svc-section-pad"
         style={{ background: 'var(--bg-section-dark)', padding: 'clamp(72px,8vw,100px) 0', position: 'relative', overflow: 'hidden' }}
@@ -822,71 +961,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             </motion.div>
           </motion.div>
         </div>
-      </section>
 
-      {/* ’€’€ CAPABILITIES ’€’€ */}
-      <section className="svc-section-pad" style={{ background: 'var(--bg-2)', padding: 'clamp(72px,8vw,100px) 0', position: 'relative' }}>
-        <NoiseOverlay />
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <motion.div
-            variants={FU(0)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-60px' }}
-            style={{ marginBottom: 56 }}
-          >
-            <div className="section-badge" style={{ marginBottom: 16 }}>
-              What We Deliver
-            </div>
-            <h2 style={{ fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--fg)', lineHeight: 1.1 }}>
-              End-to-End {data.name} Capabilities
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={STAGGER(0.07)} initial="hidden" whileInView="visible" viewport={{ once: false, margin: '-60px' }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 20 }}
-          >
-            {data.capabilities.map((cap, i) => (
-              <motion.div key={i} variants={SC(0)} style={{ height: '100%' }}>
-                <TiltCard
-                  style={{
-                    height: '100%', padding: 28, borderRadius: 20,
-                    background: 'var(--card-bg)', border: '1px solid var(--border)',
-                    boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                    display: 'flex', flexDirection: 'column', gap: 16,
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                    <div
-                      style={{
-                        width: 44, height: 44, borderRadius: 12,
-                        background: BLUE_LIGHT, border: `1px solid ${BLUE}25`,
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                      }}
-                    >
-                      <cap.Icon size={20} color={BLUE} strokeWidth={1.5} />
-                    </div>
-                    {cap.tag && (
-                      <span
-                        style={{
-                          fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-                          color: BLUE, padding: '4px 10px', borderRadius: 999,
-                          background: BLUE_LIGHT, border: `1px solid ${BLUE}25`,
-                        }}
-                      >
-                        {cap.tag}
-                      </span>
-                    )}
-                  </div>
-                  <div>
-                    <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 8, lineHeight: 1.3 }}>
-                      {cap.title}
-                    </div>
-                    <div style={{ fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.7 }}>{cap.desc}</div>
-                  </div>
-                </TiltCard>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
       </section>
 
       {/* ’€’€ PROCESS ’€’€ */}
@@ -1066,11 +1141,30 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
           .svc-cta-row a{width:100%!important;max-width:320px!important;justify-content:center!important}
         }
         /* ’€’€ Shared section padding on mobile ’€’€ */
+        /* Shared section padding on mobile */
         @media(max-width:680px){
           .svc-section-pad{padding:72px 0!important}
+          .svc-cap-scroll-section{display:none!important}
         }
         @media(max-width:420px){
           .svc-section-pad{padding:56px 0!important}
+        }
+        /* Capabilities panel responsive */
+        .svc-cap-desktop { display: flex !important; }
+        .svc-cap-mobile  { display: none !important; }
+        @media(max-width:1024px){
+          .svc-cap-desktop { display: none !important; }
+          .svc-cap-mobile  { display: block !important; }
+          .svc-cap-grid { grid-template-columns: repeat(2,1fr) !important; }
+        }
+        @media(max-width:1280px){
+          .svc-cap-grid{grid-template-columns:repeat(3,1fr)!important}
+        }
+        @media(max-width:960px){
+          .svc-cap-grid{grid-template-columns:repeat(2,1fr)!important}
+        }
+        @media(max-width:480px){
+          .svc-cap-grid{grid-template-columns:1fr!important}
         }
       `}</style>
     </>

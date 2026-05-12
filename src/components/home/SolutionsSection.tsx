@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, MotionValue, AnimatePresence } from 'framer-motion';
 import { Brain, Cloud, Monitor, Zap, Code2, ArrowRight, Cpu, Eye, Database, Wifi, Server, GitBranch, BarChart2, Share2, Settings, Layers, Smartphone, Palette } from 'lucide-react';
 import Link from 'next/link';
@@ -351,7 +351,7 @@ function DomainCard({
       </div>
 
       {/* ── LAYOUT: left padding | content | right padding ── */}
-      <div style={{
+      <div className="sol-layout" style={{
         position: 'absolute', inset: 0,
         display: 'flex', flexDirection: 'column',
         padding: '0 clamp(16px,3vw,60px)',
@@ -494,11 +494,22 @@ export default function SolutionsSection() {
     target: scrollRef,
     offset: ['start start', 'end end'],
   });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  // Smaller scroll height on mobile so no empty space between cards
+  const scrollHeight = isMobile ? `${n * 70}vh` : `${n * VH_PER_CARD}vh`;
 
   return (
     <section style={{ background: 'var(--bg)', position: 'relative' }}>
 
-      <div ref={scrollRef} style={{ height: `${n * VH_PER_CARD}vh`, position: 'relative' }}>
+      <div ref={scrollRef} style={{ height: scrollHeight, position: 'relative' }}>
         <div className="sol-sticky" style={{
           position: 'sticky', top: 0,
           height: '100vh',
@@ -513,27 +524,26 @@ export default function SolutionsSection() {
 
       <style>{`
         @media(max-width:768px){
-          .sol-text-area {
-            align-items: flex-start !important;
-            text-align: left !important;
-            padding-top: calc(76px + var(--ann-h,0px) + 12px) !important;
-          }
-          .sol-services { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
-          .sol-services > div { padding: 12px 14px !important; }
-          .sol-service-desc { display: none !important; }
           .sol-watermark { display: none !important; }
           .sol-sticky {
             top: calc(76px + var(--ann-h,0px)) !important;
             height: calc(100vh - 76px - var(--ann-h,0px)) !important;
-            overflow-y: auto !important;
           }
-          .sol-mockup-area { display: none !important; }
+          .sol-mockup-area { display: none !important; flex: 0 !important; min-height: 0 !important; }
+          .sol-text-area {
+            align-items: flex-start !important;
+            text-align: left !important;
+            padding-top: calc(76px + var(--ann-h,0px) + 16px) !important;
+            flex: 1 !important;
+            justify-content: center !important;
+          }
+          .sol-services { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+          .sol-services > div { padding: 12px 14px !important; }
+          .sol-service-desc { display: none !important; }
+          .sol-layout { justify-content: center !important; }
         }
         @media(max-width:480px){
           .sol-services { grid-template-columns: 1fr !important; }
-          .sol-text-area {
-            padding-top: calc(76px + var(--ann-h,0px) + 8px) !important;
-          }
         }
       `}</style>
     </section>
