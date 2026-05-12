@@ -217,7 +217,7 @@ export default function CaseStudyPage() {
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24, marginBottom: 16 }}>
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 12 }}>Challenge: Clinician Trust & Adoption</h3>
                 <p style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.7 }}>
-                  AI in healthcare triggers skepticism. Clinicians didn't want a "black box" predicting diagnoses. We invested heavily in explainability–showing which imaging regions, lab values, and patient factors contributed to each prediction. This transparency was critical to adoption.
+                  AI in healthcare triggers skepticism. Clinicians didn&apos;t want a &quot;black box&quot; predicting diagnoses. We invested heavily in explainability–showing which imaging regions, lab values, and patient factors contributed to each prediction. This transparency was critical to adoption.
                 </p>
               </div>
 
@@ -232,13 +232,13 @@ export default function CaseStudyPage() {
             {/* Section 6 */}
             <div style={{ marginBottom: 48 }}>
               <h2 style={{ fontSize: 28, fontWeight: 800, color: 'var(--fg)', marginBottom: 16, letterSpacing: '-0.02em' }}>
-                What's Next
+                What&apos;s Next
               </h2>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 16 }}>
                 The client is now planning Phase 2 expansion: scaling the platform across all 14 hospitals and extending the diagnostic scope to 8 additional specialties (currently it covers emergency medicine and radiology interpretation).
               </p>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8 }}>
-                We're also exploring integration with their EHR vendor to embed the predictions directly into clinician workflows–reducing the friction of using a separate tool.
+                We&apos;re also exploring integration with their EHR vendor to embed the predictions directly into clinician workflows–reducing the friction of using a separate tool.
               </p>
             </div>
 

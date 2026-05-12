@@ -124,7 +124,7 @@ export default function VoicesCarousel() {
               >
                 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '14px 14px 0 0' }}>
                   <iframe
-                    src={`https://www.youtube.com/embed/${member.videoId}`}
+                    src={`https://www.youtube.com/embed/${member.videoId}?origin=https://www.moreyeahs.com`}
                     title={`${member.name} — ${member.role}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

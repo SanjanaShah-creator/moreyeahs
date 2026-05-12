@@ -307,7 +307,7 @@ export default function MicrosoftServicesPage() {
               className="glass" style={{ padding: '40px', position: 'relative', overflow: 'hidden', minHeight: 360, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gridArea: 'tr', boxShadow: '0 4px 24px rgba(26,86,219,0.07)' }}
             >
               <div className="ds-tr-deco" style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
-                <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass illustration" width={160} height={160} style={{ objectFit: 'contain' }} />
+                <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass illustration" width={160} height={160} style={{ objectFit: 'contain', width: '100%', height: 'auto' }} />
               </div>
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <h3 style={{ fontSize: 'clamp(18px,1.8vw,26px)', fontWeight: 700, color: 'var(--fg)', lineHeight: 1.2, letterSpacing: '-0.02em' }}>
@@ -374,7 +374,7 @@ export default function MicrosoftServicesPage() {
                 </Link>
               </div>
               <div className="ds-br-robot-wrap" style={{ position: 'absolute', bottom: 0, right: 0, zIndex: 1, width: 280, height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/images/robot-with-tick-symbol 3.png" alt="Microsoft solutions robot illustration" width={280} height={280} style={{ objectFit: 'contain' }} />
+                <Image src="/images/robot-with-tick-symbol 3.png" alt="Microsoft solutions robot illustration" width={280} height={280} style={{ objectFit: 'contain', width: '100%', height: 'auto' }} />
               </div>
             </motion.div>
           </div>

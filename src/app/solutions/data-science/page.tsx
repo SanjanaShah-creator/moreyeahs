@@ -374,7 +374,7 @@ export default function DataSciencePage() {
                 </h3>
               </div>
               <div className="ds-tr-deco" style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 160, pointerEvents: 'none' }}>
-                <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass" width={160} height={160} style={{ objectFit: 'contain' }} />
+                <Image src="/images/Dispersed_glass_3d_illustrations_vol_2_3_6b652c20f7 1.png" alt="3D glass" width={160} height={160} style={{ objectFit: 'contain', width: '100%', height: 'auto' }} />
               </div>
               <p className="ds-tr-bottom-p" style={{ fontSize: 18, fontWeight: 400, color: 'var(--fg-3)', lineHeight: 1.6, position: 'relative', zIndex: 1 }}>
                 We design for outcomes,<br />not observation.
@@ -443,7 +443,7 @@ export default function DataSciencePage() {
                 </Link>
               </div>
               <div className="ds-br-robot-wrap" style={{ position: 'absolute', bottom: 0, right: 0, zIndex: 1, width: 280, height: 320, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/images/robot-with-tick-symbol 3.png" alt="Robot" width={280} height={280} style={{ objectFit: 'contain' }} />
+                <Image src="/images/robot-with-tick-symbol 3.png" alt="Robot" width={280} height={280} style={{ objectFit: 'contain', width: '100%', height: 'auto' }} />
               </div>
             </motion.div>
           </div>

@@ -569,11 +569,11 @@ function CapScrollSection({ capabilities, name }: { capabilities: CapabilityItem
     <>
       {/* Browser chrome */}
       <div style={{
-        background: 'rgba(18,22,38,0.98)',
+        background: 'var(--bg-2)',
         borderRadius: '16px 16px 0 0',
         padding: '11px 18px',
         display: 'flex', alignItems: 'center', gap: 8,
-        border: '1px solid rgba(77,134,245,0.22)',
+        border: '1px solid var(--border)',
         borderBottom: 'none',
       }}>
         <span style={{ width: 11, height: 11, borderRadius: '50%', background: '#ff5f57', flexShrink: 0 }} />
@@ -581,9 +581,9 @@ function CapScrollSection({ capabilities, name }: { capabilities: CapabilityItem
         <span style={{ width: 11, height: 11, borderRadius: '50%', background: '#28c840', flexShrink: 0 }} />
         <div style={{
           flex: 1, marginLeft: 10, height: 24, borderRadius: 6,
-          background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)',
+          background: 'var(--surface)', border: '1px solid var(--border)',
           display: 'flex', alignItems: 'center', paddingLeft: 12,
-          fontSize: 12, color: 'rgba(255,255,255,0.35)',
+          fontSize: 12, color: 'var(--fg-3)',
         }}>
           {name} — Core Capabilities
         </div>
@@ -592,8 +592,8 @@ function CapScrollSection({ capabilities, name }: { capabilities: CapabilityItem
       <div
         className="svc-cap-grid"
         style={{
-          background: 'rgba(8,12,24,0.99)',
-          border: '1px solid rgba(77,134,245,0.15)',
+          background: 'var(--bg-2)',
+          border: '1px solid var(--border)',
           borderTop: 'none',
           borderRadius: '0 0 20px 20px',
           padding: '24px 24px 36px',
@@ -605,8 +605,8 @@ function CapScrollSection({ capabilities, name }: { capabilities: CapabilityItem
         {capabilities.map((cap, ci) => (
           <div key={ci} style={{
             padding: '20px 22px', borderRadius: 14,
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: 'var(--card-bg)',
+            border: '1px solid var(--card-border)',
             display: 'flex', flexDirection: 'column', gap: 12,
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -617,11 +617,11 @@ function CapScrollSection({ capabilities, name }: { capabilities: CapabilityItem
               }}>
                 <cap.Icon size={16} color="#4D86F5" strokeWidth={2} />
               </div>
-              <span style={{ fontSize: 14, fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>
+              <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--fg)', lineHeight: 1.3 }}>
                 {cap.title}
               </span>
             </div>
-            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0 }}>
+            <p style={{ fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.65, margin: 0 }}>
               {cap.desc}
             </p>
           </div>

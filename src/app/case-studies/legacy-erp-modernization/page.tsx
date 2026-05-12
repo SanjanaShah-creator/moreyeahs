@@ -108,7 +108,7 @@ export default function Dynamics365CaseStudy() {
                 The Challenge: Fragmented Procurement Across 12 Departments
               </h2>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 16 }}>
-                Our client was a large regional government entity managing procurement for 12 autonomous departments (transportation, health, environment, etc.). The organization's ERP system was 10+ years old–a patchwork of legacy applications, manual workflows, and Excel-based reconciliation.
+                Our client was a large regional government entity managing procurement for 12 autonomous departments (transportation, health, environment, etc.). The organization&apos;s ERP system was 10+ years old–a patchwork of legacy applications, manual workflows, and Excel-based reconciliation.
               </p>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 16 }}>
                 The results were predictable chaos:
@@ -159,7 +159,7 @@ export default function Dynamics365CaseStudy() {
             {/* Section 3 */}
             <div style={{ marginBottom: 48 }}>
               <h2 style={{ fontSize: 28, fontWeight: 800, color: 'var(--fg)', marginBottom: 16, letterSpacing: '-0.02em' }}>
-                Implementation Strategy: "Federated Hub-and-Spoke"
+                Implementation Strategy: &quot;Federated Hub-and-Spoke&quot;
               </h2>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 16 }}>
                 We designed a hub-and-spoke model: a centralized Dynamics 365 instance for enterprise-wide procurement, with department-specific Power Apps portals for localized request intake.

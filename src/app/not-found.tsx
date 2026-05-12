@@ -142,8 +142,8 @@ export default function NotFound() {
               maxWidth: 400,
               margin: '0 auto 36px',
             }}>
-              The page you're looking for doesn't exist or has been moved.
-              Let's get you back on track.
+              The page you&apos;re looking for doesn&apos;t exist or has been moved.
+              Let&apos;s get you back on track.
             </p>
 
             {/* Quick links */}
@@ -237,7 +237,7 @@ export default function NotFound() {
             <Link href="/contact-us" style={{ color: '#4D86F5', textDecoration: 'none', fontWeight: 600 }}>
               Contact our team
             </Link>{' '}
-            and we'll point you in the right direction.
+            and we&apos;ll point you in the right direction.
           </motion.p>
         )}
       </div>

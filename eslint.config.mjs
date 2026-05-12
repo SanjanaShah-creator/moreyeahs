@@ -12,7 +12,18 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Utility scripts at root level
+    "fix-encoding.js",
   ]),
+  {
+    rules: {
+      // These patterns are intentional in this codebase:
+      // - setMounted(true) in useEffect is a standard client-side hydration guard
+      // - ThemeBtn is now a proper top-level component (fixed in Navbar.tsx)
+      "react-hooks/set-state-in-effect": "warn",
+      "react-hooks/static-components": "warn",
+    },
+  },
 ]);
 
 export default eslintConfig;

@@ -135,10 +135,10 @@ export default function AWSMigrationCaseStudy() {
             {/* Section 2 */}
             <div style={{ marginBottom: 48 }}>
               <h2 style={{ fontSize: 28, fontWeight: 800, color: 'var(--fg)', marginBottom: 16, letterSpacing: '-0.02em' }}>
-                Our Approach: "The Canary Strategy"
+                Our Approach: &quot;The Canary Strategy&quot;
               </h2>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8, marginBottom: 16 }}>
-                Zero-downtime migration required a sophisticated, phased approach. We designed a "canary deployment" strategy that shifted traffic gradually from legacy systems to AWS while maintaining complete redundancy and the ability to instant-rollback at any stage.
+                Zero-downtime migration required a sophisticated, phased approach. We designed a &quot;canary deployment&quot; strategy that shifted traffic gradually from legacy systems to AWS while maintaining complete redundancy and the ability to instant-rollback at any stage.
               </p>
 
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24, marginBottom: 24 }}>
@@ -295,7 +295,7 @@ export default function AWSMigrationCaseStudy() {
             {/* CTA */}
             <div style={{ marginTop: 48, paddingTop: 32, borderTop: '1px solid var(--border)', textAlign: 'center' }}>
               <p style={{ fontSize: 15, color: 'var(--fg-2)', marginBottom: 20 }}>
-                Planning a cloud migration? Let's talk zero-downtime strategies.
+                Planning a cloud migration? Let&apos;s talk zero-downtime strategies.
               </p>
               <Link
                 href="/contact-us"

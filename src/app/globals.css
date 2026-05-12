@@ -132,6 +132,23 @@ body {
   .svc-card-inner{ gap: 32px !important; }
 }
 
+/* ─── Mobile overflow prevention ────────────────────────────────── */
+/* Ensure all grid children can shrink below their content size */
+@media(max-width:1024px){
+  .ds-hero-split > * { min-width: 0; }
+  .ds-bento > * { min-width: 0; }
+  .ds-prob-row > * { min-width: 0; }
+  .ds-faq-layout > * { min-width: 0; }
+}
+/* Prevent any fixed-width column from overflowing on mobile */
+@media(max-width:768px){
+  .ds-hero-split { grid-template-columns: 1fr !important; }
+  .ds-prob-row   { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .ds-faq-layout { grid-template-columns: 1fr !important; gap: 32px !important; }
+  /* Ensure sections clip overflow */
+  section { overflow-x: hidden; }
+}
+
 /* ─── Mobile nav ─────────────────────────────────────────────────── */
 @media(max-width:768px){
   .desktop-nav { display: none !important; }

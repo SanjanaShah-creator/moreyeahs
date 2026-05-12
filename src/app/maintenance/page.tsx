@@ -179,7 +179,7 @@ export default function MaintenancePage() {
               lineHeight: 1.1,
               marginBottom: 14,
             }}>
-              We're tuning things up
+              We&apos;re tuning things up
             </h1>
             <p style={{
               fontSize: 15,
@@ -189,7 +189,7 @@ export default function MaintenancePage() {
               margin: '0 auto 36px',
             }}>
               Our team is working hard to bring you something even better.
-              We'll be back online shortly — thank you for your patience.
+              We&apos;ll be back online shortly — thank you for your patience.
             </p>
 
             {/* Live clock */}

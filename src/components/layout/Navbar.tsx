@@ -329,6 +329,22 @@ const NAV_LINK: React.CSSProperties = {
   fontFamily: 'inherit', whiteSpace: 'nowrap',
 };
 
+function ThemeBtn({ isDark, toggleTheme, compact }: { isDark: boolean; toggleTheme: () => void; compact?: boolean }) {
+  return (
+    <button onClick={toggleTheme} style={{
+      width: compact ? 32 : 36, height: compact ? 32 : 36, borderRadius: 999,
+      border: '1px solid var(--border)', background: 'var(--surface)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      cursor: 'pointer', color: 'var(--fg-2)', transition: 'all 0.2s', flexShrink: 0,
+    }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(128,169,255,0.12)'; (e.currentTarget as HTMLElement).style.color = '#80A9FF'; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'var(--surface)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}
+    >
+      {isDark ? <Sun size={compact ? 13 : 15} strokeWidth={1.5} /> : <Moon size={compact ? 13 : 15} strokeWidth={1.5} />}
+    </button>
+  );
+}
+
 export default function Navbar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
@@ -389,20 +405,6 @@ export default function Navbar() {
   const showBottomPill = pastHero && screenWide;
 
   const closeMobile = () => { setMobileOpen(false); setMobileExpanded(null); setMobileSubExpanded(null); };
-
-  const ThemeBtn = ({ compact }: { compact?: boolean }) => (
-    <button onClick={toggleTheme} style={{
-      width: compact ? 32 : 36, height: compact ? 32 : 36, borderRadius: 999,
-      border: '1px solid var(--border)', background: 'var(--surface)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      cursor: 'pointer', color: 'var(--fg-2)', transition: 'all 0.2s', flexShrink: 0,
-    }}
-      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(128,169,255,0.12)'; (e.currentTarget as HTMLElement).style.color = '#80A9FF'; }}
-      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'var(--surface)'; (e.currentTarget as HTMLElement).style.color = 'var(--fg-2)'; }}
-    >
-      {isDark ? <Sun size={compact ? 13 : 15} strokeWidth={1.5} /> : <Moon size={compact ? 13 : 15} strokeWidth={1.5} />}
-    </button>
-  );
 
   return (
     <>
@@ -470,7 +472,7 @@ export default function Navbar() {
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
-                {mounted && <ThemeBtn />}
+                {mounted && <ThemeBtn isDark={isDark} toggleTheme={toggleTheme} />}
                 <Link href="/contact-us" className="desktop-nav" style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   background: '#1A56DB', color: '#fff',
@@ -701,7 +703,7 @@ export default function Navbar() {
                 <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--fg-2)' }}>
                   {isDark ? 'Dark mode' : 'Light mode'}
                 </span>
-                <ThemeBtn />
+                <ThemeBtn isDark={isDark} toggleTheme={toggleTheme} />
               </div>
             )}
 
@@ -779,7 +781,7 @@ export default function Navbar() {
 
             <div style={{ width: 1, height: 18, background: 'var(--border)', margin: '0 4px' }} />
 
-            {mounted && <ThemeBtn compact />}
+            {mounted && <ThemeBtn isDark={isDark} toggleTheme={toggleTheme} compact />}
 
             <Link href="/contact-us" style={{
               display: 'inline-flex', alignItems: 'center', gap: 6,

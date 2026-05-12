@@ -97,7 +97,7 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
           </div>
           <h3 style={{ fontSize: 16, fontWeight: 800, color: 'var(--fg)', marginBottom: 8 }}>Application sent!</h3>
           <p style={{ fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.7 }}>
-            We'll review your application and get back to you within 5 business days.
+            We&apos;ll review your application and get back to you within 5 business days.
           </p>
         </motion.div>
       </div>
@@ -349,7 +349,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ slug: stri
                     Apply for this role
                   </h3>
                   <p style={{ fontSize: 12, color: 'var(--fg-3)', lineHeight: 1.6 }}>
-                    Fill in your details and we'll be in touch within 5 business days.
+                    Fill in your details and we&apos;ll be in touch within 5 business days.
                   </p>
                 </div>
                 <ApplyForm jobTitle={job.title} />

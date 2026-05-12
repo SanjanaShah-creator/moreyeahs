@@ -77,7 +77,7 @@ export default function DynamicsBlogPage() {
                 Choosing a Customer Relationship Management (CRM) platform is one of the most critical decisions your organization will make. The wrong choice can lead to missed revenue opportunities, integration headaches, and unnecessary costs. The two largest enterprise CRM platforms are Salesforce and Microsoft Dynamics 365–both powerful, but fundamentally different in approach, pricing, and ecosystem.
               </p>
               <p style={{ fontSize: 16, color: 'var(--fg-2)', lineHeight: 1.8 }}>
-                After helping 25+ organizations navigate this decision, we've developed a framework to evaluate these platforms based on real-world implementation scenarios. This guide will help you cut through the marketing and focus on what matters: total cost of ownership, integration capability, speed to value, and long-term scalability.
+                After helping 25+ organizations navigate this decision, we&apos;ve developed a framework to evaluate these platforms based on real-world implementation scenarios. This guide will help you cut through the marketing and focus on what matters: total cost of ownership, integration capability, speed to value, and long-term scalability.
               </p>
             </div>
 
@@ -89,7 +89,7 @@ export default function DynamicsBlogPage() {
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24, marginBottom: 16 }}>
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 12 }}>Salesforce</h3>
                 <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.7, marginBottom: 12 }}>
-                  <strong>Philosophy:</strong> "The number one cloud CRM." Salesforce is built as a standalone, best-in-class CRM platform with a massive ecosystem of third-party integrations. It's designed to be the single source of truth for sales, service, and marketing.
+                  <strong>Philosophy:</strong> &quot;The number one cloud CRM.&quot; Salesforce is built as a standalone, best-in-class CRM platform with a massive ecosystem of third-party integrations. It&apos;s designed to be the single source of truth for sales, service, and marketing.
                 </p>
                 <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.7 }}>
                   <strong>Strength:</strong> Unmatched user adoption rates in sales teams. Sales reps prefer it. The UI is intuitive, mobile-first, and designed around sales workflows.
@@ -98,7 +98,7 @@ export default function DynamicsBlogPage() {
               <div style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: 12, padding: 24 }}>
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--fg)', marginBottom: 12 }}>Dynamics 365</h3>
                 <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.7, marginBottom: 12 }}>
-                  <strong>Philosophy:</strong> "CRM as part of an integrated Microsoft ecosystem." Dynamics 365 is built to work seamlessly with Office 365, Power BI, Power Apps, and the broader Azure stack. It's designed for organizations already invested in Microsoft.
+                  <strong>Philosophy:</strong> &quot;CRM as part of an integrated Microsoft ecosystem.&quot; Dynamics 365 is built to work seamlessly with Office 365, Power BI, Power Apps, and the broader Azure stack. It&apos;s designed for organizations already invested in Microsoft.
                 </p>
                 <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.7 }}>
                   <strong>Strength:</strong> Exceptional integration with Microsoft tools. If your organization runs on Office 365, Outlook, and Teams, Dynamics 365 will feel native. Less friction with data silos.
@@ -337,7 +337,7 @@ export default function DynamicsBlogPage() {
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#1A56DB'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#4D86F5'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
               >
-                Let's Talk Strategy
+                Let&apos;s Talk Strategy
               </Link>
             </div>
           </motion.article>
